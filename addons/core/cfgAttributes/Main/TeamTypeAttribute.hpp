@@ -1,16 +1,6 @@
 class GVAR(TeamType_Select): Title {
-    attributeLoad = "\
-        private _name = gettext (_config >> 'property');\
-        missionNamespace setvariable [_name,_value];\
-        private _control = (_this controlsGroupCtrl 100);\
-        _control setvariable ['ParentCfg',_config];\
-        _control lbsetcursel _value;\
-    ";
-    attributeSave = "\
-        private _name = gettext (_config >> 'property');\
-        private _value = missionNamespace getvariable [_name,''];\
-        _value\
-    ";
+    attributeLoad = QUOTE([ARR_3(_this,_value,_config)] call FUNC(TeamType_Select_attr_load));
+    attributeSave = QUOTE([ARR_2(_this,_config)] call FUNC(TeamType_Select_attr_save));
     class Controls : Controls {
         class Title: Title {};
         class Value: ctrlToolbox {
@@ -23,12 +13,7 @@ class GVAR(TeamType_Select): Title {
             columns = 3;
             strings[] = {"Player","AI","Both"};
             values[] = {0,1,2};
-            onToolboxSelChanged = "\
-                params ['_control','_value'];\
-                private _config = _control getvariable ['ParentCfg',''];\
-                private _name = gettext (_config >> 'property');\
-                missionNamespace setvariable [_name,_value];\
-            ";
+            onToolboxSelChanged = QUOTE([_this] call FUNC(TeamType_Select_onToolboxSel));
         };
     };
 };

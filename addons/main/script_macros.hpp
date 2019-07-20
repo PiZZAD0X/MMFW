@@ -1,4 +1,5 @@
 #define DEBUG_SYNCHRONOUS
+#define DEBUG_MODE_FULL
 #include "\x\cba\addons\main\script_macros_common.hpp"
 #include "\x\cba\addons\xeh\script_xeh.hpp"
 
@@ -7,10 +8,14 @@
 
 #ifdef DISABLE_COMPILE_CACHE
     #undef PREP
+    #undef PREPATTR
     #define PREP(fncName) DFUNC(fncName) = compile preprocessFileLineNumbers QPATHTOF(functions\DOUBLES(fnc,fncName).sqf)
+    #define PREPATTR(fncName) DFUNC(fncName) = compile preprocessFileLineNumbers QPATHTOF(functions\attributes\DOUBLES(fnc,fncName).sqf)
 #else
     #undef PREP
+    #undef PREPATTR
     #define PREP(fncName) [QPATHTOF(functions\DOUBLES(fnc,fncName).sqf), QFUNC(fncName)] call CBA_fnc_compileFunction
+    #define PREPATTR(fncName) [QPATHTOF(functions\attributes\DOUBLES(fnc,fncName).sqf), QFUNC(fncName)] call CBA_fnc_compileFunction
 #endif
 
 #define PREP_MODULE(folder) [] call compile preprocessFileLineNumbers QPATHTOF(folder\__PREP__.sqf)
@@ -119,7 +124,6 @@ if ((_argUpper isEqualto "CLIENTHC") && {(((isDedicated) && isMultiplayer) || (!
 if ((_argUpper isEqualto "SERVERHC") && {(((hasinterface) && isMultiplayer) || (!(EGVAR(Core,Enabled))))}) exitWith {};\
 if ((_argUpper isEqualto "ALL") && {(!(EGVAR(Core,Enabled)))}) exitWith {};\
 if !(EGVAR(Core,Enabled)) exitWith {};\
-if !(MGVAR(Server_Framework_Allowed)) exitWith {}
 
 #define EDEN_CHECK if !(is3DEN) exitwith {};
 
