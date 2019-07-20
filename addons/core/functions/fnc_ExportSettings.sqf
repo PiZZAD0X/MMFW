@@ -1,4 +1,4 @@
-/*    Description: Exports UO_FW mission attributes to clipboard or profileNamespace
+/*    Description: Exports MMFW mission attributes to clipboard or profileNamespace
  *    Arguments:
  *         STRING - Setting preset name, not used if copying to clipboard
  *         BOOL - Clipboard mode, false saves profile name to profileNamespace

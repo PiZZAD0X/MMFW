@@ -1,5 +1,4 @@
-#define COMPONENT Core
-#include "\x\UO_FW\addons\Main\script_macros.hpp"
+#include "script_component.hpp"
 EXEC_CHECK(SERVER);
 
 LOG("Server Pre Init");
@@ -87,13 +86,13 @@ LOG("Server Pre Init");
     params ["_object","_clientID"];
     LOG_1("Var Request _object: %1",_object);
     LOG_1("Var Request _clientID: %1",_clientID);
-    private _allUOVars = (allVariables _object) select {!(((toLower(str _x)) find (toLower(QUOTE(PREFIX)))) isEqualto -1)};
+    private _allVars = (allVariables _object) select {!(((toLower(str _x)) find (toLower(QUOTE(PREFIX)))) isEqualto -1)};
     private _varArray = [];
     {
         private _varstring = _x;
         private _value = _object getVariable _varstring;
         _varArray pushback [_varstring,_value];
-    } foreach _allUOVars;
+    } foreach _allVars;
     LOG_1("Var Request Array: %1",_varArray);
     [QGVAR(RecievePlayerVars), [_object,_varArray], _object] call CBA_fnc_targetEvent;
 }] call CBA_fnc_addEventHandler;

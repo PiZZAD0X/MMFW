@@ -4,8 +4,8 @@ class GVAR(MainSettings) {
     class Attributes {
         class GVAR(Enabled) {
             property = QGVAR(Enabled);
-            displayName = "Enable UO Framework";
-            tooltip = "Enable UO Framework";
+            displayName = "Enable Framework";
+            tooltip = "Enable Framework";
             control = QGVAR(FrameworkCheckbox);
             expression = SCENARIO_EXPRESSION;
             defaultValue = "false";

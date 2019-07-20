@@ -1,5 +1,4 @@
-#define COMPONENT Core
-#include "\x\UO_FW\addons\Main\script_macros.hpp"
+#include "script_component.hpp"
 EXEC_CHECK(ALL);
 
 params ["_unit"];

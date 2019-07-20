@@ -69,10 +69,10 @@ if (_frequency < 30) then {
     };
 
     //Category 1 loop
-    #include "\x\UO_FW\addons\Main\Core\cfgFunctions\EndConditions\defines\Category1Loop.hpp"
-    #include "\x\UO_FW\addons\Main\Core\cfgFunctions\EndConditions\defines\Category2Loop.hpp"
-    #include "\x\UO_FW\addons\Main\Core\cfgFunctions\EndConditions\defines\Category3Loop.hpp"
-    #include "\x\UO_FW\addons\Main\Core\cfgFunctions\EndConditions\defines\Category4Loop.hpp"
-    #include "\x\UO_FW\addons\Main\Core\cfgFunctions\EndConditions\defines\Category5Loop.hpp"
-    #include "\x\UO_FW\addons\Main\Core\cfgFunctions\EndConditions\defines\Category6Loop.hpp"
+    #include "defines\Category1Loop.hpp"
+    #include "defines\Category2Loop.hpp"
+    #include "defines\Category3Loop.hpp"
+    #include "defines\Category4Loop.hpp"
+    #include "defines\Category5Loop.hpp"
+    #include "defines\Category6Loop.hpp"
 }, [], _delay] call CBA_fnc_waitAndExecute;

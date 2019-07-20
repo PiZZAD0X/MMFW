@@ -1,7 +1,6 @@
 class CfgVehicles {
     class All {
         class EventHandlers {
-            #include "GearModule\cfg3denEH\EH.hpp"
         };
     };
     class Logic;

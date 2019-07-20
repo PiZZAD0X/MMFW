@@ -1,4 +1,4 @@
-
+#define COMPONENT main
 #define COMPONENT_BEAUTIFIED Main
 #include "\z\MMFW\addons\main\script_mod.hpp"
 

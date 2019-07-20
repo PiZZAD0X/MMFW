@@ -1,4 +1,4 @@
-/*    Description: Imports UO_FW mission attributes from clipboard or profilenamespace
+/*    Description: Imports MMFW mission attributes from clipboard or profilenamespace
  *    Arguments:
  *         STRING - Setting preset name, not used if copying from clipboard
  *         BOOL - Clipboard mode, false imports settings from named array from profileNamespace

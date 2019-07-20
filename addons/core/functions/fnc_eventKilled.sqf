@@ -1,7 +1,7 @@
 /*
  * Author: Olsen
  *
- * Triggered by unit death. Decreases number of alive units on a set side in UO_FW_Teams.
+ * Triggered by unit death. Decreases number of alive units on a set side in MMFW_Core_Teams.
  *
  * Arguments:
  * 0: unit that has died <object>

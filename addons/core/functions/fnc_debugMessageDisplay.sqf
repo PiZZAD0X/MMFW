@@ -16,8 +16,6 @@
 #include "script_component.hpp"
 EXEC_CHECK(ALL);
 
-if !(UO_FW_Server_DEBUG_Allowed) exitWith {};
-
 params ["_message"];
 
 if (isNil QGVAR(DebugMessages)) then {GVAR(DebugMessages) = [];};
