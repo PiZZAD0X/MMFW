@@ -1,0 +1,13 @@
+name = "Mission Maker Framework";
+picture = "";
+actionName = "GitHub";
+action = "";
+description = "MMFW - Version 0.1.0";
+logo = "";
+logoOver = "";
+logoSmall = "";
+tooltip = "MMFW";
+tooltipOwned = "MMFW Team";
+overview = "Mission Maker Framework Addon.";
+author = "MMFW Team";
+overviewPicture = "";

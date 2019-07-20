@@ -1,0 +1,6 @@
+*.pbo
+release/
+
+@mmfw/
+
+*.zip
