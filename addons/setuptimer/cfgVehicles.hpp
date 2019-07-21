@@ -13,10 +13,10 @@ class CfgVehicles {
         canSetArea = 1;
         canSetAreaHeight = 0;
         canSetAreaShape = 0;
-        icon = "\x\UO_FW\addons\Main\SetupTimerModule\resources\setuptimermodule_ca.paa";
+        icon = QPATHTOF(resources\setuptimermodule_ca.paa);
 
         class AttributeValues {
-        size2[] = {100,100};
+            size3[] = {100, 100, -1};
             IsRectangle = 0;
         };
 
@@ -39,26 +39,6 @@ class CfgVehicles {
                 };
                 defaultValue = "0";
             };
-            class GVAR(RadiusX) {
-                displayName = "Radius X";
-                tooltip = "The size of the X value of the setup zone. Default: 100";
-                property = QGVAR(RadiusX);
-                control = QEGVAR(Core,RadiusAttribute);
-                expression = MODULE_EXPRESSION;
-                defaultValue = "100";
-                typeName = "NUMBER";
-                validate = "number";
-            };
-            class GVAR(RadiusY) {
-                displayName = "Radius Y";
-                tooltip = "The size of the Y value of the setup zone. Default: 100";
-                property = QGVAR(RadiusY);
-                control = QEGVAR(Core,RadiusAttribute);
-                expression = MODULE_EXPRESSION;
-                defaultValue = "100";
-                typeName = "NUMBER";
-                validate = "number";
-            };
             class GVAR(Time) {
                 // Unique property, use "<moduleClass>_<attributeClass>" format to make sure the name is unique in the world
                 displayName = "Time"; // Attribute label
@@ -76,7 +56,6 @@ class CfgVehicles {
     class GVAR(SetupTimerModule_R): GVAR(SetupTimerModule) {
         displayName = "Setup Timer Module (Rectangle)"; // Name displayed in the menu
         class AttributeValues {
-            size2[] = {100,100};
             IsRectangle = 1;
         };
     };

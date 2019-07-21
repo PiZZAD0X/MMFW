@@ -13,7 +13,7 @@ class CfgVehicles {
         canSetArea = 1;
 
         class AttributeValues {
-            size2[] = {100,100};
+            size3[] = {100, 100, -1};
             IsRectangle = 1;
         };
 
