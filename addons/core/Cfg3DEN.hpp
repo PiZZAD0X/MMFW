@@ -11,6 +11,7 @@ class Cfg3DEN {
                 //add Main mission settings here
                 #include "cfg3den\Mission\MainMenu.hpp"
                 #include "cfg3den\Mission\TeamsMenu.hpp"
+                #include "cfg3den\Mission\VisionMenu.hpp"
                 //debug at bottom
                 #include "cfg3den\Mission\DebugMenu.hpp"
             };

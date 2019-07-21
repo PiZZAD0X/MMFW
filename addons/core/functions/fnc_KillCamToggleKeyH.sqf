@@ -4,7 +4,7 @@ EXEC_CHECK(CLIENT);
 
 //37 is DIK code for K
 if ((_this select 1) isEqualto 37) then {
-    if GETMVAR(killcam_toggle,false) then {
+    if (GETMVAR(killcam_toggle,false)) then {
         SETMVAR(killcam_toggle,false);
         "KillCamLayer" cutText ["", "PLAIN DOWN"];
     } else {

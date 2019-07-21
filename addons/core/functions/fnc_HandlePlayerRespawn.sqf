@@ -1,4 +1,3 @@
-
 #include "script_component.hpp"
 EXEC_CHECK(CLIENT);
 
@@ -48,7 +47,7 @@ switch (side player) do {
 
 if ((_respawnType isEqualto "INDTICK") || (_respawnType isEqualto "TEAMTICK") || (_respawnType isEqualto "UNLIMITED")) then {
     [{
-        params ["_templateSettings","_teamRespawnMarker"];
+        params ["_templateSettings","_teamRespawnMarker","_newSideSetting"];
 
         // Re call player init event
         [QGVAR(PlayerInitEvent), []] call CBA_fnc_localEvent;
@@ -66,12 +65,15 @@ if ((_respawnType isEqualto "INDTICK") || (_respawnType isEqualto "TEAMTICK") ||
 
         // Handle Group Join
         if ((QEGVAR(RTemplatesS,JoinGroup)) in _templateSettings) then {
-            private _oldGroup = GETMVAR(Core,OLDGROUP,grpnull);
+            private _oldGroup = GETMVAR(OLDGROUP,grpnull);
             [player] joinSilent _oldGroup;
+            TRACE_1("Respawnside joingroup:",_newSideSetting);
         } else {
-            if !(_newSideSetting isEqualto (side player)) then {
+            if !(_newSideSetting == (side player)) then {
                 [player] joinSilent (createGroup _newSideSetting);
+
             };
+            TRACE_1("Respawnside:",_newSideSetting);
         };
 
         // Handle Teleport Locations
@@ -111,5 +113,5 @@ if ((_respawnType isEqualto "INDTICK") || (_respawnType isEqualto "TEAMTICK") ||
             [QEGVAR(StartInParachute,LocalEvent), []] call CBA_fnc_localEvent;
         };
 
-    }, [_templateSettings,_teamRespawnMarker], _delay] call CBA_fnc_waitAndExecute;
+    }, [_templateSettings,_teamRespawnMarker,_newSideSetting], _delay] call CBA_fnc_waitAndExecute;
 };

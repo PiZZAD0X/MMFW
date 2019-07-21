@@ -4,25 +4,25 @@ if (GETMVAR(Enabled_3,false)) then {
     } else {
         LOG("Valid message for End Condition Category 3, executing");
 
-        private _conditionsCountCategory3 = 0;
-        if (GETMVAR(CasualtyCount_Enabled_BLUFOR_3,false)) then {_conditionsCountCategory3 = _conditionsCountCategory3 + 1;};
-        if (GETMVAR(CasualtyCount_Enabled_OPFOR_3,false)) then {_conditionsCountCategory3 = _conditionsCountCategory3 + 1;};
-        if (GETMVAR(CasualtyCount_Enabled_Indfor_3,false)) then {_conditionsCountCategory3 = _conditionsCountCategory3 + 1;};
-        if (GETMVAR(CasualtyCount_Enabled_Civ_3,false)) then {_conditionsCountCategory3 = _conditionsCountCategory3 + 1;};
+        private _conditionsCountCategory6 = 0;
+        if (GETMVAR(CasualtyCount_Enabled_BLUFOR_3,false)) then {_conditionsCountCategory6 = _conditionsCountCategory6 + 1;};
+        if (GETMVAR(CasualtyCount_Enabled_OPFOR_3,false)) then {_conditionsCountCategory6 = _conditionsCountCategory6 + 1;};
+        if (GETMVAR(CasualtyCount_Enabled_Indfor_3,false)) then {_conditionsCountCategory6 = _conditionsCountCategory6 + 1;};
+        if (GETMVAR(CasualtyCount_Enabled_Civ_3,false)) then {_conditionsCountCategory6 = _conditionsCountCategory6 + 1;};
 
-        if (!(GETMVAR(EntitiesAlive_Array_3,[]) isEqualto [])) then {_conditionsCountCategory3 = _conditionsCountCategory3 + 1;};
-        if (!(GETMVAR(EntitiesDead_Array_3,[]) isEqualto [])) then {_conditionsCountCategory3 = _conditionsCountCategory3 + 1;};
-        if (!(GETMVAR(EntitiesDamaged_Array_3,[]) isEqualto [])) then {_conditionsCountCategory3 = _conditionsCountCategory3 + 1;};
-        if (!(GETMVAR(HostageRescued_Array_3,[]) isEqualto [])) then {_conditionsCountCategory3 = _conditionsCountCategory3 + 1;};
-        if (!(GETMVAR(CustomVariables_Array_3,[]) isEqualto [])) then {_conditionsCountCategory3 = _conditionsCountCategory3 + 1;};
-        if (!(GETMVAR(CaptureZoneCaptured_Array_3,[]) isEqualto [])) then {_conditionsCountCategory3 = _conditionsCountCategory3 + 1;};
+        if (!(GETMVAR(EntitiesAlive_Array_3,[]) isEqualto [])) then {_conditionsCountCategory6 = _conditionsCountCategory6 + 1;};
+        if (!(GETMVAR(EntitiesDead_Array_3,[]) isEqualto [])) then {_conditionsCountCategory6 = _conditionsCountCategory6 + 1;};
+        if (!(GETMVAR(EntitiesDamaged_Array_3,[]) isEqualto [])) then {_conditionsCountCategory6 = _conditionsCountCategory6 + 1;};
+        if (!(GETMVAR(HostageRescued_Array_3,[]) isEqualto [])) then {_conditionsCountCategory6 = _conditionsCountCategory6 + 1;};
+        if (!(GETMVAR(CustomVariables_Array_3,[]) isEqualto [])) then {_conditionsCountCategory6 = _conditionsCountCategory6 + 1;};
+        if (!(GETMVAR(CaptureZoneCaptured_Array_3,[]) isEqualto [])) then {_conditionsCountCategory6 = _conditionsCountCategory6 + 1;};
 
-        if ((_conditionsCountCategory3) > 0) then {
-            LOG_1("Starting Category 3 Condition Count:%1",_conditionsCountCategory3);
-            private _endConditionsCategory3PFHhandle = [{
+        if ((_conditionsCountCategory6) > 0  || ((GETMVAR(ExtractionEnabled_3,false)) && {(GETMVAR(ExtractionForced_3,false))})) then {
+            LOG_1("Starting Category 3 Condition Count:%1",_conditionsCountCategory6);
+            private _endConditionsCategory6PFHhandle = [{
                 params ["_argNested", "_idPFH"];
                 _argNested params ["_checkFrequency","_lastCheckedTime"];
-                if (EGVAR(core,MissionEnded)) exitwith {
+                if (GVAR(MissionEnded)) exitwith {
                     [_idPFH] call CBA_fnc_removePerFrameHandler;
                 };
                 private _timeDifference = (CBA_missionTime - _lastCheckedTime);
@@ -36,7 +36,7 @@ if (GETMVAR(Enabled_3,false)) then {
                 private _CasConditionCheck_Blufor = false;
 
                 if (GETMVAR(CasualtyCount_Enabled_BLUFOR_3,false)) then {
-                    private _westCasualty = EGVAR(Core,TeamName_Blufor) call FUNC(CasualtyPercentage);
+                    private _westCasualty = GVAR(TeamName_Blufor) call FUNC(CasualtyPercentage);
                     if (_westCasualty >= GETMVAR(CasualtyCount_Percentage_BLUFOR_3,75)) then {_CasConditionCheck_Blufor = true;} else {_CasConditionCheck_Blufor = false;};
                     _ConditionCheckList pushback ["BLUFOR Cas Check",_CasConditionCheck_Blufor];
                 };
@@ -44,7 +44,7 @@ if (GETMVAR(Enabled_3,false)) then {
                 private _CasConditionCheck_Opfor = false;
 
                 if (GETMVAR(CasualtyCount_Enabled_OPFOR_3,false)) then {
-                    private _eastCasualty = EGVAR(Core,TeamName_Opfor) call FUNC(CasualtyPercentage);
+                    private _eastCasualty = GVAR(TeamName_Opfor) call FUNC(CasualtyPercentage);
                     if (_eastCasualty >= GETMVAR(CasualtyCount_Percentage_OPFOR_3,75)) then {_CasConditionCheck_Opfor = true;} else {_CasConditionCheck_Opfor = false;};
                     _ConditionCheckList pushback ["OPFOR Cas Check",_CasConditionCheck_Opfor];
                 };
@@ -52,7 +52,7 @@ if (GETMVAR(Enabled_3,false)) then {
                 private _CasConditionCheck_Indfor = false;
 
                 if (GETMVAR(CasualtyCount_Enabled_Indfor_3,false)) then {
-                    private _resCasualty = EGVAR(Core,TeamName_Indfor) call FUNC(CasualtyPercentage);
+                    private _resCasualty = GVAR(TeamName_Indfor) call FUNC(CasualtyPercentage);
                     if (_resCasualty >= GETMVAR(CasualtyCount_Percentage_Indfor_3,75)) then {_CasConditionCheck_Indfor = true;} else {_CasConditionCheck_Indfor = false;};
                     _ConditionCheckList pushback ["Indfor Cas Check",_CasConditionCheck_Indfor];
                 };
@@ -60,7 +60,7 @@ if (GETMVAR(Enabled_3,false)) then {
                 private _CasConditionCheck_Civ = false;
 
                 if (GETMVAR(CasualtyCount_Enabled_Civ_3,false)) then {
-                    private _civCasualty = EGVAR(Core,TeamName_Civ) call FUNC(CasualtyPercentage);
+                    private _civCasualty = GVAR(TeamName_Civ) call FUNC(CasualtyPercentage);
                     if (_civCasualty >= GETMVAR(CasualtyCount_Percentage_Civ_3,75)) then {_CasConditionCheck_Civ = true;} else {_CasConditionCheck_Civ = false;};
                     _ConditionCheckList pushback ["CIVILIAN Cas Check",_CasConditionCheck_Civ];
                 };
@@ -76,6 +76,7 @@ if (GETMVAR(Enabled_3,false)) then {
                             _alive = _alive && (_unit call FUNC(alive));
                         } else {
                             _alive = false;
+                            LOG_1("Unit %1 not found!",_x);
                             ["Unit " + _x + " not found!","Unit " + _x + " not found!"] call FUNC(DebugMessageDetailed);
                         };
                     } forEach _aliveUnitArray;
@@ -91,7 +92,8 @@ if (GETMVAR(Enabled_3,false)) then {
                         private _unit = missionNamespace getVariable [_x,objNull];
                         if (isNull _unit) then {
                             _dead = false;
-                            LOG_1("Unit %1 not found!",_unit);
+                           LOG_1("Unit %1 not found!",_x);
+                            ["Unit " + _x + " not found!","Unit " + _x + " not found!"] call FUNC(DebugMessageDetailed);
                         } else {
                             private _unitDeadCheck = (!(_unit call FUNC(alive)));
                             LOG_2("Unit %1 check: %2",_unit,_unitDeadCheck);
@@ -112,7 +114,8 @@ if (GETMVAR(Enabled_3,false)) then {
                             _damaged = _damaged && ((damage _unit > 0.5) || ((_unit isKindOf LandVehicle) && (!canMove _unit)));
                         } else {
                             _damaged = false;
-                            LOG_1("Unit %1 not found!",_x);
+                           LOG_1("Unit %1 not found!",_x);
+                            ["Unit " + _x + " not found!","Unit " + _x + " not found!"] call FUNC(DebugMessageDetailed);
                         };
                     } forEach _damagedUnitArray;
                     _ConditionCheckList pushback ["Damaged Check",_damaged];
@@ -130,6 +133,7 @@ if (GETMVAR(Enabled_3,false)) then {
                         } else {
                             _rescued = false;
                             LOG_1("Unit %1 not found!",_x);
+                            ["Unit " + _x + " not found!","Unit " + _x + " not found!"] call FUNC(DebugMessageDetailed);
                         };
                     } forEach _hostageRescuedArray;
                     _ConditionCheckList pushback ["Rescued Check",_rescued];
@@ -155,6 +159,7 @@ if (GETMVAR(Enabled_3,false)) then {
                         private _CaptureZoneConditionCheck = false;
                         if !((call compile _x) in (EGETMVAR(CaptureZone,ListArray,[]))) then {
                             LOG_1("CaptureZone %1 does not exist!",_x);
+                            ["CaptureZone " + _x + " does not exist!","CaptureZone " + _x + " does not exist!"] call FUNC(DebugMessageDetailed);
                             _CaptureZoneConditionCheck = false;
                         } else {
                             private _varName = format ["%1_var",_x];
@@ -212,7 +217,7 @@ if (GETMVAR(Enabled_3,false)) then {
 
                 //check block
                 if (GETMVAR(ExtractionEnabled_3,false)) then {
-                    private _team = ([EGVAR(Core,TeamName_Blufor),EGVAR(Core,TeamName_Opfor),EGVAR(Core,TeamName_Indfor),EGVAR(Core,TeamName_Civ)] select GVAR(ExtractionTeam_3));
+                    private _team = ([GVAR(TeamName_Blufor),GVAR(TeamName_Opfor),GVAR(TeamName_Indfor),GVAR(TeamName_Civ)] select GVAR(ExtractionTeam_3));
                     if (GVAR(ExtractionMarker_3) isEqualto "") exitwith {["","No marker entered for extract zone for Category 3!"] call FUNC(DebugMessageDetailed);};
                     if ((getMarkerColor GVAR(ExtractionMarker_3)) isEqualto "") exitwith {["","Invalid extract marker for Category 3!"] call FUNC(DebugMessageDetailed);};
                         if ([_team,GVAR(ExtractionMarker_3),GVAR(ExtractionRatio_3)] call FUNC(hasExtracted)) then {
@@ -220,31 +225,39 @@ if (GETMVAR(Enabled_3,false)) then {
                         } else {
                             _ExtractionCheck = false;
                         };
+                        TRACE_1("Extraction Check Category 3",_ExtractionCheck);
                 } else {
                     _ExtractionCheck = true;
                 };
 
                 if (_ExtractionCheck) then {
-                    if (GVAR(Mode_3) isEqualto 1) then {
-                        {
-                            _x params ["_name","_value"];
-                            if (_value) exitwith {
-                                LOG_1("Category 3 Ending due to :%1",_value);
+                    if ((GETMVAR(ExtractionEnabled_3,false)) && {(GETMVAR(ExtractionForced_3,false))}) then
+                    {
+                                    LOG_1("Category 3 Ending due to forced Extraction!");
+                                    [GVAR(Message_3)] call FUNC(EndMission);
+                                    [_idPFH] call CBA_fnc_removePerFrameHandler;
+                    } else {
+                        if (GVAR(Mode_3) isEqualto 1) then {
+                            {
+                                _x params ["_name","_value"];
+                                if (_value) exitwith {
+                                    LOG_1("Category 3 Ending due to :%1",_value);
+                                    [GVAR(Message_3)] call FUNC(EndMission);
+                                    [_idPFH] call CBA_fnc_removePerFrameHandler;
+                                };
+                            } foreach _ConditionCheckList;
+                        } else {
+                            private _fullcheck = true;
+                            {
+                                _x params ["_name","_value"];
+                                _fullcheck = _fullcheck && _value;
+                                LOG_2("Category 3 checking var:%1 result:%2",_name,_value);
+                            } foreach _ConditionCheckList;
+                            if (_fullcheck) then {
+                                LOG("Category 3 Ending due to all conditions met!");
                                 [GVAR(Message_3)] call FUNC(EndMission);
                                 [_idPFH] call CBA_fnc_removePerFrameHandler;
                             };
-                        } foreach _ConditionCheckList;
-                    } else {
-                        private _fullcheck = true;
-                        {
-                            _x params ["_name","_value"];
-                            _fullcheck = _fullcheck && _value;
-                            LOG_2("Category 3 checking var:%1 result:%2",_name,_value);
-                        } foreach _ConditionCheckList;
-                        if (_fullcheck) then {
-                            LOG("Category 3 Ending due to all conditions met!");
-                            [GVAR(Message_3)] call FUNC(EndMission);
-                            [_idPFH] call CBA_fnc_removePerFrameHandler;
                         };
                     };
                 };

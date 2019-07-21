@@ -16,7 +16,7 @@
 #include "script_component.hpp"
 EXEC_CHECK(ALL);
 
-params ["_array"];
+//DO NOT USE PARAMS AS IT IS NOT WORKING FOR ARRAY WITH 1 ELEMENT
 private _foundArray = [];
 private _newArray = [];
 {
@@ -28,9 +28,9 @@ private _newArray = [];
             if (_string isEqualto _x) then {
                 _count = _count + 1;
             };
-        } forEach _array;
+        } forEach _this;
         _newArray set [count _newArray, format ["%1 X %2", _count, _string]];
     };
-} forEach _array;
+} forEach _this;
 
 _newArray

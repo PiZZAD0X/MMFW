@@ -2,7 +2,7 @@
 #include "script_component.hpp"
 EXEC_CHECK(CLIENT);
 
-params ["_scenario"];
+params ["_scenario", "_timeLimit", "_teams"];
 
 (vehicle player) enableSimulation false;
 player enableSimulation false;
@@ -41,9 +41,9 @@ private _textSide = 0;
             _rightText = _rightText + _temp;
         };
     };
-} forEach GVAR(Teams);
+} forEach _teams;
 private _endTitleText = _scenario;
-if !((EGETMVAR(EndConditions,Timelimit,60)) isEqualto 0) then {
+if !((EGETMVAR(EndConditions,Timelimit,0)) isEqualto 0) then {
     private _time = ceil(CBA_missiontime / 60);
     if (_time >= (EGETMVAR(EndConditions,Timelimit,60))) then {
         _time = (EGETMVAR(EndConditions,Timelimit,60));

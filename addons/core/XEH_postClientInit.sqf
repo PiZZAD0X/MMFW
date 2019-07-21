@@ -22,7 +22,7 @@ if (hasInterface) then {
             }] call CBA_fnc_execNextFrame;
         }] call CBA_fnc_execNextFrame;
 
-        if (didJIP && {(CBA_missionTime > ((EGETMVAR(JIP,Denytime,5)) * 60))}) exitwith {
+        if (didJIP && {(CBA_missionTime < ((EGETMVAR(JIP,Denytime,5)) * 60))}) exitwith {
             [QEGVAR(JiP,PlayerEvent), []] call CBA_fnc_localEvent;
             [QEGVAR(JiP,ServerEvent), [player]] call CBA_fnc_serverEvent;
         };
@@ -34,5 +34,10 @@ if (hasInterface) then {
     LOG("HC Post Init");
     if (EGETMVAR(AI,ViewDistance_Enforce,false)) then {
         setViewDistance EGETMVAR(AI,ViewDistance,2500);
+    } else {
+        if(GETMVAR(VisionAIEnabled,false)) then {
+            setViewDistance (GETMVAR(AIViewDistance,2500));
+            TRACE_1("AI Headless Viewdistance",(GETMVAR(AIViewDistance,2500)));
+        };
     };
 };

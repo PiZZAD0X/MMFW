@@ -28,6 +28,9 @@ private _count = {
 
 private ["_respawnTypeNum","_result"];
 
+_result = false;
+_ratio = _ratio/100;
+
 switch (_side) do {
     case west: {
         _respawnTypeNum = GETMVAR(hasDeparted_BLUFOR,false);

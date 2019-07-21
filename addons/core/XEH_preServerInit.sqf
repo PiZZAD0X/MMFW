@@ -99,16 +99,16 @@ LOG("Server Pre Init");
             if ((GETVAR(_unit,IndTicketsRemaining,"")) isEqualTo "") then {
                 switch (side _unit) do {
                     case west: {
-                        SETVAR(_unit,IndTicketsRemaining,GVAR(IndTickets_Blufor));
+                        SETVAR(_unit,IndTicketsRemaining,EGETMVAR(Respawn,IndTickets_Blufor,2));
                     };
                     case east: {
-                        SETVAR(_unit,IndTicketsRemaining,GVAR(IndTickets_Blufor));
+                        SETVAR(_unit,IndTicketsRemaining,EGETMVAR(Respawn,IndTickets_Opfor,2));
                     };
                     case independent: {
-                        SETVAR(_unit,IndTicketsRemaining,GVAR(IndTickets_Blufor));
+                        SETVAR(_unit,IndTicketsRemaining,EGETMVAR(Respawn,IndTickets_Indfor,2));
                     };
                     case civilian: {
-                        SETVAR(_unit,IndTicketsRemaining,GVAR(IndTickets_Blufor));
+                        SETVAR(_unit,IndTicketsRemaining,EGETMVAR(Respawn,IndTickets_Civ,2));
                     };
                 };
             };

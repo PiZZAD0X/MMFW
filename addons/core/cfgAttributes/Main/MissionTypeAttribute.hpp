@@ -16,22 +16,20 @@ class GVAR(MissionTypeAttribute): Toolbox {
             x="48 * (pixelW * pixelGrid * 0.50)";
             w="82 * (pixelW * pixelGrid * 0.50)";
             rows=1;
-            columns=5;
+            columns=4;
             strings[]= {
                 "CO",
                 "TVT",
                 "COTVT",
-                "LOL",
-                "UOTC"
+                "LOL"
             };
             tooltips[]= {
                 "CO is defined as a mission where players are against AI",
                 "TVT is defined as a mission where players are against players",
                 "COTVT is defined as a mission where players are against AI that are assisted by players",
-                "LOL is defined as any mission that does not fit within the other categories",
-                "UOTC is defined as any mission built for the United Operations Training Center"
+                "LOL is defined as any mission that does not fit within the other categories"
             };
-            values[]={0,1,2,3,4};
+            values[]={0,1,2,3};
             onToolboxSelChanged = QUOTE(\
                 missionNamespace setVariable [QQGVAR(MissionType),(_this select 1)];\
             );

@@ -1,6 +1,6 @@
 if (GETMVAR(File_BLUFOR,false)) exitwith {
     if !(GETMVAR(File_Path_BLUFOR,"") isEqualto "") then {
-        "" call (compile preprocessFileLineNumbers GETMVAR(File_Path_BLUFOR,""));
+        "" call (compile preprocessFileLineNumbers (GETMVAR(File_Path_BLUFOR,"")));
     } else {
         ERROR("No briefing found for BLUFOR!");
     };
@@ -73,7 +73,7 @@ if (GETMVAR(NATO_BLUFOR,false)) then {
     if !(_friendlyDisposition isEqualTo "") then {
         _friendlyStr = _friendlyStr + "<font color='#5BD527' size='14.0'><h1>Disposition:</h1></font color><br/>" + _friendlyDisposition + "<br/><br/>";
     };
-    private _friendlyHigher = GETMVAR(NATO_FRIENDLY_DIS_BLUFOR,"");
+    private _friendlyHigher = GETMVAR(NATO_FRIENDLY_Higher_BLUFOR,"");
     if !(_friendlyHigher isEqualTo "") then {
         _friendlyStr = _friendlyStr + "<font color='#5BD527' size='14.0'><h1>Higher Units:</h1></font color><br/>" + _friendlyHigher + "<br/><br/>";
     };
@@ -118,7 +118,7 @@ if (GETMVAR(NATO_BLUFOR,false)) then {
         _execStr = _execStr + "<font color='#5BD527' size='14.0'><h1>Commanders Intent:</h1></font color><br/>" + _execCIntent + "<br/><br/>";
     };
 
-    private _execManeuver = GETMVAR(NATO_EXECUTION_INTENT_BLUFOR,"");
+    private _execManeuver = GETMVAR(NATO_EXECUTION_MANEUVER_BLUFOR,"");
     if !(_execManeuver isEqualTo "") then {
         _execStr = _execStr + "<font color='#5BD527' size='14.0'><h1>Maneuver:</h1></font color><br/>" + _execManeuver + "<br/><br/>";
     };
@@ -175,7 +175,7 @@ if (GETMVAR(NATO_BLUFOR,false)) then {
         ENDTAB;
     };
 
-    NEWTAB("V. Command & Signal:"),
+    NEWTAB("V. Command and Signal:"),
     ""
     ENDTAB;
 
@@ -216,7 +216,7 @@ if (GETMVAR(NATO_BLUFOR,false)) then {
 
     private _signalPass = GETMVAR(NATO_CANDS_Signals_PASSWORDS_BLUFOR,"");
     if !(_signalPass isEqualTo "") then {
-        _signalStr = _signalStr + "<font color='#5BD527' size='14.0'><h1>Frequencies:</h1></font color><br/>" + _signalPass;
+        _signalStr = _signalStr + "<font color='#5BD527' size='14.0'><h1>Passwords:</h1></font color><br/>" + _signalPass;
     };
 
     if !(_signalStr isEqualTo "") then {
@@ -410,7 +410,7 @@ if (GETMVAR(MissionNotes_Enable,false)) then {
     //Mission Notes
     private _notesStr = "";
 
-    private _notesAuthor = GETMVAR(MissionNotes_Author,"");
+     private _notesAuthor = GETMVAR(MissionNotes_Author,"");
     if !(_notesAuthor isEqualTo "") then {
         _notesStr = _notesStr + "<font color='#5BD527' size='14.0'><h1>Author:</h1></font color><br/>" + _notesAuthor + "<br/><br/>";
     };
@@ -440,20 +440,20 @@ if (GETMVAR(MissionNotes_Enable,false)) then {
             _notesStr
         ENDTAB;
     };
+    private _gamemastermsg = "";
 
+    if (GETMVAR(MissionNotes_GM,false)) then {
+        _gamemastermsg = "This mission is designed for game mastering and can be manipulated as per Mission Notes";
+    } else {
+        _gamemastermsg = "This mission is not designed for game mastering and should only be manipulated for technical, administrative or diagnostic purposes.";
+    };
+
+    //Game Mastering
+    NEWTAB("Game Mastering"),
+        "<font color='#5BD527' size='14.0'><h1>Game Mastering:</h1></font color><br/>" + _gamemastermsg
+    ENDTAB;
 };
 
-private _gamemastermsg = "";
 
-if (GETMVAR(MissionNotes_GM,false)) then {
-    _gamemastermsg = "This mission is designed for game mastering and can be manipulated as per Mission Notes";
-} else {
-    _gamemastermsg = "This mission is not designed for game mastering and should only be manipulated for technical, administrative or diagnostic purposes.";
-};
-
-//Game Mastering
-NEWTAB("Game Mastering"),
-    "<font color='#5BD527' size='14.0'><h1>Game Mastering:</h1></font color><br/>" + _gamemastermsg
-ENDTAB;
 
 DISPLAYBRIEFING();

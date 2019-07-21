@@ -24,13 +24,15 @@ private _destroyedAssets = [];
     if ((GETVAR(_x,AssetTeam,sideUnknown)) isEqualto _team) then {
         if (alive _x) then {
             if ((!canMove _x) || (!canFire _x)) then {
-                _disabledAssets set [count _disabledAssets, (GETVAR(_x,AssetTeam,sideUnknown))];
+                _disabledAssets set [count _disabledAssets, (GETVAR(_x,AssetName,objNull))];
             };
         } else {
-            _destroyedAssets set [count _destroyedAssets, (GETVAR(_x,AssetTeam,sideUnknown))];
+            _destroyedAssets set [count _destroyedAssets, (GETVAR(_x,AssetName,objNull))];
         };
     };
 } forEach vehicles;
+TRACE_1("Destroyed Assets",_destroyedAssets);
+TRACE_1("Disabled Assets",_disabledAssets);
 _destroyedAssets = _destroyedAssets call FUNC(StackNames);
 _disabledAssets = _disabledAssets call FUNC(StackNames);
 [_disabledAssets, _destroyedAssets]
