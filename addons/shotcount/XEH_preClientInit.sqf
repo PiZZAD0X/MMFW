@@ -2,7 +2,7 @@
 EXEC_CHECK(CLIENT);
 
 [QGVAR(DisplayEvent), {
-    if !(MGETMVAR(ShotCount_Enabled,false)) exitwith {};
+    if !(GETMVAR(Enabled,false)) exitwith {};
     LOG_1("Display_Event published with: %1",_this);
     [{!((uiNamespace getVariable [QMGVAR(EndScreen),""]) isEqualto "")}, {
         _this params ["_textBLU","_textOPF","_textIND","_textCIV"];
