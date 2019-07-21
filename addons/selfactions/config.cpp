@@ -6,19 +6,7 @@ class CfgPatches {
         units[] = {};
         weapons[] = {};
         requiredVersion = REQUIRED_VERSION;
-        requiredAddons[] = {
-            "MMFW_main",
-            "MMFW_core",
-            "MMFW_autotrack",
-            "MMFW_briefing",
-            "MMFW_covermap",
-            "MMFW_selfactions",
-            "MMFW_setuptimer",
-            "MMFW_shotcount",
-            "MMFW_startinparachute",
-            "MMFW_starttext",
-            "MMFW_teamcolour"
-        };
+        requiredAddons[] = {"MMFW_main","MMFW_core"};
         authors[] = {"Olsen","PiZZADOX","Sacher"};
         author = "MMFW Team";
         authorUrl = "https://github.com/unitedoperations";
@@ -29,3 +17,6 @@ class CfgPatches {
 #include "\z\MMFW\addons\core\RscTitles.hpp"
 #include "CfgEventHandlers.hpp"
 #include "Cfg3DEN.hpp"
+#include "CfgAmmo.hpp"
+#include "CfgMagazines.hpp"
+#include "CfgSounds.hpp"
