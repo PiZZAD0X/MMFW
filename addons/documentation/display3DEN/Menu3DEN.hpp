@@ -6,10 +6,10 @@ class EGVAR(ExportImport,Folder) {
 
 class EGVAR(Export,Configure) {
     text = "Export Mission Settings";
-    action = QUOTE(edit3DENMissionAttributes QN(EGVAR(Export,Menu)););
+    action = QUOTE(edit3DENMissionAttributes QQEGVAR(Export,Menu););
 };
 
 class EGVAR(Import,Configure) {
     text = "Import Mission Settings";
-    action = QUOTE(edit3DENMissionAttributes QN(EGVAR(Import,Menu)););
+    action = QUOTE(edit3DENMissionAttributes QQEGVAR(Import,Menu););
 };

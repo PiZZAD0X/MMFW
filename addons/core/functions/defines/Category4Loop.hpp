@@ -36,7 +36,7 @@ if (GETMVAR(Enabled_4,false)) then {
                 private _CasConditionCheck_Blufor = false;
 
                 if (GETMVAR(CasualtyCount_Enabled_BLUFOR_4,false)) then {
-                    private _westCasualty = EGVAR(Core,TeamName_Blufor) call EFUNC(Core,CasualtyPercentage);
+                    private _westCasualty = EGVAR(Core,TeamName_Blufor) call FUNC(CasualtyPercentage);
                     if (_westCasualty >= GETMVAR(CasualtyCount_Percentage_BLUFOR_4,75)) then {_CasConditionCheck_Blufor = true;} else {_CasConditionCheck_Blufor = false;};
                     _ConditionCheckList pushback ["BLUFOR Cas Check",_CasConditionCheck_Blufor];
                 };
@@ -44,7 +44,7 @@ if (GETMVAR(Enabled_4,false)) then {
                 private _CasConditionCheck_Opfor = false;
 
                 if (GETMVAR(CasualtyCount_Enabled_OPFOR_4,false)) then {
-                    private _eastCasualty = EGVAR(Core,TeamName_Opfor) call EFUNC(Core,CasualtyPercentage);
+                    private _eastCasualty = EGVAR(Core,TeamName_Opfor) call FUNC(CasualtyPercentage);
                     if (_eastCasualty >= GETMVAR(CasualtyCount_Percentage_OPFOR_4,75)) then {_CasConditionCheck_Opfor = true;} else {_CasConditionCheck_Opfor = false;};
                     _ConditionCheckList pushback ["OPFOR Cas Check",_CasConditionCheck_Opfor];
                 };
@@ -52,7 +52,7 @@ if (GETMVAR(Enabled_4,false)) then {
                 private _CasConditionCheck_Indfor = false;
 
                 if (GETMVAR(CasualtyCount_Enabled_Indfor_4,false)) then {
-                    private _resCasualty = EGVAR(Core,TeamName_Indfor) call EFUNC(Core,CasualtyPercentage);
+                    private _resCasualty = EGVAR(Core,TeamName_Indfor) call FUNC(CasualtyPercentage);
                     if (_resCasualty >= GETMVAR(CasualtyCount_Percentage_Indfor_4,75)) then {_CasConditionCheck_Indfor = true;} else {_CasConditionCheck_Indfor = false;};
                     _ConditionCheckList pushback ["Indfor Cas Check",_CasConditionCheck_Indfor];
                 };
@@ -60,7 +60,7 @@ if (GETMVAR(Enabled_4,false)) then {
                 private _CasConditionCheck_Civ = false;
 
                 if (GETMVAR(CasualtyCount_Enabled_Civ_4,false)) then {
-                    private _civCasualty = EGVAR(Core,TeamName_Civ) call EFUNC(Core,CasualtyPercentage);
+                    private _civCasualty = EGVAR(Core,TeamName_Civ) call FUNC(CasualtyPercentage);
                     if (_civCasualty >= GETMVAR(CasualtyCount_Percentage_Civ_4,75)) then {_CasConditionCheck_Civ = true;} else {_CasConditionCheck_Civ = false;};
                     _ConditionCheckList pushback ["CIVILIAN Cas Check",_CasConditionCheck_Civ];
                 };
@@ -73,10 +73,10 @@ if (GETMVAR(Enabled_4,false)) then {
                     {
                         private _unit = missionNamespace getVariable [_x,objNull];
                         if ((_unit isEqualType "OBJECT") && {!(_unit isEqualto objNull)}) then {
-                            _alive = _alive && (_unit call EFUNC(Core,alive));
+                            _alive = _alive && (_unit call FUNC(alive));
                         } else {
                             _alive = false;
-                            ["Unit " + _x + " not found!","Unit " + _x + " not found!"] call EFUNC(Debug,DebugMessageDetailed);
+                            ["Unit " + _x + " not found!","Unit " + _x + " not found!"] call FUNC(DebugMessageDetailed);
                         };
                     } forEach _aliveUnitArray;
                     _ConditionCheckList pushback ["Alive Check",_alive];
@@ -93,7 +93,7 @@ if (GETMVAR(Enabled_4,false)) then {
                             _dead = false;
                             LOG_1("Unit %1 not found!",_unit);
                         } else {
-                            private _unitDeadCheck = (!(_unit call EFUNC(Core,alive)));
+                            private _unitDeadCheck = (!(_unit call FUNC(alive)));
                             LOG_2("Unit %1 check: %2",_unit,_unitDeadCheck);
                             _dead = _dead && _unitDeadCheck;
                         };
@@ -125,7 +125,7 @@ if (GETMVAR(Enabled_4,false)) then {
                     private _rescued = true;
                     {
                         private _unit = missionNamespace getVariable [_x,objNull];
-                        if (!(_unit isEqualto objNull) && {(_unit call EFUNC(Core,alive))}) then {
+                        if (!(_unit isEqualto objNull) && {(_unit call FUNC(alive))}) then {
                             _rescued = _rescued && (EGETVAR(_unit,Hostage,IsRescued,false));
                         } else {
                             _rescued = false;
@@ -213,8 +213,8 @@ if (GETMVAR(Enabled_4,false)) then {
                 //check block
                 if (GETMVAR(ExtractionEnabled_4,false)) then {
                     private _team = ([EGVAR(Core,TeamName_Blufor),EGVAR(Core,TeamName_Opfor),EGVAR(Core,TeamName_Indfor),EGVAR(Core,TeamName_Civ)] select GVAR(ExtractionTeam_4));
-                    if (GVAR(ExtractionMarker_4) isEqualto "") exitwith {["","No marker entered for extract zone for Category 4!"] call EFUNC(Debug,DebugMessageDetailed);};
-                    if ((getMarkerColor GVAR(ExtractionMarker_4)) isEqualto "") exitwith {["","Invalid extract marker for Category 4!"] call EFUNC(Debug,DebugMessageDetailed);};
+                    if (GVAR(ExtractionMarker_4) isEqualto "") exitwith {["","No marker entered for extract zone for Category 4!"] call FUNC(DebugMessageDetailed);};
+                    if ((getMarkerColor GVAR(ExtractionMarker_4)) isEqualto "") exitwith {["","Invalid extract marker for Category 4!"] call FUNC(DebugMessageDetailed);};
                         if ([_team,GVAR(ExtractionMarker_4),GVAR(ExtractionRatio_4)] call FUNC(hasExtracted)) then {
                             _ExtractionCheck = true;
                         } else {
@@ -230,7 +230,7 @@ if (GETMVAR(Enabled_4,false)) then {
                             _x params ["_name","_value"];
                             if (_value) exitwith {
                                 LOG_1("Category 4 Ending due to :%1",_value);
-                                [GVAR(Message_4)] call EFUNC(Core,EndMission);
+                                [GVAR(Message_4)] call FUNC(EndMission);
                                 [_idPFH] call CBA_fnc_removePerFrameHandler;
                             };
                         } foreach _ConditionCheckList;
@@ -243,7 +243,7 @@ if (GETMVAR(Enabled_4,false)) then {
                         } foreach _ConditionCheckList;
                         if (_fullcheck) then {
                             LOG("Category 4 Ending due to all conditions met!");
-                            [GVAR(Message_4)] call EFUNC(Core,EndMission);
+                            [GVAR(Message_4)] call FUNC(EndMission);
                             [_idPFH] call CBA_fnc_removePerFrameHandler;
                         };
                     };

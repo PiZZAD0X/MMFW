@@ -32,8 +32,6 @@
 #define QFUNC(var1) QUOTE(DFUNC(var1))
 #define QEFUNC(var1,var2) QUOTE(DEFUNC(var1,var2))
 
-#define MGVAR(var1) DOUBLES(PREFIX,var1)
-
 //CBA Error Macro Intercept
 #undef ERROR
 #define ERROR(MESSAGE) LOG_SYS_FILELINENUMBERS('ERROR',MESSAGE);\

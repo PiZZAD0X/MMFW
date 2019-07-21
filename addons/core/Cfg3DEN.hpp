@@ -86,21 +86,13 @@ class display3DEN {
                 #include "display3DEN\Menu.hpp"
                 #include "display3DEN\MenuEndConditions.hpp"
                 #include "display3DEN\MenuRespawn.hpp"
-                //Tools Define
-                #include "display3DEN\Menu3DEN.hpp"
-                //#include "display3DEN\MenuTools.hpp"
-                //Documentation Define
-                #include "display3DEN\MenuDoc.hpp"
                 class GVAR(Folder) {
                     text = "Mission Framework";
                     items[] = {
                         QGVAR(SettingsMenu),
                         QEGVAR(Respawn,Folder),
                         QEGVAR(Module,SettingsMenu),
-                        QEGVAR(EndConditions,Folder),
-                        QEGVAR(ExportImport,Folder),
-                        QGVAR(Documentation),
-                        QGVAR(VersionDisplay)
+                        QEGVAR(EndConditions,Folder)
                     };
                 };
                 //Compile Main Menu

@@ -34,16 +34,16 @@ LOG("Client Pre Init");
 
 [QGVAR(RegisterFrameworkEvent), {
     if !(player diarySubjectExists QGVAR(Menu)) then {
-        player createDiarySubject [QGVAR(Menu), "UO Framework"];
+        player createDiarySubject [QGVAR(Menu), "Mission Framework"];
     };
     private _info = "
-    <font size='18'>United Operations Framework</font><br/>
-    The United Operations framework is an addon based utility and function library for making missions.<br/>
+    <font size='18'>Mission Maker Framework</font><br/>
+    The Mission Maker framework is an addon based utility and function library for making missions.<br/>
     <br/>
     Find out more about the framework on GitHub.<br/>
-    github.com/unitedoperations/UnitedOperationsFramework<br/>
     <br/>
-    Current Version: " + VERSIONSTR;
+    <br/>
+    Current Version: " + QUOTE(VERSION);
     player createDiaryRecord [QGVAR(Menu), ["Framework Info", _info]];
 }] call CBA_fnc_addEventHandler;
 
@@ -71,11 +71,11 @@ LOG("Client Pre Init");
 }] call CBA_fnc_addEventHandler;
 
 [QEGVAR(Spectator,StartSpectateEvent), {
-    [] call EFUNC(Spectator,Spectate);
+    [] call FUNC(Spectate);
 }] call CBA_fnc_addEventHandler;
 
 [QEGVAR(Spectator,EndSpectateEvent), {
-    [] call EFUNC(Spectator,endSpectate);
+    [] call FUNC(endSpectate);
 }] call CBA_fnc_addEventHandler;
 
 [QGVAR(PlayerRespawnEvent), {
@@ -175,5 +175,5 @@ LOG("Client Pre Init");
     // Player can JiP, initialize player vars and EHs
     [QGVAR(PlayerInitEHEvent), []] call CBA_fnc_localEvent;
     [QGVAR(PlayerInitEvent), []] call CBA_fnc_localEvent;
-    [] call EFUNC(JiP,GiveActions);
+    [] call FUNC(GiveActions);
 }] call CBA_fnc_addEventHandler;

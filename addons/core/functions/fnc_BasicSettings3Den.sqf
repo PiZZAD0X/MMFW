@@ -22,9 +22,9 @@ LOG("BasicSettings3Den called");
 "Scenario" set3DENMissionAttribute ["EnableDebugConsole",1];
 "Scenario" set3DENMissionAttribute ["enableTargetDebug",1];
 
-//if ((EGETMVALUE(Briefing,MissionNotes_Author,"")) isEqualTo "") then {
-//    QEGVAR(Briefing,MissionNotes) set3DENMissionAttribute [QEGVAR(Briefing,MissionNotes_Author),profileNameSteam];
-//};
+if ((EGETMVALUE(Briefing,MissionNotes_Author,"")) isEqualTo "") then {
+    QEGVAR(Briefing,MissionNotes) set3DENMissionAttribute [QEGVAR(Briefing,MissionNotes_Author),profileNameSteam];
+};
 
 if ((EGETMVALUE(Core,Version_Created,"")) isEqualTo "") then {
     QGVAR(Version_DummyCategory) set3DENMissionAttribute [QGVAR(Version_Created),QUOTE(VERSION)];

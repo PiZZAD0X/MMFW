@@ -22,13 +22,6 @@ LOG("Server Pre Init");
     params ["_unit"];
 }] call CBA_fnc_addEventHandler;
 
-[QGVAR(TrackAssetEvent), {
-    params [["_asset", objNull, [objNull]],["_name", "", [""]],["_team", "", [""]]];
-    private _asset = vehicle (_asset);
-    SETPVAR(_asset,AssetName,_name);
-    SETPVAR(_asset,AssetTeam,_team);
-}] call CBA_fnc_addEventHandler;
-
 [QGVAR(RespawnedEvent), {
     LOG_1("started Respawned_Event with %1",_this);
     _this call FUNC(EventRespawned);

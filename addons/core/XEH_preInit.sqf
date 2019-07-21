@@ -11,7 +11,7 @@ if !(GETMVALUE(Enabled,false)) exitWith {
 INFO("Initializing Framework");
 LOG("Global Pre Init");
 SETMVAR(Initialized,false);
-[] call EFUNC(3DEN,setDefaults);
+[] call FUNC(setDefaults);
 
 private _missionFrameworkVersionCreatedStr = (GETMVALUE(Version_Created,""));
 if (_missionFrameworkVersionCreatedStr isEqualto "") then {
@@ -55,7 +55,7 @@ if (_missionFrameworkVersionStr isEqualto "") then {
 
 [QEGVAR(Debug,DebugMessageEvent), {
     params ["_message"];
-    [_message] call EFUNC(Debug,debugMessageDisplay);
+    [_message] call FUNC(debugMessageDisplay);
 }] call CBA_fnc_addEventHandler;
 
 if (!(hasInterface) || (isServer)) then {

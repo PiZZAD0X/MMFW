@@ -7,9 +7,6 @@
  *        PiZZADOX
  */
 
-#define DEBUG_MODE_NORMAL
-//#define DEBUG_MODE_FULL
-
 #include "script_component.hpp"
 //#include "\x\cba\addons\Main\script_macros_common.hpp"
 
@@ -43,7 +40,7 @@ private _sections = QUOTE(!(((str(configname _x)) find QN(PREFIX)) isEqualto -1)
             } else {
                 LOG_1("_propertyname: %1 has mission value!",_propertyname);
                 missionNamespace setvariable [_propertyname, _missionvalue];
-                LOG_2("_propertyname: %1 set with value: %2",str _propertyname,_propertyname);
+                LOG_2("_propertyname: %1 set with value: %2",str _propertyname,_missionvalue);
             };
         } else {
             LOG_1("_propertyname is null! config: %1!",_x);
