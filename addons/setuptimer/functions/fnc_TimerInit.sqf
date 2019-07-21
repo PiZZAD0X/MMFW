@@ -14,7 +14,7 @@ LOG("called Setup init");
         private _timeLeft = (_endTime - CBA_missionTime);
         if (_timeLeft <= 0) exitWith {
             _ctrlTime ctrlSetText "00:00.000";
-            [QGVAR(Notification_Ended)] call BIS_fnc_showNotification;
+            [QGVAR(TimerEnded)] call BIS_fnc_showNotification;
             [_idPFH] call CBA_fnc_removePerFrameHandler;
             [{
                 params ["_display"];

@@ -1,1 +1,3 @@
-#include "rscTitles\RscSetupTimer.hpp"
+class RscTitles {
+    #include "rscTitles\RscSetupTimer.hpp"
+};

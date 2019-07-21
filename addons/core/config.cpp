@@ -21,6 +21,7 @@ class CfgFactionClasses {
     };
 };
 
+#include "\z\MMFW\addons\main\RscTitles.hpp"
 #include "CfgEventHandlers.hpp"
 #include "RscTitles.hpp"
 #include "CfgVehicles.hpp"

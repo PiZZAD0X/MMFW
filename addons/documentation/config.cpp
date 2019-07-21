@@ -12,6 +12,7 @@ class CfgPatches {
             "MMFW_autotrack",
             "MMFW_briefing",
             "MMFW_covermap",
+            "MMFW_safestart",
             "MMFW_selfactions",
             "MMFW_setuptimer",
             "MMFW_shotcount",
@@ -26,6 +27,6 @@ class CfgPatches {
     };
 };
 
-#include "\z\MMFW\addons\core\RscTitles.hpp"
+#include "\z\MMFW\addons\main\RscTitles.hpp"
 #include "CfgEventHandlers.hpp"
 #include "Cfg3DEN.hpp"
