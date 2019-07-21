@@ -1,5 +1,4 @@
-#define COMPONENT AutoTrackAsset
-#include "\x\UO_FW\addons\Main\script_macros.hpp"
+#include "script_component.hpp"
 EXEC_CHECK(SERVER);
 
 if !(GETMVAR(Enabled,false)) exitWith {};

@@ -21,7 +21,7 @@ LOG("Client Pre Init");
     [{!(isNull player)}, {
         params ["_name", "_description", "_author"];
         if !(player diarySubjectExists QGVAR(Menu)) then {
-            player createDiarySubject [QGVAR(Menu), "UO Framework"];
+            player createDiarySubject [QGVAR(Menu), "Mission Framework"];
         };
         if (isNil QGVAR(ModuleDiaryEntries)) then {GVAR(ModuleDiaryEntries) = []};
         //IGNORE_PRIVATE_WARNING ["_x"];

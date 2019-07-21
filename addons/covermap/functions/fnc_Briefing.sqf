@@ -33,15 +33,14 @@ if (isNil QGVAR(MarkerArray)) then {
 GVAR(currentAO) = _AONameCalled;
 
 _areaCalled params ["_pos","_radiusX","_radiusY","_dir"];
-private ["_radiusXo","_radiusYo","_MainS","_MainBS"];
 
 _pos params ["_posx","_posy"];
-_radiusXo = _radiusX;
-_radiusYo = _radiusY;
-_MainS = 20000;
-_MainBS = 50;
+private _radiusXo = _radiusX;
+private _radiusYo = _radiusY;
+private _MainS = 20000;
+private _MainBS = 50;
 
-if ((_dir > 0 && _dir <= 90) || (_dir > 180 && _dir <= 270)) then {
+if ((_dir > 0 && {_dir <= 90}) || (_dir > 180 && {_dir <= 270})) then {
     private _temp = _radiusX;
     _radiusX = _radiusY;
     _radiusY = _temp;
@@ -60,7 +59,7 @@ private _colors = ["colorBlack","colorBlack",_colorForest,"colorGreen",_colorFor
     private _s = _radiusX;
     private _w = 2 * _MainS +_radiusY;
     private _bw = _radiusY + _MainBS;
-    if !((_dir > 0 && _dir <= 90) || (_dir > 180 && _dir <= 270)) then {
+    if !((_dir > 0 && {_dir <= 90}) || (_dir > 180 && {_dir <= 270})) then {
         _s = _radiusY;
         _w = _radiusX + 2 * _MainBS;
         _bw = _radiusX + _MainBS;
@@ -125,8 +124,24 @@ _marker4 setMarkerShapeLocal "rectangle";
 _marker4 setMarkerBrushLocal "border";
 _marker4 setMarkerColorLocal "colorBlack";
 
-[{(visibleMap)},{
+//private _id = switch (true) do {
+//    case (!isMultiplayer): { 37 };
+//    case (isServer): { 52 };
+//    case (!isServer): { 53 };
+//};
+
+//LOG_3("Briefing Map Vars: %1 %2 %3",_zoomlevelCalled,_pos,_id);
+
+[{
+    !(isNull ((uiNamespace getVariable "RscDiary") displayCtrl 51))
+},{
     params ["_zoomlevel","_p"];
-    MapAnimAdd [0, _zoomlevel, _p];
-    MapAnimCommit;
+    disableSerialization;
+    LOG_2("Starting Briefing MapCommit with %1 %2",_zoomlevel,_p);
+    private _control = ((uiNamespace getVariable "RscDiary") displayCtrl 51);
+    LOG_1("Briefing MapCommit with %1",_control);
+    ctrlMapAnimClear _control;
+    _p params ["_x","_y"];
+    _control ctrlMapAnimAdd [0, _zoomlevel, [_x,_y]];
+    ctrlMapAnimCommit _control;
 },[_zoomlevelCalled,_pos]] call CBA_fnc_waitUntilAndExecute;

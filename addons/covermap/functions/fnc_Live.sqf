@@ -31,15 +31,14 @@ if (isNil QGVAR(MarkerArray)) then {
 GVAR(currentAO) = _AONameCalled;
 
 _areaCalled params ["_pos","_radiusX","_radiusY","_dir"];
-private ["_radiusXo","_radiusYo","_MainS","_MainBS"];
 
 _pos params ["_posx","_posy"];
-_radiusXo = _radiusX;
-_radiusYo = _radiusY;
-_MainS = 20000;
-_MainBS = 50;
+private _radiusXo = _radiusX;
+private _radiusYo = _radiusY;
+private _MainS = 20000;
+private _MainBS = 50;
 
-if ((_dir > 0 && _dir <= 90) || (_dir > 180 && _dir <= 270)) then {
+if ((_dir > 0 && {_dir <= 90}) || (_dir > 180 && {_dir <= 270})) then {
     private _temp = _radiusX;
     _radiusX = _radiusY;
     _radiusY = _temp;
@@ -58,7 +57,7 @@ private _colors = ["colorBlack","colorBlack",_colorForest,"colorGreen",_colorFor
     private _s = _radiusX;
     private _w = 2 * _MainS +_radiusY;
     private _bw = _radiusY + _MainBS;
-    if !((_dir > 0 && _dir <= 90) || (_dir > 180 && _dir <= 270)) then {
+    if !((_dir > 0 && {_dir <= 90}) || (_dir > 180 && {_dir <= 270})) then {
         _s = _radiusY;
         _w = _radiusX + 2 * _MainBS;
         _bw = _radiusX + _MainBS;

@@ -102,6 +102,6 @@ EXEC_CHECK(CLIENT);
 }] call CBA_fnc_addEventHandler;
 
 [QEGVAR(Core,SettingsLoaded), {
-    if !(GETMVAR(Enable,false)) exitWith {};
+    if !(GETMVAR(Enabled,false)) exitWith {};
     [QGVAR(InitEvent), []] call CBA_fnc_localEvent;
 }] call CBA_fnc_addEventHandler;
