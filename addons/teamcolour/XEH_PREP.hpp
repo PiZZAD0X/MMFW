@@ -1,0 +1,2 @@
+PREPATTR(TeamColourAttribute_attr_load);
+PREPATTR(TeamColourAttribute_attr_save);

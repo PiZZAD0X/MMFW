@@ -1,4 +1,4 @@
-#include "cfgAttributes\External.hpp"
+#include "\z\MMFW\addons\core\cfgAttributes\External.hpp"
 #include "cfgAttributes\Main\MissionTypeAttribute.hpp"
 #include "cfgAttributes\Main\FrameworkCheckboxAttribute.hpp"
 #include "cfgAttributes\Main\TeamTypeAttribute.hpp"
