@@ -1,1 +1,1 @@
-#include "\z\MMFW\addons\safestart\script_component.hpp"
+#include "\z\MMFW\addons\antind\script_component.hpp"

@@ -7,7 +7,7 @@ class CfgPatches {
         weapons[] = {};
         requiredVersion = REQUIRED_VERSION;
         requiredAddons[] = {"MMFW_main","MMFW_core"};
-        authors[] = {"Olsen","PiZZADOX"};
+        authors[] = {"Olsen","PiZZADOX","Sacher"};
         author = "MMFW Team";
         authorUrl = "https://github.com/unitedoperations";
         VERSION_CONFIG;
@@ -16,4 +16,7 @@ class CfgPatches {
 
 #include "\z\MMFW\addons\main\RscTitles.hpp"
 #include "CfgEventHandlers.hpp"
+#include "CfgNotifications.hpp"
+#include "RscTitles.hpp"
 #include "Cfg3DEN.hpp"
+#include "CfgVehicles.hpp"

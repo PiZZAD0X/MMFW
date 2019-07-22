@@ -1,5 +1,5 @@
 PREP(initPost);
-PREP(addEH);
-PREP(endCount);
-PREP(getDisplayName);
-PREP(shotCount);
+PREP(CreateUnit);
+PREP(EnableAIDriver);
+PREP(Toggle);
+PREP(ToggleDriverCam);

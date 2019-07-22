@@ -9,6 +9,7 @@ class CfgPatches {
         requiredAddons[] = {
             "MMFW_main",
             "MMFW_core",
+            "MMFW_aidrivers",
             "MMFW_antind",
             "MMFW_autotrack",
             "MMFW_briefing",
