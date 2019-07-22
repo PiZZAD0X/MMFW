@@ -4,7 +4,7 @@ class GVAR(Category) {
     class Attributes {
         class GVAR(Enabled) {
             property = QGVAR(Enabled);
-            displayName = "Auto Track Asset";
+            displayName = "Enable";
             tooltip = "Enables Auto Track Asset";
             control = "CheckboxState";
             expression = SCENARIO_EXPRESSION;

@@ -4,7 +4,7 @@ class GVAR(Category) {
     class Attributes {
         class GVAR(Enabled) {
             property = QGVAR(Enabled);
-            displayName = "Shot Count";
+            displayName = "Enable";
             tooltip = "Enable Shot Count";
             control = "CheckboxState";
             expression = SCENARIO_EXPRESSION;

@@ -4,7 +4,7 @@ class GVAR(Category) {
     class Attributes {
         class GVAR(Enabled) {
             property = QGVAR(Enabled);
-            displayName = "Cover Map Module";
+            displayName = "Enable";
             tooltip = "Enable Cover Map Module";
             control = "CheckboxState";
             expression = SCENARIO_EXPRESSION;

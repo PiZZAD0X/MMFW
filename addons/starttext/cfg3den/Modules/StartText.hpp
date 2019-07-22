@@ -4,7 +4,7 @@ class GVAR(Category) {
     class Attributes {
         class GVAR(Enabled) {
             property = QGVAR(Enabled);
-            displayName = "Start Text";
+            displayName = "Enable";
             tooltip = "Enables Start Text";
             control = "CheckboxState";
             expression = SCENARIO_EXPRESSION;

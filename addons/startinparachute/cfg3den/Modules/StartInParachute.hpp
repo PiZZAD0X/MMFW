@@ -4,7 +4,7 @@ class GVAR(Category) {
     class Attributes {
         class GVAR(Enabled) {
             property = QGVAR(Enabled);
-            displayName = "Start In Parachute";
+            displayName = "Enable";
             tooltip = "Enables Parachute Unit Option";
             control = "Checkbox";
             expression = SCENARIO_EXPRESSION;

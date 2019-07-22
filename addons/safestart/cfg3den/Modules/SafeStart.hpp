@@ -2,9 +2,9 @@ class GVAR(Category) {
     displayName = "Safe Start Settings";
     collapsed = 1;
     class Attributes {
-        class GVAR(Enable) {
-            property = QGVAR(Enable);
-            displayName = "Safe Start";
+        class GVAR(Enabled) {
+            property = QGVAR(Enabled);
+            displayName = "Enable";
             tooltip = "Enable Safe Start";
             control = "CheckboxState";
             expression = SCENARIO_EXPRESSION;

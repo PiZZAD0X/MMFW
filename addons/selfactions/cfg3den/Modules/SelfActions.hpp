@@ -4,7 +4,7 @@ class GVAR(Settings) {
     class Attributes {
         class GVAR(Enable) {
             property = QGVAR(Enable);
-            displayName = "Self Actions Enable";
+            displayName = "Enable";
             tooltip = "Enable Self Actions";
             control = "CheckboxState";
             expression = SCENARIO_EXPRESSION;

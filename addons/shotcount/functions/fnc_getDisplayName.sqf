@@ -1,46 +1,17 @@
 #include "script_component.hpp"
 EXEC_CHECK(SERVER);
 
-private ["_ShotCount_textBLU","_ShotCount_textOPF","_ShotCount_textIND","_ShotCount_textCIV"];
-
-if !(GVAR(ExpendedAmmunition_BLUFOR) isEqualto []) then {
-    _ShotCount_textBLU = "BLUFOR Munitions Expended:<br/>";
-    {
-        _x params ["_label","_count"];
-        _ShotCount_textBLU = _ShotCount_textBLU + _label + ": " + str(_count) + " Rounds" + "<br/>";
-    } foreach GVAR(ExpendedAmmunition_BLUFOR);
+//IGNORE_PRIVATE_WARNING ["_x"];
+params ["_className"];
+private _ret = "Error";
+if (isNil QGVAR(classNames)) then {GVAR(classNames) = [];};
+private _foundClass = GVAR(classNames) findIf {(_x select 0) isEqualto _className};
+if (_foundClass isEqualto -1) then {
+    private _cfg = (configFile >> "CfgMagazines" >> _className);
+    _ret = getText(_cfg >> "displayName");
+    GVAR(classNames) pushBack [_className,_ret];
 } else {
-    _ShotCount_textBLU = "";
+    _ret = ((GVAR(classNames) select _foundClass) select 1);
 };
 
-if !(GVAR(ExpendedAmmunition_OPFOR) isEqualto []) then {
-    _ShotCount_textOPF = "OPFOR Munitions Expended:<br/>";
-    {
-        _x params ["_label","_count"];
-        _ShotCount_textOPF = _ShotCount_textOPF + _label + ": " + str(_count) + " Rounds" + "<br/>";
-    } foreach GVAR(ExpendedAmmunition_OPFOR);
-} else {
-    _ShotCount_textOPF = "";
-};
-
-if !(GVAR(ExpendedAmmunition_Indfor) isEqualto []) then {
-    _ShotCount_textIND = "INDEPENDENT Munitions Expended:<br/>";
-    {
-        _x params ["_label","_count"];
-        _ShotCount_textIND = _ShotCount_textIND + _label + ": " + str(_count) + " Rounds" + "<br/>";
-    } foreach GVAR(ExpendedAmmunition_Indfor);
-} else {
-    _ShotCount_textIND = "";
-};
-
-if !(GVAR(ExpendedAmmunition_Civ) isEqualto []) then {
-    _ShotCount_textCIV = "CIVILIAN Munitions Expended:<br/>";
-    {
-        _x params ["_label","_count"];
-        _ShotCount_textCIV = _ShotCount_textCIV + _label + ": " + str(_count) + " Rounds" + "<br/>";
-    } foreach GVAR(ExpendedAmmunition_Civ);
-} else {
-    _ShotCount_textCIV = "";
-};
-
-[QGVAR(DisplayEvent), [_ShotCount_textBLU,_ShotCount_textOPF,_ShotCount_textIND,_ShotCount_textCIV]] call CBA_fnc_globalEvent;
+_ret
