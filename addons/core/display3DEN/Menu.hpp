@@ -1,7 +1,7 @@
 class GVAR(SettingsMenu) {
     text = "Framework Settings";
     action = QUOTE(edit3DENMissionAttributes QQGVAR(Settings););
-    picture = "\a3\3DEN\Data\CfgWaypoints\loiter_ca.paa";
+    picture = "\a3\3DEN\Data\Cfg3DEN\History\changeAttributes_ca.paa";
 };
 
 class EGVAR(Module,SettingsMenu) {

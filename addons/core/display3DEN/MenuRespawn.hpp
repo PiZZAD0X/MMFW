@@ -7,7 +7,7 @@ class EGVAR(Respawn,Folder) {
         QEGVAR(Respawn,Indfor),
         QEGVAR(Respawn,Civilian)
     };
-    picture = "\a3\3DEN\Data\Cfg3DEN\History\changeAttributes_ca.paa";
+    picture = "\a3\3DEN\Data\CfgWaypoints\loiter_ca.paa";
 };
 
 class EGVAR(Respawn,BLUFOR) {

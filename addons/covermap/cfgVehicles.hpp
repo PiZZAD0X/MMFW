@@ -30,26 +30,6 @@ class CfgVehicles {
                 validate = "STRING";
                 defaultValue = "'Area0'";
             };
-            //class GVAR(RadiusX) {
-            //    displayName = "Radius X";
-            //    tooltip = "The size of the X value of the setup zone. Default: 100";
-            //    property = QGVAR(RadiusX);
-            //    control = QEGVAR(Core,RadiusAttribute);
-            //    expression = MODULE_EXPRESSION;
-            //    defaultValue = "100";
-            //    typeName = "NUMBER";
-            //    validate = "number";
-            //};
-            //class GVAR(RadiusY) {
-            //    displayName = "Radius Y";
-            //    tooltip = "The size of the Y value of the setup zone. Default: 100";
-            //    property = QGVAR(RadiusY);
-            //    control = QEGVAR(Core,RadiusAttribute);
-            //    expression = MODULE_EXPRESSION;
-            //    defaultValue = "100";
-            //    typeName = "NUMBER";
-            //    validate = "number";
-            //};
             class GVAR(ZoomLevel) {
                 displayName = "Zoomlevel";
                 tooltip = "Map zoom level of the AO. Default: 0.2";

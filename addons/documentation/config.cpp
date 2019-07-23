@@ -14,6 +14,7 @@ class CfgPatches {
             "MMFW_antind",
             "MMFW_autotrack",
             "MMFW_briefing",
+            "MMFW_capturezone",
             "MMFW_covermap",
             "MMFW_hostage",
             "MMFW_markercontrol",
