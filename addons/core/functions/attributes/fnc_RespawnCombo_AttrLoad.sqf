@@ -1,8 +1,6 @@
-
 #include "script_component.hpp"
 EDEN_CHECK;
 
-LOG_1("_this: %1",_this);
 params ["_args","_value","_config","_configVar","_valueVar"];
 _args params ["_ctrl"];
 

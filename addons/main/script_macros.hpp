@@ -121,12 +121,12 @@ if ((_argUpper isEqualto "HC") && {(((hasinterface || isServer) && isMultiplayer
 if ((_argUpper isEqualto "CLIENTHC") && {(((isDedicated) && isMultiplayer) || (!(EGVAR(Core,Enabled))))}) exitWith {};\
 if ((_argUpper isEqualto "SERVERHC") && {(((hasinterface) && isMultiplayer) || (!(EGVAR(Core,Enabled))))}) exitWith {};\
 if ((_argUpper isEqualto "ALL") && {(!(EGVAR(Core,Enabled)))}) exitWith {};\
-if !(EGVAR(Core,Enabled)) exitWith {};\
+if !(EGVAR(Core,Enabled)) exitWith {}
 
-#define EDEN_CHECK if !(is3DEN) exitwith {};
+#define EDEN_CHECK if !(is3DEN) exitwith {}
 
 #define VERSIONNUMBER (MGETMVAR(Version_UpdatedNumber,102))
-#define VERSION_CHECK(var1) if (var1 < VERSIONNUMBER) exitwith {};
+#define VERSION_CHECK(var1) if (var1 < VERSIONNUMBER) exitwith {}
 
 #include "script_debug.hpp"
 #include "config_macros.hpp"

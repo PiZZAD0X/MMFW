@@ -1,13 +1,10 @@
-
 #include "script_component.hpp"
 EDEN_CHECK;
 
-LOG_1("_this: %1",_this);
 params ["_args","_configVar","_valueVar"];
 _args params ["_ctrlCombo","_cursel"];
 
 private _respawnType = _ctrlCombo lbValue _cursel;
-diag_log format ["combo new var onsel: %1",_respawnType];
 private _configstr = missionNamespace getvariable [_configVar,""];
 private _configH = configHierarchy _configstr;
 private _configHParent = _configH select ((count _configH) - 2);

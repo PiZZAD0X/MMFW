@@ -1,8 +1,7 @@
 #include "script_component.hpp"
-EXEC_CHECK(ALL);
+EDEN_CHECK;
 
 params ["_ctrlCombo","_cursel"];
-LOG_2("_ctrlCombo: %1 _cursel: %2",_ctrlCombo,_cursel);
 
 private _AOType = _ctrlCombo lbData _cursel;
 private _logic = ((get3denselected "logic") select 0);
