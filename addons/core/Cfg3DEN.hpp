@@ -91,8 +91,8 @@ class display3DEN {
                     text = "Mission Framework";
                     items[] = {
                         QGVAR(SettingsMenu),
-                        QEGVAR(Respawn,Folder),
                         QEGVAR(Module,SettingsMenu),
+                        QEGVAR(Respawn,Folder),
                         QEGVAR(EndConditions,Folder)
                     };
                 };

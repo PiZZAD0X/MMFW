@@ -1,32 +1,32 @@
-class EGVAR(Briefing,Blufor) {
+class GVAR(Blufor) {
     displayName = "Blufor Briefing";
     class AttributeCategories {
         #include "Briefing\BluforMenu.hpp"
     };
 };
 
-class EGVAR(Briefing,Opfor) {
+class GVAR(Opfor) {
     displayName = "Opfor Briefing";
     class AttributeCategories {
         #include "Briefing\OpforMenu.hpp"
     };
 };
 
-class EGVAR(Briefing,Indfor) {
+class GVAR(Indfor) {
     displayName = "Indfor Briefing";
     class AttributeCategories {
         #include "Briefing\IndforMenu.hpp"
     };
 };
 
-class EGVAR(Briefing,Civilian) {
+class GVAR(Civilian) {
     displayName = "Civilian Briefing";
     class AttributeCategories {
         #include "Briefing\CivMenu.hpp"
     };
 };
 
-class EGVAR(Briefing,MissionNotes) {
+class GVAR(MissionNotes) {
     displayName = "Mission Notes";
     class AttributeCategories {
         #include "Briefing\MissionNotesMenu.hpp"

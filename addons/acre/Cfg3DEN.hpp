@@ -1,7 +1,14 @@
 class Cfg3DEN {
+    class Attributes {
+        #include "CfgAttributes.hpp"
+    };
     class Mission {
-        //Additional Core cfg3denMenu defines
         #include "cfg3den\cfg3denMenuCategories.hpp"
+    };
+    class Object {
+        class AttributeCategories {
+            #include "cfgAttributeCategories\Object.hpp"
+        };
     };
 };
 
