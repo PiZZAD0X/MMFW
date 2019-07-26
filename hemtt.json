@@ -1,0 +1,9 @@
+{
+  "name": "Mission Maker Framework",
+  "prefix": "MMFW",
+  "author": "MMFW Team",
+  "files": [
+    "mod.cpp"
+  ],
+  "sigversion": 3
+}
