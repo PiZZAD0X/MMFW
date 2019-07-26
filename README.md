@@ -7,3 +7,8 @@ For information on how to make a mission using the framework read [this guide]()
 To view bugs or requested features, view the [issues](). If you want to report a bug and do not see your issue listed, you can open a [bug report](). If you want to request a feature not listed you can do so using the [feature request]().
 
 You can aid in development of this project by [contributing]()
+
+### Thanks
+
+- [KoffeinFlummi](https://github.com/KoffeinFlummi) for [armake2](https://github.com/KoffeinFlummi/armake2)
+- [synixebrett](https://github.com/synixebrett) for [HEMTT](https://github.com/synixebrett/HEMTT)
