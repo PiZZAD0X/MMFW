@@ -101,7 +101,7 @@ class GVAR(RADIONET_CAT_Civ) {
 
 class GVAR(BABEL_CAT_Civ) {
     displayName = "Babel Configuration";
-    collapsed = 1;
+    collapsed = 0;
     class Attributes {
         class GVAR(BABEL_Enabled_Civ) {
             property = QGVAR(Babel_Enabled_Civ);

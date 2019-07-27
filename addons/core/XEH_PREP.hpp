@@ -39,6 +39,7 @@ PREP(parsedTextDisplay);
 PREP(randomRange);
 PREP(refreshDebug);
 PREP(RespawnHandler);
+PREP(searchNestedArray);
 PREP(setDefaults);
 PREP(setTeamVariable);
 PREP(spectate);

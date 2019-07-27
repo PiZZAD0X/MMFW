@@ -101,7 +101,7 @@ class GVAR(RADIONET_CAT_OPFOR) {
 
 class GVAR(BABEL_CAT_OPFOR) {
     displayName = "Babel Configuration";
-    collapsed = 1;
+    collapsed = 0;
     class Attributes {
         class GVAR(BABEL_Enabled_OPFOR) {
             property = QGVAR(Babel_Enabled_OPFOR);

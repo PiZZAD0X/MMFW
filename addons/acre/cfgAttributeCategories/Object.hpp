@@ -4,7 +4,7 @@ class GVAR(UnitOptions) {
     class Attributes {
         class GVAR(UNITSETTINGS_Enable) {
             property = QGVAR(UNITSETTINGS_Enable);
-            displayName = "Enable ACRE Unit Settings";
+            displayName = "Enable Unit Settings";
             tooltip = "Enables Framework ACRE Settings on this unit";
             control = QEGVAR(Core,CheckBoxStatePlayerOnlyCategory);
             expression = ENTITY_EXPRESSION;
