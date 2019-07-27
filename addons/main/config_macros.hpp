@@ -8,4 +8,4 @@ _this setVariable [ARR_2(_propertyName,_value)];\
 [ARR_2(_this,_value)] call EFUNC(var1,var2);\
 )
 
-#define MODULE_EXPRESSION QUOTE(_this setVariable [ARR_3('%s',_value,true)];)
+#define MODULE_EXPRESSION QUOTE(_propertyName = '%s'; _this setVariable [ARR_3(_propertyName,_value,true)];)

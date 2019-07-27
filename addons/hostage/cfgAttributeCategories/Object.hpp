@@ -18,7 +18,7 @@ class GVAR(Attributes) {
             control = GVAR(HostageAreaSelectAttribute);
             expression = ENTITY_EXPRESSION;
             condition = "objectControllable";
-            defaultValue = "'hostage_rescue'";
+            defaultValue = "'No Area Selected'";
         };
          class GVAR(Freed_JoinSquad) {
             displayName = "Hostage Joins Squad";
