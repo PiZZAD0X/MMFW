@@ -1,1 +1,1 @@
-#include "\z\MMFW\addons\core\script_component.hpp"
+#include "\z\MMFW\addons\documentation\script_component.hpp"
