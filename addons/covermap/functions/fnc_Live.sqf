@@ -8,7 +8,7 @@ _AONameCalled = toLower(_AONameCalled);
 private _found = false;
 {
     _x params ["_AOName","_area","_AOZoom","_logic"];
-    if (_AONameCalled isEqualto _AOName) then {
+    if (_AONameCalled == _AOName) then {
         _areaCalled = _area;
         _logicCalled = _logic;
         _zoomlevelCalled = _AOZoom;

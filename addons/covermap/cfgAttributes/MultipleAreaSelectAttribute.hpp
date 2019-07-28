@@ -1,6 +1,6 @@
-class EGVAR(Spectator,Teams_Attribute): Title {
-    attributeLoad = QUOTE([ARR_3(_this,_value,_config)] call FUNC(SpectateTeamsAttribute_AttrLoad));
-    attributeSave = QUOTE([ARR_2(_this,_config)] call FUNC(SpectateTeamsAttribute_AttrSave));
+class GVAR(MultipleAreaSelectAttribute): Title {
+    attributeLoad = QUOTE([ARR_3(_this,_value,_config)] call FUNC(MultipleAreaSelectAttribute_AttrLoad));
+    attributeSave = QUOTE([ARR_2(_this,_config)] call FUNC(MultipleAreaSelectAttribute_AttrSave));
     h="4 * 5 * (pixelH * pixelGrid * 0.50)";
     class Controls: Controls {
         class Title: Title {
@@ -14,7 +14,7 @@ class EGVAR(Spectator,Teams_Attribute): Title {
             h="4 * 5 * (pixelH * pixelGrid * 0.50)";
             colorSelectBackground[]={0,0,0,0};
             colorSelectBackground2[]={0,0,0,0};
-            onLBSelChanged = QUOTE(_this call FUNC(SpectateTeamsAttribute_onLBSelChanged));
+            onLBSelChanged = QUOTE(_this call FUNC(MultipleAreaSelectAttribute_onLBSelChanged));
         };
     };
 };

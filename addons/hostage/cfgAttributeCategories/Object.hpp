@@ -11,37 +11,37 @@ class GVAR(Attributes) {
             condition = "objectControllable";
             defaultValue = "false";
         };
-        class GVAR(Rescue_Location) {
+        class GVAR(RescueLocation) {
             displayName = "Hostage Rescue Zone";
-            tooltip = "Marker that determines the hostage rescue zone. (Default: 'hostage_rescue' marker)";
-            property = QGVAR(Rescue_Location);
+            tooltip = "Determines the rescue area for the hostage";
+            property = QGVAR(RescueLocation);
             control = GVAR(HostageAreaSelectAttribute);
             expression = ENTITY_EXPRESSION;
             condition = "objectControllable";
             defaultValue = "'No Area Selected'";
         };
-         class GVAR(Freed_JoinSquad) {
+         class GVAR(FreedJoinSquad) {
             displayName = "Hostage Joins Squad";
-            tooltip = "Determine if the hostage will join the squad of the player who frees them. (Default: true)";
-            property = QGVAR(Freed_JoinSquad);
+            tooltip = "Determine if the hostage will join the squad of the player who frees them.";
+            property = QGVAR(FreedJoinSquad);
             control = "Checkbox";
             expression = ENTITY_EXPRESSION;
             condition = "objectControllable";
             defaultValue = "true";
         };
-        class GVAR(Freed_Behavior_Modifier) {
+        class GVAR(FreedBehaviorModifier) {
             displayName = "Hostage Freed Behavior Change";
-            tooltip = "Enable modifiers for hostage's behavior when they are freed. (False by default.)";
-            property = QGVAR(Freed_Behavior_Modifier);
+            tooltip = "Enable modifiers for hostage's behavior when they are freed.";
+            property = QGVAR(FreedBehaviorModifier);
             control = "Checkbox";
             expression = ENTITY_EXPRESSION;
             condition = "objectControllable";
             defaultValue = "false";
         };
-        class GVAR(Freed_Behavior) {
+        class GVAR(FreedBehavior) {
             displayName = "Hostage Freed Behavior";
-            tooltip = "Determine the hostages behavior when freed by the player.\nWill not function unless 'Hostage Freed Modifiers' is enabled. (Default: CARELESS)";
-            property = QGVAR(Freed_Behavior);
+            tooltip = "Determine the hostages behavior when freed by the player.\nWill not function unless 'Hostage Freed Modifiers' is enabled.";
+            property = QGVAR(FreedBehavior);
             control = QGVAR(FreedBehaviorAttribute);
             expression = ENTITY_EXPRESSION;
             condition = "objectControllable";

@@ -61,3 +61,6 @@ PREPATTR(RespawnTemplates_onSetFocus);
 PREPATTR(TeamType_Select_attr_load);
 PREPATTR(TeamType_Select_attr_save);
 PREPATTR(TeamType_Select_onToolboxSel);
+PREPATTR(SpectateTeamsAttribute_AttrSave);
+PREPATTR(SpectateTeamsAttribute_AttrLoad);
+PREPATTR(SpectateTeamsAttribute_onLBSelChanged);

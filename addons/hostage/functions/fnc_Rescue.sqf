@@ -13,11 +13,11 @@ if !((animationState _unit find "acts_aidlpsitmstpssurwnondnon") isEqualto -1) t
     _unit enableAI "MOVE";
 };
 
-if (GETVAR(_unit,Freed_Behavior_Modifier,true)) then {
-    _unit setBehaviour (GETVAR(_unit,Freed_Behavior,"careless"));
+if (GETVAR(_unit,FreedBehaviorModifier,true)) then {
+    _unit setBehaviour (GETVAR(_unit,FreedBehavior,"careless"));
 };
 
-if (GETVAR(_unit,Freed_JoinSquad,true)) then {
+if (GETVAR(_unit,FreedJoinSquad,true)) then {
     [_unit] joinSilent (group _caller);
 };
 

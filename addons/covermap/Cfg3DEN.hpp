@@ -1,4 +1,7 @@
 class Cfg3DEN {
+    class Attributes {
+        #include "CfgAttributes.hpp"
+    };
     class Mission {
         class EGVAR(Module,Settings) {
             class AttributeCategories {

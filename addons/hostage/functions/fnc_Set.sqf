@@ -4,20 +4,23 @@ EXEC_CHECK(ALL);
 params ["_unit"];
 
 [QEGVAR(Core,RegisterModuleEvent), ["Hostage Control", "Allows the mission maker to easily add hostages to their missions.", "Starfox64, TrainDoctor and PiZZADOX"]] call CBA_fnc_globalEventJiP;
-LOG_1("Hostage set called on: %1!",_unit);
 
-private _marker = (GETVAR(_unit,Rescue_Location,"hostage_rescue"));
+private _marker = (GETVAR(_unit,RescueLocation,"No Area Selected"));
+if (_marker isEqualTo "No Area Selected") exitwith {
+    ERROR_1("Hostage Rescue Area not defined: %1!",_unit);
+};
+LOG_2("%1 set to hostage with rescue area of %2",_unit,_marker);
+if (getMarkerColor _marker isEqualto "") exitwith {
+    ERROR_2("Hostage Rescue Area for unit %1 not found: %2!",_unit,_marker);
+};
 _marker setMarkerAlpha 0;
+
 
 SETPVAR(_unit,IsUntied,false);
 SETPVAR(_unit,IsRescued,false);
 
 [{(CBA_missionTime > 0)},{
     params ["_unit","_marker"];
-
-    if (getMarkerColor _marker isEqualto "") exitwith {
-        ERROR_1("hostage _marker: %1 does not exist!",_marker);
-    };
 
     [QGVAR(ACEActionsEvent), [_unit]] call CBA_fnc_globalEventJiP;
     _unit setBehaviour "CARELESS";

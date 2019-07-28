@@ -70,7 +70,7 @@ class EGVAR(Spectator,Indfor) {
             displayName = "Spectate Teams";
             tooltip = "Teams that this team can spectate.";
             control = QEGVAR(Spectator,Teams_Attribute);
-            defaultValue = "['BLUFOR','OPFOR','Indfor','CIVILIAN']";
+            defaultValue = "['BLUFOR','OPFOR','INDFOR','CIVILIAN']";
             expression = SCENARIO_EXPRESSION;
         };
         class EGVAR(Spectator,KillCam_Indfor) {

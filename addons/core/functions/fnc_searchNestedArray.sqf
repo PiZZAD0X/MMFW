@@ -14,7 +14,7 @@ Params: 1: Array, the array to search for nested arrays in
 Return: Scalar, -1 if there is no match
 */
 
-params ["_givenSearchArray","_givenSearchValue",["_desiredIndex",0,[0]],["_strictMode",false,[false]]];
+params ["_givenSearchArray","_givenSearchValue",["_desiredIndex",0,[0]]];
 private ["_nestedArray", "_currentIndex"];
 
 scopeName "main";
@@ -23,13 +23,13 @@ private _index = -1;
 {
     _currentIndex = _forEachIndex;
     if (_desiredIndex != -1) then {
-        if ((((_x select _desiredIndex) isEqualTo _givenSearchValue) && _strictMode) || {(_x select _desiredIndex) == _givenSearchValue}) exitWith {
+        if ((_x select _desiredIndex) isEqualTo _givenSearchValue) exitWith {
             _index = _currentIndex;
         };
     } else {
         _nestedArray = _x;
         {
-            if (((_x isEqualTo _givenSearchValue) && _strictMode) || {_x == _givenSearchValue}) then {
+            if (_x isEqualTo _givenSearchValue) then {
                 _index = _currentIndex;
                 breakTo "main";
             };

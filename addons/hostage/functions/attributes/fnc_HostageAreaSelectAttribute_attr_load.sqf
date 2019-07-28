@@ -6,12 +6,9 @@ params ["_ctrl","_value","_config"];
 private _unit = ((get3denselected "object") select 0);
 private _cfgname = gettext (_config >> "property");
 _unit setvariable [_cfgname,_value];
-LOG_2("hostageAreaAttribute Load started with %1, %2",_unit,_cfgname);
 private _ctrlCombo = (_ctrl controlsGroupCtrl 100);
 _ctrlCombo setvariable ["parentcontrolcfg",_config];
 private _HostageModules = (all3DENEntities select 3) select {(_x isKindOf QGVAR(Module) || _x isKindOf QGVAR(Module_R))};
-LOG_1("all3den select 3 %1",(all3DENEntities select 3));
-LOG_1("_HostageModules %1",_HostageModules);
 if (_HostageModules isEqualTo []) exitwith {
     ERROR("No Hostage Modules Found!");
     private _name = "No Modules Found";
@@ -20,7 +17,6 @@ if (_HostageModules isEqualTo []) exitwith {
     _ctrlCombo lbSetCurSel _index;
 };
 
-LOG_1("GVAR(AreaArray) %1",GVAR(AreaArray));
 {
     private _logic = _x;
     private _AreaName = if (is3den) then {
@@ -37,8 +33,9 @@ LOG_1("GVAR(AreaArray) %1",GVAR(AreaArray));
     if (isNil QGVAR(AreaArray)) then {
         GVAR(AreaArray) = [_sendArray];
     } else {
-        private _index = [GVAR(AreaArray),_AreaName,0] call FUNC(searchNestedArray);
+        private _index = [GVAR(AreaArray),_AreaName,0] call EFUNC(Core,searchNestedArray);
         private _inArray = if (_index isEqualTo -1) then {false} else {true};
+        LOG_2("_AreaName %1 _inArray %2",_AreaName,_inArray);
         if (_inArray) then {
             GVAR(AreaArray) set [_index,_sendArray];
         } else {
