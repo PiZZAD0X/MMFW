@@ -90,7 +90,7 @@ class CfgVehicles {
                 displayName = "Max time outside of AO";
                 tooltip = "The amount of time in seconds a land based unit is allowed to stay outside the AO";
                 property = QGVAR(SoftTimeOutside);
-                control = QMGVAR(30To120Step1_Slider);
+                control = QEGVAR(Core,30To120Step1_Slider);
                 expression = MODULE_EXPRESSION;
                 defaultValue = "30";
                 AOTypes[] = {"SOFT"};
@@ -101,7 +101,7 @@ class CfgVehicles {
                 displayName = "Max time outside of AO";
                 tooltip = "The amount of time in seconds an air based unit is allowed to stay outside the AO";
                 property = QGVAR(SoftTimeOutsideAir);
-                control = QMGVAR(120To360Step1_Slider);
+                control = QEGVAR(Core,120To360Step1_Slider);
                 expression = MODULE_EXPRESSION;
                 defaultValue = "120";
                 AOTypes[] = {"SOFT"};

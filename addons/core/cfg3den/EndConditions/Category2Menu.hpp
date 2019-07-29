@@ -47,7 +47,7 @@ class EGVAR(EndConditions,CasualtySettings_Category6) {
             property = QEGVAR(EndConditions,CasualtyCount_Percentage_BLUFOR_6);
             displayName = "Casualty Percentage";
             tooltip = "End condition fires when team casualty percentage is over this number";
-            control = QMGVAR(5To100Step5_Slider);
+            control = QGVAR(5To100Step5_Slider);
             expression = SCENARIO_EXPRESSION;
             validate = "number";
             defaultValue = "75";
@@ -64,7 +64,7 @@ class EGVAR(EndConditions,CasualtySettings_Category6) {
             property = QEGVAR(EndConditions,CasualtyCount_Percentage_OPFOR_6);
             displayName = "Casualty Percentage";
             tooltip = "End condition fires when team casualty percentage is over this number";
-            control = QMGVAR(5To100Step5_Slider);
+            control = QGVAR(5To100Step5_Slider);
             expression = SCENARIO_EXPRESSION;
             validate = "number";
             defaultValue = "75";
@@ -81,7 +81,7 @@ class EGVAR(EndConditions,CasualtySettings_Category6) {
             property = QEGVAR(EndConditions,CasualtyCount_Percentage_Indfor_6);
             displayName = "Casualty Percentage";
             tooltip = "End condition fires when team casualty percentage is over this number";
-            control = QMGVAR(5To100Step5_Slider);
+            control = QGVAR(5To100Step5_Slider);
             expression = SCENARIO_EXPRESSION;
             validate = "number";
             defaultValue = "75";
@@ -98,7 +98,7 @@ class EGVAR(EndConditions,CasualtySettings_Category6) {
             property = QEGVAR(EndConditions,CasualtyCount_Percentage_Civ_6);
             displayName = "Casualty Percentage";
             tooltip = "End condition fires when team casualty percentage is over this number";
-            control = QMGVAR(5To100Step5_Slider);
+            control = QGVAR(5To100Step5_Slider);
             expression = SCENARIO_EXPRESSION;
             validate = "number";
             defaultValue = "75";
@@ -220,17 +220,17 @@ class EGVAR(EndConditions,ExtractionSettings_Category6) {
         };
         class EGVAR(EndConditions,ExtractionMarker_6) {
             property = QEGVAR(EndConditions,ExtractionMarker_6);
-            displayName = "Extraction Marker";
-            tooltip = "Marker name of extraction area.";
-            control = "EditShort";
+            displayName = "Extraction Area";
+            tooltip = "Extraction Area.";
+            control = QEGVAR(EndConditions,ExtractionAreaSelectAttribute);
             expression = SCENARIO_EXPRESSION;
-            defaultValue = "''";
+            defaultValue = "'No Area Selected'";
         };
         class EGVAR(EndConditions,ExtractionRatio_6) {
             property = QEGVAR(EndConditions,ExtractionRatio_6);
             displayName = "Ratio";
             tooltip = "Percentage of alive personnel inside the marker to be considered extracted. Default 75";
-            control = QMGVAR(5To100Step5_Slider);
+            control = QGVAR(5To100Step5_Slider);
             expression = SCENARIO_EXPRESSION;
             validate = "number";
             defaultValue = "75";

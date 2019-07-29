@@ -21,6 +21,7 @@ class CfgVehicles {
                 tooltip = "Area name displayed in referenced in module select";
                 control = "EditShort";
                 typeName = "STRING";
+                unique = 1;
                 property = QGVAR(AreaName);
                 expression = MODULE_EXPRESSION;
                 validate = "STRING";

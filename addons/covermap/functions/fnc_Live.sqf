@@ -4,7 +4,6 @@ EXEC_CHECK(CLIENT);
 params ["_AONameCalled"];
 private ["_areaCalled","_zoomlevelCalled","_found","_index","_logicCalled"];
 
-_AONameCalled = toLower(_AONameCalled);
 private _found = false;
 {
     _x params ["_AOName","_area","_AOZoom","_logic"];

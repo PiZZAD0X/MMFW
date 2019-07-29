@@ -3,8 +3,9 @@ EDEN_CHECK;
 
 params ["_ctrl","_value","_config"];
 
+private _unit = ((get3denselected "object") select 0);
 private _cfgname = gettext (_config >> "property");
-missionNamespace setvariable [_cfgName,_value];
+_unit setvariable [_cfgname,_value];
 private _ctrlCombo = (_ctrl controlsGroupCtrl 100);
 _ctrlCombo setvariable ["parentcontrolcfg",_config];
 private _CoverMapModules = (all3DENEntities select 3) select {_x isKindOf QGVAR(Module)};
@@ -27,7 +28,7 @@ private _CoverMapModulesList = [];
     };
 } foreach _CoverMapModules;
 
-private _name = "No Area Selected";
+private _name = "Side Default AO";
 private _index = _ctrlCombo lbadd _name;
 _ctrlCombo lbsetdata [_index,_name];
 if (_value isEqualto (_ctrlCombo lbData _index) || (_value isEqualto "No Modules Found")) then {

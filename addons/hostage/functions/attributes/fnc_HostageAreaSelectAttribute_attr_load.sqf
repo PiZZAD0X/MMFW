@@ -19,11 +19,7 @@ if (_HostageModules isEqualTo []) exitwith {
 
 {
     private _logic = _x;
-    private _AreaName = if (is3den) then {
-        ((_logic get3DENAttribute QGVAR(AreaName)) select 0)
-    } else {
-        GETVAR(_logic,AreaName,"Area0");
-    };
+    private _AreaName = (_logic get3DENAttribute QGVAR(AreaName)) select 0;
     private _loc = getPosATL _logic;
     private _size = _logic getVariable ["objectArea", [100, 100]];
     _size params ["_radiusX","_radiusY"];
@@ -47,7 +43,7 @@ if (_HostageModules isEqualTo []) exitwith {
 private _name = "No Area Selected";
 private _index = _ctrlCombo lbadd _name;
 _ctrlCombo lbsetdata [_index,_name];
-if (_value isEqualto (_ctrlCombo lbData _index)) then {
+if (_value isEqualto (_ctrlCombo lbData _index) || (_value isEqualto "No Modules Found")) then {
     _ctrlCombo lbSetCurSel _index;
 };
 

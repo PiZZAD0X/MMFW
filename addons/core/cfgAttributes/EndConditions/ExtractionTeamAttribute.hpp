@@ -22,7 +22,7 @@ class EGVAR(EndConditions,ExtractTeam): Toolbox {
             h = "8 * (pixelH * pixelGrid * 0.50)";
             rows = 1;
             columns = 4;
-            strings[] = {"BLUFOR","OPFOR","Indfor","CIVILIAN"};
+            strings[] = {"BLUFOR","OPFOR","INDFOR","CIVILIAN"};
             values[] = {0,1,2,3};
             onToolboxSelChanged = "\
                 params ['_control','_value'];\

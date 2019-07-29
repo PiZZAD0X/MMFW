@@ -17,7 +17,7 @@ class EGVAR(EndConditions,Custom_File) {
             control = "Edit";
             validate = "STRING";
             expression = SCENARIO_EXPRESSION;
-            defaultValue = "''";
+            defaultValue = "'No Area Selected'";
         };
     };
 };

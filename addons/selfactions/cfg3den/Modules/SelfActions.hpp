@@ -46,7 +46,7 @@ class GVAR(Settings) {
             property = QGVAR(ParaFlare_Brightness);
             displayName = "ParaFlare Brightness";
             tooltip = "Sets the brightness of paraflares";
-            control = QMGVAR(15To40Step5_Slider);
+            control = QEGVAR(Core,15To40Step5_Slider);
             expression = SCENARIO_EXPRESSION;
             defaultValue = "15";
         };

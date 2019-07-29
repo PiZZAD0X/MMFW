@@ -15,7 +15,7 @@ class GVAR(Category)  {
             displayName = "Parachute Altitude";
             tooltip = "Altitude at which unit is parachuted";
             property = QGVAR(Altitude);
-            control = QMGVAR(100To1000Step100_Slider);
+            control = QEGVAR(Core,100To1000Step100_Slider);
             expression = ENTITY_EXPRESSION;
             condition = "objectControllable";
             validate = "number";
@@ -25,7 +25,7 @@ class GVAR(Category)  {
             displayName = "Parachute Randomized Altitude";
             tooltip = "Adds a random height to the normal parachute altitude";
             property = QGVAR(RandomAltitude);
-            control = QMGVAR(100To500Step100_Slider);
+            control = QEGVAR(Core,100To500Step100_Slider);
             expression = ENTITY_EXPRESSION;
             condition = "objectControllable";
             validate = "number";

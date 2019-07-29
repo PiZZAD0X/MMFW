@@ -29,7 +29,7 @@ class CfgVehicles {
                 property = QGVAR(ZoneName);
                 control = "Edit";
                 expression = MODULE_EXPRESSION;
-                defaultValue = "'CaptureZone'";
+                defaultValue = "'CaptureZone0'";
                 typeName = "STRING";
                 validate = "none";
             };
@@ -37,7 +37,7 @@ class CfgVehicles {
                 displayName = "Ratio Needed";
                 tooltip = "Ratio needed to capture the zone. Larger team / team in second place.";
                 property = QGVAR(RatioNeeded);
-                control = QMGVAR(1To100Step5_Slider);
+                control = QEGVAR(Core,1To100Step5_Slider);
                 expression = MODULE_EXPRESSION;
                 defaultValue = "75";
                 validate = "NUMBER";
@@ -56,7 +56,7 @@ class CfgVehicles {
                 displayName = "Blufor Time";
                 tooltip = "Time needed for Blufor to capture the zone in seconds. Set to 0 for instant capture";
                 property = QGVAR(Time_Blufor);
-                control = QMGVAR(0To600Step1_Slider);
+                control = QEGVAR(Core,0To600Step1_Slider);
                 expression = MODULE_EXPRESSION;
                 defaultValue = "30";
                 typeName = "NUMBER";
@@ -102,7 +102,7 @@ class CfgVehicles {
                 displayName = "Opfor Time";
                 tooltip = "Time needed for Opfor to capture the zone in seconds. Set to 0 for instant capture";
                 property = QGVAR(Time_Opfor);
-                control = QMGVAR(0To600Step1_Slider);
+                control = QEGVAR(Core,0To600Step1_Slider);
                 expression = MODULE_EXPRESSION;
                 defaultValue = "30";
                 typeName = "NUMBER";
@@ -148,7 +148,7 @@ class CfgVehicles {
                 displayName = "Independent Time";
                 tooltip = "Time needed for Independent to capture the zone in seconds. Set to 0 for instant capture";
                 property = QGVAR(Time_Indfor);
-                control = QMGVAR(0To600Step1_Slider);
+                control = QEGVAR(Core,0To600Step1_Slider);
                 expression = MODULE_EXPRESSION;
                 defaultValue = "30";
                 typeName = "NUMBER";
@@ -194,7 +194,7 @@ class CfgVehicles {
                 displayName = "Civilian Time";
                 tooltip = "Time needed for Civilian to capture the zone in seconds. Set to 0 for instant capture";
                 property = QGVAR(Time_Civ);
-                control = QMGVAR(0To600Step1_Slider);
+                control = QEGVAR(Core,0To600Step1_Slider);
                 expression = MODULE_EXPRESSION;
                 defaultValue = "30";
                 typeName = "NUMBER";

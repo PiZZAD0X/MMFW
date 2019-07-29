@@ -1,4 +1,4 @@
-class MGVAR(Slider): Slider {
+class GVAR(Slider): Slider {
     attributeLoad = "\
         params ['_ctrlGroup'];\
         private _slider = _ctrlGroup controlsGroupCtrl 100;\
@@ -22,7 +22,7 @@ class MGVAR(Slider): Slider {
 };
 
 #define SLIDERCONFIG_DECIMAL(MINVAL,MAXVAL,STEPSIZE)\
-class PREFIX##_##MINVAL##To##MAXVAL##Step0##STEPSIZE##_Slider: MGVAR(Slider) {\
+class PREFIX##_##COMPONENT##_##MINVAL##To##MAXVAL##Step0##STEPSIZE##_Slider: GVAR(Slider) {\
     attributeLoad = "\
         params ['_ctrlGroup'];\
         private _slider = _ctrlGroup controlsGroupCtrl 100;\
@@ -59,7 +59,7 @@ class PREFIX##_##MINVAL##To##MAXVAL##Step0##STEPSIZE##_Slider: MGVAR(Slider) {\
 }
 
 #define SLIDERCONFIG(MINVAL,MAXVAL,STEPSIZE)\
-class PREFIX##_##MINVAL##To##MAXVAL##Step##STEPSIZE##_Slider: MGVAR(Slider) {\
+class PREFIX##_##COMPONENT##_##MINVAL##To##MAXVAL##Step##STEPSIZE##_Slider: GVAR(Slider) {\
     attributeLoad = "\
         params ['_ctrlGroup'];\
         private _slider = _ctrlGroup controlsGroupCtrl 100;\

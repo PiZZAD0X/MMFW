@@ -32,7 +32,7 @@ class EGVAR(TeamRespawnSettings,Opfor) {
             displayName = "Respawn Delay";
             tooltip = "Delay in seconds between a player being killed and respawning. Must be more than 5 seconds.";
             respawnTypes[] = {1,2,3,4,5};
-            control = QMGVAR(5To20Step1_Slider);
+            control = QGVAR(5To20Step1_Slider);
             expression = SCENARIO_EXPRESSION;
             defaultValue = "5";
             validate = "number";
@@ -42,7 +42,7 @@ class EGVAR(TeamRespawnSettings,Opfor) {
             displayName = "Individual Respawn Tickets";
             tooltip = "Number of individual respawns.";
             respawnTypes[] = {2};
-            control = QMGVAR(1To10Step1_Slider);
+            control = QGVAR(1To10Step1_Slider);
             expression = SCENARIO_EXPRESSION;
             defaultValue = "2";
             validate = "number";
@@ -52,7 +52,7 @@ class EGVAR(TeamRespawnSettings,Opfor) {
             displayName = "Team Respawn Tickets";
             tooltip = "Number of team respawns.";
             respawnTypes[] = {3};
-            control = QMGVAR(10To100Step1_Slider);
+            control = QGVAR(10To100Step1_Slider);
             expression = SCENARIO_EXPRESSION;
             defaultValue = "30";
             validate = "number";
@@ -124,7 +124,7 @@ class EGVAR(TeamJIPSettings,OPFOR) {
             property = QEGVAR(JIP,Distance_OPFOR);
             displayName = "JiP Distance";
             tooltip = "If distance to group members upon spawn is greater than this you will be granted the defined JiP action";
-            control = QMGVAR(50To200Step50_Slider);
+            control = QGVAR(50To200Step50_Slider);
             expression = SCENARIO_EXPRESSION;
             validate = "number";
             defaultValue = "200";
@@ -133,7 +133,7 @@ class EGVAR(TeamJIPSettings,OPFOR) {
             property = QEGVAR(JIP,SpawnDistance_OPFOR);
             displayName = "Spawn Radius";
             tooltip = "Exiting this radius will remove the JiP actions from the player.";
-            control = QMGVAR(50To200Step50_Slider);
+            control = QGVAR(50To200Step50_Slider);
             expression = SCENARIO_EXPRESSION;
             validate = "number";
             defaultValue = "50";

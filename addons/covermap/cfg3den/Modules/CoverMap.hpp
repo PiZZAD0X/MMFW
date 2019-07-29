@@ -41,7 +41,7 @@ class GVAR(Category) {
             tooltip = "Set the OPFOR Map area to corresponding CoverMap AO name.";
             control = GVAR(AreaSelectAttribute);
             expression = SCENARIO_EXPRESSION;
-            defaultValue = "'Area0'";
+            defaultValue = "'No Area Selected'";
             validate = "STRING";
         };
         class GVAR(DefaultAOList_OPFOR) {
@@ -58,7 +58,7 @@ class GVAR(Category) {
             tooltip = "Set the Indfor Map area to corresponding CoverMap AO name.";
             control = GVAR(AreaSelectAttribute);
             expression = SCENARIO_EXPRESSION;
-            defaultValue = "'Area0'";
+            defaultValue = "'No Area Selected'";
             validate = "STRING";
         };
         class GVAR(DefaultAOList_Indfor) {
@@ -75,7 +75,7 @@ class GVAR(Category) {
             tooltip = "Set the Civilian Map area to corresponding CoverMap AO name.";
             control = GVAR(AreaSelectAttribute);
             expression = SCENARIO_EXPRESSION;
-            defaultValue = "'Area0'";
+            defaultValue = "'No Area Selected'";
             validate = "STRING";
         };
         class GVAR(DefaultAOList_Civ) {

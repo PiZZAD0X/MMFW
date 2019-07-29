@@ -25,6 +25,7 @@ class CfgVehicles {
                 tooltip = "AO name displayed in ace actions and referenced in module settings";
                 control = "EditShort";
                 typeName = "STRING";
+                unique = 1;
                 property = QGVAR(AOName);
                 expression = MODULE_EXPRESSION;
                 validate = "STRING";
