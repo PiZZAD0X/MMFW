@@ -7,7 +7,7 @@ class GVAR(Attributes) {
             tooltip = "Set the ability for players to use ACE carry actions on this object";
             property = QGVAR(Carryable);
             control = "Checkbox";
-            expression = QUOTE([ARR_2(_this,_value)] call FUNC(CarryExpression));
+            expression = ENTITY_EXPRESSION;
             condition = "(1 - objectBrain) * (1 - objectVehicle)";
             defaultValue = "1";
         };
@@ -16,7 +16,7 @@ class GVAR(Attributes) {
             tooltip = "Set the ability for players to use ACE drag actions on this object";
             property = QGVAR(Draggable);
             control = "Checkbox";
-            expression = QUOTE([ARR_2(_this,_value)] call FUNC(DragExpression));
+            expression = ENTITY_EXPRESSION;
             condition = "(1 - objectBrain) * (1 - objectVehicle)";
             defaultValue = "1";
         };

@@ -1,5 +1,4 @@
-PREP(CarryExpression);
-PREP(DragExpression);
+PREP(ObjectInitPost);
 
 PREPATTR(CarryAttribute_attr_load);
 PREPATTR(CarryAttribute_attr_save);
