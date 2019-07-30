@@ -5,15 +5,6 @@ LOG("Server Post Init");
 
 GVAR(EventDisconnectHandle) = addMissionEventHandler ["HandleDisconnect", {_this call FUNC(EventDisconnect);}];
 
-if (EGETMVAR(AI,ViewDistance_Enforce,false)) then {
-    setViewDistance EGETMVAR(AI,ViewDistance,2500);
-} else {
-    if (GETMVAR(VisionAIEnabled,false)) then {
-        setViewDistance (GETMVAR(AIViewDistance,2500));
-        TRACE_1("AI Server Viewdistance",(GETMVAR(AIViewDistance,2500)));
-    };
-};
-
 SETMPVAR(MissionEnded,false);
 SETMPVAR(ServerInitialized,true);
 

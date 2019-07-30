@@ -15,5 +15,6 @@ class CfgPatches {
 };
 
 #include "\z\MMFW\addons\main\RscTitles.hpp"
-//#include "CfgEventHandlers.hpp"
-//#include "Cfg3DEN.hpp"
+#include "CfgEventHandlers.hpp"
+#include "CfgStatemachines.hpp"
+#include "Cfg3DEN.hpp"

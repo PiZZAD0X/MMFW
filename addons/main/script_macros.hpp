@@ -11,14 +11,14 @@
     #undef PREPE
     #undef PREPATTR
     #define PREP(fncName) DFUNC(fncName) = compile preprocessFileLineNumbers QPATHTOF(functions\DOUBLES(fnc,fncName).sqf)
-    #define PREPE(fncName,moduleName) DEFUNC(moduleName,fncName) = compile preprocessFileLineNumbers QPATHTOF(functions\moduleName\DOUBLES(fnc,fncName).sqf)
+    #define PREPE(moduleName,fncName) DEFUNC(moduleName,fncName) = compile preprocessFileLineNumbers QPATHTOF(functions\moduleName\DOUBLES(fnc,fncName).sqf)
     #define PREPATTR(fncName) DFUNC(fncName) = compile preprocessFileLineNumbers QPATHTOF(functions\attributes\DOUBLES(fnc,fncName).sqf)
 #else
     #undef PREP
     #undef PREPE
     #undef PREPATTR
     #define PREP(fncName) [QPATHTOF(functions\DOUBLES(fnc,fncName).sqf), QFUNC(fncName)] call CBA_fnc_compileFunction
-    #define PREPE(fncName,moduleName) [QPATHTOF(functions\moduleName\DOUBLES(fnc,fncName).sqf), QEFUNC(moduleName,fncName)] call CBA_fnc_compileFunction
+    #define PREPE(moduleName,fncName) [QPATHTOF(functions\moduleName\DOUBLES(fnc,fncName).sqf), QEFUNC(moduleName,fncName)] call CBA_fnc_compileFunction
     #define PREPATTR(fncName) [QPATHTOF(functions\attributes\DOUBLES(fnc,fncName).sqf), QFUNC(fncName)] call CBA_fnc_compileFunction
 #endif
 
@@ -26,8 +26,8 @@
 
 #define MMFW_DEPRECATED(arg1,arg2,arg3) WARNING_3("%1 is deprecated. Support will be dropped in version %2. Replaced by: %3",arg1,arg2,arg3)
 
-#define DGVAR(varName)    if(isNil "MMFW_DEBUG_NAMESPACE") then { MMFW_DEBUG_NAMESPACE = []; }; if(!(QUOTE(GVAR(varName)) in MMFW_DEBUG_NAMESPACE)) then { PUSH(MMFW_DEBUG_NAMESPACE, QUOTE(GVAR(varName))); }; GVAR(varName)
-#define DVAR(varName)     if(isNil "MMFW_DEBUG_NAMESPACE") then { MMFW_DEBUG_NAMESPACE = []; }; if(!(QUOTE(varName) in MMFW_DEBUG_NAMESPACE)) then { PUSH(MMFW_DEBUG_NAMESPACE, QUOTE(varName)); }; varName
+#define DGVAR(varName)    if (isNil "MMFW_DEBUG_NAMESPACE") then { MMFW_DEBUG_NAMESPACE = []; }; if (!(QUOTE(GVAR(varName)) in MMFW_DEBUG_NAMESPACE)) then { PUSH(MMFW_DEBUG_NAMESPACE, QUOTE(GVAR(varName))); }; GVAR(varName)
+#define DVAR(varName)     if (isNil "MMFW_DEBUG_NAMESPACE") then { MMFW_DEBUG_NAMESPACE = []; }; if (!(QUOTE(varName) in MMFW_DEBUG_NAMESPACE)) then { PUSH(MMFW_DEBUG_NAMESPACE, QUOTE(varName)); }; varName
 #define DFUNC(var1) TRIPLES(ADDON,fnc,var1)
 #define DEFUNC(var1,var2) TRIPLES(DOUBLES(PREFIX,var1),fnc,var2)
 

@@ -10,14 +10,6 @@ class GVAR(Settings_Category) {
             expression = SCENARIO_EXPRESSION;
             defaultValue = "false";
         };
-        class GVAR(CommanderEnabled) {
-            property = QGVAR(CommanderEnabled);
-            displayName = "Enable Commander";
-            tooltip = "";
-            control = "CheckBox";
-            expression = SCENARIO_EXPRESSION;
-            defaultValue = "false";
-        };
         class GVAR(Debug) {
             property = QGVAR(Debug);
             displayName = "Enable Debug";

@@ -4,7 +4,6 @@ class Default;
 class Title: Default {
     class Controls {
         class Title;
-        class Value;
     };
 };
 
@@ -77,6 +76,31 @@ class Slider: Title {
         class Title;
         class Value;
         class Edit;
+    };
+};
+
+class SliderTime: Title {
+    class Controls {
+        class Title;
+        class Value;
+        class Frame;
+        class Separator;
+        class Hour;
+        class Minute;
+        class Second;
+    };
+};
+
+class SliderTimeDay: SliderTime {
+    class Controls {
+        class Title;
+        class Preview;
+        class Value;
+        class Frame;
+        class Separator;
+        class Hour;
+        class Minute;
+        class Second;
     };
 };
 

@@ -5,8 +5,8 @@
 // Default versioning level
 #define DEFAULT_VERSIONING_LEVEL 2
 
-#define DGVAR(varName)    if(isNil "MMFW_DEBUG_NAMESPACE") then { MMFW_DEBUG_NAMESPACE = []; }; if(!(QUOTE(GVAR(varName)) in MMFW_DEBUG_NAMESPACE)) then { PUSH(MMFW_DEBUG_NAMESPACE, QUOTE(GVAR(varName))); }; GVAR(varName)
-#define DVAR(varName)     if(isNil "MMFW_DEBUG_NAMESPACE") then { MMFW_DEBUG_NAMESPACE = []; }; if(!(QUOTE(varName) in MMFW_DEBUG_NAMESPACE)) then { PUSH(MMFW_DEBUG_NAMESPACE, QUOTE(varName)); }; varName
+#define DGVAR(varName)    if (isNil "MMFW_DEBUG_NAMESPACE") then { MMFW_DEBUG_NAMESPACE = []; }; if (!(QUOTE(GVAR(varName)) in MMFW_DEBUG_NAMESPACE)) then { PUSH(MMFW_DEBUG_NAMESPACE, QUOTE(GVAR(varName))); }; GVAR(varName)
+#define DVAR(varName)     if (isNil "MMFW_DEBUG_NAMESPACE") then { MMFW_DEBUG_NAMESPACE = []; }; if (!(QUOTE(varName) in MMFW_DEBUG_NAMESPACE)) then { PUSH(MMFW_DEBUG_NAMESPACE, QUOTE(varName)); }; varName
 #define DFUNC(var1) TRIPLES(ADDON,fnc,var1)
 #define DEFUNC(var1,var2) TRIPLES(DOUBLES(PREFIX,var1),fnc,var2)
 

@@ -20,23 +20,5 @@ class GVAR(ViewDistanceSettings) {
             defaultValue = "2500";
             typeName = "NUMBER";
         };
-        class GVAR(VisionAIEnabled) {
-            property = QGVAR(VisionAIEnabled);
-            displayName = "AI Viewdistance";
-            tooltip = "Enable AI Viewdistance";
-            control = "Checkbox";
-            expression = SCENARIO_EXPRESSION;
-            defaultValue = "false";
-        };
-        class GVAR(AIViewDistance) {
-            property = QGVAR(AIViewDistance);
-            displayName = "AI View-distance";
-            tooltip = "Set the AI View-distance in meters. Minimum of 200 meters enforced by A3 engine.";
-            control = QGVAR(200To10000Step50_Slider);
-            expression = SCENARIO_EXPRESSION;
-            validate = "number";
-            defaultValue = "2500";
-            typeName = "NUMBER";
-        };
     };
 };
