@@ -13,7 +13,7 @@ class GVAR(TeamType_Select): Title {
             columns = 3;
             strings[] = {"Player","AI","Both"};
             values[] = {0,1,2};
-            onToolboxSelChanged = QUOTE([_this] call FUNC(TeamType_Select_onToolboxSel));
+            onToolboxSelChanged = QUOTE(_this call FUNC(TeamType_Select_onToolboxSel));
         };
     };
 };

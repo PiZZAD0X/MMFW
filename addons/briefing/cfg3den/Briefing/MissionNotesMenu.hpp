@@ -20,7 +20,7 @@ class GVAR(MissionNotes) {
         };
         class GVAR(MissionNotes_Testers) {
             property = QGVAR(MissionNotes_Testers);
-            displayName = "Mission Testers and Additional Credit";
+            displayName = "Mission Testers";
             tooltip = "Mission Testers and Additional Credit";
             control = "Edit";
             expression = SCENARIO_EXPRESSION;

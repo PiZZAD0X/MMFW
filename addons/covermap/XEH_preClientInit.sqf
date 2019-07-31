@@ -87,7 +87,7 @@ EXEC_CHECK(CLIENT);
             };
             if (_AOArray isEqualTo []) exitwith {};
             private _MapChangeMenu = ["MapChangeMenu", "Switch Map", "", {}, {true}] call ace_interact_menu_fnc_createAction;
-            [player, 1, ["ACE_SelfActions","ACE_Equipment"], _MapChangeMenu] call ace_interact_menu_fnc_addActionToObject;
+            [player, 1, ["ACE_SelfActions"], _MapChangeMenu] call ace_interact_menu_fnc_addActionToObject;
             private _ActionArray = [];
             {
                 private _AONameAllowed = _x;
@@ -103,7 +103,7 @@ EXEC_CHECK(CLIENT);
                             [(_params select 0)] call FUNC(Live);
                         };
                         private _tempAction = ["switch_MapAO", ("Switch Map to " + _AONameAllowed), "", _statement, _condition, {}, [_AONameAllowed]] call ace_interact_menu_fnc_createAction;
-                        [player, 1, ["ACE_SelfActions","ACE_Equipment","MapChangeMenu"], _tempAction] call ace_interact_menu_fnc_addActionToObject;
+                        [player, 1, ["ACE_SelfActions","MapChangeMenu"], _tempAction] call ace_interact_menu_fnc_addActionToObject;
                         _ActionArray pushback _AONameAllowed;
                         LOG_1("CoverMap action added for area: %1",_AONameAllowed);
                     };

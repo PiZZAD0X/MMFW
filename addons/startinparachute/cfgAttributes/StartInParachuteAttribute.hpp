@@ -14,7 +14,7 @@ class GVAR(TypeAttribute): Toolbox {
             columns = 3;
             strings[] = {"None","Non Steerable","Steerable"};
             values[] = {0,1,2};
-            onToolboxSelChanged = QUOTE([_this] call FUNC(StartInParachuteAttribute_ToolboxSel));
+            onToolboxSelChanged = QUOTE(_this call FUNC(StartInParachuteAttribute_ToolboxSel));
         };
     };
 };
