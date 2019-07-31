@@ -6,19 +6,19 @@ class GVAR(Attributes) {
             displayName = "ACE Carryable";
             tooltip = "Set the ability for players to use ACE carry actions on this object";
             property = QGVAR(Carryable);
-            control = "Checkbox";
-            expression = ENTITY_EXPRESSION;
+            control = QGVAR(CarryAttribute);
+            expression = QUOTE([ARR_2(_this, _value)] call FUNC(InitPostCarryable));
             condition = "(1 - objectBrain) * (1 - objectVehicle)";
-            defaultValue = "1";
+            defaultValue = "(1)";
         };
         class GVAR(Draggable) {
             displayName = "ACE Draggable";
             tooltip = "Set the ability for players to use ACE drag actions on this object";
             property = QGVAR(Draggable);
-            control = "Checkbox";
-            expression = ENTITY_EXPRESSION;
+            control = QGVAR(DragAttribute);
+            expression = QUOTE([ARR_2(_this, _value)] call FUNC(InitPostDraggable));
             condition = "(1 - objectBrain) * (1 - objectVehicle)";
-            defaultValue = "1";
+            defaultValue = "(1)";
         };
     };
 };

@@ -11,7 +11,7 @@ class GVAR(DragAttribute): GVAR(CarryAttribute) {
             columns = 3;
             strings[] = {"Cant Drag","Can Drag","Ignore Weight"};
             values[] = {0,1,2};
-            onToolboxSelChanged = QUOTE([_this] call FUNC(CarryAttribute_ToolboxSel));
+            onToolboxSelChanged = QUOTE(_this call FUNC(CarryAttribute_ToolboxSel));
         };
     };
 };

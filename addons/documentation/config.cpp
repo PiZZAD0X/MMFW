@@ -29,7 +29,7 @@ class CfgPatches {
         };
         authors[] = {"Olsen","PiZZADOX","Sacher"};
         author = "MMFW Team";
-        authorUrl = "https://github.com/unitedoperations";
+        authorUrl = "https://github.com/PiZZAD0X/MMFW";
         VERSION_CONFIG;
     };
 };

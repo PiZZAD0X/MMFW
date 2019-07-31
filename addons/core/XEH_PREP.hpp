@@ -50,6 +50,7 @@ PREP(Transport);
 PREP(CAManBaseRespawn);
 PREP(CAManBaseKilled);
 PREP(CAManBaseInitPost);
+PREP(ModuleExpression);
 
 PREPATTR(RespawnCombo_AttrLoad);
 PREPATTR(RespawnCombo_AttrSave);

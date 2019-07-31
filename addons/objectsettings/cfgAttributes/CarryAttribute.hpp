@@ -14,7 +14,7 @@ class GVAR(CarryAttribute): Toolbox {
             columns = 3;
             strings[] = {"Cant Carry","Can Carry","Ignore Weight"};
             values[] = {0,1,2};
-            onToolboxSelChanged = QUOTE([_this] call FUNC(CarryAttribute_ToolboxSel));
+            onToolboxSelChanged = QUOTE(_this call FUNC(CarryAttribute_ToolboxSel));
         };
     };
 };
