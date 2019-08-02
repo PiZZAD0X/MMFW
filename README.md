@@ -4,7 +4,7 @@ To learn more about the framework, visit [our wiki]().
 
 For information on how to make a mission using the framework read [this guide]().
 
-To view bugs or requested features, view the [issues](). If you want to report a bug and do not see your issue listed, you can open a [bug report](). If you want to request a feature not listed you can do so using the [feature request]().
+To view bugs or requested features, view the [issues](https://github.com/PiZZAD0X/MMFW/issues). If you want to report a bug and do not see your issue listed, you can open a [bug report](https://github.com/PiZZAD0X/MMFW/issues/new?assignees=&labels=&template=bug_report.md&title=). If you want to request a feature not listed you can do so using the [feature request](https://github.com/PiZZAD0X/MMFW/issues/new?assignees=&labels=&template=feature_request.md&title=).
 
 You can aid in development of this project by [contributing]()
 
