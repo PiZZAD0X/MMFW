@@ -10,7 +10,6 @@ class CfgPatches {
             "MMFW_main",
             "MMFW_core",
             "MMFW_aidrivers",
-            "MMFW_acre",
             "MMFW_antind",
             "MMFW_autotrack",
             "MMFW_briefing",

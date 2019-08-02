@@ -1,10 +1,10 @@
 class GVAR(MissionTypeAttribute): Toolbox {
     attributeLoad= QUOTE(\
-        missionNamespace setVariable [QQGVAR(MissionType),_value];\
+        missionNamespace setVariable [ARR_2(QQGVAR(MissionType),_value)];\
         (_this controlsGroupCtrl 100) lbsetcursel _value;\
     );
     attributeSave= QUOTE(\
-        private _value = missionNamespace getVariable [QQGVAR(MissionType),0];\
+        private _value = missionNamespace getVariable [ARR_2(QQGVAR(MissionType),0)];\
         _value\
     );
     h="8 * (pixelH * pixelGrid * 0.50)";
@@ -31,7 +31,7 @@ class GVAR(MissionTypeAttribute): Toolbox {
             };
             values[]={0,1,2,3};
             onToolboxSelChanged = QUOTE(\
-                missionNamespace setVariable [QQGVAR(MissionType),(_this select 1)];\
+                missionNamespace setVariable [ARR_2(QQGVAR(MissionType),(_this select 1))];\
             );
         };
     };

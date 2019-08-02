@@ -58,7 +58,7 @@ if sys.platform == "win32":
 
 ######## GLOBALS #########
 project = "@MMFW"
-project_version = "3.0.0"
+project_version = "1.0.0"
 arma3tools_path = ""
 work_drive = ""
 module_root = ""
@@ -72,7 +72,7 @@ dssignfile = ""
 prefix = "MMFW"
 pbo_name_prefix = "MMFW_"
 signature_blacklist = []
-importantFiles = ["mod.cpp", "readme.md", "authors.txt", "license", "logo_ust101_ca.paa", "logo_ust101_over_ca.paa", "logo_ust101_small_ca.paa"]
+importantFiles = ["mod.cpp", "readme.md", "authors.txt", "license"]
 versionFiles = ["readme.md", "mod.cpp"]
 
 ciBuild = False # Used for CI builds

@@ -159,7 +159,7 @@
 /////////////////////
 
 #define RGB_WHITE                {1,1,1,1}
-#define RGB_WHITE_50%            {1,1,1,0.5}
+#define RGB_WHITE_50            {1,1,1,0.5}
 
 #define RGB_BLACK                {0,0,0,1}
 #define RGB_RED                    {1,0,0,1}

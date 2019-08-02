@@ -12,9 +12,7 @@ class CfgPatches {
             "cba_main",
             "cba_xeh",
             // ACE
-            "ace_main",
-            // ACRE
-            "acre_main"
+            "ace_main"
         };
         author = ECSTRING(core,MMFWTeam);
         url = CSTRING(URL);
@@ -31,7 +29,7 @@ class CfgMods {
         hideName = "true";
         actionName = "Website";
         action = CSTRING(URL);
-        description = "Issue Tracker: https://github.com/unitedoperations/UnitedOperationsFramework/issues";
+        description = "Issue Tracker: https://github.com/PiZZAD0X/MMFW/issues";
     };
 };
 
