@@ -29,11 +29,9 @@ class Cfg3DEN {
     };
 
     //Add Custom Base 3DEN Options & Categories
-    class Group {
-    };
+    class Group {};
 
-    class Object {
-    };
+    class Object {};
 
     class Logic {
         class Draw {
