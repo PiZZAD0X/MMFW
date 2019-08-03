@@ -19,8 +19,7 @@ class EGVAR(Import,FromProfileAttribute): Combo {
 				_this params ['_ctrlButton'];\
 				private _ctrlGroup = ctrlParentControlsGroup _ctrlButton;\
 				private _ctrlCombo = _ctrlGroup controlsgroupctrl 100;\
-				[ARR_2((_ctrlCombo lbData lbcursel _ctrlCombo),0)] call FUNC(ImportSettings);\
-			);
+				[ARR_2((_ctrlCombo lbData lbcursel _ctrlCombo),0)] call FUNC(ImportSettings););
 		};
 	};
 };

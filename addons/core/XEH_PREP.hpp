@@ -52,6 +52,8 @@ PREP(CAManBaseKilled);
 PREP(CAManBaseInitPost);
 PREP(ModuleExpression);
 
+PREPATTR(AIOnlyOnLoad);
+PREPATTR(PlayerOnlyOnLoad);
 PREPATTR(RespawnCombo_AttrLoad);
 PREPATTR(RespawnCombo_AttrSave);
 PREPATTR(RespawnCombo_onLBSelChanged);

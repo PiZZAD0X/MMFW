@@ -4,12 +4,10 @@ class GVAR(Slider): Slider {
         private _slider = _ctrlGroup controlsGroupCtrl 100;\
         private _edit = _ctrlGroup controlsGroupCtrl 101;\
         _slider sliderSetPosition _value;\
-        _edit ctrlSetText ([_value, 1, 0, false] call CBA_fnc_formatNumber);\
-    ";
+        _edit ctrlSetText ([_value, 1, 0, false] call CBA_fnc_formatNumber);";
     attributeSave = "\
         params ['_ctrlGroup'];\
-        parseNumber ctrlText (_ctrlGroup controlsGroupCtrl 101)\
-    ";
+        parseNumber ctrlText (_ctrlGroup controlsGroupCtrl 101)";
     class Controls: Controls {
         class Title: Title {};
         class Value: Value {

@@ -4,13 +4,11 @@ class EGVAR(EndConditions,ExtractTeam): Toolbox {
         missionNamespace setvariable [_name,_value];\
         private _control = (_this controlsGroupCtrl 100);\
         _control setvariable ['ParentCfg',_config];\
-        _control lbsetcursel _value;\
-    ";
+        _control lbsetcursel _value;";
     attributeSave = "\
         private _name = gettext (_config >> 'property');\
         private _value = missionNamespace getvariable [_name,''];\
-        _value\
-    ";
+        _value";
     h = "8 * (pixelH * pixelGrid * 0.50)";
     class Controls: Controls {
         class Title: Title {};
@@ -28,8 +26,7 @@ class EGVAR(EndConditions,ExtractTeam): Toolbox {
                 params ['_control','_value'];\
                 private _config = _control getvariable ['ParentCfg',''];\
                 private _name = gettext (_config >> 'property');\
-                missionNamespace setvariable [_name,_value];\
-            ";
+                missionNamespace setvariable [_name,_value];";
         };
     };
 };

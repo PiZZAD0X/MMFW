@@ -20,8 +20,7 @@ class EGVAR(Export,ToProfileAttribute): ComboPreview {
 				private _ctrlGroup = ctrlParentControlsGroup _ctrlButton;\
 				private _ctrlEdit = _ctrlGroup controlsgroupctrl 100;\
 				private _name = ctrlText _ctrlEdit;\
-				[ARR_2(_name,0)] call FUNC(ExportSettings);\
-			);
+				[ARR_2(_name,0)] call FUNC(ExportSettings););
 		};
 	};
 };
