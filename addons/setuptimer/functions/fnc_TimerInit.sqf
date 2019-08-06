@@ -36,5 +36,5 @@ LOG("called Setup init");
         private _color = _colorSet call bis_fnc_displaycolorget;
         _ctrlTime ctrlSetTextColor _color;
         _ctrlTime ctrlSetText ([_timeLeft,"MM:SS.MS"] call bis_fnc_secondsToString);
-    }, 0, [(CBA_missionTime + ((GETMVAR(WaitTime,30)))),((CBA_missionTime + ((GETMVAR(WaitTime,30)))) - 10),["IGUI","TEXT_RGB"],_display]] call CBA_fnc_addPerFrameHandler;
+    }, 0, [(GETMVAR(WaitTime,30)),((GETMVAR(WaitTime,30)) - 10),["IGUI","TEXT_RGB"],_display]] call CBA_fnc_addPerFrameHandler;
 }, _display] call CBA_fnc_waitUntilAndExecute;

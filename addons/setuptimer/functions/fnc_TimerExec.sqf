@@ -28,5 +28,5 @@ EXEC_CHECK(CLIENT);
             (vehicle _unit) setVelocity [0,0,0];
             (vehicle _unit) setPosATL _pos;
         };
-    }, 0, [player,_area,(CBA_missionTime + _waittime)]] call CBA_fnc_addPerFrameHandler;
+    }, 0, [player,_area,_waittime]] call CBA_fnc_addPerFrameHandler;
 }, _this] call CBA_fnc_waitUntilAndExecute;

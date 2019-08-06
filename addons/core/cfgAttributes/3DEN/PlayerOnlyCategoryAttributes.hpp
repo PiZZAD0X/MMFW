@@ -1,5 +1,5 @@
 class GVAR(CheckBoxPlayerOnlyCategory): CheckBox {
-    onLoad = QUOTE([_this] call FUNC(PlayerOnlyOnLoad));
+    onLoad = QUOTE(_this call FUNC(PlayerOnlyOnLoad));
     class Controls: Controls {
         class Title: Title {};
         class Value: Value {};
@@ -7,7 +7,7 @@ class GVAR(CheckBoxPlayerOnlyCategory): CheckBox {
 };
 
 class GVAR(CheckBoxStatePlayerOnlyCategory): CheckBoxState {
-    onLoad = QUOTE([_this] call FUNC(PlayerOnlyOnLoad));
+    onLoad = QUOTE(_this call FUNC(PlayerOnlyOnLoad));
     class Controls: Controls {
         class Title: Title {};
         class Value: Value {};
@@ -15,7 +15,7 @@ class GVAR(CheckBoxStatePlayerOnlyCategory): CheckBoxState {
 };
 
 class GVAR(CheckboxNumberPlayerOnlyCategory): Edit {
-    onLoad = QUOTE([_this] call FUNC(PlayerOnlyOnLoad));
+    onLoad = QUOTE(_this call FUNC(PlayerOnlyOnLoad));
     class Controls: Controls {
         class Title: Title {};
         class Value: Value {};
@@ -23,7 +23,7 @@ class GVAR(CheckboxNumberPlayerOnlyCategory): Edit {
 };
 
 class GVAR(CheckboxReversedPlayerOnlyCategory): Edit {
-    onLoad = QUOTE([_this] call FUNC(PlayerOnlyOnLoad));
+    onLoad = QUOTE(_this call FUNC(PlayerOnlyOnLoad));
     class Controls: Controls {
         class Title: Title {};
         class Value: Value {};
@@ -31,7 +31,7 @@ class GVAR(CheckboxReversedPlayerOnlyCategory): Edit {
 };
 
 class GVAR(EditPlayerOnlyCategory): Edit {
-    onLoad = QUOTE([_this] call FUNC(PlayerOnlyOnLoad));
+    onLoad = QUOTE(_this call FUNC(PlayerOnlyOnLoad));
     class Controls: Controls {
         class Title: Title {};
         class Value: Value {};
@@ -40,7 +40,7 @@ class GVAR(EditPlayerOnlyCategory): Edit {
 
 class EGVAR(3DEN,EditShortPlayerOnlyCategory): Edit
 {
-    onLoad = QUOTE([_this] call FUNC(PlayerOnlyOnLoad));
+    onLoad = QUOTE(_this call FUNC(PlayerOnlyOnLoad));
     class Controls: Controls {
         class Title: Title {};
         class Value: Value {};
@@ -49,7 +49,7 @@ class EGVAR(3DEN,EditShortPlayerOnlyCategory): Edit
 
 class GVAR(EditArrayPlayerOnlyCategory): Edit
 {
-    onLoad = QUOTE([_this] call FUNC(PlayerOnlyOnLoad));
+    onLoad = QUOTE(_this call FUNC(PlayerOnlyOnLoad));
     class Controls: Controls {
         class Title: Title {};
         class Value: Value {};
