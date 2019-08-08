@@ -11,10 +11,10 @@ class GVAR(Slider): Slider {
     class Controls: Controls {
         class Title: Title {};
         class Value: Value {
-            idc=100;
+            idc = 100;
         };
         class Edit: Edit {
-            idc=101;
+            idc = 101;
         };
     };
 };

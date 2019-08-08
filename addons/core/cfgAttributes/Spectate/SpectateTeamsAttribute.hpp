@@ -7,7 +7,7 @@ class EGVAR(Spectator,Teams_Attribute): Title {
             h="4 * 5 * (pixelH * pixelGrid * 0.50)";
         };
         class Value0: ctrlListbox {
-            idc=100;
+            idc = 100;
             show=1;
             x="48 * (pixelW * pixelGrid * 0.50)";
             w="82 * (pixelW * pixelGrid * 0.50)";

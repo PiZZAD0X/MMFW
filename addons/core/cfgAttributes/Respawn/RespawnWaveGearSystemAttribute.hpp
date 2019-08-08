@@ -7,7 +7,7 @@ class EGVAR(Respawn,WaveGearSystemAttribute): Combo {
         _value\
     ";
     //_this - config, _value - saved value
-    attributeLoad="\
+    attributeLoad ="\
         private _control = (_this controlsGroupCtrl 100);\
         private _attProperty = getText (_config >> 'property');\
         _waveGearSystemArray = ['Loose','Preferential','Strict'];\
@@ -24,7 +24,7 @@ class EGVAR(Respawn,WaveGearSystemAttribute): Combo {
     class Controls: Controls {
         class Title: Title {};
         class Value: Value {
-            idc=100;
+            idc = 100;
             onLBSelChanged="\
                 _ctrlCombo = _this select 0;\
                 _cursel = _this select 1;\

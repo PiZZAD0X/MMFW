@@ -8,6 +8,7 @@ PREP(BasicSettings3Den);
 PREP(BasicSettings3DenOnChecked);
 PREP(casualtyCount);
 PREP(casualtyPercentage);
+PREP(chatCommands);
 PREP(checkDuplicates);
 PREP(countTeam);
 PREP(createRespawnMarker);

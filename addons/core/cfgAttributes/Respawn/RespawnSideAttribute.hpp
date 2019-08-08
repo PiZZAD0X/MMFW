@@ -7,7 +7,7 @@ class EGVAR(Respawn,Side_Combo): Combo {
         _value\
     ";
     //_this - config, _value - saved value
-    attributeLoad="\
+    attributeLoad ="\
         private _control = (_this controlsGroupCtrl 100);\
         private _name = gettext (_config >> 'property');\
         _respawnSideArray = [['BLUFOR','a3\ui_f\data\map\diary\icons\playerwest_ca.paa'],['OPFOR','a3\ui_f\data\map\diary\icons\playereast_ca.paa'],['Indfor','a3\ui_f\data\map\diary\icons\playerguer_ca.paa'],['Civilian','a3\ui_f\data\map\diary\icons\playerciv_ca.paa']];\

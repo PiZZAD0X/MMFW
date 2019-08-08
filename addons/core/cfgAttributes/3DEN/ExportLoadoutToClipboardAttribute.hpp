@@ -2,7 +2,7 @@ class EGVAR(Export,LoadoutToClipboardAttribute): Title {
     class Controls: Controls {
         class Title: Title {};
         class Value: ctrlButtonPictureKeepAspect {
-            idc=100;
+            idc = 100;
             x="48 * (pixelW * pixelGrid * 0.50)";
             w="0.99 * 5 * (pixelW * pixelGrid * 0.50)";
             h="5 * (pixelH * pixelGrid * 0.50)";

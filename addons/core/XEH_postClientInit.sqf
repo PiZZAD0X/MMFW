@@ -6,13 +6,7 @@ LOG("ClientHC Post Init");
 if (hasInterface) then {
     LOG("Client Post Init");
 
-    ["endMission", {
-        private _msg = "Mission ended by admin";
-        if ((_this select 0) isEqualto []) then {
-            _msg = _msg + ": " + (_this select 0);
-        };
-        _msg call FUNC(EndMission);
-    }, "admin"] call CBA_fnc_registerChatCommand;
+    [] call FUNC(chatCommands);
 
     [{!(isNull player)}, {
         //Global client init including JiPs

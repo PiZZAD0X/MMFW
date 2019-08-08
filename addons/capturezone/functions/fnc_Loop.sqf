@@ -20,10 +20,6 @@ GVAR(DOUBLES(PFHhandle,_logic)) = [{
     _capArray params ["_bluforCapMode","_opforCapMode","_indforCapMode","_civCapMode"];
     private ["_owner","_markername"];
 
-    private _timeDifference = (CBA_missionTime - _lastCheckedTime);
-    if (_timeDifference < 1) exitwith {};
-    _argNested set [1,(CBA_missionTime)];
-
     if !(_initialized) then {
         _argNested set [2,true];
         _oldOwner = "UNCONTESTED";
@@ -383,4 +379,4 @@ GVAR(DOUBLES(PFHhandle,_logic)) = [{
     };
 
 
-}, 0, [_this,(-99),false,_varName,_teamControllingvarName]] call CBA_fnc_addPerFrameHandler;
+}, 1, [_this,(-99),false,_varName,_teamControllingvarName]] call CBA_fnc_addPerFrameHandler;

@@ -23,13 +23,13 @@ onLBSelChanged = QUOTE(_this call FUNC(RespawnTemplates_onLBSelChanged))
 onSetFocus = QUOTE([ARR_2(_this,QN(VALUEVAR))] call FUNC(RespawnTemplates_onSetFocus))
 
 #define RESPAWNCOMBO_ATTR_VALUES \
-class Value1: Value0 { idc=101; };\
-class Value2: Value0 { idc=102; };\
-class Value3: Value0 { idc=103; };\
-class Value4: Value0 { idc=104; };\
-class Value5: Value0 { idc=105; };\
-class Value6: Value0 { idc=106; };\
-class Value7: Value0 { idc=107; }
+class Value1: Value0 { idc = 101; };\
+class Value2: Value0 { idc = 102; };\
+class Value3: Value0 { idc = 103; };\
+class Value4: Value0 { idc = 104; };\
+class Value5: Value0 { idc = 105; };\
+class Value6: Value0 { idc = 106; };\
+class Value7: Value0 { idc = 107; }
 
 class EGVAR(Respawn,Combo_Blufor): Combo {
     RESPAWNCOMBO_ATTR_LOAD(EGVAR(Respawn,Value_Blufor),EGVAR(Respawn,ComboCfg_Blufor));
@@ -52,7 +52,7 @@ class EGVAR(Respawn,Templates_Blufor): Title {
             h="8 * 5 * (pixelH * pixelGrid * 0.50)";
         };
         class Value0: ctrlListbox {
-            idc=100;
+            idc = 100;
             show=0;
             x="48 * (pixelW * pixelGrid * 0.50)";
             w="82 * (pixelW * pixelGrid * 0.50)";

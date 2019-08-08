@@ -10,7 +10,7 @@
     #define DEBUG_MODE_FULL
 #endif
 
-#ifdef DEBUG_SETTINGS_CORE
+#ifdef DEBUG_SETTINGS_HOSTAGE
     #define DEBUG_SETTINGS DEBUG_ENABLED_HOSTAGE
 #endif
 

@@ -1,15 +1,15 @@
 class GVAR(MissionTypeAttribute): Toolbox {
-    attributeLoad= QUOTE(\
+    attributeLoad = QUOTE(\
         missionNamespace setVariable [ARR_2(QQGVAR(MissionType),_value)];\
         (_this controlsGroupCtrl 100) lbsetcursel _value;);
-    attributeSave= QUOTE(\
+    attributeSave = QUOTE(\
         private _value = missionNamespace getVariable [ARR_2(QQGVAR(MissionType),0)];\
         _value);
     h="8 * (pixelH * pixelGrid * 0.50)";
     class Controls: Controls {
         class Title: Title {};
         class Value: ctrlToolbox {
-            idc=100;
+            idc = 100;
             h="8 * (pixelH * pixelGrid * 0.50)";
             x="48 * (pixelW * pixelGrid * 0.50)";
             w="82 * (pixelW * pixelGrid * 0.50)";

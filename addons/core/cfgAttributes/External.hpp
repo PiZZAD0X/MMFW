@@ -46,12 +46,12 @@ class EditShort: Edit {
 class EditArray;
 
 class EditStringArray: EditArray {
-    attributeLoad="\
+    attributeLoad ="\
         _valueText = '';\
         _valuetext = _value joinString ',';\
         (_this controlsGroupCtrl 100) ctrlSetText _valueText;\
     ";
-    attributeSave="\
+    attributeSave ="\
         _value = ctrlText (_this controlsGroupCtrl 100);\
         _values = [_value,','] call bis_fnc_splitString;\
         _values\
@@ -59,12 +59,12 @@ class EditStringArray: EditArray {
 };
 
 class EditQuotedStringArray: EditArray {
-    attributeLoad="\
+    attributeLoad ="\
         _valueText = '';\
         _valuetext = _value joinString ',';\
         (_this controlsGroupCtrl 100) ctrlSetText _valueText;\
     ";
-    attributeSave="\
+    attributeSave ="\
         _value = ctrlText (_this controlsGroupCtrl 100);\
         _values = [_value,','] call bis_fnc_splitString;\
         _values\
@@ -165,7 +165,7 @@ class SubTitleIndent: SubTitle {
 };
 
 class CheckboxStateReversed: CheckboxState {
-    attributeLoad="\
+    attributeLoad ="\
         private _ctrlCheckbox = (_this controlsGroupCtrl 100);\
         _ctrlCheckbox cbSetChecked _value;\
         private _fade = [0.75,0] select _value;\
@@ -178,7 +178,7 @@ class CheckboxStateReversed: CheckboxState {
             };\
         } foreach ((allcontrols (ctrlparent _ctrlCheckbox)) - [ctrlParentControlsGroup _ctrlCheckbox]);\
     ";
-    attributeSave="\
+    attributeSave ="\
         private _ctrlCheckbox = (_this controlsGroupCtrl 100);\
         _value = cbChecked _ctrlCheckbox;\
         _value\

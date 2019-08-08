@@ -22,6 +22,24 @@ LOG("Server Pre Init");
     params ["_unit"];
 }] call CBA_fnc_addEventHandler;
 
+[QEGVAR(EndConditions,TimelimitServer), {
+    params ["_command","_client",["_arg",0,[0]]];
+    switch (_command) do {
+        case "check": {
+            private _timeLimit = (GETMVAR(Timelimit,60));
+            [QEGVAR(EndConditions,TimelimitClient), ["check",_timeLimit], _client] call CBA_fnc_targetEvent;
+        };
+        case "extend": {
+            if (_arg > 0) then {
+                private _newTimeLimit = ((GETMVAR(Timelimit,60)) + _arg);
+                SETMVAR(Timelimit,_newTimeLimit);
+                [QEGVAR(EndConditions,TimelimitClient), ["extend",_newTimeLimit], _client] call CBA_fnc_targetEvent;
+            };
+        };
+        default {};
+    };
+}] call CBA_fnc_addEventHandler;
+
 [QGVAR(RespawnedEvent), {
     LOG_1("started Respawned_Event with %1",_this);
     _this call FUNC(EventRespawned);

@@ -23,7 +23,7 @@ class GVAR(ChannelSelect): Title {
             colorBackground[]={0.5,0.5,0.5,1};
         };
         class ValueZ: ctrlEdit {
-            idc=100;
+            idc = 100;
             x="(48 + 14) * (pixelW * pixelGrid * 0.50)";
             w="(82 / 3 - 14) * (pixelW * pixelGrid * 0.50)";
             h="5 * (pixelH * pixelGrid * 0.50)";

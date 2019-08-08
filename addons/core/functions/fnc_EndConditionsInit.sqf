@@ -31,18 +31,18 @@ if (_frequency < 30) then {
             LOG_1("checking timelimit message: %1",(GETMVAR(Timelimit_Message,60)));
             [{
                 params ["_argNested", "_idPFH"];
-                _argNested params ["_timelimit","_message",["_lastCheckedTime",CBA_missionTime]];
+                _argNested params ["_message",["_lastCheckedTime",CBA_missionTime]];
                 private _timeDifference = (CBA_missionTime - _lastCheckedTime);
                 if (_timeDifference <= 1) exitwith {};
                 _argNested set [2,CBA_missionTime];
                 if (EGETMVAR(Core,MissionEnded,false)) exitwith {
                     [_idPFH] call CBA_fnc_removePerFrameHandler;
                 };
-                if ((CBA_missionTime / 60) > _timelimit) exitWith {
+                if ((CBA_missionTime / 60) > (GETMVAR(Timelimit,60))) exitWith {
                     _message call FUNC(EndMission);
                     [_idPFH] call CBA_fnc_removePerFrameHandler;
                 };
-            }, 60, [(GETMVAR(Timelimit,60)),(GETMVAR(Timelimit_Message,60)),CBA_missionTime]] call CBA_fnc_addPerFrameHandler;
+            }, 10, [(GETMVAR(Timelimit_Message,"Time Limit Reached!")),CBA_missionTime]] call CBA_fnc_addPerFrameHandler;
         } else {
             ERROR_1("invalid timelimit: %1",(GETMVAR(Timelimit,60)));
         };

@@ -162,6 +162,22 @@ LOG("Client Pre Init");
     [QGVAR(PlayerSpawned), player] call CBA_fnc_serverEvent;
 }] call CBA_fnc_addEventHandler;
 
+[QEGVAR(EndConditions,TimelimitClient), {
+    params ["_command",["_timeLimit",0,[0]]];
+    private _timeLeft = _timeLimit - (CBA_missionTime / 60);
+    switch (_command) do {
+        case "check": {
+            private _text = format ["TimeLimit: %1\n Time Remaining: %2",_timeLimit,_timeLeft];
+            [_text, 1.5, ACE_Player, 10] call ace_common_fnc_displayTextStructured;
+        };
+        case "extend": {
+            private _text = format ["TimeLimit set to: %1\n Time Remaining: %2",_timeLimit,_timeLeft];
+            [_text, 1.5, ACE_Player, 10] call ace_common_fnc_displayTextStructured;
+        };
+        default {};
+    };
+}] call CBA_fnc_addEventHandler;
+
 [QEGVAR(JiP,PlayerEvent), {
     if ((((EGETMVAR(JiP,Type_BLUFOR,0)) isEqualto 2) && {(side player isEqualto west)})
         || (((EGETMVAR(JiP,Type_OPFOR,0)) isEqualto 2) && {(side player isEqualto east)})

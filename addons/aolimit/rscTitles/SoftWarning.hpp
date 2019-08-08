@@ -11,7 +11,7 @@ class GVAR(SoftWarning) {
                 "(profilenamespace getvariable ['IGUI_BCG_RGB_B',1])",
                 "(profilenamespace getvariable ['IGUI_BCG_RGB_A',0.8])"
             };
-            idc=1002;
+            idc = 1002;
             x="13.5 * (((safezoneW / safezoneH) min 1.2) / 40) + (safezoneX + (safezoneW - ((safezoneW / safezoneH) min 1.2))/2)";
             y="30.7 * ((((safezoneW / safezoneH) min 1.2) / 1.2) / 25) + (safezoneY + (safezoneH - (((safezoneW / safezoneH) min 1.2) / 1.2))/2)";
             w="12 * (((safezoneW / safezoneH) min 1.2) / 40)";
@@ -30,7 +30,7 @@ class GVAR(SoftWarning) {
             descriptionColorShade[]={0,0,0,0.64999998};
         };
         class Title {
-            idc=1001;
+            idc = 1001;
             x="13.5 * (((safezoneW / safezoneH) min 1.2) / 40) + (safezoneX + (safezoneW - ((safezoneW / safezoneH) min 1.2))/2)";
             y="30.7 * ((((safezoneW / safezoneH) min 1.2) / 1.2) / 25) + (safezoneY + (safezoneH - (((safezoneW / safezoneH) min 1.2) / 1.2))/2)";
             w="12 * (((safezoneW / safezoneH) min 1.2) / 40)";
@@ -50,7 +50,7 @@ class GVAR(SoftWarning) {
             descriptionColorShade[]={0,0,0,0.64999998};
         };
         class SetupTimeLeft {
-            idc=1003;
+            idc = 1003;
             text="  --:--.---";
             x="18 * (((safezoneW / safezoneH) min 1.2) / 40) + (safezoneX + (safezoneW - ((safezoneW / safezoneH) min 1.2))/2)";
             y="30.6 * ((((safezoneW / safezoneH) min 1.2) / 1.2) / 25) + (safezoneY + (safezoneH - (((safezoneW / safezoneH) min 1.2) / 1.2))/2)";

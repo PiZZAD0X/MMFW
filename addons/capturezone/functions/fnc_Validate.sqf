@@ -2,7 +2,6 @@
 EXEC_CHECK(SERVER);
 
 //[_logic,_zoneName,_area,_repeatable,_capArray,_timeArray,_messagesArray,_colours,_hidden,_silent,_automessages,_ratioNeeded,_cond]
-//[_logic,_zoneName,_area,_repeatable,_capArray,_timeArray,_messagesArray,_colours,_hidden,_silent,_automessages,_ratioNeeded,_cond]
 params ["_logic","_zoneName","_area","_repeatable","_capArray","_timeArray","_messagesArray","_colours","_hidden","_silent","_automessages","_ratioNeeded","_cond"];
 private _isValid = true;
 LOG_1("CaptureZone called with _this: %1",_this);
