@@ -176,37 +176,37 @@
 /// Base Classes
 ///////////////////////////////////////////////////////////////////////////
 class MGVAR(RscBackground) {
-    colorBackground[]={0, 0, 0, 0};
-    text="";
-    type=CT_STATIC;
-    idc=-1;
-    style=ST_LEFT;
-    colorText[]={1, 1, 1, 1};
-    font=RobotoCondensed;
-    sizeEx=0.04;
+    colorBackground[] = {0, 0, 0, 0};
+    text = ";
+    type = CT_STATIC;
+    idc = -1;
+    style = ST_LEFT;
+    colorText[] = {1, 1, 1, 1};
+    font = RobotoCondensed;
+    sizeEx = 0.04;
 };
   class MGVAR(RscText) {
-    idc     = -1;
-    access     = 0;
-    type     = CT_STATIC;
-    style     = ST_UNDEFINED;
-    x         = 0;
-    y         = 0;
-    h         = 0.037;
-    w         = 0.3;
-    deletable             = 0;
-    fade                 = 0;
-    shadow                 = 1;
-    text                 = "";
-    font                 = FONT_NORMAL;
-    fixedWidth             = 0;
-    SizeEx                 = "(((((safezoneW / safezoneH) min 1.2) / 1.2) / 25) * 1)";
-    linespacing         = 1;
-    colorBackground[]     ={0,0,0,0};
-    colorText[]         ={1,1,1,1};
-    colorShadow[]         = {0,0,0,0.5};
-    tooltipColorText[]     = {1,1,1,1};
-    tooltipColorBox[]     = {1,1,1,1};
+    idc = -1;
+    access = 0;
+    type = CT_STATIC;
+    style = ST_UNDEFINED;
+    x = 0;
+    y = 0;
+    h = 0.037;
+    w = 0.3;
+    deletable = 0;
+    fade = 0;
+    shadow = 1;
+    text = "";
+    font = FONT_NORMAL;
+    fixedWidth = 0;
+    SizeEx = "(((((safezoneW / safezoneH) min 1.2) / 1.2) / 25) * 1)";
+    linespacing = 1;
+    colorBackground[] ={0,0,0,0};
+    colorText[] ={1,1,1,1};
+    colorShadow[] = {0,0,0,0.5};
+    tooltipColorText[] = {1,1,1,1};
+    tooltipColorBox[] = {1,1,1,1};
     tooltipColorShade[] = {0,0,0,0.65};
   };
 
@@ -217,7 +217,7 @@ class MGVAR(RscBackground) {
   };
 
   class MGVAR(RscFrame) {
-    type     = CT_STATIC;
+    type = CT_STATIC;
     idc = -1;
     style = 64;
     shadow = 2;
@@ -230,25 +230,25 @@ class MGVAR(RscBackground) {
 
   //Standard active text (text that can be clicked like a button)
    class MGVAR(RscActiveText) {
-    idc             = -1;
-    access            = ReadAndWrite;
-    type             = CT_ACTIVETEXT;
-    style             = 2;  //dont know what style 2 is
-    color[]         = RGB_WHITE;
-    colorActive[]     = {1,0.5,0,1};
+    idc = -1;
+    access = ReadAndWrite;
+    type = CT_ACTIVETEXT;
+    style = 2;  //dont know what style 2 is
+    color[] = RGB_WHITE;
+    colorActive[] = {1,0.5,0,1};
     colorDisabled[] = {1,1,1,0.25};
     default = 0;
     deletable = 0;
     fade = 0;
-    font             = FONT_NORMAL;
+    font = FONT_NORMAL;
     h = 0.05;
     w = 0.15;
     shadow = 0;
     sizeEx = "(            (            (            ((safezoneW / safezoneH) min 1.2) / 1.2) / 25) * 1)";
-    soundClick[]     = {"",0.1,1};
-    soundEnter[]     = {"",0.1,1};
-    soundEscape[]     = {"",0.1,1};
-    soundPush[]     = {"",0.1,1};
+    soundClick[] = {"",0.1,1};
+    soundEnter[] = {"",0.1,1};
+    soundEscape[] = {"",0.1,1};
+    soundPush[] = {"",0.1,1};
     tooltipColorBox[] = {1,1,1,1};
     tooltipColorShade[] = {0,0,0,0.65};
     tooltipColorText[] = {1,1,1,1};
@@ -256,142 +256,142 @@ class MGVAR(RscBackground) {
   };
 
   class MGVAR(RscStructuredText) {
-      idc     = -1;
-    access     = 0;
-    type     = CT_STRUCTURED_TEXT;
-    //style     = 0; Default BIS value not documented
-    style     = ST_UNDEFINED;
-    x         = 0;
-    y         = 0;
-    h         = 0.035;
-    w         = 0.1;
-    deletable         = 0;
-    fade             = 0;
-    shadow             = 1;
-    text             = "";
-    size             = "(((((safezoneW / safezoneH) min 1.2) / 1.2) / 25) * 1)";
-    colorText[]     = {1,1,1,1};
+      idc = -1;
+    access = 0;
+    type = CT_STRUCTURED_TEXT;
+    //style = 0; Default BIS value not documented
+    style = ST_UNDEFINED;
+    x = 0;
+    y = 0;
+    h = 0.035;
+    w = 0.1;
+    deletable = 0;
+    fade = 0;
+    shadow = 1;
+    text = "";
+    size = "(((((safezoneW / safezoneH) min 1.2) / 1.2) / 25) * 1)";
+    colorText[] = {1,1,1,1};
     class Attributes {
-        font     = FONT_NORMAL;
-        color     = "#ffffff";
-        align     = "left";
-        shadow     = 1;
+        font = FONT_NORMAL;
+        color = "#ffffff";
+        align = "left";
+        shadow = 1;
     };
   };
 
     class MGVAR(RscHTML) {
-    idc         = -1;
-    access        = ReadAndWrite;
-    type         = CT_HTML;
-    style         = ST_SINGLE;
-    filename     = "";
-    shadow         = 0;
-    colorBackground[]         = RGB_BLACK;
-    colorText[]             = RGB_WHITE;
-    colorBold[]             = {0,0,0.2,1};
-    colorLink[]             = {1,0.5,0,1};
-    colorLinkActive[]         = {1,0.5,0,1};
-    colorPicture[]             = RGB_WHITE;
-    colorPictureLink[]         = RGB_WHITE;
-    colorPictureSelected[]     = RGB_WHITE;
-    colorPictureBorder[]     = RGB_BLACK;
-    tooltipColorText[]         = RGB_BLACK;
-    tooltipColorBox[]         = {0,0,0,0.5};
-    tooltipColorShade[]     = {1,1,0.7,1};
-    prevPage                 = "#(argb,8,8,3)color(1,1,1,1)";
-    nextPage                 = "#(argb,8,8,3)color(1,1,1,1)";
+    idc = -1;
+    access = ReadAndWrite;
+    type = CT_HTML;
+    style = ST_SINGLE;
+    filename = "";
+    shadow = 0;
+    colorBackground[] = RGB_BLACK;
+    colorText[] = RGB_WHITE;
+    colorBold[] = {0,0,0.2,1};
+    colorLink[] = {1,0.5,0,1};
+    colorLinkActive[] = {1,0.5,0,1};
+    colorPicture[] = RGB_WHITE;
+    colorPictureLink[] = RGB_WHITE;
+    colorPictureSelected[] = RGB_WHITE;
+    colorPictureBorder[] = RGB_BLACK;
+    tooltipColorText[] = RGB_BLACK;
+    tooltipColorBox[] = {0,0,0,0.5};
+    tooltipColorShade[] = {1,1,0.7,1};
+    prevPage = "#(argb,8,8,3)color(1,1,1,1)";
+    nextPage = "#(argb,8,8,3)color(1,1,1,1)";
     class H1 {
-        font         = FONT_NORMAL;
-        fontBold     = FONT_BOLD;
-        sizeEx         = 0.1;
+        font = FONT_NORMAL;
+        fontBold = FONT_BOLD;
+        sizeEx = 0.1;
     };
     class H2 {
-        font         = FONT_NORMAL;
-        fontBold     = FONT_BOLD;
-        sizeEx         = 0.09;
+        font = FONT_NORMAL;
+        fontBold = FONT_BOLD;
+        sizeEx = 0.09;
     };
     class H3 {
-        font         = FONT_NORMAL;
-        fontBold     = FONT_BOLD;
-        sizeEx         = 0.08;
+        font = FONT_NORMAL;
+        fontBold = FONT_BOLD;
+        sizeEx = 0.08;
     };
     class H4 {
-        font         = FONT_NORMAL;
-        fontBold     = FONT_BOLD;
-        sizeEx         = 0.07;
+        font = FONT_NORMAL;
+        fontBold = FONT_BOLD;
+        sizeEx = 0.07;
     };
     class H5 {
-        font         = FONT_NORMAL;
-        fontBold     = FONT_BOLD;
-        sizeEx         = 0.06;
+        font = FONT_NORMAL;
+        fontBold = FONT_BOLD;
+        sizeEx = 0.06;
     };
     class H6 {
-        font         = FONT_NORMAL;
-        fontBold     = FONT_BOLD;
-        sizeEx         = 0.05;
+        font = FONT_NORMAL;
+        fontBold = FONT_BOLD;
+        sizeEx = 0.05;
     };
     class P {
-        font         = FONT_NORMAL;
-        fontBold     = FONT_BOLD;
-        sizeEx         = 0.04;
+        font = FONT_NORMAL;
+        fontBold = FONT_BOLD;
+        sizeEx = 0.04;
     };
   };
 
   // Todo NEEDS CHECKING WITH WIKI
   class MGVAR(RscProgress) {
-    idc         = -1;
-    access        = ReadAndWrite;
-    type         = CT_PROGRESS;
-    style         = ST_SINGLE;
+    idc = -1;
+    access = ReadAndWrite;
+    type = CT_PROGRESS;
+    style = ST_SINGLE;
     deletable = 0;
     fade = 0;
-    x             = 0;
-    y             = 0;
-    w             = 1.2;
-    h             = 0.03;
-    shadow         = 2;
-    colorFrame[]= RGB_WHITE;
-    colorBar[]     = RGB_WHITE;
-    texture     = "#(argb,8,8,3)color(1,1,1,1)";
+    x = 0;
+    y = 0;
+    w = 1.2;
+    h = 0.03;
+    shadow = 2;
+    colorFrame[] = RGB_WHITE;
+    colorBar[] = RGB_WHITE;
+    texture = "#(argb,8,8,3)color(1,1,1,1)";
   };
 
   // Todo NEEDS CHECKING WITH WIKI
   class MGVAR(RscProgressNotFreeze) {
-    idc         = -1;
-    access        = ReadAndWrite;
-    type         = CT_ANIMATED_TEXTURE;
-    style         = ST_SINGLE;
-    deletable     = 0;
-    fade     = 0;
-    x         = 0;
-    y         = 0;
-    w         = 0.5;
-    h         = 0.1;
-    shadow         = 0;
-    texture     = "#(argb,8,8,3)color(0,0,0,0)";
+    idc = -1;
+    access = ReadAndWrite;
+    type = CT_ANIMATED_TEXTURE;
+    style = ST_SINGLE;
+    deletable = 0;
+    fade = 0;
+    x = 0;
+    y = 0;
+    w = 0.5;
+    h = 0.1;
+    shadow = 0;
+    texture = "#(argb,8,8,3)color(0,0,0,0)";
   };
 
   class MGVAR(RscPicture) {
-    idc         = -1;
-    access         = 0;
-    type         = CT_STATIC;
-    style         = ST_PICTURE;
-    x             = 0;
-    y             = 0;
-    w             = 0.2;
-    h             = 0.15;
-    deletable             = 0;
-    fade                 = 0;
-    font                 = "TahomaB";
-    sizeEx                 = 0;
-    lineSpacing         = 0;
-    text                 = "";    // path to image file
-    fixedWidth             = 0;
-    shadow                 = 0;
-    colorBackground[]     = {0,0,0,0};
-    colorText[]         ={1,1,1,1};
-    tooltipColorText[]     = {1,1,1,1};
-    tooltipColorBox[]     = {1,1,1,1};
+    idc = -1;
+    access = 0;
+    type = CT_STATIC;
+    style = ST_PICTURE;
+    x = 0;
+    y = 0;
+    w = 0.2;
+    h = 0.15;
+    deletable = 0;
+    fade = 0;
+    font = "TahomaB";
+    sizeEx = 0;
+    lineSpacing = 0;
+    text = "";    // path to image file
+    fixedWidth = 0;
+    shadow = 0;
+    colorBackground[] = {0,0,0,0};
+    colorText[] ={1,1,1,1};
+    tooltipColorText[] = {1,1,1,1};
+    tooltipColorBox[] = {1,1,1,1};
     tooltipColorShade[] = {0,0,0,0.65};
   };
 
@@ -399,7 +399,7 @@ class MGVAR(RscBackground) {
     deletable = 0;
     fade = 0;
     access = 0;
-    type     = CT_EDIT;
+    type = CT_EDIT;
     style = "ST_SINGLE + ST_FRAME";
     x = 0;
     y = 0;
@@ -425,7 +425,7 @@ class MGVAR(RscBackground) {
     deletable = 0;
     fade = 0;
     access = 0;
-    type     = CT_COMBO;
+    type = CT_COMBO;
     style = "0x10 + 0x200";    // ST_MULTI + ST_NO_RECT
 
     colorActive[] = {1,0,0,1};
@@ -446,7 +446,7 @@ class MGVAR(RscBackground) {
     colorTextRight[] = {1,1,1,1};
     soundSelect[] = {"\A3\ui_f\data\sound\RscCombo\soundSelect",0.1,1};
     soundExpand[] = {"\A3\ui_f\data\sound\RscCombo\soundExpand",0.1,1};
-    soundCollapse[]={"\A3\ui_f\data\sound\RscCombo\soundCollapse",0.1,1};
+    soundCollapse[] = "\A3\ui_f\data\sound\RscCombo\soundCollapse",0.1,1};
     tooltipColorBox[] = {1,1,1,1};
     tooltipColorShade[] = {0,0,0,0.65};
     tooltipColorText[] = {1,1,1,1};
@@ -486,7 +486,7 @@ class MGVAR(RscBackground) {
     deletable = 0;
     fade = 0;
     access = 0;
-    type     = CT_LISTBOX;
+    type = CT_LISTBOX;
     style = 16;    //BIS DEFAULT, not documeted what this value means
     rowHeight = 0;
     colorText[] ={1,1,1,1};
@@ -548,44 +548,44 @@ class MGVAR(RscBackground) {
 
   // Todo Needs checking
   class MGVAR(RscListNBox) {
-    idc             = -1;
-    access            = ReadAndWrite;
-    type             = CT_LISTNBOX;
-    style             = ST_SINGLE;
+    idc = -1;
+    access = ReadAndWrite;
+    type = CT_LISTNBOX;
+    style = ST_SINGLE;
     deletable = 0;
     x = 0;
     y = 0;
     w = 0.4;
     h = 0.4;
-    font                 = FONT_NORMAL;
-    sizeEx                 = 0.04;
-    rowHeight             = 0;
-    color[]                 = {0.95,0.95,0.95,1};
-    colorBackground[]         = {0,0,0,1};
-    colorDisabled[]         = {1,1,1,0.25};
-    colorPicture[]             = {1,1,1,1};
-    colorPictureDisabled[]     = {1,1,1,1};
-    colorPictureSelected[]     = {1,1,1,1};
-    colorScrollbar[]         = {0.95,0.95,0.95,1};
-    colorSelect2[]             = {0,0,0,1};
-    colorSelect[]             = {0,0,0,1};
-    colorSelectBackground2[]= {1,1,1,0.5};
+    font = FONT_NORMAL;
+    sizeEx = 0.04;
+    rowHeight = 0;
+    color[] = {0.95,0.95,0.95,1};
+    colorBackground[] = {0,0,0,1};
+    colorDisabled[] = {1,1,1,0.25};
+    colorPicture[] = {1,1,1,1};
+    colorPictureDisabled[] = {1,1,1,1};
+    colorPictureSelected[] = {1,1,1,1};
+    colorScrollbar[] = {0.95,0.95,0.95,1};
+    colorSelect2[] = {0,0,0,1};
+    colorSelect[] = {0,0,0,1};
+    colorSelectBackground2[] = {1,1,1,0.5};
     colorSelectBackground[] = {0.95,0.95,0.95,1};
-    colorText[]             = RGB_WHITE;
+    colorText[] = RGB_WHITE;
 
-    maxHistoryDelay     = 1.0;
-    soundSelect[]         = {"",0.1,1};
-    period                 = 1;
-    autoScrollSpeed     = -1;
-    autoScrollDelay     = 5;
-    autoScrollRewind     = 0;
-    arrowEmpty         = "#(argb,8,8,3)color(1,1,1,1)";
-    arrowFull         = "#(argb,8,8,3)color(1,1,1,1)";
-    drawSideArrows         = 0;
-    columns[]         = {0.3,0.6,0.7};
-    idcLeft         = -1;
-    idcRight         = -1;
-    shadow             = 0;
+    maxHistoryDelay = 1.0;
+    soundSelect[] = {"",0.1,1};
+    period = 1;
+    autoScrollSpeed = -1;
+    autoScrollDelay = 5;
+    autoScrollRewind = 0;
+    arrowEmpty = "#(argb,8,8,3)color(1,1,1,1)";
+    arrowFull = "#(argb,8,8,3)color(1,1,1,1)";
+    drawSideArrows = 0;
+    columns[] = {0.3,0.6,0.7};
+    idcLeft = -1;
+    idcRight = -1;
+    shadow = 0;
     class ListScrollBar {
         arrowEmpty = "\A3\ui_f\data\gui\cfg\scrollbar\arrowEmpty_ca.paa";
         arrowFull = "\A3\ui_f\data\gui\cfg\scrollbar\arrowFull_ca.paa";
@@ -626,7 +626,7 @@ class MGVAR(RscBackground) {
     deletable = 0;
     fade = 0;
     access = 0;
-    type     = CT_BUTTON;
+    type = CT_BUTTON;
     style = 2;    // BIS DEFAULT, undocumented
     text = "";
     colorText[] = {1,1,1,1};
@@ -658,8 +658,8 @@ class MGVAR(RscBackground) {
 
   class MGVAR(RscShortcutButton) {
     idc = -1;
-    style     = ST_UNDEFINED;
-    type     = CT_SHORTCUTBUTTON;
+    style = ST_UNDEFINED;
+    type = CT_SHORTCUTBUTTON;
     x = 0.1;
     y = 0.1;
     w = 0.183825;
@@ -753,7 +753,7 @@ class MGVAR(RscBackground) {
 
 class MGVAR(RscShortcutButtonMain) {
     idc = -1;
-    style     = ST_UNDEFINED;
+    style = ST_UNDEFINED;
     default = 0;
     w = 0.313726;
     h = 0.104575;
@@ -808,7 +808,7 @@ class MGVAR(RscSlider) {
     deletable = 0;
     fade = 0;
     access = 0;
-    type     = CT_SLIDER;
+    type = CT_SLIDER;
     style = 1024;
     w = 0.3;
     color[] = {1,1,1,0.8};
@@ -820,11 +820,11 @@ class MGVAR(RscSlider) {
 
   // ToDo Needs checking
   class MGVAR(RscSliderH): MGVAR(RscSlider) {
-    idc             = -1;
-    access            = ReadAndWrite;
-    type             = CT_XSLIDER;
-    //style             = SLIDER_HORZ + SL_TEXTURES;    //"0x400  + 0x10";
-    style            = 1024;
+    idc = -1;
+    access = ReadAndWrite;
+    type = CT_XSLIDER;
+    //style = SLIDER_HORZ + SL_TEXTURES;    //"0x400  + 0x10";
+    style = 1024;
     h = "scalar";
     color[] = {1,1,1,0.6};
     colorActive[] = RGB_WHITE;
@@ -837,7 +837,7 @@ class MGVAR(RscSlider) {
   };
 
 class IGUIBack {
-    type     = CT_STATIC;
+    type = CT_STATIC;
     idc = -1;
     style = 128;
     text = "";
@@ -860,8 +860,8 @@ class IGUIBack {
 
 class MGVAR(RscCheckBox) {
     idc = -1;
-    type     = CT_CHECKBOX;
-    style     = ST_UNDEFINED;
+    type = CT_CHECKBOX;
+    style = ST_UNDEFINED;
     checked = 0;
     x = "0.375 * safezoneW + safezoneX";
     y = "0.36 * safezoneH + safezoneY";
@@ -889,8 +889,8 @@ class MGVAR(RscCheckBox) {
     textureDisabledUnchecked = "A3\Ui_f\data\GUI\RscCommon\RscCheckBox\CheckBox_unchecked_ca.paa";
     tooltipColorText[] = {1,1,1,1};
     tooltipColorBox[] = {1,1,1,1};
-    tooltipColorShade[] ={0,0,0,0.65};
-    soundEnter[] =     {"",0.1,1};
+    tooltipColorShade[] = {0,0,0,0.65};
+    soundEnter[] = {"",0.1,1};
     soundPush[] = {"",0.1,1};
     soundClick[] = {"",0.1,1};
     soundEscape[] = {"",0.1,1};
@@ -898,8 +898,8 @@ class MGVAR(RscCheckBox) {
 
 class MGVAR(RscTextCheckBox) {
     idc = -1;
-    type     = CT_CHECKBOXES;
-    style     = ST_UNDEFINED;
+    type = CT_CHECKBOXES;
+    style = ST_UNDEFINED;
     x = "0.375 * safezoneW + safezoneX";
     y = "0.36 * safezoneH + safezoneY";
     w = "0.025 * safezoneW";
@@ -937,7 +937,7 @@ class MGVAR(RscTextCheckBox) {
 
 class MGVAR(RscButtonMenu) {
     idc = -1;
-    type     = CT_SHORTCUTBUTTON;
+    type = CT_SHORTCUTBUTTON;
     style = "0x02 + 0xC0";
     default = 0;
     shadow = 0;
@@ -965,7 +965,7 @@ class MGVAR(RscButtonMenu) {
     color2Secondary[] = {0,0,0,1};
     colorDisabledSecondary[] = {1,1,1,0.25};
     sizeExSecondary = "(((((safezoneW / safezoneH) min 1.2) / 1.2) / 25) * 1)";
-    fontSecondary =  FONT_LIGHT;
+    fontSecondary = FONT_LIGHT;
     period = 1.2;
     periodFocus = 1.2;
     periodOver = 1.2;
@@ -981,7 +981,7 @@ class MGVAR(RscButtonMenu) {
         bottom = 0;
     };
     class Attributes {
-        font =  FONT_LIGHT;
+        font = FONT_LIGHT;
         color = "#E5E5E5";
         align = "left";
         shadow = "false";
@@ -1027,7 +1027,7 @@ class MGVAR(RscControlsGroup) {
     fade = 0;
     shadow = 0;
     style = 16;
-    type     = CT_CONTROLS_GROUP;
+    type = CT_CONTROLS_GROUP;
     x = 0;
     y = 0;
     w = 1;

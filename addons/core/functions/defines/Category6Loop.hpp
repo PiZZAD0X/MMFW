@@ -26,7 +26,7 @@ if (GETMVAR(Enabled_6,false)) then {
                     [_idPFH] call CBA_fnc_removePerFrameHandler;
                 };
                 private _timeDifference = (CBA_missionTime - _lastCheckedTime);
-                if (_timeDifference <= _checkFrequency) exitwith {
+                if (_timeDifference < = _checkFrequency) exitwith {
                 };
                 LOG_1("Category Check with _lastCheckedTime: %1",_lastCheckedTime);
                 _argNested set [1,CBA_missionTime];

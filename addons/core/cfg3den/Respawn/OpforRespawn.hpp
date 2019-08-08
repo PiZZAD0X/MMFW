@@ -4,7 +4,7 @@ class EGVAR(TeamRespawnSettings,Opfor) {
     class Attributes {
         class EGVAR(Respawn,Type_Opfor) {
             displayName = "Respawn System";
-            tooltip =  QUOTE(Type of respawn system for OPFOR. Place down a GameLogic object with name MGVAR(RESPAWN_OPFOR) to define respawn location.);
+            tooltip = QUOTE(Type of respawn system for OPFOR. Place down a GameLogic object with name MGVAR(RESPAWN_OPFOR) to define respawn location.);
             control = QEGVAR(Respawn,Combo_Opfor);
             defaultValue = "0";
             property = QEGVAR(Respawn,Type_Opfor);

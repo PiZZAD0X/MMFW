@@ -49,8 +49,8 @@ class PREFIX##_##COMPONENT##_##MINVAL##To##MAXVAL##Step0##STEPSIZE##_Slider: GVA
     class Controls: Controls {\
         class Title: Title {};\
         class Value: Value {\
-            sliderRange[]={##MINVAL##,##MAXVAL##};\
-            sliderStep=0.##STEPSIZE##;\
+            sliderRange[] = {##MINVAL##,##MAXVAL##};\
+            sliderStep = 0.##STEPSIZE##;\
         };\
         class Edit: Edit {};\
     };\
@@ -86,8 +86,8 @@ class PREFIX##_##COMPONENT##_##MINVAL##To##MAXVAL##Step##STEPSIZE##_Slider: GVAR
     class Controls: Controls {\
         class Title: Title {};\
         class Value: Value {\
-            sliderRange[]={##MINVAL##,##MAXVAL##};\
-            sliderStep=##STEPSIZE##;\
+            sliderRange[] = {##MINVAL##,##MAXVAL##};\
+            sliderStep = ##STEPSIZE##;\
         };\
         class Edit: Edit {};\
     };\

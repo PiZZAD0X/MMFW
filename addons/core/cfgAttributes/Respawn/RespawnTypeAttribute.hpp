@@ -46,19 +46,19 @@ class EGVAR(Respawn,Combo_Blufor): Combo {
 class EGVAR(Respawn,Templates_Blufor): Title {
     RESPAWNTEMPLATES_ATTR_LOAD(EGVAR(Respawn,Value_Blufor));
     RESPAWNTEMPLATES_ATTR_SAVE;
-    h="8 * 5 * (pixelH * pixelGrid * 0.50)";
+    h = "8 * 5 * (pixelH * pixelGrid * 0.50)";
     class Controls: Controls {
         class Title: Title {
-            h="8 * 5 * (pixelH * pixelGrid * 0.50)";
+            h = "8 * 5 * (pixelH * pixelGrid * 0.50)";
         };
         class Value0: ctrlListbox {
             idc = 100;
-            show=0;
-            x="48 * (pixelW * pixelGrid * 0.50)";
-            w="82 * (pixelW * pixelGrid * 0.50)";
-            h="8 * 5 * (pixelH * pixelGrid * 0.50)";
-            colorSelectBackground[]={0,0,0,0};
-            colorSelectBackground2[]={0,0,0,0};
+            show = 0;
+            x = "48 * (pixelW * pixelGrid * 0.50)";
+            w = "82 * (pixelW * pixelGrid * 0.50)";
+            h = "8 * 5 * (pixelH * pixelGrid * 0.50)";
+            colorSelectBackground[] = {0,0,0,0};
+            colorSelectBackground2[] = {0,0,0,0};
             RESPAWNTEMPLATES_ATTR_ONLBSELCHANGED;
             RESPAWNTEMPLATES_ATTR_ONSETFOCUS(EGVAR(Respawn,Value_Blufor));
         };

@@ -13,7 +13,7 @@ class display3DEN {
                 #include "display3DEN\MenuDoc.hpp"
                 #include "display3DEN\MenuTools.hpp"
                 class EGVAR(Core,Folder) {
-                    items[] += {
+                    items[] + = {
                         QEGVAR(ExportImport,Folder),
                         QGVAR(Documentation),
                         QGVAR(VersionDisplay)

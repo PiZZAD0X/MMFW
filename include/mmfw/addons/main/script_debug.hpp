@@ -42,9 +42,9 @@ PERFORMANCE COUNTERS
 //#define ENABLE_PERFORMANCE_COUNTERS
 
 #ifdef ENABLE_PERFORMANCE_COUNTERS
-    #define ADDPFH(function, timing, args) call { _ret = [function, timing, args] call CBA_fnc_addPerFrameHandler; if (isNil "MMFW_PFH" ) then { MMFW_PFH=[]; }; MMFW_PFH pushBack [[_ret, __FILE__, __LINE__], [function, timing, args]];  _ret }
+    #define ADDPFH(function, timing, args) call { _ret = [function, timing, args] call CBA_fnc_addPerFrameHandler; if (isNil "MMFW_PFH" ) then { MMFW_PFH = []; }; MMFW_PFH pushBack [[_ret, __FILE__, __LINE__], [function, timing, args]];  _ret }
 
-    #define CREATE_COUNTER(x) if (isNil "MMFW_COUNTERS" ) then { MMFW_COUNTERS=[]; }; GVAR(DOUBLES(x,counter))=[]; GVAR(DOUBLES(x,counter)) set[0, QGVAR(DOUBLES(x,counter))];  GVAR(DOUBLES(x,counter)) set[1, diag_tickTime]; MMFW_COUNTERS pushBack GVAR(DOUBLES(x,counter));
+    #define CREATE_COUNTER(x) if (isNil "MMFW_COUNTERS" ) then { MMFW_COUNTERS = []; }; GVAR(DOUBLES(x,counter)) = []; GVAR(DOUBLES(x,counter)) set[0, QGVAR(DOUBLES(x,counter))];  GVAR(DOUBLES(x,counter)) set[1, diag_tickTime]; MMFW_COUNTERS pushBack GVAR(DOUBLES(x,counter));
     #define BEGIN_COUNTER(x) if (isNil QGVAR(DOUBLES(x,counter))) then { CREATE_COUNTER(x) }; GVAR(DOUBLES(x,counter)) set[2, diag_tickTime];
     #define END_COUNTER(x) GVAR(DOUBLES(x,counter)) pushBack [(GVAR(DOUBLES(x,counter)) select 2), diag_tickTime];
 

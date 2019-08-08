@@ -5,7 +5,7 @@ class GVAR(ColourCombo): Combo {
         class Title: Title {};
         class Value: Value {
             idc = 100;
-            onLBSelChanged= QUOTE(_this call FUNC(ColourComboAttribute_onSelChange););
+            onLBSelChanged = QUOTE(_this call FUNC(ColourComboAttribute_onSelChange););
         };
     };
 };

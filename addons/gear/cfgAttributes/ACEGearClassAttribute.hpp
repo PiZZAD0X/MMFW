@@ -5,7 +5,7 @@ class GVAR(ACE_Arsenal_LoadoutClassCombo): Combo {
         class Title: Title {};
         class Value: Value {
             idc = 100;
-            onLBSelChanged= QUOTE(_this call FUNC(ACEGearClassAttribute_onSelChange););
+            onLBSelChanged = QUOTE(_this call FUNC(ACEGearClassAttribute_onSelChange););
         };
     };
 };

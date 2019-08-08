@@ -121,13 +121,13 @@ class CheckboxState: Checkbox {
 class CategoryTitle: Title {
     class Controls {
         class Title: ctrlStatic {
-            style=0;
-            sizeEx="6.2 * (1 / (getResolution select 3)) * pixelGrid * 0.5";
-            x="2 * (pixelH * pixelGrid * 0.50)";
-            //x="2 * (pixelH * pixelGrid * 0.50)";
-            w="48 * (pixelW * pixelGrid * 0.50)";
-            h="5 * (pixelH * pixelGrid * 0.50)";
-            colorBackground[]={0,0,0,0};
+            style = 0;
+            sizeEx = "6.2 * (1 / (getResolution select 3)) * pixelGrid * 0.5";
+            x = "2 * (pixelH * pixelGrid * 0.50)";
+            //x = "2 * (pixelH * pixelGrid * 0.50)";
+            w = "48 * (pixelW * pixelGrid * 0.50)";
+            h = "5 * (pixelH * pixelGrid * 0.50)";
+            colorBackground[] = {0,0,0,0};
         };
     };
 };
@@ -135,13 +135,13 @@ class CategoryTitle: Title {
 class CategoryTitleIndent: Title {
     class Controls {
         class Title: ctrlStatic {
-            style=0;
-            sizeEx="6 * (1 / (getResolution select 3)) * pixelGrid * 0.5";
-            //x=0;
-            x="4 * (pixelH * pixelGrid * 0.50)";
-            w="48 * (pixelW * pixelGrid * 0.50)";
-            h="5 * (pixelH * pixelGrid * 0.50)";
-            colorBackground[]={0,0,0,0};
+            style = 0;
+            sizeEx = "6 * (1 / (getResolution select 3)) * pixelGrid * 0.5";
+            //x = 0;
+            x = "4 * (pixelH * pixelGrid * 0.50)";
+            w = "48 * (pixelW * pixelGrid * 0.50)";
+            h = "5 * (pixelH * pixelGrid * 0.50)";
+            colorBackground[] = {0,0,0,0};
         };
     };
 };
@@ -149,8 +149,8 @@ class CategoryTitleIndent: Title {
 class SubTitle: CategoryTitle {
     class Controls: Controls {
         class Title: Title {
-            x="2 * (pixelH * pixelGrid * 0.50)";
-            sizeEx="5.2 * (1 / (getResolution select 3)) * pixelGrid * 0.5";
+            x = "2 * (pixelH * pixelGrid * 0.50)";
+            sizeEx = "5.2 * (1 / (getResolution select 3)) * pixelGrid * 0.5";
         };
     };
 };
@@ -158,8 +158,8 @@ class SubTitle: CategoryTitle {
 class SubTitleIndent: SubTitle {
     class Controls: Controls {
         class Title: Title {
-            x="6 * (pixelH * pixelGrid * 0.50)";
-            sizeEx="5.2 * (1 / (getResolution select 3)) * pixelGrid * 0.5";
+            x = "6 * (pixelH * pixelGrid * 0.50)";
+            sizeEx = "5.2 * (1 / (getResolution select 3)) * pixelGrid * 0.5";
         };
     };
 };
@@ -187,7 +187,7 @@ class CheckboxStateReversed: CheckboxState {
         class Title: Title {};
         class Value: Value {
             idc = 100;
-            onCheckedChanged="\
+            onCheckedChanged = "\
                 private _ctrlCheckbox = _this select 0;\
                 private _state = [true,false] select (cbChecked _ctrlCheckbox);\
                 private _fade = [0.75,0] select _state;\

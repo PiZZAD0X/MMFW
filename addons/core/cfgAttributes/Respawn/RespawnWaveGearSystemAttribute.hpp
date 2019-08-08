@@ -25,7 +25,7 @@ class EGVAR(Respawn,WaveGearSystemAttribute): Combo {
         class Title: Title {};
         class Value: Value {
             idc = 100;
-            onLBSelChanged="\
+            onLBSelChanged = "\
                 _ctrlCombo = _this select 0;\
                 _cursel = _this select 1;\
                 _value = _control lbData _cursel;\
