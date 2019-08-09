@@ -1,4 +1,4 @@
-class MGVAR(RespawnTemplates) {
+class GVAR(RespawnTemplates) {
     respawnTemplatesNone[] = {};
     respawnTemplatesUnlimited[] = {QEGVAR(RTemplatesS,JoinGroup),QEGVAR(RTemplatesS,SafeStart),QEGVAR(RTemplatesS,ACRE),QEGVAR(RTemplatesS,Gear),QEGVAR(RTemplatesS,CoverMap),QEGVAR(RTemplatesS,MapAndCompassRemover)};
     respawnTemplatesIndTick[] = {QEGVAR(RTemplatesS,JoinGroup),QEGVAR(RTemplatesS,SafeStart),QEGVAR(RTemplatesS,ACRE),QEGVAR(RTemplatesS,Gear),QEGVAR(RTemplatesS,CoverMap),QEGVAR(RTemplatesS,MapAndCompassRemover)};

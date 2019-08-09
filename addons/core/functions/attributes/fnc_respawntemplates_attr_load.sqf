@@ -7,12 +7,12 @@ private _selectedRespawnType = missionNamespace getvariable [_valueVar,0];
 private _pictureChecked = gettext (configfile >> "ctrlCheckbox" >> "textureChecked");
 private _pictureUnchecked = gettext (configfile >> "ctrlCheckbox" >> "textureUnchecked");
 private _defaultTemplates = [
-    getarray (configfile >> QMGVAR(RespawnTemplates) >> "respawnTemplatesNone"),
-    getarray (configfile >> QMGVAR(RespawnTemplates) >> "respawnTemplatesUnlimited"),
-    getarray (configfile >> QMGVAR(RespawnTemplates) >> "respawnTemplatesIndTick"),
-    getarray (configfile >> QMGVAR(RespawnTemplates) >> "respawnTemplatesTeamTick"),
-    getarray (configfile >> QMGVAR(RespawnTemplates) >> "respawnTemplatesWave"),
-    getarray (configfile >> QMGVAR(RespawnTemplates) >> "respawnTemplatesTriggered")
+    getarray (configfile >> QGVAR(RespawnTemplates) >> "respawnTemplatesNone"),
+    getarray (configfile >> QGVAR(RespawnTemplates) >> "respawnTemplatesUnlimited"),
+    getarray (configfile >> QGVAR(RespawnTemplates) >> "respawnTemplatesIndTick"),
+    getarray (configfile >> QGVAR(RespawnTemplates) >> "respawnTemplatesTeamTick"),
+    getarray (configfile >> QGVAR(RespawnTemplates) >> "respawnTemplatesWave"),
+    getarray (configfile >> QGVAR(RespawnTemplates) >> "respawnTemplatesTriggered")
 ];
 private _isDefault = _value isequalto [""];
 {
@@ -42,7 +42,7 @@ private _isDefault = _value isequalto [""];
             _ctrlListbox lbsetpicture [_lbAdd,[_pictureUnchecked,_pictureChecked] select _active];
         };
     } foreach [0,1,2,3,4,5];
-} foreach configproperties [configfile >> QMGVAR(RespawnTemplates),"isclass _x"];
+} foreach configproperties [configfile >> QGVAR(RespawnTemplates),"isclass _x"];
 {
     private _ctrlListbox = _ctrl controlsGroupCtrl (100 + _x);
     _ctrlListbox ctrlshow (_x == _selectedRespawnType);

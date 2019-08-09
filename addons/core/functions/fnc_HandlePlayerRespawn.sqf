@@ -11,7 +11,7 @@ switch (side player) do {
         _templateSettings = GETMVAR(Templates_BLUFOR,[]);
         private _newSideValue = GETMVAR(NewTeam_BLUFOR,0);
         _newSideSetting = [blufor,opfor,independent,civilian] select _newSideValue;
-        _teamRespawnMarker = QMGVAR(RESPAWN_BLUFOR);
+        _teamRespawnMarker = QGVAR(RESPAWN_BLUFOR);
     };
     case east: {
         private _respawnTypeNum = GETMVAR(Type_OPFOR,0);
@@ -20,7 +20,7 @@ switch (side player) do {
         _templateSettings = GETMVAR(Templates_OPFOR,[]);
         private _newSideValue = GETMVAR(NewTeam_OPFOR,1);
         _newSideSetting = [blufor,opfor,independent,civilian] select _newSideValue;
-        _teamRespawnMarker = QMGVAR(RESPAWN_OPFOR);
+        _teamRespawnMarker = QGVAR(RESPAWN_OPFOR);
     };
     case independent: {
         private _respawnTypeNum = GETMVAR(Type_Indfor,0);
@@ -29,7 +29,7 @@ switch (side player) do {
         _templateSettings = GETMVAR(Templates_Indfor,[]);
         private _newSideValue = GETMVAR(NewTeam_Indfor,2);
         _newSideSetting = [blufor,opfor,independent,civilian] select _newSideValue;
-        _teamRespawnMarker = QMGVAR(RESPAWN_Indfor);
+        _teamRespawnMarker = QGVAR(RESPAWN_Indfor);
     };
     case civilian: {
         private _respawnTypeNum = GETMVAR(Type_Civ,0);
@@ -38,7 +38,7 @@ switch (side player) do {
         _templateSettings = GETMVAR(Templates_Civ,[]);
         private _newSideValue = GETMVAR(NewTeam_Civ,3);
         _newSideSetting = [blufor,opfor,independent,civilian] select _newSideValue;
-        _teamRespawnMarker = QMGVAR(RESPAWN_Civ);
+        _teamRespawnMarker = QGVAR(RESPAWN_Civ);
     };
 };
 

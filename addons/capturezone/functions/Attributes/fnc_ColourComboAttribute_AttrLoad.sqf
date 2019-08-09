@@ -6,7 +6,7 @@ LOG("CaptueZoneAttribute Load started");
 params ["_this", "_config", "_value"];
 
 private _control = (_this controlsGroupCtrl 100);
-_control setvariable [QMGVAR(parentcontrolcfg),_config];
+_control setvariable [QGVAR(parentcontrolcfg),_config];
 private _attProperty = getText (_config >> "property");
 missionNamespace setvariable [_attProperty,_value];
 lbClear _control;

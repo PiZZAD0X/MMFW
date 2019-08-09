@@ -1,10 +1,10 @@
-class EGVAR(TeamRespawnSettings,Civ) {
+class EGVAR\(Respawn,TeamSettings_Civ) {
     displayName = "Civilian Respawn Settings";
     collapsed = 0; //_respawnTypeArray = [['1 Life','ONELIFE'],['Unlimited','UNLIMITED'],['Individual Tickets','INDTICKETS'],['Team Tickets','TEAMTICKETS'],['Wave','WAVE'],['Triggered','TRIGGERED']];
     class Attributes {
         class EGVAR(Respawn,Type_Civ) {
             displayName = "Respawn System";
-            tooltip = QUOTE(Type of respawn system for Civilian. Place down a GameLogic object with name MGVAR(RESPAWN_CIV) to define respawn location.);
+            tooltip = QUOTE(Type of respawn system for Civilian. Place down a GameLogic object with name GVAR(RESPAWN_CIV) to define respawn location.);
             control = QEGVAR(Respawn,Combo_Civ);
             defaultValue = "0";
             property = QEGVAR(Respawn,Type_Civ);

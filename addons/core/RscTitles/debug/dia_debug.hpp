@@ -7,7 +7,7 @@ class EGVAR(Debug,Display) {
         uiNamespace setVariable [ARR_2(QN(EGVAR(Debug,DisplayID)),_this select 0)];\
     );
     class controlsBackground {
-        class SOME_TEXT:  MGVAR(RscStructuredText) {
+        class SOME_TEXT:  GVAR(RscStructuredText) {
             idc = 4001;
             x = 0 * safezoneW + safezoneX;
             y = 0 * safezoneH + safezoneY;

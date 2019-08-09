@@ -93,10 +93,10 @@ EXEC_CHECK(CLIENT);
             ["Green","FlareGreen_F",[0.25,0.5,0.25],"F_20mm_Green"],
             ["Yellow","FlareYellow_F",[0.5,0.5,0.25],"F_20mm_Yellow"],
             ["Red","FlareRed_F",[0.5,0.25,0.25],"F_20mm_Red"],
-            ["Large White",QMGVAR(ParaFlare_White),[1,1,1],QMGVAR(ParaFlare_Shot_White)],
-            ["Large Green",QMGVAR(ParaFlare_Green),[0.25,0.5,0.25],QMGVAR(ParaFlare_Shot_Green)],
-            ["Large Yellow",QMGVAR(ParaFlare_Yellow),[0.5,0.5,0.25],QMGVAR(ParaFlare_Shot_Yellow)],
-            ["Large Red",QMGVAR(ParaFlare_Red),[0.5,0.25,0.25],QMGVAR(ParaFlare_Shot_Red)]
+            ["Large White",QGVAR(ParaFlare_White),[1,1,1],QGVAR(ParaFlare_Shot_White)],
+            ["Large Green",QGVAR(ParaFlare_Green),[0.25,0.5,0.25],QGVAR(ParaFlare_Shot_Green)],
+            ["Large Yellow",QGVAR(ParaFlare_Yellow),[0.5,0.5,0.25],QGVAR(ParaFlare_Shot_Yellow)],
+            ["Large Red",QGVAR(ParaFlare_Red),[0.5,0.25,0.25],QGVAR(ParaFlare_Shot_Red)]
         ];
     }, []] call CBA_fnc_waitUntilAndExecute;
 }] call CBA_fnc_addEventHandler;

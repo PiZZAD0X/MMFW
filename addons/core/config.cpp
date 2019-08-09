@@ -16,7 +16,7 @@ class CfgPatches {
 
 class CfgFactionClasses {
     class NO_CATEGORY;
-    class MGVAR(FrameworkCategory): NO_CATEGORY {
+    class GVAR(FrameworkCategory): NO_CATEGORY {
         displayName = " Mission Maker Framework";
     };
 };

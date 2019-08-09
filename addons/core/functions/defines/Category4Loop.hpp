@@ -4,32 +4,26 @@ if (GETMVAR(Enabled_4,false)) then {
     } else {
         LOG("Valid message for End Condition Category 4, executing");
 
-        private _conditionsCountCategory6 = 0;
-        if (GETMVAR(CasualtyCount_Enabled_BLUFOR_4,false)) then {_conditionsCountCategory6 = _conditionsCountCategory6 + 1;};
-        if (GETMVAR(CasualtyCount_Enabled_OPFOR_4,false)) then {_conditionsCountCategory6 = _conditionsCountCategory6 + 1;};
-        if (GETMVAR(CasualtyCount_Enabled_Indfor_4,false)) then {_conditionsCountCategory6 = _conditionsCountCategory6 + 1;};
-        if (GETMVAR(CasualtyCount_Enabled_Civ_4,false)) then {_conditionsCountCategory6 = _conditionsCountCategory6 + 1;};
+        private _conditionsCountCategory_4 = 0;
+        if (GETMVAR(CasualtyCount_Enabled_BLUFOR_4,false)) then {_conditionsCountCategory_4 = _conditionsCountCategory_4 + 4;};
+        if (GETMVAR(CasualtyCount_Enabled_OPFOR_4,false)) then {_conditionsCountCategory_4 = _conditionsCountCategory_4 + 4;};
+        if (GETMVAR(CasualtyCount_Enabled_Indfor_4,false)) then {_conditionsCountCategory_4 = _conditionsCountCategory_4 + 4;};
+        if (GETMVAR(CasualtyCount_Enabled_Civ_4,false)) then {_conditionsCountCategory_4 = _conditionsCountCategory_4 + 4;};
 
-        if (!(GETMVAR(EntitiesAlive_Array_4,[]) isEqualto [])) then {_conditionsCountCategory6 = _conditionsCountCategory6 + 1;};
-        if (!(GETMVAR(EntitiesDead_Array_4,[]) isEqualto [])) then {_conditionsCountCategory6 = _conditionsCountCategory6 + 1;};
-        if (!(GETMVAR(EntitiesDamaged_Array_4,[]) isEqualto [])) then {_conditionsCountCategory6 = _conditionsCountCategory6 + 1;};
-        if (!(GETMVAR(HostageRescued_Array_4,[]) isEqualto [])) then {_conditionsCountCategory6 = _conditionsCountCategory6 + 1;};
-        if (!(GETMVAR(CustomVariables_Array_4,[]) isEqualto [])) then {_conditionsCountCategory6 = _conditionsCountCategory6 + 1;};
-        if (!(GETMVAR(CaptureZoneCaptured_Array_4,[]) isEqualto [])) then {_conditionsCountCategory6 = _conditionsCountCategory6 + 1;};
+        if (!(GETMVAR(EntitiesAlive_Array_4,[]) isEqualto [])) then {_conditionsCountCategory_4 = _conditionsCountCategory_4 + 4;};
+        if (!(GETMVAR(EntitiesDead_Array_4,[]) isEqualto [])) then {_conditionsCountCategory_4 = _conditionsCountCategory_4 + 4;};
+        if (!(GETMVAR(EntitiesDamaged_Array_4,[]) isEqualto [])) then {_conditionsCountCategory_4 = _conditionsCountCategory_4 + 4;};
+        if (!(GETMVAR(HostageRescued_Array_4,[]) isEqualto [])) then {_conditionsCountCategory_4 = _conditionsCountCategory_4 + 4;};
+        if (!(GETMVAR(CustomVariables_Array_4,[]) isEqualto [])) then {_conditionsCountCategory_4 = _conditionsCountCategory_4 + 4;};
+        if (!(GETMVAR(CaptureZoneCaptured_Array_4,[]) isEqualto [])) then {_conditionsCountCategory_4 = _conditionsCountCategory_4 + 4;};
 
-        if ((_conditionsCountCategory6) > 0  || ((GETMVAR(ExtractionEnabled_4,false)) && {(GETMVAR(ExtractionForced_4,false))})) then {
-            LOG_1("Starting Category 4 Condition Count:%1",_conditionsCountCategory6);
-            private _endConditionsCategory6PFHhandle = [{
+        if ((_conditionsCountCategory_4) > 0  || ((GETMVAR(ExtractionEnabled_4,false)) && {(GETMVAR(ExtractionForced_4,false))})) then {
+            LOG_4("Starting Category 4 Condition Count:%1",_conditionsCountCategory_4);
+            GVAR(Category_4_PFH) = [{
                 params ["_argNested", "_idPFH"];
-                _argNested params ["_checkFrequency","_lastCheckedTime"];
                 if (GVAR(MissionEnded)) exitwith {
                     [_idPFH] call CBA_fnc_removePerFrameHandler;
                 };
-                private _timeDifference = (CBA_missionTime - _lastCheckedTime);
-                if (_timeDifference < = _checkFrequency) exitwith {
-                };
-                LOG_1("Category Check with _lastCheckedTime: %1",_lastCheckedTime);
-                _argNested set [1,CBA_missionTime];
                 private _ConditionCheckList = [];
 
                 //Casualty Checks
@@ -68,7 +62,7 @@ if (GETMVAR(Enabled_4,false)) then {
                 //alive entity block
                 private _aliveUnitArray = GETMVAR(EntitiesAlive_Array_4,[]);
                 if (!(_aliveUnitArray isEqualto [])) then {
-                    LOG_1("Alive Array 1:%1",_aliveUnitArray);
+                    LOG_4("Alive Array 4:%1",_aliveUnitArray);
                     private _alive = true;
                     {
                         private _unit = missionNamespace getVariable [_x,objNull];
@@ -76,7 +70,7 @@ if (GETMVAR(Enabled_4,false)) then {
                             _alive = _alive && (_unit call FUNC(alive));
                         } else {
                             _alive = false;
-                            LOG_1("Unit %1 not found!",_x);
+                            LOG_4("Unit %1 not found!",_x);
                             ["Unit " + _x + " not found!","Unit " + _x + " not found!"] call FUNC(DebugMessageDetailed);
                         };
                     } forEach _aliveUnitArray;
@@ -86,13 +80,13 @@ if (GETMVAR(Enabled_4,false)) then {
                 //dead entity block
                 private _deadUnitArray = GETMVAR(EntitiesDead_Array_4,[]);
                 if (!(_deadUnitArray isEqualto [])) then {
-                    LOG_1("Dead Array 1:%1",_deadUnitArray);
+                    LOG_4("Dead Array 4:%1",_deadUnitArray);
                     private _dead = true;
                     {
                         private _unit = missionNamespace getVariable [_x,objNull];
                         if (isNull _unit) then {
                             _dead = false;
-                           LOG_1("Unit %1 not found!",_x);
+                           LOG_4("Unit %1 not found!",_x);
                             ["Unit " + _x + " not found!","Unit " + _x + " not found!"] call FUNC(DebugMessageDetailed);
                         } else {
                             private _unitDeadCheck = (!(_unit call FUNC(alive)));
@@ -106,7 +100,7 @@ if (GETMVAR(Enabled_4,false)) then {
                 //damaged & immobilized entity block
                 private _damagedUnitArray = GETMVAR(EntitiesDamaged_Array_4,[]);
                 if (!(_damagedUnitArray isEqualto [])) then {
-                    LOG_1("Damaged Array 1:%1",_damagedUnitArray);
+                    LOG_4("Damaged Array 4:%1",_damagedUnitArray);
                     private _damaged = true;
                     {
                         private _unit = missionNamespace getVariable [_x,objNull];
@@ -114,7 +108,7 @@ if (GETMVAR(Enabled_4,false)) then {
                             _damaged = _damaged && ((damage _unit > 0.5) || ((_unit isKindOf LandVehicle) && (!canMove _unit)));
                         } else {
                             _damaged = false;
-                           LOG_1("Unit %1 not found!",_x);
+                           LOG_4("Unit %1 not found!",_x);
                             ["Unit " + _x + " not found!","Unit " + _x + " not found!"] call FUNC(DebugMessageDetailed);
                         };
                     } forEach _damagedUnitArray;
@@ -124,7 +118,7 @@ if (GETMVAR(Enabled_4,false)) then {
                 //rescued hostage block
                 private _hostageRescuedArray = GETMVAR(HostageRescued_Array_4,[]);
                 if (!(_hostageRescuedArray isEqualto [])) then {
-                    LOG_1("Rescued Array 1:%1",_hostageRescuedArray);
+                    LOG_4("Rescued Array 4:%1",_hostageRescuedArray);
                     private _rescued = true;
                     {
                         private _unit = missionNamespace getVariable [_x,objNull];
@@ -132,7 +126,7 @@ if (GETMVAR(Enabled_4,false)) then {
                             _rescued = _rescued && (EGETVAR(_unit,Hostage,IsRescued,false));
                         } else {
                             _rescued = false;
-                            LOG_1("Unit %1 not found!",_x);
+                            LOG_4("Unit %1 not found!",_x);
                             ["Unit " + _x + " not found!","Unit " + _x + " not found!"] call FUNC(DebugMessageDetailed);
                         };
                     } forEach _hostageRescuedArray;
@@ -142,7 +136,7 @@ if (GETMVAR(Enabled_4,false)) then {
                 //custom variables block
                 private _customVariablesArray = GETMVAR(CustomVariables_Array_4,[]);
                 if (!(_customVariablesArray isEqualto [])) then {
-                    LOG_1("Var Array 1:%1",_customVariablesArray);
+                    LOG_4("Var Array 4:%1",_customVariablesArray);
                     private _custom = true;
                     {
                         private _VarCheck = missionNamespace getVariable [_x,false];
@@ -158,7 +152,7 @@ if (GETMVAR(Enabled_4,false)) then {
                     {
                         private _CaptureZoneConditionCheck = false;
                         if !((call compile _x) in (EGETMVAR(CaptureZone,ListArray,[]))) then {
-                            LOG_1("CaptureZone %1 does not exist!",_x);
+                            LOG_4("CaptureZone %1 does not exist!",_x);
                             ["CaptureZone " + _x + " does not exist!","CaptureZone " + _x + " does not exist!"] call FUNC(DebugMessageDetailed);
                             _CaptureZoneConditionCheck = false;
                         } else {
@@ -173,7 +167,7 @@ if (GETMVAR(Enabled_4,false)) then {
                                         _CaptureZoneConditionCheck = false;
                                     };
                                 };
-                                case 1: {
+                                case 4: {
                                     if ((missionNamespace getVariable [_teamControllingvarName,false]) isEqualto "BLUFOR") then {
                                         _CaptureZoneConditionCheck = true;
                                     } else {
@@ -211,7 +205,7 @@ if (GETMVAR(Enabled_4,false)) then {
                     } foreach _captureZones_Array_4;
                 };
 
-                LOG_1("Category 4 _ConditionCheckList:%1",_ConditionCheckList);
+                LOG_4("Category 4 _ConditionCheckList:%1",_ConditionCheckList);
 
                 private _ExtractionCheck = false;
 
@@ -225,7 +219,7 @@ if (GETMVAR(Enabled_4,false)) then {
                         } else {
                             _ExtractionCheck = false;
                         };
-                        TRACE_1("Extraction Check Category 4",_ExtractionCheck);
+                        TRACE_4("Extraction Check Category 4",_ExtractionCheck);
                 } else {
                     _ExtractionCheck = true;
                 };
@@ -233,15 +227,15 @@ if (GETMVAR(Enabled_4,false)) then {
                 if (_ExtractionCheck) then {
                     if ((GETMVAR(ExtractionEnabled_4,false)) && {(GETMVAR(ExtractionForced_4,false))}) then
                     {
-                                    LOG_1("Category 4 Ending due to forced Extraction!");
-                                    [GVAR(Message_4)] call FUNC(EndMission);
-                                    [_idPFH] call CBA_fnc_removePerFrameHandler;
+                        LOG_4("Category 4 Ending due to forced Extraction!");
+                        [GVAR(Message_4)] call FUNC(EndMission);
+                        [_idPFH] call CBA_fnc_removePerFrameHandler;
                     } else {
-                        if (GVAR(Mode_4) isEqualto 1) then {
+                        if (GVAR(Mode_4) isEqualto 4) then {
                             {
                                 _x params ["_name","_value"];
                                 if (_value) exitwith {
-                                    LOG_1("Category 4 Ending due to :%1",_value);
+                                    LOG_4("Category 4 Ending due to :%1",_value);
                                     [GVAR(Message_4)] call FUNC(EndMission);
                                     [_idPFH] call CBA_fnc_removePerFrameHandler;
                                 };
@@ -261,7 +255,7 @@ if (GETMVAR(Enabled_4,false)) then {
                         };
                     };
                 };
-            }, 1, [(GETMVAR(ConditionSleep,30)),CBA_missionTime]] call CBA_fnc_addPerFrameHandler;
+            }, (GETMVAR(ConditionSleep,30))] call CBA_fnc_addPerFrameHandler;
         } else {
             ERROR("No Conditions for Category 4");
         };

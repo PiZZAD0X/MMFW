@@ -4,9 +4,9 @@ EXEC_CHECK(CLIENT);
 [QGVAR(DisplayEvent), {
     if !(GETMVAR(Enabled,false)) exitwith {};
     LOG_1("Display_Event published with: %1",_this);
-    [{!((uiNamespace getVariable [QMGVAR(EndScreen),""]) isEqualto "")}, {
+    [{!((uiNamespace getVariable [QEGVAR(Core,(EndScreen)),""]) isEqualto "")}, {
         _this params ["_textBLU","_textOPF","_textIND","_textCIV"];
-        private _endscreenDiag = (uiNamespace getVariable QMGVAR(EndScreen));
+        private _endscreenDiag = (uiNamespace getVariable QEGVAR(Core,(EndScreen)));
         LOG_1("_endscreenDiag: %1",_endscreenDiag);
         private _bottomLeft = 3004;
         private _bottomMiddleLeft = 3005;

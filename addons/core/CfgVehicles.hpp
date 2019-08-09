@@ -15,15 +15,15 @@ class CfgVehicles {
     };
 
     class GVAR(BaseModule): Module_F {
-        category = QMGVAR(FrameworkCategory);
+        category = QGVAR(FrameworkCategory);
         isGlobal = 2;
         isTriggerActivated = 0;
         isDisposable = 0;
         is3DEN = 0;
         scope = 1;
         icon = "\a3\3DEN\Data\CfgWaypoints\scripted_ca.paa";
-        editorCategory = QMGVAR(Category);
-        editorSubCategory = QMGVAR(SubCategory);
+        editorCategory = QGVAR(Category);
+        editorSubCategory = QGVAR(SubCategory);
     };
 
     class EGVAR(EndConditions,ExtractModule): GVAR(BaseModule) {

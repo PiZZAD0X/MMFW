@@ -4,32 +4,26 @@ if (GETMVAR(Enabled_1,false)) then {
     } else {
         LOG("Valid message for End Condition Category 1, executing");
 
-        private _conditionsCountCategory6 = 0;
-        if (GETMVAR(CasualtyCount_Enabled_BLUFOR_1,false)) then {_conditionsCountCategory6 = _conditionsCountCategory6 + 1;};
-        if (GETMVAR(CasualtyCount_Enabled_OPFOR_1,false)) then {_conditionsCountCategory6 = _conditionsCountCategory6 + 1;};
-        if (GETMVAR(CasualtyCount_Enabled_Indfor_1,false)) then {_conditionsCountCategory6 = _conditionsCountCategory6 + 1;};
-        if (GETMVAR(CasualtyCount_Enabled_Civ_1,false)) then {_conditionsCountCategory6 = _conditionsCountCategory6 + 1;};
+        private _conditionsCountCategory_1 = 0;
+        if (GETMVAR(CasualtyCount_Enabled_BLUFOR_1,false)) then {_conditionsCountCategory_1 = _conditionsCountCategory_1 + 1;};
+        if (GETMVAR(CasualtyCount_Enabled_OPFOR_1,false)) then {_conditionsCountCategory_1 = _conditionsCountCategory_1 + 1;};
+        if (GETMVAR(CasualtyCount_Enabled_Indfor_1,false)) then {_conditionsCountCategory_1 = _conditionsCountCategory_1 + 1;};
+        if (GETMVAR(CasualtyCount_Enabled_Civ_1,false)) then {_conditionsCountCategory_1 = _conditionsCountCategory_1 + 1;};
 
-        if (!(GETMVAR(EntitiesAlive_Array_1,[]) isEqualto [])) then {_conditionsCountCategory6 = _conditionsCountCategory6 + 1;};
-        if (!(GETMVAR(EntitiesDead_Array_1,[]) isEqualto [])) then {_conditionsCountCategory6 = _conditionsCountCategory6 + 1;};
-        if (!(GETMVAR(EntitiesDamaged_Array_1,[]) isEqualto [])) then {_conditionsCountCategory6 = _conditionsCountCategory6 + 1;};
-        if (!(GETMVAR(HostageRescued_Array_1,[]) isEqualto [])) then {_conditionsCountCategory6 = _conditionsCountCategory6 + 1;};
-        if (!(GETMVAR(CustomVariables_Array_1,[]) isEqualto [])) then {_conditionsCountCategory6 = _conditionsCountCategory6 + 1;};
-        if (!(GETMVAR(CaptureZoneCaptured_Array_1,[]) isEqualto [])) then {_conditionsCountCategory6 = _conditionsCountCategory6 + 1;};
+        if (!(GETMVAR(EntitiesAlive_Array_1,[]) isEqualto [])) then {_conditionsCountCategory_1 = _conditionsCountCategory_1 + 1;};
+        if (!(GETMVAR(EntitiesDead_Array_1,[]) isEqualto [])) then {_conditionsCountCategory_1 = _conditionsCountCategory_1 + 1;};
+        if (!(GETMVAR(EntitiesDamaged_Array_1,[]) isEqualto [])) then {_conditionsCountCategory_1 = _conditionsCountCategory_1 + 1;};
+        if (!(GETMVAR(HostageRescued_Array_1,[]) isEqualto [])) then {_conditionsCountCategory_1 = _conditionsCountCategory_1 + 1;};
+        if (!(GETMVAR(CustomVariables_Array_1,[]) isEqualto [])) then {_conditionsCountCategory_1 = _conditionsCountCategory_1 + 1;};
+        if (!(GETMVAR(CaptureZoneCaptured_Array_1,[]) isEqualto [])) then {_conditionsCountCategory_1 = _conditionsCountCategory_1 + 1;};
 
-        if ((_conditionsCountCategory6) > 0  || ((GETMVAR(ExtractionEnabled_1,false)) && {(GETMVAR(ExtractionForced_1,false))})) then {
-            LOG_1("Starting Category 1 Condition Count:%1",_conditionsCountCategory6);
-            private _endConditionsCategory6PFHhandle = [{
+        if ((_conditionsCountCategory_1) > 0  || ((GETMVAR(ExtractionEnabled_1,false)) && {(GETMVAR(ExtractionForced_1,false))})) then {
+            LOG_1("Starting Category 1 Condition Count:%1",_conditionsCountCategory_1);
+            GVAR(Category_1_PFH) = [{
                 params ["_argNested", "_idPFH"];
-                _argNested params ["_checkFrequency","_lastCheckedTime"];
                 if (GVAR(MissionEnded)) exitwith {
                     [_idPFH] call CBA_fnc_removePerFrameHandler;
                 };
-                private _timeDifference = (CBA_missionTime - _lastCheckedTime);
-                if (_timeDifference < = _checkFrequency) exitwith {
-                };
-                LOG_1("Category Check with _lastCheckedTime: %1",_lastCheckedTime);
-                _argNested set [1,CBA_missionTime];
                 private _ConditionCheckList = [];
 
                 //Casualty Checks
@@ -233,9 +227,9 @@ if (GETMVAR(Enabled_1,false)) then {
                 if (_ExtractionCheck) then {
                     if ((GETMVAR(ExtractionEnabled_1,false)) && {(GETMVAR(ExtractionForced_1,false))}) then
                     {
-                                    LOG_1("Category 1 Ending due to forced Extraction!");
-                                    [GVAR(Message_1)] call FUNC(EndMission);
-                                    [_idPFH] call CBA_fnc_removePerFrameHandler;
+                        LOG_1("Category 1 Ending due to forced Extraction!");
+                        [GVAR(Message_1)] call FUNC(EndMission);
+                        [_idPFH] call CBA_fnc_removePerFrameHandler;
                     } else {
                         if (GVAR(Mode_1) isEqualto 1) then {
                             {
@@ -261,7 +255,7 @@ if (GETMVAR(Enabled_1,false)) then {
                         };
                     };
                 };
-            }, 1, [(GETMVAR(ConditionSleep,30)),CBA_missionTime]] call CBA_fnc_addPerFrameHandler;
+            }, (GETMVAR(ConditionSleep,30))] call CBA_fnc_addPerFrameHandler;
         } else {
             ERROR("No Conditions for Category 1");
         };

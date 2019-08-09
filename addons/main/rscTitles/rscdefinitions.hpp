@@ -3,181 +3,151 @@
 //---------------------------------
 // Common defines
 //---------------------------------
-
-#define true                     1
-#define false                 0
-
-#define ReadAndWrite             0 //! any modifications enabled
-#define ReadAndCreate         1 //! only adding new class members is allowed
-#define ReadOnly                 2 //! no modifications enabled
-#define ReadOnlyVerified         3 //! no modifications enabled, CRC test applied
-
+#define true 1
+#define false 0
+#define ReadAndWrite 0 //! any modifications enabled
+#define ReadAndCreate 1 //! only adding new class members is allowed
+#define ReadOnly 2 //! no modifications enabled
+#define ReadOnlyVerified 3 //! no modifications enabled, CRC test applied
 //---------------------------------
 // Control types
 //---------------------------------
-
-#define CT_STATIC               0
-#define CT_BUTTON               1
-#define CT_EDIT                 2
-#define CT_SLIDER               3
-#define CT_COMBO                   4
-#define CT_LISTBOX              5
-#define CT_TOOLBOX              6
-#define CT_CHECKBOXES           7
-#define CT_PROGRESS             8
-#define CT_HTML                 9
-#define CT_STATIC_SKEW          10
-#define CT_ACTIVETEXT           11
-#define CT_TREE                 12
-#define CT_STRUCTURED_TEXT      13
-#define CT_CONTEXT_MENU         14
-#define CT_CONTROLS_GROUP       15
-#define CT_SHORTCUTBUTTON       16
-
+#define CT_STATIC 0
+#define CT_BUTTON 1
+#define CT_EDIT 2
+#define CT_SLIDER 3
+#define CT_COMBO 4
+#define CT_LISTBOX 5
+#define CT_TOOLBOX 6
+#define CT_CHECKBOXES 7
+#define CT_PROGRESS 8
+#define CT_HTML 9
+#define CT_STATIC_SKEW 10
+#define CT_ACTIVETEXT 11
+#define CT_TREE 12
+#define CT_STRUCTURED_TEXT 13
+#define CT_CONTEXT_MENU 14
+#define CT_CONTROLS_GROUP 15
+#define CT_SHORTCUTBUTTON 16
 // Todo: verify these
-    #define CT_3DSTATIC         20
-    #define CT_3DACTIVETEXT     21
-    #define CT_3DLISTBOX        22
-    #define CT_3DHTML           23
-    #define CT_3DSLIDER         24
-    #define CT_3DEDIT           25
+#define CT_3DSTATIC 20
+#define CT_3DACTIVETEXT 21
+#define CT_3DLISTBOX 22
+#define CT_3DHTML 23
+#define CT_3DSLIDER 24
+#define CT_3DEDIT 25
 // End of "ToDo Verify These"
-
-#define CT_XKEYDESC             40
-#define CT_XBUTTON              41
-#define CT_XLISTBOX             42
-#define CT_XSLIDER              43
-#define CT_XCOMBO               44
-#define CT_ANIMATED_TEXTURE     45
-#define CT_CHECKBOX             77
+#define CT_XKEYDESC 40
+#define CT_XBUTTON 41
+#define CT_XLISTBOX 42
+#define CT_XSLIDER 43
+#define CT_XCOMBO 44
+#define CT_ANIMATED_TEXTURE 45
+#define CT_CHECKBOX 77
 // 3D Controls
-#define CT_OBJECT               80
-#define CT_OBJECT_ZOOM          81
-#define CT_OBJECT_CONTAINER     82
-#define CT_OBJECT_CONT_ANIM     83
-#define CT_LINEBREAK            98
-#define CT_USER                 99
-#define CT_MAP                  100
-#define CT_MAP_Main             101
-#define CT_LISTNBOX             102
-
-
+#define CT_OBJECT 80
+#define CT_OBJECT_ZOOM 81
+#define CT_OBJECT_CONTAINER 82
+#define CT_OBJECT_CONT_ANIM 83
+#define CT_LINEBREAK 98
+#define CT_USER 99
+#define CT_MAP 100
+#define CT_MAP_Main 101
+#define CT_LISTNBOX 102
 //---------------------------------
 // Control styles
 //---------------------------------
 //many of these can be combined; eg: style = ST_RIGHT + ST_SHADOW;
-
-#define ST_UNDEFINED              0        // Not Sure what this is
-#define ST_POS                    0x0F
-#define ST_HPOS                   0x03
-#define ST_VPOS                   0x0C
-#define ST_LEFT                   0x00    //left aligned text
-#define ST_RIGHT                  0x01    //left aligned text
-#define ST_CENTER                 0x02    //center aligned text
-#define ST_DOWN                   0x04
-#define ST_UP                     0x08
-#define ST_VCENTER                0x0C
-
-#define ST_Type                   0xF0
-#define ST_SINGLE                 0x00    //single line textbox
-#define ST_MULTI                  0x10    //multi-line textbox (text will wrap, and newline character can be used). There is no scrollbar, but mouse wheel/arrows can scroll it. Control will be outlined with a line (color = text color).
-#define ST_Title_BAR              0x20
-#define ST_PICTURE                0x30      //turns a static control into a picture control. 'Text' will be used as picture path. Picture will be stretched to fit the control.
-#define ST_FRAME                  0x40    //control becomes a frame. Background is clear and text is placed along the top edge of the control. Control is outlined with text color (as in ST_MULTI)
-#define ST_BACKGROUND             0x50
-#define ST_GROUP_BOX              0x60
-#define ST_GROUP_BOX2             0x70
-#define ST_HUD_BACKGROUND         0x80    //control is rounded and outlined (just like a hint box)
-#define ST_TILE_PICTURE           0x90
-#define ST_WITH_RECT              0xA0
-#define ST_LINE                   0xB0    //a line is drawn between the top left and bottom right of the control (color = text color). Background is clear. Control can still have text, however.
-
-#define ST_SHADOW                 0x100    //text or image is given a shadow
-#define ST_NO_RECT                0x200    //when combined with ST_MULTI, it eliminates the outline around the control. Might combine with other styles for similar effect.
-#define ST_KEEP_ASPECT_RATIO      0x800    //used for pictures, it makes the displayed picture keep its aspect ratio.
-
-#define ST_Title                  ST_Title_BAR + ST_CENTER
-
+#define ST_UNDEFINED 0        // Not Sure what this is
+#define ST_POS 0x0F
+#define ST_HPOS 0x03
+#define ST_VPOS 0x0C
+#define ST_LEFT 0x00    //left aligned text
+#define ST_RIGHT 0x01    //left aligned text
+#define ST_CENTER 0x02    //center aligned text
+#define ST_DOWN 0x04
+#define ST_UP 0x08
+#define ST_VCENTER 0x0C
+#define ST_Type 0xF0
+#define ST_SINGLE 0x00    //single line textbox
+#define ST_MULTI 0x10    //multi-line textbox (text will wrap, and newline character can be used). There is no scrollbar, but mouse wheel/arrows can scroll it. Control will be outlined with a line (color = text color).
+#define ST_Title_BAR 0x20
+#define ST_PICTURE 0x30      //turns a static control into a picture control. 'Text' will be used as picture path. Picture will be stretched to fit the control.
+#define ST_FRAME 0x40    //control becomes a frame. Background is clear and text is placed along the top edge of the control. Control is outlined with text color (as in ST_MULTI)
+#define ST_BACKGROUND 0x50
+#define ST_GROUP_BOX 0x60
+#define ST_GROUP_BOX2 0x70
+#define ST_HUD_BACKGROUND 0x80    //control is rounded and outlined (just like a hint box)
+#define ST_TILE_PICTURE 0x90
+#define ST_WITH_RECT 0xA0
+#define ST_LINE 0xB0    //a line is drawn between the top left and bottom right of the control (color = text color). Background is clear. Control can still have text, however.
+#define ST_SHADOW 0x100    //text or image is given a shadow
+#define ST_NO_RECT 0x200    //when combined with ST_MULTI, it eliminates the outline around the control. Might combine with other styles for similar effect.
+#define ST_KEEP_ASPECT_RATIO 0x800    //used for pictures, it makes the displayed picture keep its aspect ratio.
+#define ST_Title ST_Title_BAR + ST_CENTER
 // Slider styles
-#define SL_DIR                    0x400
-#define SL_VERT                   0
-#define SL_HORZ                   0x400
-
-#define SL_TEXTURES               0x10
-
+#define SL_DIR 0x400
+#define SL_VERT 0
+#define SL_HORZ 0x400
+#define SL_TEXTURES 0x10
 // progress bar
-#define ST_VERTICAL               0x01
-#define ST_HORIZONTAL             0
-
+#define ST_VERTICAL 0x01
+#define ST_HORIZONTAL 0
 // Listbox styles
-#define LB_TEXTURES               0x10    //removes all extra lines from listbox, leaving only a gradiant scrollbar. Useful when LB has a painted background behind it.
-#define LB_MULTI                  0x20    //allows multiple elements of the LB to be selected (by holding shift / ctrl)
-
+#define LB_TEXTURES 0x10    //removes all extra lines from listbox, leaving only a gradiant scrollbar. Useful when LB has a painted background behind it.
+#define LB_MULTI 0x20    //allows multiple elements of the LB to be selected (by holding shift / ctrl)
 // Tree styles
-#define TR_SHOWROOT               1
-#define TR_AUTOCOLLAPSE           2
-
+#define TR_SHOWROOT 1
+#define TR_AUTOCOLLAPSE 2
 // MessageBox styles
-#define MB_BUTTON_OK              1
-#define MB_BUTTON_CANCEL          2
-#define MB_BUTTON_USER            4
-
+#define MB_BUTTON_OK 1
+#define MB_BUTTON_CANCEL 2
+#define MB_BUTTON_USER 4
 //---------------------------------
 // Hardcoded IDCs
 //---------------------------------
-
-#define IDC_OK                            1
-#define IDC_CANCEL                        2
-#define IDC_AUTOCANCEL                    3
-#define IDC_ABORT                         4
-#define IDC_RESTART                      5
-
+#define IDC_OK 1
+#define IDC_CANCEL 2
+#define IDC_AUTOCANCEL 3
+#define IDC_ABORT 4
+#define IDC_RESTART 5
 ///////////////////
 //     FONTS     //
 ///////////////////
 /*
-    "EtelkaMonospacePro"
-    "EtelkaMonospaceProBold"
-    "EtelkaNarrowMediumPro"
-    "LucidaConsoleB"
-    "PuristaBold"
-    "PuristaLight"
-    "PuristaMedium"
-    "PuristaSemibold"
-    "TahomaB"
+"EtelkaMonospacePro"
+"EtelkaMonospaceProBold"
+"EtelkaNarrowMediumPro"
+"LucidaConsoleB"
+"PuristaBold"
+"PuristaLight"
+"PuristaMedium"
+"PuristaSemibold"
+"TahomaB"
 */
-
-#define FONT_LIGHT                "PuristaLight"
-#define FONT_NORMAL                "PuristaMedium"
-#define FONT_BOLD                "PuristaSemibold"
-#define FONT_HEAVY                "PuristaBold"
-#define FONT_MONO                "EtelkaMonospaceProBold"
-
-
+#define FONT_LIGHT "PuristaLight"
+#define FONT_NORMAL "PuristaMedium"
+#define FONT_BOLD "PuristaSemibold"
+#define FONT_HEAVY "PuristaBold"
+#define FONT_MONO "EtelkaMonospaceProBold"
 /////////////////////
 //     COLOURS     //
 /////////////////////
-
-#define RGB_WHITE                {1,1,1,1}
-#define RGB_WHITE_50            {1,1,1,0.5}
-
-#define RGB_BLACK                {0,0,0,1}
-#define RGB_RED                    {1,0,0,1}
-#define RGB_GREEN                {0,1,0,1}
-#define RGB_BLUE                {0,0,1,1}
-
-#define RGB_DARKCYAN            {0,0.5,0.5,1}
-
-#define HEX_WHITE                "#ffffff"
-#define HEX_BLACK                "#000000"
-
-
+#define RGB_WHITE {1,1,1,1}
+#define RGB_WHITE_50 {1,1,1,0.5}
+#define RGB_BLACK {0,0,0,1}
+#define RGB_RED {1,0,0,1}
+#define RGB_GREEN {0,1,0,1}
+#define RGB_BLUE {0,0,1,1}
+#define RGB_DARKCYAN {0,0.5,0.5,1}
+#define HEX_WHITE "#ffffff"
+#define HEX_BLACK "#000000"
 ///////////////////////////////////////////////////////////////////////////
 /// Base Classes
 ///////////////////////////////////////////////////////////////////////////
-class MGVAR(RscBackground) {
+class GVAR(RscBackground) {
     colorBackground[] = {0, 0, 0, 0};
-    text = ";
+    text = "";
     type = CT_STATIC;
     idc = -1;
     style = ST_LEFT;
@@ -185,7 +155,7 @@ class MGVAR(RscBackground) {
     font = RobotoCondensed;
     sizeEx = 0.04;
 };
-  class MGVAR(RscText) {
+class GVAR(RscText) {
     idc = -1;
     access = 0;
     type = CT_STATIC;
@@ -208,15 +178,13 @@ class MGVAR(RscBackground) {
     tooltipColorText[] = {1,1,1,1};
     tooltipColorBox[] = {1,1,1,1};
     tooltipColorShade[] = {0,0,0,0.65};
-  };
-
-  //Multi-line text.
-  class MGVAR(RscTextMulti): MGVAR(RscText) {
+};
+//Multi-line text.
+class GVAR(RscTextMulti): GVAR(RscText) {
     linespacing = 1;
     style = ST_LEFT + ST_MULTI;
-  };
-
-  class MGVAR(RscFrame) {
+};
+class GVAR(RscFrame) {
     type = CT_STATIC;
     idc = -1;
     style = 64;
@@ -226,10 +194,9 @@ class MGVAR(RscBackground) {
     font = FONT_NORMAL;
     sizeEx = 0.02;
     text = "";
-  };
-
-  //Standard active text (text that can be clicked like a button)
-   class MGVAR(RscActiveText) {
+};
+//Standard active text (text that can be clicked like a button)
+class GVAR(RscActiveText) {
     idc = -1;
     access = ReadAndWrite;
     type = CT_ACTIVETEXT;
@@ -244,7 +211,7 @@ class MGVAR(RscBackground) {
     h = 0.05;
     w = 0.15;
     shadow = 0;
-    sizeEx = "(            (            (            ((safezoneW / safezoneH) min 1.2) / 1.2) / 25) * 1)";
+    sizeEx = "(((((safezoneW / safezoneH) min 1.2) / 1.2) / 25) * 1)";
     soundClick[] = {"",0.1,1};
     soundEnter[] = {"",0.1,1};
     soundEscape[] = {"",0.1,1};
@@ -253,10 +220,9 @@ class MGVAR(RscBackground) {
     tooltipColorShade[] = {0,0,0,0.65};
     tooltipColorText[] = {1,1,1,1};
     text = "";
-  };
-
-  class MGVAR(RscStructuredText) {
-      idc = -1;
+};
+class GVAR(RscStructuredText) {
+    idc = -1;
     access = 0;
     type = CT_STRUCTURED_TEXT;
     //style = 0; Default BIS value not documented
@@ -277,9 +243,8 @@ class MGVAR(RscBackground) {
         align = "left";
         shadow = 1;
     };
-  };
-
-    class MGVAR(RscHTML) {
+};
+class GVAR(RscHTML) {
     idc = -1;
     access = ReadAndWrite;
     type = CT_HTML;
@@ -335,10 +300,9 @@ class MGVAR(RscBackground) {
         fontBold = FONT_BOLD;
         sizeEx = 0.04;
     };
-  };
-
-  // Todo NEEDS CHECKING WITH WIKI
-  class MGVAR(RscProgress) {
+};
+// Todo NEEDS CHECKING WITH WIKI
+class GVAR(RscProgress) {
     idc = -1;
     access = ReadAndWrite;
     type = CT_PROGRESS;
@@ -353,10 +317,9 @@ class MGVAR(RscBackground) {
     colorFrame[] = RGB_WHITE;
     colorBar[] = RGB_WHITE;
     texture = "#(argb,8,8,3)color(1,1,1,1)";
-  };
-
-  // Todo NEEDS CHECKING WITH WIKI
-  class MGVAR(RscProgressNotFreeze) {
+};
+// Todo NEEDS CHECKING WITH WIKI
+class GVAR(RscProgressNotFreeze) {
     idc = -1;
     access = ReadAndWrite;
     type = CT_ANIMATED_TEXTURE;
@@ -369,9 +332,8 @@ class MGVAR(RscBackground) {
     h = 0.1;
     shadow = 0;
     texture = "#(argb,8,8,3)color(0,0,0,0)";
-  };
-
-  class MGVAR(RscPicture) {
+};
+class GVAR(RscPicture) {
     idc = -1;
     access = 0;
     type = CT_STATIC;
@@ -393,9 +355,8 @@ class MGVAR(RscBackground) {
     tooltipColorText[] = {1,1,1,1};
     tooltipColorBox[] = {1,1,1,1};
     tooltipColorShade[] = {0,0,0,0.65};
-  };
-
-  class MGVAR(RscEdit) {
+};
+class GVAR(RscEdit) {
     deletable = 0;
     fade = 0;
     access = 0;
@@ -419,15 +380,13 @@ class MGVAR(RscBackground) {
     tooltipColorText[] = {1,1,1,1};
     tooltipColorBox[] = {1,1,1,1};
     tooltipColorShade[] = {0,0,0,0.65};
-  };
-
-  class MGVAR(RscCombo) {
+};
+class GVAR(RscCombo) {
     deletable = 0;
     fade = 0;
     access = 0;
     type = CT_COMBO;
     style = "0x10 + 0x200";    // ST_MULTI + ST_NO_RECT
-
     colorActive[] = {1,0,0,1};
     colorBackground[] = {0,0,0,1};
     colorDisabled[] = {1,1,1,0.25};
@@ -446,11 +405,10 @@ class MGVAR(RscBackground) {
     colorTextRight[] = {1,1,1,1};
     soundSelect[] = {"\A3\ui_f\data\sound\RscCombo\soundSelect",0.1,1};
     soundExpand[] = {"\A3\ui_f\data\sound\RscCombo\soundExpand",0.1,1};
-    soundCollapse[] = "\A3\ui_f\data\sound\RscCombo\soundCollapse",0.1,1};
+    soundCollapse[] = {"\A3\ui_f\data\sound\RscCombo\soundCollapse",0.1,1};
     tooltipColorBox[] = {1,1,1,1};
     tooltipColorShade[] = {0,0,0,0.65};
     tooltipColorText[] = {1,1,1,1};
-
     maxHistoryDelay = 1;
     class ComboScrollBar {
         arrowEmpty = "\A3\ui_f\data\gui\cfg\scrollbar\arrowEmpty_ca.paa";
@@ -469,7 +427,6 @@ class MGVAR(RscBackground) {
         thumb = "\A3\ui_f\data\gui\cfg\scrollbar\thumb_ca.paa";
         width = 0;
     };
-
     font = FONT_NORMAL;
     sizeEx = "(((((safezoneW / safezoneH) min 1.2) / 1.2) / 25) * 1)";
     shadow = 0;
@@ -480,9 +437,8 @@ class MGVAR(RscBackground) {
     arrowEmpty = "\A3\ui_f\data\GUI\RscCommon\rsccombo\arrow_combo_ca.paa";
     arrowFull = "\A3\ui_f\data\GUI\RscCommon\rsccombo\arrow_combo_active_ca.paa";
     wholeHeight = 0.45;
-  };
-
-  class MGVAR(RscListBox) {
+};
+class GVAR(RscListBox) {
     deletable = 0;
     fade = 0;
     access = 0;
@@ -536,18 +492,15 @@ class MGVAR(RscBackground) {
     y = 0;
     w = 0.3;
     h = 0.3;
-
     font = FONT_NORMAL;
     sizeEx = "(((((safezoneW / safezoneH) min 1.2) / 1.2) / 25) * 1)";
     shadow = 0;
     colorShadow[] = {0,0,0,0.5};
     period = 1.2;
     maxHistoryDelay = 1;
-  };
-
-
-  // Todo Needs checking
-  class MGVAR(RscListNBox) {
+};
+// Todo Needs checking
+class GVAR(RscListNBox) {
     idc = -1;
     access = ReadAndWrite;
     type = CT_LISTNBOX;
@@ -572,7 +525,6 @@ class MGVAR(RscBackground) {
     colorSelectBackground2[] = {1,1,1,0.5};
     colorSelectBackground[] = {0.95,0.95,0.95,1};
     colorText[] = RGB_WHITE;
-
     maxHistoryDelay = 1.0;
     soundSelect[] = {"",0.1,1};
     period = 1;
@@ -620,9 +572,8 @@ class MGVAR(RscBackground) {
         autoScrollDelay = 5;
         border = "\A3\ui_f\data\gui\cfg\scrollbar\border_ca.paa";
     };
-  };
-
-  class MGVAR(RscButton) {
+};
+class GVAR(RscButton) {
     deletable = 0;
     fade = 0;
     access = 0;
@@ -641,7 +592,6 @@ class MGVAR(RscBackground) {
     soundPush[] = {"\A3\ui_f\data\sound\RscButton\soundPush",0.09,1};
     soundClick[] = {"\A3\ui_f\data\sound\RscButton\soundClick",0.09,1};
     soundEscape[] = {"\A3\ui_f\data\sound\RscButton\soundEscape",0.09,1};
-
     x = 0;
     y = 0;
     w = 0.095589;
@@ -654,9 +604,8 @@ class MGVAR(RscBackground) {
     offsetPressedX = 0;
     offsetPressedY = 0;
     borderSize = 0;
-  };
-
-  class MGVAR(RscShortcutButton) {
+};
+class GVAR(RscShortcutButton) {
     idc = -1;
     style = ST_UNDEFINED;
     type = CT_SHORTCUTBUTTON;
@@ -677,7 +626,6 @@ class MGVAR(RscBackground) {
     text = "";
     textSecondary = "";
     action = "";
-
     class HitZone {
         left = 0;
         top = 0;
@@ -696,23 +644,19 @@ class MGVAR(RscBackground) {
         right = 0.005;
         bottom = 0;
     };
-    shortcuts[] =
-    {
-    };
+    shortcuts[] = {};
     textureNoShortcut = "#(argb,8,8,3)color(0,0,0,0)";
     color[] = {1,1,1,1};
     colorFocused[] = {1,1,1,1};
     color2[] = {0.95,0.95,0.95,1};
     colorDisabled[] = {1,1,1,0.25};
-    colorBackground[] =
-    {
+    colorBackground[] = {
         "(profilenamespace getvariable ['GUI_BCG_RGB_R',0.77])",
         "(profilenamespace getvariable ['GUI_BCG_RGB_G',0.51])",
         "(profilenamespace getvariable ['GUI_BCG_RGB_B',0.08])",
         1
     };
-    colorBackgroundFocused[] =
-    {
+    colorBackgroundFocused[] = {
         "(profilenamespace getvariable ['GUI_BCG_RGB_R',0.77])",
         "(profilenamespace getvariable ['GUI_BCG_RGB_G',0.51])",
         "(profilenamespace getvariable ['GUI_BCG_RGB_B',0.08])",
@@ -729,8 +673,6 @@ class MGVAR(RscBackground) {
         align = "left";
         shadow = "true";
     };
-
-
     colorSecondary[] = {1,1,1,1};
     colorFocusedSecondary[] ={1,1,1,1};
     color2Secondary[] = {0.95,0.95,0.95,1};
@@ -743,15 +685,13 @@ class MGVAR(RscBackground) {
     animTextureOver = "\A3\ui_f\data\GUI\RscCommon\RscShortcutButton\over_ca.paa";
     animTextureFocused = "\A3\ui_f\data\GUI\RscCommon\RscShortcutButton\focus_ca.paa";
     animTexturePressed = "\A3\ui_f\data\GUI\RscCommon\RscShortcutButton\down_ca.paa";
-
     class AttributesImage {
         font = FONT_NORMAL;
         color = "#E5E5E5";
         align = "left";
     };
 };
-
-class MGVAR(RscShortcutButtonMain) {
+class GVAR(RscShortcutButtonMain) {
     idc = -1;
     style = ST_UNDEFINED;
     default = 0;
@@ -789,7 +729,6 @@ class MGVAR(RscShortcutButtonMain) {
     animTextureFocused = "\A3\ui_f\data\GUI\RscCommon\RscShortcutButtonMain\focus_ca.paa";
     animTexturePressed = "\A3\ui_f\data\GUI\RscCommon\RscShortcutButtonMain\down_ca.paa";
     animTextureDefault = "\A3\ui_f\data\GUI\RscCommon\RscShortcutButtonMain\normal_ca.paa";
-
     class Attributes {
         font = FONT_NORMAL;
         color = "#E5E5E5";
@@ -802,8 +741,7 @@ class MGVAR(RscShortcutButtonMain) {
         align = "false";
     };
 };
-
-class MGVAR(RscSlider) {
+class GVAR(RscSlider) {
     idc = -1;
     deletable = 0;
     fade = 0;
@@ -816,10 +754,8 @@ class MGVAR(RscSlider) {
     shadow = 0;
     h = 0.025;
 };
-
-
-  // ToDo Needs checking
-  class MGVAR(RscSliderH): MGVAR(RscSlider) {
+// ToDo Needs checking
+class GVAR(RscSliderH): GVAR(RscSlider) {
     idc = -1;
     access = ReadAndWrite;
     type = CT_XSLIDER;
@@ -834,8 +770,7 @@ class MGVAR(RscSlider) {
     border = "#(argb,8,8,3)color(1,1,1,1)";
     thumb = "#(argb,8,8,3)color(1,1,1,1)";
     shadow = 0;
-  };
-
+};
 class IGUIBack {
     type = CT_STATIC;
     idc = -1;
@@ -849,16 +784,14 @@ class IGUIBack {
     y = 0.1;
     w = 0.1;
     h = 0.1;
-    colorbackground[] =
-    {
+    colorbackground[] = {
         "(profilenamespace getvariable ['IGUI_BCG_RGB_R',0])",
         "(profilenamespace getvariable ['IGUI_BCG_RGB_G',1])",
         "(profilenamespace getvariable ['IGUI_BCG_RGB_B',1])",
         "(profilenamespace getvariable ['IGUI_BCG_RGB_A',0.8])"
     };
 };
-
-class MGVAR(RscCheckBox) {
+class GVAR(RscCheckBox) {
     idc = -1;
     type = CT_CHECKBOX;
     style = ST_UNDEFINED;
@@ -895,8 +828,7 @@ class MGVAR(RscCheckBox) {
     soundClick[] = {"",0.1,1};
     soundEscape[] = {"",0.1,1};
 };
-
-class MGVAR(RscTextCheckBox) {
+class GVAR(RscTextCheckBox) {
     idc = -1;
     type = CT_CHECKBOXES;
     style = ST_UNDEFINED;
@@ -908,8 +840,7 @@ class MGVAR(RscTextCheckBox) {
     color[] ={0,0,0,0};
     colorBackground[] = {0,0,0,0};
     colorTextSelect[] = {0,0.8,0,1};
-    colorSelectedBg[] =
-    {
+    colorSelectedBg[] = {
         "(profilenamespace getvariable ['GUI_BCG_RGB_R',0.77])",
         "(profilenamespace getvariable ['GUI_BCG_RGB_G',0.51])",
         "(profilenamespace getvariable ['GUI_BCG_RGB_B',0.08])",
@@ -925,17 +856,14 @@ class MGVAR(RscTextCheckBox) {
     sizeEx = "(((((safezoneW / safezoneH) min 1.2) / 1.2) / 25) * 0.8)";
     rows = 1;
     columns = 1;
-    strings[] =
-    {
+    strings[] = {
         "UNCHECKED"
     };
-    checked_strings[] =
-    {
+    checked_strings[] = {
         "CHECKED"
     };
 };
-
-class MGVAR(RscButtonMenu) {
+class GVAR(RscButtonMenu) {
     idc = -1;
     type = CT_SHORTCUTBUTTON;
     style = "0x02 + 0xC0";
@@ -997,11 +925,9 @@ class MGVAR(RscButtonMenu) {
     soundClick[] = {"\A3\ui_f\data\sound\RscButtonMenu\soundClick",0.09,1};
     soundEscape[] = {"\A3\ui_f\data\sound\RscButtonMenu\soundEscape",0.09,1};
 };
-
-class MGVAR(RscButtonMenuOK) {
+class GVAR(RscButtonMenuOK) {
     idc = 1;
-    shortcuts[] =
-    {
+    shortcuts[] = {
         "0x00050000 + 0",
         28,
         57,
@@ -1011,17 +937,14 @@ class MGVAR(RscButtonMenuOK) {
     text = "OK";
     soundPush[] = {"\A3\ui_f\data\sound\RscButtonMenuOK\soundPush",0.09,1};
 };
-
-class MGVAR(RscButtonMenuCancel) {
+class GVAR(RscButtonMenuCancel) {
     idc = 2;
-    shortcuts[] =
-    {
+    shortcuts[] = {
         "0x00050000 + 1"
     };
     text = "Cancel";
 };
-
-class MGVAR(RscControlsGroup) {
+class GVAR(RscControlsGroup) {
     idc = -1;
     deletable = 0;
     fade = 0;
@@ -1041,6 +964,5 @@ class MGVAR(RscControlsGroup) {
         color[] = {1,1,1,1};
         height = 0.028;
     };
-    class Controls {
-    };
+    class Controls {};
 };

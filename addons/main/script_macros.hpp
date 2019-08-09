@@ -102,9 +102,6 @@ MESSAGE call EFUNC(Debug,DebugMessage)
 #define SETPLPVAR(var1,var2) player SETPVAR_SYS(var1,var2)
 #define ESETPLPVAR(var1,var2,var3) player ESETPVAR_SYS(var1,var2,var3)
 
-#define MGVAR(var1) DOUBLES(PREFIX,var1)
-#define QMGVAR(var1) QUOTE(MGVAR(var1))
-#define QQMGVAR(var1) QUOTE(QMGVAR(var1))
 #define QQGVAR(var1) QUOTE(QGVAR(var1))
 #define QQEGVAR(var1,var2) QUOTE(QEGVAR(var1,var2))
 
