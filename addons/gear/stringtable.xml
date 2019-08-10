@@ -1,0 +1,389 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project name="MMFW">
+    <Package name="Gear">
+        <Key ID="STR_MMFW_Gear_DisplayName_SQL">
+            <Original>Squad Leader</Original>
+            <English>Squad Leader</English>
+        </Key>
+        <Key ID="STR_MMFW_Gear_ToolTip_Olsen_SQL">
+            <Original>Squad Leader loadout defined in the Olsen gear script</Original>
+            <English>Squad Leader loadout defined in the Olsen gear script</English>
+        </Key>
+        <Key ID="STR_MMFW_Gear_ToolTip_ACEAR_SQL">
+            <Original>Squad Leader loadout defined in the ACE Arsenal mission loadouts</Original>
+            <English>Squad Leader loadout defined in the ACE Arsenal mission loadouts</English>
+        </Key>
+        <Key ID="STR_MMFW_Gear_DisplayName_TL">
+            <Original>Team Leader </Original>
+            <English>Team Leader </English>
+        </Key>
+        <Key ID="STR_MMFW_Gear_ToolTip_Olsen_TL">
+            <Original>Team Leader  loadout defined in the Olsen gear script</Original>
+            <English>Team Leader  loadout defined in the Olsen gear script</English>
+        </Key>
+        <Key ID="STR_MMFW_Gear_ToolTip_ACEAR_TL">
+            <Original>Team Leader loadout defined in the ACE Arsenal mission loadouts</Original>
+            <English>Team Leader  loadout defined in the ACE Arsenal mission loadouts</English>
+        </Key>
+        <Key ID="STR_MMFW_Gear_DisplayName_RFL">
+            <Original>Rifleman</Original>
+            <English>Rifleman</English>
+        </Key>
+        <Key ID="STR_MMFW_Gear_ToolTip_Olsen_RFL">
+            <Original>Rifleman loadout defined in the Olsen gear script</Original>
+            <English>Rifleman loadout defined in the Olsen gear script</English>
+        </Key>
+        <Key ID="STR_MMFW_Gear_ToolTip_ACEAR_RFL">
+            <Original>Rifleman loadout defined in the ACE Arsenal mission loadouts</Original>
+            <English>Rifleman loadout defined in the ACE Arsenal mission loadouts</English>
+        </Key>
+        <Key ID="STR_MMFW_Gear_DisplayName_RFLAT">
+            <Original>Rifleman AT</Original>
+            <English>Rifleman AT</English>
+        </Key>
+        <Key ID="STR_MMFW_Gear_ToolTip_Olsen_RFLAT">
+            <Original>Rifleman AT loadout defined in the Olsen gear script</Original>
+            <English>Rifleman AT loadout defined in the Olsen gear script</English>
+        </Key>
+        <Key ID="STR_MMFW_Gear_ToolTip_ACEAR_RFLAT">
+            <Original>Rifleman AT loadout defined in the ACE Arsenal mission loadouts</Original>
+            <English>Rifleman AT loadout defined in the ACE Arsenal mission loadouts</English>
+        </Key>
+        <Key ID="STR_MMFW_Gear_DisplayName_AR">
+            <Original>Automatic Rifleman</Original>
+            <English>Automatic Rifleman</English>
+        </Key>
+        <Key ID="STR_MMFW_Gear_ToolTip_Olsen_AR">
+            <Original>Automatic Rifleman loadout defined in the Olsen gear script</Original>
+            <English>Automatic Rifleman loadout defined in the Olsen gear script</English>
+        </Key>
+        <Key ID="STR_MMFW_Gear_ToolTip_ACEAR_AR">
+            <Original>Automatic Rifleman loadout defined in the ACE Arsenal mission loadouts</Original>
+            <English>Automatic Rifleman loadout defined in the ACE Arsenal mission loadouts</English>
+        </Key>
+        <Key ID="STR_MMFW_Gear_DisplayName_GRN">
+            <Original>Grenadier</Original>
+            <English>Grenadier</English>
+        </Key>
+        <Key ID="STR_MMFW_Gear_ToolTip_Olsen_GRN">
+            <Original>Grenadier loadout defined in the Olsen gear script</Original>
+            <English>Grenadier loadout defined in the Olsen gear script</English>
+        </Key>
+        <Key ID="STR_MMFW_Gear_ToolTip_ACEAR_GRN">
+            <Original>Grenadier loadout defined in the ACE Arsenal mission loadouts</Original>
+            <English>Grenadier loadout defined in the ACE Arsenal mission loadouts</English>
+        </Key>
+        <Key ID="STR_MMFW_Gear_DisplayName_VCRW">
+            <Original>Vehicle Crewman</Original>
+            <English>Vehicle Crewman</English>
+        </Key>
+        <Key ID="STR_MMFW_Gear_ToolTip_Olsen_VCRW">
+            <Original>Vehicle Crewman loadout defined in the Olsen gear script</Original>
+            <English>Vehicle Crewman loadout defined in the Olsen gear script</English>
+        </Key>
+        <Key ID="STR_MMFW_Gear_ToolTip_ACEAR_VCRW">
+            <Original>Vehicle Crewman loadout defined in the ACE Arsenal mission loadouts</Original>
+            <English>Vehicle Crewman loadout defined in the ACE Arsenal mission loadouts</English>
+        </Key>
+        <Key ID="STR_MMFW_Gear_DisplayName_VCMD">
+            <Original>Vehicle Commander</Original>
+            <English>Vehicle Commander</English>
+        </Key>
+        <Key ID="STR_MMFW_Gear_ToolTip_Olsen_VCMD">
+            <Original>Vehicle Commander loadout defined in the Olsen gear script</Original>
+            <English>Vehicle Commander loadout defined in the Olsen gear script</English>
+        </Key>
+        <Key ID="STR_MMFW_Gear_ToolTip_ACEAR_VCMD">
+            <Original>Vehicle Commander loadout defined in the ACE Arsenal mission loadouts</Original>
+            <English>Vehicle Commander loadout defined in the ACE Arsenal mission loadouts</English>
+        </Key>
+        <Key ID="STR_MMFW_Gear_DisplayName_OFF">
+            <Original>Officer</Original>
+            <English>Officer</English>
+        </Key>
+        <Key ID="STR_MMFW_Gear_ToolTip_Olsen_OFF">
+            <Original>Officer loadout defined in the Olsen gear script</Original>
+            <English>Officer loadout defined in the Olsen gear script</English>
+        </Key>
+        <Key ID="STR_MMFW_Gear_ToolTip_ACEAR_OFF">
+            <Original>Officer loadout defined in the ACE Arsenal mission loadouts</Original>
+            <English>Officer loadout defined in the ACE Arsenal mission loadouts</English>
+        </Key>
+        <Key ID="STR_MMFW_Gear_DisplayName_TWOIC">
+            <Original>2IC</Original>
+            <English>2IC</English>
+        </Key>
+        <Key ID="STR_MMFW_Gear_ToolTip_Olsen_TWOIC">
+            <Original>2IC loadout defined in the Olsen gear script</Original>
+            <English>2IC loadout defined in the Olsen gear script</English>
+        </Key>
+        <Key ID="STR_MMFW_Gear_ToolTip_ACEAR_TWOIC">
+            <Original>2IC loadout defined in the ACE Arsenal mission loadouts</Original>
+            <English>2IC loadout defined in the ACE Arsenal mission loadouts</English>
+        </Key>
+        <Key ID="STR_MMFW_Gear_DisplayName_MED">
+            <Original>Medic</Original>
+            <English>Medic</English>
+        </Key>
+        <Key ID="STR_MMFW_Gear_ToolTip_Olsen_MED">
+            <Original>Medic loadout defined in the Olsen gear script</Original>
+            <English>Medic loadout defined in the Olsen gear script</English>
+        </Key>
+        <Key ID="STR_MMFW_Gear_ToolTip_ACEAR_MED">
+            <Original>Medic loadout defined in the ACE Arsenal mission loadouts</Original>
+            <English>Medic loadout defined in the ACE Arsenal mission loadouts</English>
+        </Key>
+        <Key ID="STR_MMFW_Gear_DisplayName_AT">
+            <Original>Anti Tank</Original>
+            <English>Anti Tank</English>
+        </Key>
+        <Key ID="STR_MMFW_Gear_ToolTip_Olsen_AT">
+            <Original>Anti Tank loadout defined in the Olsen gear script</Original>
+            <English>Anti Tank loadout defined in the Olsen gear script</English>
+        </Key>
+        <Key ID="STR_MMFW_Gear_ToolTip_ACEAR_AT">
+            <Original>Anti Tank loadout defined in the ACE Arsenal mission loadouts</Original>
+            <English>Anti Tank loadout defined in the ACE Arsenal mission loadouts</English>
+        </Key>
+        <Key ID="STR_MMFW_Gear_DisplayName_AAT">
+            <Original>Assistant Anti Tank</Original>
+            <English>Assistant Anti Tank</English>
+        </Key>
+        <Key ID="STR_MMFW_Gear_ToolTip_Olsen_AAT">
+            <Original>Assistant Anti Tank loadout defined in the Olsen gear script</Original>
+            <English>Assistant Anti Tank loadout defined in the Olsen gear script</English>
+        </Key>
+        <Key ID="STR_MMFW_Gear_ToolTip_ACEAR_AAT">
+            <Original>Assistant Anti Tank loadout defined in the ACE Arsenal mission loadouts</Original>
+            <English>Assistant Anti Tank loadout defined in the ACE Arsenal mission loadouts</English>
+        </Key>
+        <Key ID="STR_MMFW_Gear_DisplayName_MG">
+            <Original>Machinegunner</Original>
+            <English>Machinegunner</English>
+        </Key>
+        <Key ID="STR_MMFW_Gear_ToolTip_Olsen_MG">
+            <Original>Machinegunner loadout defined in the Olsen gear script</Original>
+            <English>Machinegunner loadout defined in the Olsen gear script</English>
+        </Key>
+        <Key ID="STR_MMFW_Gear_ToolTip_ACEAR_MG">
+            <Original>Machinegunner loadout defined in the ACE Arsenal mission loadouts</Original>
+            <English>Machinegunner loadout defined in the ACE Arsenal mission loadouts</English>
+        </Key>
+        <Key ID="STR_MMFW_Gear_DisplayName_AMG">
+            <Original>Assistant Machinegunner</Original>
+            <English>Assistant Machinegunner</English>
+        </Key>
+        <Key ID="STR_MMFW_Gear_ToolTip_Olsen_AMG">
+            <Original>Assistant Machinegunner loadout defined in the Olsen gear script</Original>
+            <English>Assistant Machinegunner loadout defined in the Olsen gear script</English>
+        </Key>
+        <Key ID="STR_MMFW_Gear_ToolTip_ACEAR_AMG">
+            <Original>Assistant Machinegunner loadout defined in the ACE Arsenal mission loadouts</Original>
+            <English>Assistant Machinegunner loadout defined in the ACE Arsenal mission loadouts</English>
+        </Key>
+        <Key ID="STR_MMFW_Gear_DisplayName_MKS">
+            <Original>Marksman</Original>
+            <English>Marksman</English>
+        </Key>
+        <Key ID="STR_MMFW_Gear_ToolTip_Olsen_MKS">
+            <Original>Marksman loadout defined in the Olsen gear script</Original>
+            <English>Marksman loadout defined in the Olsen gear script</English>
+        </Key>
+        <Key ID="STR_MMFW_Gear_ToolTip_ACEAR_MKS">
+            <Original>Marksman loadout defined in the ACE Arsenal mission loadouts</Original>
+            <English>Marksman loadout defined in the ACE Arsenal mission loadouts</English>
+        </Key>
+        <Key ID="STR_MMFW_Gear_DisplayName_RTO">
+            <Original>RATELO</Original>
+            <English>RATELO</English>
+        </Key>
+        <Key ID="STR_MMFW_Gear_ToolTip_Olsen_RTO">
+            <Original>RATELO loadout defined in the Olsen gear script</Original>
+            <English>RATELO loadout defined in the Olsen gear script</English>
+        </Key>
+        <Key ID="STR_MMFW_Gear_ToolTip_ACEAR_RTO">
+            <Original>RATELO loadout defined in the ACE Arsenal mission loadouts</Original>
+            <English>RATELO loadout defined in the ACE Arsenal mission loadouts</English>
+        </Key>
+        <Key ID="STR_MMFW_Gear_DisplayName_FAC">
+            <Original>FAC</Original>
+            <English>FAC</English>
+        </Key>
+        <Key ID="STR_MMFW_Gear_ToolTip_Olsen_FAC">
+            <Original>FAC loadout defined in the Olsen gear script</Original>
+            <English>FAC loadout defined in the Olsen gear script</English>
+        </Key>
+        <Key ID="STR_MMFW_Gear_ToolTip_ACEAR_FAC">
+            <Original>FAC loadout defined in the ACE Arsenal mission loadouts</Original>
+            <English>FAC loadout defined in the ACE Arsenal mission loadouts</English>
+        </Key>
+        <Key ID="STR_MMFW_Gear_DisplayName_FO">
+            <Original>FO</Original>
+            <English>FO</English>
+        </Key>
+        <Key ID="STR_MMFW_Gear_ToolTip_Olsen_FO">
+            <Original>FO loadout defined in the Olsen gear script</Original>
+            <English>FO loadout defined in the Olsen gear script</English>
+        </Key>
+        <Key ID="STR_MMFW_Gear_ToolTip_ACEAR_FO">
+            <Original>FO loadout defined in the ACE Arsenal mission loadouts</Original>
+            <English>FO loadout defined in the ACE Arsenal mission loadouts</English>
+        </Key>
+        <Key ID="STR_MMFW_Gear_DisplayName_ENG">
+            <Original>Engineer</Original>
+            <English>Engineer</English>
+        </Key>
+        <Key ID="STR_MMFW_Gear_ToolTip_Olsen_ENG">
+            <Original>Engineer loadout defined in the Olsen gear script</Original>
+            <English>Engineer loadout defined in the Olsen gear script</English>
+        </Key>
+        <Key ID="STR_MMFW_Gear_ToolTip_ACEAR_ENG">
+            <Original>Engineer loadout defined in the ACE Arsenal mission loadouts</Original>
+            <English>Engineer loadout defined in the ACE Arsenal mission loadouts</English>
+        </Key>
+        <Key ID="STR_MMFW_Gear_DisplayName_EOD">
+            <Original>EOD</Original>
+            <English>EOD</English>
+        </Key>
+        <Key ID="STR_MMFW_Gear_ToolTip_Olsen_EOD">
+            <Original>EOD loadout defined in the Olsen gear script</Original>
+            <English>EOD loadout defined in the Olsen gear script</English>
+        </Key>
+        <Key ID="STR_MMFW_Gear_ToolTip_ACEAR_EOD">
+            <Original>EOD loadout defined in the ACE Arsenal mission loadouts</Original>
+            <English>EOD loadout defined in the ACE Arsenal mission loadouts</English>
+        </Key>
+        <Key ID="STR_MMFW_Gear_DisplayName_HAT">
+            <Original>Heavy Anti Tank</Original>
+            <English>Heavy Anti Tank</English>
+        </Key>
+        <Key ID="STR_MMFW_Gear_ToolTip_Olsen_HAT">
+            <Original>Heavy Anti Tank loadout defined in the Olsen gear script</Original>
+            <English>Heavy Anti Tank loadout defined in the Olsen gear script</English>
+        </Key>
+        <Key ID="STR_MMFW_Gear_ToolTip_ACEAR_HAT">
+            <Original>Heavy Anti Tank loadout defined in the ACE Arsenal mission loadouts</Original>
+            <English>Heavy Anti Tank loadout defined in the ACE Arsenal mission loadouts</English>
+        </Key>
+        <Key ID="STR_MMFW_Gear_DisplayName_AHAT">
+            <Original>Assistant Heavy Anti Tank</Original>
+            <English>Assistant Heavy Anti Tank</English>
+        </Key>
+        <Key ID="STR_MMFW_Gear_ToolTip_Olsen_AHAT">
+            <Original>Assistant Heavy Anti Tank loadout defined in the Olsen gear script</Original>
+            <English>Assistant Heavy Anti Tank loadout defined in the Olsen gear script</English>
+        </Key>
+        <Key ID="STR_MMFW_Gear_ToolTip_ACEAR_AHAT">
+            <Original>Assistant Heavy Anti Tank loadout defined in the ACE Arsenal mission loadouts</Original>
+            <English>Assistant Heavy Anti Tank loadout defined in the ACE Arsenal mission loadouts</English>
+        </Key>
+        <Key ID="STR_MMFW_Gear_DisplayName_MORTL">
+            <Original>Mortar Team Leader</Original>
+            <English>Mortar Team Leader</English>
+        </Key>
+        <Key ID="STR_MMFW_Gear_ToolTip_Olsen_MORTL">
+            <Original>Mortar Team Leader loadout defined in the Olsen gear script</Original>
+            <English>Mortar Team Leader loadout defined in the Olsen gear script</English>
+        </Key>
+        <Key ID="STR_MMFW_Gear_ToolTip_ACEAR_MORTL">
+            <Original>Mortar Team Leader loadout defined in the ACE Arsenal mission loadouts</Original>
+            <English>Mortar Team Leader loadout defined in the ACE Arsenal mission loadouts</English>
+        </Key>
+        <Key ID="STR_MMFW_Gear_DisplayName_MOR">
+            <Original>Mortar Crewman</Original>
+            <English>Mortar Crewman</English>
+        </Key>
+        <Key ID="STR_MMFW_Gear_ToolTip_Olsen_MOR">
+            <Original>Mortar Crewman loadout defined in the Olsen gear script</Original>
+            <English>Mortar Crewman loadout defined in the Olsen gear script</English>
+        </Key>
+        <Key ID="STR_MMFW_Gear_ToolTip_ACEAR_MOR">
+            <Original>Mortar Crewman loadout defined in the ACE Arsenal mission loadouts</Original>
+            <English>Mortar Crewman loadout defined in the ACE Arsenal mission loadouts</English>
+        </Key>
+        <Key ID="STR_MMFW_Gear_DisplayName_APLT">
+            <Original>Pilot</Original>
+            <English>Pilot</English>
+        </Key>
+        <Key ID="STR_MMFW_Gear_ToolTip_Olsen_APLT">
+            <Original>Pilot loadout defined in the Olsen gear script</Original>
+            <English>Pilot loadout defined in the Olsen gear script</English>
+        </Key>
+        <Key ID="STR_MMFW_Gear_ToolTip_ACEAR_APLT">
+            <Original>Pilot loadout defined in the ACE Arsenal mission loadouts</Original>
+            <English>Pilot loadout defined in the ACE Arsenal mission loadouts</English>
+        </Key>
+        <Key ID="STR_MMFW_Gear_DisplayName_ACRW">
+            <Original>Air Crewman</Original>
+            <English>Air Crewman</English>
+        </Key>
+        <Key ID="STR_MMFW_Gear_ToolTip_Olsen_ACRW">
+            <Original>Air Crewman loadout defined in the Olsen gear script</Original>
+            <English>Air Crewman loadout defined in the Olsen gear script</English>
+        </Key>
+        <Key ID="STR_MMFW_Gear_ToolTip_ACEAR_ACRW">
+            <Original>Air Crewman loadout defined in the ACE Arsenal mission loadouts</Original>
+            <English>Air Crewman loadout defined in the ACE Arsenal mission loadouts</English>
+        </Key>
+        <Key ID="STR_MMFW_Gear_DisplayName_CUS1">
+            <Original>Custom 1</Original>
+            <English>Custom 1</English>
+        </Key>
+        <Key ID="STR_MMFW_Gear_ToolTip_Olsen_CUS1">
+            <Original>Custom 1 loadout defined in the Olsen gear script</Original>
+            <English>Custom 1 loadout defined in the Olsen gear script</English>
+        </Key>
+        <Key ID="STR_MMFW_Gear_ToolTip_ACEAR_CUS1">
+            <Original>Custom 1 loadout defined in the ACE Arsenal mission loadouts</Original>
+            <English>Custom 1 loadout defined in the ACE Arsenal mission loadouts</English>
+        </Key>
+        <Key ID="STR_MMFW_Gear_DisplayName_CUS2">
+            <Original>Custom 2</Original>
+            <English>Custom 2</English>
+        </Key>
+        <Key ID="STR_MMFW_Gear_ToolTip_Olsen_CUS2">
+            <Original>Custom 2 loadout defined in the Olsen gear script</Original>
+            <English>Custom 2 loadout defined in the Olsen gear script</English>
+        </Key>
+        <Key ID="STR_MMFW_Gear_ToolTip_ACEAR_CUS2">
+            <Original>Custom 2 loadout defined in the ACE Arsenal mission loadouts</Original>
+            <English>Custom 2 loadout defined in the ACE Arsenal mission loadouts</English>
+        </Key>
+        <Key ID="STR_MMFW_Gear_DisplayName_CUS3">
+            <Original>Custom 3</Original>
+            <English>Custom 3</English>
+        </Key>
+        <Key ID="STR_MMFW_Gear_ToolTip_Olsen_CUS3">
+            <Original>Custom 3 loadout defined in the Olsen gear script</Original>
+            <English>Custom 3 loadout defined in the Olsen gear script</English>
+        </Key>
+        <Key ID="STR_MMFW_Gear_ToolTip_ACEAR_CUS3">
+            <Original>Custom 3 loadout defined in the ACE Arsenal mission loadouts</Original>
+            <English>Custom 3 loadout defined in the ACE Arsenal mission loadouts</English>
+        </Key>
+        <Key ID="STR_MMFW_Gear_DisplayName_CUS4">
+            <Original>Custom 4</Original>
+            <English>Custom 4</English>
+        </Key>
+        <Key ID="STR_MMFW_Gear_ToolTip_Olsen_CUS4">
+            <Original>Custom 4 loadout defined in the Olsen gear script</Original>
+            <English>Custom 4 loadout defined in the Olsen gear script</English>
+        </Key>
+        <Key ID="STR_MMFW_Gear_ToolTip_ACEAR_CUS4">
+            <Original>Custom 4 loadout defined in the ACE Arsenal mission loadouts</Original>
+            <English>Custom 4 loadout defined in the ACE Arsenal mission loadouts</English>
+        </Key>
+        <Key ID="STR_MMFW_Gear_DisplayName_CUS5">
+            <Original>Custom 5</Original>
+            <English>Custom 5</English>
+        </Key>
+        <Key ID="STR_MMFW_Gear_ToolTip_Olsen_CUS5">
+            <Original>Custom 5 loadout defined in the Olsen gear script</Original>
+            <English>Custom 5 loadout defined in the Olsen gear script</English>
+        </Key>
+        <Key ID="STR_MMFW_Gear_ToolTip_ACEAR_CUS5">
+            <Original>Custom 5 loadout defined in the ACE Arsenal mission loadouts</Original>
+            <English>Custom 5 loadout defined in the ACE Arsenal mission loadouts</English>
+        </Key>
+    </Package>
+</Project>

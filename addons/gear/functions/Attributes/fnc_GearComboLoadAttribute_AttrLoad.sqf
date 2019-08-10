@@ -1,10 +1,9 @@
-
 #include "script_component.hpp"
 EDEN_CHECK;
 
-LOG("GearComboLoadAttribute_AttrLoad started");
+params ["_ctrl","_value","_config"];
 
-private _control = (_this controlsGroupCtrl 100);
+private _control = (_ctrl controlsGroupCtrl 100);
 _control setvariable [QGVAR(parentcontrolcfg),_config];
 private _classArray = getArray(configFile >> QGVAR(Types) >> "typesArray");
 private _name = "None";

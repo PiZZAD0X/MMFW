@@ -1,4 +1,4 @@
-class EGVAR\(Respawn,TeamSettings_Civ) {
+class EGVAR(Respawn,TeamSettings_Civ) {
     displayName = "Civilian Respawn Settings";
     collapsed = 0; //_respawnTypeArray = [['1 Life','ONELIFE'],['Unlimited','UNLIMITED'],['Individual Tickets','INDTICKETS'],['Team Tickets','TEAMTICKETS'],['Wave','WAVE'],['Triggered','TRIGGERED']];
     class Attributes {

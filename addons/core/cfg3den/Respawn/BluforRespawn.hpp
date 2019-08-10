@@ -1,4 +1,4 @@
-class EGVAR\(Respawn,TeamSettings_Blufor) {
+class EGVAR(Respawn,TeamSettings_Blufor) {
     displayName = "Blufor Respawn Settings";
     collapsed = 0;
     class Attributes {

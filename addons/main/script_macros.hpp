@@ -36,6 +36,8 @@
 #define QFUNC(var1) QUOTE(DFUNC(var1))
 #define QEFUNC(var1,var2) QUOTE(DEFUNC(var1,var2))
 
+#define CSTRING_2(var1,var2) QUOTE(DOUBLES(DOUBLES($STR,PREFIX),DOUBLES(var1,var2)))
+
 //CBA Error Macro Intercept
 #undef ERROR
 #define ERROR(MESSAGE) LOG_SYS_FILELINENUMBERS('ERROR',MESSAGE);\

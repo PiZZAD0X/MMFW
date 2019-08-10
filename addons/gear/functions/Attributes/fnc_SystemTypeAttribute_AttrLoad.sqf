@@ -1,21 +1,17 @@
-
 #include "script_component.hpp"
 EDEN_CHECK;
 
-LOG("SystemTypeAttribute Load started");
-
 params ["_control","_value"];
-TRACE_2("SystemTypeAttribute Load",_control,_value);
 
-private _unit = ((get3denselected 'object') select 0);
+private _unit = ((get3denselected "object") select 0);
 private _ctrlCombo = (_control controlsGroupCtrl 100);
 private _n = 0;
 private _gearSystem = _value;
 SETVAR(_unit,UnitSystemType,_GearSystem);
 private _ctrlGroup = ctrlParentControlsGroup ctrlParentControlsGroup _ctrlCombo;
-private _gearSystemTypes = [['None','NONE'],['ACE Arsenal','ACEAR'],['Olsen','OLSEN']];
+private _gearSystemTypes = [["None","NONE"],["ACE Arsenal","ACEAR"],["Olsen","OLSEN"]];
 {
-    _x params ['_name','_string'];
+    _x params ["_name","_string"];
     private _index = _ctrlCombo lbadd _name;
     _ctrlCombo lbsetdata [_index,_string];
     _ctrlCombo lbsetValue [_index,_forEachIndex];
@@ -23,14 +19,14 @@ private _gearSystemTypes = [['None','NONE'],['ACE Arsenal','ACEAR'],['Olsen','OL
         _ctrlCombo lbSetCurSel _index;
     };
 } foreach _gearSystemTypes;
-private _cfgAttributes = [configFile >> 'Cfg3den' >> 'Object' >> 'AttributeCategories' >> QGVAR(UnitCategory) >> 'Attributes',0] call BIS_fnc_returnChildren;
+private _cfgAttributes = [configFile >> "Cfg3den" >> "Object" >> "AttributeCategories" >> QGVAR(UnitCategory) >> "Attributes",0] call BIS_fnc_returnChildren;
 {
      if (ctrlParentControlsGroup _x isEqualto _ctrlGroup) then {
         private _cfg = _cfgAttributes select _n;
         _n = _n + 1;
         private _state = true;
-        if (isArray(_cfg >> 'GearSystems')) then {
-            private _GearSystems = getarray (_cfg >> 'GearSystems');
+        if (isArray(_cfg >> "GearSystems")) then {
+            private _GearSystems = getarray (_cfg >> "GearSystems");
             if !(_gearSystem in _GearSystems) then {
                 _state = _state && false;
             };

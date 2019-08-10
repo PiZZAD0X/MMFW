@@ -2,8 +2,6 @@
 #include "script_component.hpp"
 EDEN_CHECK;
 
-LOG("ACEGearClassAttributeSave started");
-
 params ["_ctrl"];
 
 private _control = (_ctrl controlsGroupCtrl 100);

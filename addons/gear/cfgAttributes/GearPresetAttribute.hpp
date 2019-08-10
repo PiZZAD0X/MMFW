@@ -1,6 +1,6 @@
 class GVAR(PresetsCombo_BLUFOR): ComboPreview {
-    attributeSave = QUOTE(ARR_2(_this,_config)] call FUNC(GearPresetAttribute_AttrSave));
-    attributeLoad = QUOTE(ARR_3(_this,_value,_config)] call FUNC(GearPresetAttribute_AttrLoad));
+    attributeSave = QUOTE([ARR_2(_this,_config)] call FUNC(GearPresetAttribute_AttrSave));
+    attributeLoad = QUOTE([ARR_3(_this,_value,_config)] call FUNC(GearPresetAttribute_AttrLoad));
     class Controls: Controls {
         class Title: Title {};
         class Value: Value {

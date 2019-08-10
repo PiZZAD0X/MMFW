@@ -2,9 +2,9 @@
 #include "script_component.hpp"
 EDEN_CHECK;
 
-LOG("GearPresetAttribute_AttrLoad started");
+params ["_ctrl", "_value", "_config"];
 
-private _control = (_this controlsGroupCtrl 100);
+private _control = (_ctrl controlsGroupCtrl 100);
 private _cfgEntries = [configFile >> QGVAR(Presets),0] call BIS_fnc_returnChildren;
 if (_cfgEntries isEqualto []) then {
     lbClear _control;

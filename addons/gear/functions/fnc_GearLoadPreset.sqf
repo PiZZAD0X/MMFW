@@ -12,9 +12,9 @@ if (_preset isEqualto "NONE") exitwith {
     private _classArray = getArray(configFile >> QGVAR(Types) >> "typesArray");
     {
         private _gearType = _x;
-        private _varName = format ["%3_Gear_ACE_Arsenal_LoadoutType_%1_%2",_teamTag,_gearType,PREFIXSTR];
+        private _varName = format ["MMFW_Gear_ACE_Arsenal_LoadoutType_%1_%2",_teamTag,_gearType];
         LOG_1("_varName: %1",_varName);
-        private _attrSection = format ["%2_Gear_%1",_teamTag,PREFIXSTR];
+        private _attrSection = format ["MMFW_Gear_%1",_teamTag];
         private _loadoutName = "NONE";
         missionNamespace setVariable [_varName, _loadoutName];
         LOG_1("_attrSection: %1",_attrSection);
@@ -87,7 +87,7 @@ private _defaultloadoutsArray = missionNamespace getvariable ["ace_arsenal_defau
     _x params [["_gearType","",[""]],["_loadoutArray",[],[[]]]];
     if !(_loadoutArray isEqualto []) then {
         LOG_1("_gearType: %1",_gearType);
-        private _gearTypeString = localize (format ["STR_%2_Gear_DisplayName_%1",_gearType,PREFIXSTR]);
+        private _gearTypeString = localize (format ["STR_MMFW_Gear_DisplayName_%1",_gearType]);
         LOG_1("_gearTypeString: %1",_gearTypeString);
         private _loadoutName = format ["%1 %2",_namePrefix,_gearTypeString];
         LOG_1("_loadoutName: %1",_loadoutName);
@@ -96,7 +96,7 @@ private _defaultloadoutsArray = missionNamespace getvariable ["ace_arsenal_defau
         LOG_1("_defaultloadoutsArrayCount: %1", (count _defaultloadoutsArray));
         private _loadoutIndex = _defaultloadoutsArray findIf {(_x select 0) == _loadoutName};
         LOG_1("_loadoutIndex: %1",_loadoutIndex);
-        if (_loadoutIndex == -1) then {
+        if (_loadoutIndex isEqualTo -1) then {
             _defaultloadoutsArray pushBack [_loadoutName, _loadoutArray];
             missionNamespace setvariable ["ace_arsenal_defaultLoadoutsList",_defaultloadoutsArray];
             "ace_arsenal_DummyCategory" set3DENMissionAttribute ["ace_arsenal_DefaultLoadoutsListAttribute",_defaultloadoutsArray];
@@ -105,9 +105,9 @@ private _defaultloadoutsArray = missionNamespace getvariable ["ace_arsenal_defau
             missionNamespace setvariable ["ace_arsenal_defaultLoadoutsList",_defaultloadoutsArray];
             "ace_arsenal_DummyCategory" set3DENMissionAttribute ["ace_arsenal_DefaultLoadoutsListAttribute",_defaultloadoutsArray];
         };
-        private _varName = format ["%3_Gear_ACE_Arsenal_LoadoutType_%1_%2",_teamTag,_gearType,PREFIXSTR];
+        private _varName = format ["MMFW_Gear_ACE_Arsenal_LoadoutType_%1_%2",_teamTag,_gearType];
         LOG_1("_varName: %1",_varName);
-        private _attrSection = format ["%2_Gear_%1",_teamTag,PREFIXSTR];
+        private _attrSection = format ["MMFW_Gear_%1",_teamTag];
         missionNamespace setVariable [_varName, _loadoutName];
         LOG_1("_attrSection: %1",_attrSection);
         _attrSection set3DENMissionAttribute [_varName,_loadoutName];
