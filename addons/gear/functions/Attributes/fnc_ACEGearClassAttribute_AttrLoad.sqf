@@ -1,9 +1,9 @@
 #include "script_component.hpp"
 EDEN_CHECK;
 
-params ["_this", "_value", "_config"];
+params ["_ctrl", "_value", "_config"];
 
-private _control = (_this controlsGroupCtrl 100);
+private _control = (_ctrl controlsGroupCtrl 100);
 _control setvariable [QGVAR(parentcontrolcfg),_config];
 private _attProperty = getText (_config >> "property");
 missionNamespace setvariable [_attProperty,_value];

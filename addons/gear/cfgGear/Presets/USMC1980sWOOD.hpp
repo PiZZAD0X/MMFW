@@ -4,6 +4,16 @@ class USMC_1980s_Wood {
     classPrefix = "USMC_1980s_Wood_";
     namePrefix = "USMC 80s (Woodland)";
     displayDesc = "UMSC 1980s Cold War Woodland camouflage. No optics for most gear types, NVGs for Air Crew.";
+    addonsRequired[] = {
+        "rhsusf_c_weapons",
+        "rhsusf_c_troops",
+        "us_military_units",
+        "hlcweapons_m14",
+        "hlcweapons_m60e4",
+        "hlcweapons_core",
+        "uo_m47dragon",
+        "gst_m16a2_F"
+    };
     loadoutsArray = "[\
         ['SQL',[['gst_m16a2_2','','','',['rhs_mag_30Rnd_556x45_M855A1_Stanag_No_Tracer',30],[],''],[],[],['usm_bdu_w',[['ACE_fieldDressing',3],['ACE_elasticBandage',3],['ACE_packingBandage',3],['ACE_MapTools',1]]],['usm_vest_pasgt_lbe_rm',[['ACE_quikclot',3],['ACE_morphine',1],['ACE_epinephrine',1],['ACE_tourniquet',1],['ACE_Flashlight_MX991',1],['ACE_MapTools',1],['rhs_mag_m67',2,1],['rhs_mag_an_m8hc',2,1],['rhs_mag_30Rnd_556x45_M855A1_Stanag_No_Tracer',4,30],['rhs_mag_30Rnd_556x45_M855A1_Stanag',2,30]]],['usm_pack_st138_prc77',[]],'usm_helmet_pasgt_w','',['Binocular','','','',[],[],''],['ItemMap','','','ItemCompass','ItemWatch','']]],\
         ['TL',[['gst_m16a2_2','','','',['rhs_mag_30Rnd_556x45_M855A1_Stanag_No_Tracer',30],[],''],[],[],['usm_bdu_w',[['ACE_fieldDressing',3],['ACE_elasticBandage',3],['ACE_packingBandage',3],['ACE_MapTools',1]]],['usm_vest_pasgt_lbe_rm',[['ACE_quikclot',3],['ACE_morphine',1],['ACE_epinephrine',1],['ACE_tourniquet',1],['ACE_Flashlight_MX991',1],['rhs_mag_m67',2,1],['rhs_mag_an_m8hc',2,1],['rhs_mag_30Rnd_556x45_M855A1_Stanag_No_Tracer',6,30],['rhs_mag_30Rnd_556x45_M855A1_Stanag',2,30]]],[],'usm_helmet_pasgt_w','',[],['ItemMap','','','ItemCompass','ItemWatch','']]],\

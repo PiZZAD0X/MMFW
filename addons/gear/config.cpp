@@ -17,4 +17,5 @@ class CfgPatches {
 #include "\z\MMFW\addons\main\RscTitles.hpp"
 #include "cfgGear\GearPresets.hpp"
 #include "CfgEventHandlers.hpp"
+#include "CfgVehicles.hpp"
 #include "Cfg3DEN.hpp"

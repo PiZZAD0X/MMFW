@@ -1,7 +1,7 @@
 #include "script_component.hpp"
 EDEN_CHECK;
 
-params ["_control", "_value", "_config"];
+params ["_control", "_config", "_value"];
 
 _control setvariable [QGVAR(parentcontrolcfg),_config];
 private _attProperty = getText (_config >> "property");
