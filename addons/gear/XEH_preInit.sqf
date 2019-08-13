@@ -18,13 +18,12 @@ ADDON = false;
                 ERROR_1("No loadout found for unit: %1",_unit);
             };
             if (_gearType isEqualto "MANUAL") then {
-                _unit setvariable [QGVAR(ManualUnitClass),"MANUAL"];
-                private _manualClass = GETVAR(_unit,ManualUnitClass,"");
-                if (_manualClass isEqualto "") exitwith {
-                    ERROR_1("Unit %1 is set to manual loadout but has none!, exiting gearscript.",_unit);
-                };
                 switch (_systemType) do {
                     case "ACEAR": {
+                        private _manualClass = GETVAR(_unit,ManualUnitClass,"");
+                        if (_manualClass isEqualto "") exitwith {
+                            ERROR_1("Unit %1 is set to manual loadout but has none!, exiting gearscript.",_unit);
+                        };
                         private _found = false;
                         private _defaultloadoutsArray = missionNamespace getvariable ['ace_arsenal_defaultLoadoutsList',[]];
                         {
@@ -40,7 +39,7 @@ ADDON = false;
                         };
                     };
                     case "OLSEN": {
-                        private _manualClass = (GETVAR(_unit,UnitGearManualType,""));
+                        private _manualClass = GETVAR(_unit,ManualUnitClassOlsen,"");
                         if (_manualClass isEqualto "") exitwith {
                             ERROR_1("Unit %1 is set to manual loadout but has none!, exiting gearscript.",_unit);
                         };
@@ -152,14 +151,13 @@ ADDON = false;
             SETPVAR(_unit,GearReady,true);
         };
         if (_gearType isEqualto "MANUAL") then {
-            _unit setvariable [QGVAR(ManualUnitClass),"MANUAL"];
-            private _manualClass = (GETVAR(_unit,UnitGearManualType,""));
-            if (_manualClass isEqualto "") exitwith {
-                ERROR_1("Unit %1 is set to manual loadout but has none!, exiting gearscript.",_unit);
-                SETPVAR(_unit,GearReady,true);
-            };
             switch (_systemType) do {
                 case "ACEAR": {
+                    private _manualClass = (GETVAR(_unit,UnitGearManualType,""));
+                    if (_manualClass isEqualto "") exitwith {
+                        ERROR_1("Unit %1 is set to manual loadout but has none!, exiting gearscript.",_unit);
+                        SETPVAR(_unit,GearReady,true);
+                    };
                     private _found = false;
                     private _defaultloadoutsArray = missionNamespace getvariable ['ace_arsenal_defaultLoadoutsList',[]];
                     {
@@ -177,7 +175,7 @@ ADDON = false;
                     };
                 };
                 case "OLSEN": {
-                    private _manualClass = (GETVAR(_unit,UnitGearManualType,""));
+                    private _manualClass = (GETVAR(_unit,UnitGearManualTypeOlsen,""));
                     if (_manualClass isEqualto "") exitwith {
                         ERROR_1("Unit %1 is set to manual loadout but has none!, exiting gearscript.",_unit);
                         SETPVAR(_unit,GearReady,true);
@@ -339,5 +337,8 @@ ADDON = false;
     },[_vehicle,_systemType,_forcedClass]] call CBA_fnc_waitUntilandExecute;
 }] call CBA_fnc_addEventHandler;
 
+[QEGVAR(Core,SettingsLoaded), {
+    [QGVAR(LocalObjectsGearLoad), []] call CBA_fnc_localEvent;
+}] call CBA_fnc_addEventHandler;
 
 ADDON = true;

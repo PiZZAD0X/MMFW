@@ -58,7 +58,6 @@ PREPATTR(PlayerOnlyOnLoad);
 PREPATTR(RespawnCombo_AttrLoad);
 PREPATTR(RespawnCombo_AttrSave);
 PREPATTR(RespawnCombo_onLBSelChanged);
-PREPATTR(RespawnCombo_onLoad);
 PREPATTR(respawntemplates_attr_load);
 PREPATTR(respawntemplates_attr_save);
 PREPATTR(RespawnTemplates_onLBSelChanged);

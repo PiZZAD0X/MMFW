@@ -4,7 +4,7 @@ class GVAR(AttributeSystemType): Combo {
     class Controls: Controls {
         class Title: Title {};
         class Value: Value {
-            onLBSelChanged = QUOTE([ARR_2(_this,_selectedIndex)] call FUNC(SystemTypeAttribute_onLBSelChanged));
+            onLBSelChanged = QUOTE(_this call FUNC(SystemTypeAttribute_onLBSelChanged));
         };
     };
 };

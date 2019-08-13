@@ -18,6 +18,7 @@ if ((_value isEqualto "NONE") || (_value isEqualTo "")) then {
 
 private _defaultloadoutsArray = missionNamespace getvariable ["ace_arsenal_defaultLoadoutsList",[]];
 if !(_defaultloadoutsArray isEqualto []) then {
+    private _found = false;
     {
         _x params ["_loadoutName", "_loadoutData"];
         _loadoutData params ["_primaryWeaponArray","_launcherArray","_secondaryWeaponArray","_uniformArray"];
@@ -55,8 +56,13 @@ if !(_defaultloadoutsArray isEqualto []) then {
             };
         };
         if (_value == _loadoutName) then {
+            _found = true;
             _control lbSetCurSel _index;
             missionNamespace setvariable [_attProperty,_value];
         };
     } foreach _defaultloadoutsArray;
+    if !(_found) then {
+        _control lbSetCurSel _indexNone;
+        missionNamespace setvariable [_attProperty,"NONE"];
+    };
 };

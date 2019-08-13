@@ -7,7 +7,7 @@ private _unit = ((get3denselected "object") select 0);
 private _cfgname = gettext (_config >> "property");
 _unit setvariable [_cfgname,_value];
 private _ctrlCombo = (_ctrl controlsGroupCtrl 100);
-_ctrlCombo setvariable ["parentcontrolcfg",_config];
+_ctrlCombo setvariable [QGVAR(parentcontrolcfg),_config];
 private _CoverMapModules = (all3DENEntities select 3) select {_x isKindOf QGVAR(Module)};
 if (_CoverMapModules isEqualTo []) exitwith {
     ERROR("No CoverMap Modules Found!");

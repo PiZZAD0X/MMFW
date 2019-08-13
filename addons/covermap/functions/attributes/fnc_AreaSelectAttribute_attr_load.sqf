@@ -6,7 +6,7 @@ params ["_ctrl","_value","_config"];
 private _cfgname = gettext (_config >> "property");
 missionNamespace setvariable [_cfgName,_value];
 private _ctrlCombo = (_ctrl controlsGroupCtrl 100);
-_ctrlCombo setvariable ["parentcontrolcfg",_config];
+_ctrlCombo setvariable [QGVAR(parentcontrolcfg),_config];
 private _CoverMapModules = (all3DENEntities select 3) select {_x isKindOf QGVAR(Module)};
 if (_CoverMapModules isEqualTo []) exitwith {
     ERROR("No CoverMap Modules Found!");

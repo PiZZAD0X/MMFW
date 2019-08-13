@@ -21,14 +21,13 @@
             SETPLPVAR(GearReady,true);
         };
         if (_gearType isEqualto "MANUAL") then {
-            SETPLVAR(ManualUnitClass,"MANUAL");
-            private _manualClass = (GETPLVAR(UnitGearManualType,""));
-            if (_manualClass isEqualto "") exitwith {
-                ERROR_1("Unit %1 is set to manual loadout but has none!, exiting gearscript.",player);
-                SETPLPVAR(GearReady,true);
-            };
             switch (_systemType) do {
                 case "ACEAR": {
+                    private _manualClass = (GETPLVAR(UnitGearManualType,""));
+                    if (_manualClass isEqualto "") exitwith {
+                        ERROR_1("Unit %1 is set to manual loadout but has none!, exiting gearscript.",player);
+                        SETPLPVAR(GearReady,true);
+                    };
                     private _found = false;
                     //private _defaultloadoutsArray = missionNamespace getvariable ['ace_arsenal_defaultLoadoutsList',[]];
                     private _defaultloadoutsArray = missionNamespace getvariable ['ace_arsenal_defaultLoadoutsList',[]];
@@ -51,6 +50,11 @@
                     };
                 };
                 case "OLSEN": {
+                    private _manualClass = (GETPLVAR(UnitGearManualTypeOlsen,""));
+                    if (_manualClass isEqualto "") exitwith {
+                        ERROR_1("Unit %1 is set to manual loadout but has none!, exiting gearscript.",player);
+                        SETPLPVAR(GearReady,true);
+                    };
                     LOG_2("Executing gear class: %1 for unit %2",_manualClass,player);
                     [player,_manualClass] call FUNC(OlsenGearScript);
                     SETPLPVAR(GearReady,true);
@@ -118,7 +122,11 @@
 
 [QEGVAR(Core,SettingsLoaded), {
     [{!isNull player},{
-        [] call UO_loadoutIndex;
-        SETPLPVAR(GearReady,true);
+        [QGVAR(PlayerGearLoad), []] call CBA_fnc_localEvent;
+    }] call CBA_fnc_waitUntilandExecute;
+    [{GETPLVAR(GearReady,false)}, {
+        if (isClass(configFile >> "CfgPatches" >> "UO_BriefingKit")) then {
+            [] call UO_loadoutIndex;
+        };
     }] call CBA_fnc_waitUntilandExecute;
 }] call CBA_fnc_addEventHandler;

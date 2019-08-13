@@ -3,7 +3,7 @@
 EXEC_CHECK(ALL);
 EDEN_CHECK;
 
-params ["_object"];
+params ["_object","",""];
 LOG_1("_object: %1",_object);
 
 if (_object isKindOf "CAManBase") then {
@@ -16,12 +16,12 @@ if (_object isKindOf "CAManBase") then {
         ERROR_1("No loadout found for unit: %1",_object);
     };
     if (_gearType isEqualto "MANUAL") then {
-        private _manualClass = GETVAR(_object,ManualUnitClass,"");
-        if (_manualClass isEqualto "") exitwith {
-            ERROR_1("Unit %1 is set to manual loadout but has none!, exiting gearscript.",_object);
-        };
         switch (_systemType) do {
             case "ACEAR": {
+                private _manualClass = GETVAR(_object,ManualUnitClass,"");
+                if (_manualClass isEqualto "") exitwith {
+                    ERROR_1("Unit %1 is set to manual loadout but has none!, exiting gearscript.",_object);
+                };
                 private _found = false;
                 private _defaultloadoutsArray = missionNamespace getvariable ['ace_arsenal_defaultLoadoutsList',[]];
                 {
@@ -37,15 +37,19 @@ if (_object isKindOf "CAManBase") then {
                 };
             };
             case "OLSEN": {
+                private _manualClass = GETVAR(_object,ManualUnitClassOlsen,"");
+                if (_manualClass isEqualto "") exitwith {
+                    ERROR_1("Unit %1 is set to manual loadout but has none!, exiting gearscript.",_object);
+                };
                 LOG_2("Executing gear class: %1 for unit %2",_manualClass,_object);
                 [_object,_manualClass] call FUNC(OlsenGearScript);
             };
         };
     } else {
         private ["_SystemTag","_loadoutvarname"];
-        switch (_systemType) do {
-            case "ACEAR": {_SystemTag = "ACE_Arsenal"};
-            case "OLSEN": {_SystemTag = "Olsen"};
+        private _SystemTag = switch (_systemType) do {
+            case "ACEAR": {"ACE_Arsenal"};
+            case "OLSEN": {"Olsen"};
         };
         switch (side _object) do {
             case west: {

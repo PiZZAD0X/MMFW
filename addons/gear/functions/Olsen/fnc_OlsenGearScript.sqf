@@ -37,6 +37,12 @@ FNC_AddItemRandom = {
     _args call FUNC(AddItemRandomOrg);
 };
 
+FNC_RandomRange = {
+    params [["_min", 0, [0]],["_max", 0, [0]]];
+    private _return = _min + (floor(random (1 + _max - _min)));
+    _return
+};
+
 //Other Version
 //private _path = missionNamespace getVariable [QGVAR(Olsen_PathToGear),"GearScript.sqf"];
 private _path = GETMVALUE(Olsen_PathToGear,"Gear.sqf");
