@@ -18,7 +18,7 @@ class display3DEN {
             class Items {
                 #include "display3DEN\Menu.hpp"
                 class EGVAR(Core,Folder) {
-                    items[] + = {
+                    items[] += {
                         QGVAR(Folder)
                     };
                 };

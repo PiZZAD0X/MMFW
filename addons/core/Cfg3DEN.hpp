@@ -95,7 +95,7 @@ class display3DEN {
                     };
                 };
                 //Compile Main Menu
-                items[] + = {QGVAR(Folder)};
+                items[] += {QGVAR(Folder)};
             };
         };
     };
