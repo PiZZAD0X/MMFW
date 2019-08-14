@@ -1,9 +1,9 @@
-class EGVAR(Import,FromProfileAttribute): Combo {
-    attributeLoad = QUOTE(_this call FUNC(ImportFromProfileAttributeAttrLoad));
-    attributeSave ="";
+class GVAR(LoadoutToProfileAttribute): ComboPreview {
+    attributeLoad = "";
+    attributeSave = "";
 	class Controls: Controls {
 		class Title: Title {};
-		class Value: Value {
+		class Value: ctrlEdit {
 			idc = 100;
             x = "48 * (pixelW * pixelGrid * 	0.50)";
 			w = "(	60 - 	5) * (pixelW * pixelGrid * 	0.50)";
@@ -15,11 +15,7 @@ class EGVAR(Import,FromProfileAttribute): Combo {
 			w = "0.99 * 	5 * (pixelW * pixelGrid * 	0.50)";
 			h = "5 * (pixelH * pixelGrid * 	0.50)";
 			text = "\a3\3DEN\Data\Attributes\ComboPreview\play_ca.paa";
-			onMouseButtonClick = QUOTE(\
-				_this params ['_ctrlButton'];\
-				private _ctrlGroup = ctrlParentControlsGroup _ctrlButton;\
-				private _ctrlCombo = _ctrlGroup controlsgroupctrl 100;\
-				[ARR_2((_ctrlCombo lbData lbcursel _ctrlCombo),0)] call FUNC(ImportSettings););
+			onMouseButtonClick = QUOTE(_this call FUNC(ExportLoadoutSettings));
 		};
 	};
 };

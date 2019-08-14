@@ -1,6 +1,6 @@
 class EGVAR(Respawn,TeamSettings_Indfor) {
     displayName = "Indfor Respawn Settings";
-    collapsed = 0; //_respawnTypeArray = [['1 Life','ONELIFE'],['Unlimited','UNLIMITED'],['Individual Tickets','INDTICKETS'],['Team Tickets','TEAMTICKETS'],['Wave','WAVE'],['Triggered','TRIGGERED']];\
+    collapsed = 0;
     class Attributes {
         class EGVAR(Respawn,Type_Indfor) {
             displayName = "Respawn System";

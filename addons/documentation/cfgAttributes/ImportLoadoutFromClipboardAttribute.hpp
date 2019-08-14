@@ -1,4 +1,4 @@
-class EGVAR(Export,ToClipboardAttribute): Title {
+class GVAR(LoadoutFromClipboardAttribute): Title {
     class Controls: Controls {
         class Title: Title {};
         class Value: ctrlButtonPictureKeepAspect {
@@ -7,7 +7,7 @@ class EGVAR(Export,ToClipboardAttribute): Title {
             w = "0.99 * 5 * (pixelW * pixelGrid * 0.50)";
             h = "5 * (pixelH * pixelGrid * 0.50)";
             text = "\a3\3DEN\Data\Attributes\ComboPreview\play_ca.paa";
-            onMouseButtonClick = QUOTE([ARR_2('',1)] call FUNC(ExportSettings););
+            onMouseButtonClick = QUOTE([] call FUNC(ImportLoadoutSettingsClipboard));
         };
     };
 };

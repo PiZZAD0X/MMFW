@@ -1,39 +1,39 @@
-class EGVAR(Export,Menu) {
+class GVAR(ExportMenu) {
     displayName = "Export Settings";
     class AttributeCategories {
-        class EGVAR(Export,Category) {
+        class GVAR(ExportCategory) {
             displayName = "Export Mission Settings";
             collapsed = 0;
             class Attributes {
-                class EGVAR(Export,ExportToProfile) {
-                    property = QEGVAR(Export,ExportToProfile);
+                class GVAR(ExportToProfile) {
+                    property = QGVAR(ExportToProfile);
                     displayName = "Export Settings to Profile";
                     tooltip = "Enter the name of the settings preset that will be saved to your profile";
-                    control = QEGVAR(Export,ToProfileAttribute);
+                    control = QGVAR(ToProfileAttribute);
                     expression = "";
                     defaultValue = "''";
                 };
-                class EGVAR(Export,ExportToClipboard) {
-                    property = QEGVAR(Export,ExportToClipboard);
+                class GVAR(ExportToClipboard) {
+                    property = QGVAR(ExportToClipboard);
                     displayName = "Export Settings to Clipboard";
                     tooltip = "Export Settings to Clipboard";
-                    control = QEGVAR(Export,ToClipboardAttribute);
+                    control = QGVAR(ToClipboardAttribute);
                     expression = "";
                     defaultValue = "[]";
                 };
-                class EGVAR(Export,ExportLoadoutToProfile) {
-                    property = QEGVAR(Export,ExportLoadoutToProfile);
+                class GVAR(ExportLoadoutToProfile) {
+                    property = QGVAR(ExportLoadoutToProfile);
                     displayName = "Export Loadouts to Profile";
                     tooltip = "Enter the name of the settings preset that will be saved to your profile";
-                    control = QEGVAR(Export,LoadoutToProfileAttribute);
+                    control = QGVAR(LoadoutToProfileAttribute);
                     expression = "";
                     defaultValue = "''";
                 };
-                class EGVAR(Export,ExportLoadoutToClipboard) {
-                    property = QEGVAR(Export,ExportLoadoutToClipboard);
+                class GVAR(ExportLoadoutToClipboard) {
+                    property = QGVAR(ExportLoadoutToClipboard);
                     displayName = "Export Loadouts to Clipboard";
                     tooltip = "Export Loadouts to Clipboard";
-                    control = QEGVAR(Export,LoadoutToClipboardAttribute);
+                    control = QGVAR(LoadoutToClipboardAttribute);
                     expression = "";
                     defaultValue = "[]";
                 };
@@ -42,42 +42,42 @@ class EGVAR(Export,Menu) {
     };
 };
 
-class EGVAR(Import,Menu) {
+class GVAR(ImportMenu) {
     displayName = "Import Settings";
     class AttributeCategories {
-        class EGVAR(Import,Menu) {
+        class GVAR(ImportCategory) {
             displayName = "Import Mission Settings";
             collapsed = 0;
             class Attributes {
-                class EGVAR(Import,ImportfromProfile) {
-                    property = QEGVAR(IMPORT,ImportfromProfile);
+                class GVAR(ImportfromProfile) {
+                    property = QGVAR(ImportfromProfile);
                     displayName = "Import Settings from Profile";
                     tooltip = "";
-                    control = QEGVAR(Import,FromProfileAttribute);
+                    control = QGVAR(FromProfileAttribute);
                     expression = "";
                     defaultValue = "''";
                 };
-                class EGVAR(Import,ImportFromClipboard) {
-                    property = QEGVAR(Import,ImportFromClipboard);
+                class GVAR(ImportFromClipboard) {
+                    property = QGVAR(ImportFromClipboard);
                     displayName = "Import Settings from Clipboard";
                     tooltip = "Import Settings from Clipboard";
-                    control = QEGVAR(Import,FromClipboardAttribute);
+                    control = QGVAR(FromClipboardAttribute);
                     expression = "";
                     defaultValue = "[]";
                 };
-                class EGVAR(IMPORT,ImportLoadoutfromProfile) {
-                    property = QEGVAR(IMPORT,ImportLoadoutfromProfile);
+                class GVAR(ImportLoadoutfromProfile) {
+                    property = QGVAR(ImportLoadoutfromProfile);
                     displayName = "Import Loadouts from Profile";
                     tooltip = "";
-                    control = QEGVAR(Import,LoadoutFromProfileAttribute);
+                    control = QGVAR(LoadoutFromProfileAttribute);
                     expression = "";
                     defaultValue = "''";
                 };
-                class EGVAR(Import,ImportLoadoutFromClipboard) {
-                    property = QEGVAR(Import,ImportLoadoutFromClipboard);
+                class GVAR(ImportLoadoutFromClipboard) {
+                    property = QGVAR(ImportLoadoutFromClipboard);
                     displayName = "Import Loadouts from Clipboard";
                     tooltip = "";
-                    control = QEGVAR(Import,LoadoutFromClipboardAttribute);
+                    control = QGVAR(LoadoutFromClipboardAttribute);
                     expression = "";
                     defaultValue = "[]";
                 };

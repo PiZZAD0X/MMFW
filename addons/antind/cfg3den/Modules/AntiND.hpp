@@ -2,6 +2,11 @@ class GVAR(Category) {
     displayName = "Anti ND Settings";
     collapsed = 1;
     class Attributes {
+        class GVAR(Description) {
+            property = QGVAR(Description);
+            description = "Anti ND deletes ammunition fired with accidental discharge during spawn.";
+            control = "StructuredText1";
+        };
         class GVAR(Enabled) {
             property = QGVAR(Enabled);
             displayName = "Enable";

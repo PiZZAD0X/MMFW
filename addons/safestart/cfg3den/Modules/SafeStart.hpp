@@ -2,6 +2,11 @@ class GVAR(Category) {
     displayName = "Safe Start Settings";
     collapsed = 1;
     class Attributes {
+        class GVAR(Description) {
+            property = QGVAR(Description);
+            description = "SafeStart enables ACE Safety and optionally lowers and unloads players' weapons on spawn.";
+            control = "StructuredText2";
+        };
         class GVAR(Enabled) {
             property = QGVAR(Enabled);
             displayName = "Enable";

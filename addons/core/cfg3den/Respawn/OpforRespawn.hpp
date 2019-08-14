@@ -1,6 +1,6 @@
 class EGVAR(Respawn,TeamSettings_Opfor) {
     displayName = "OPFOR Respawn Settings";
-    collapsed = 0; //_respawnTypeArray = [['1 Life','ONELIFE'],['Unlimited','UNLIMITED'],['Individual Tickets','INDTICKETS'],['Team Tickets','TEAMTICKETS'],['Wave','WAVE'],['Triggered','TRIGGERED']];\
+    collapsed = 0;
     class Attributes {
         class EGVAR(Respawn,Type_Opfor) {
             displayName = "Respawn System";

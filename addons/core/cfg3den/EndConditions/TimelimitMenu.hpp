@@ -2,6 +2,11 @@ class EGVAR(EndConditions,Timelimit_Settings) {
     displayName = "Timelimit Settings";
     collapsed = 0;
     class Attributes {
+        class EGVAR(EndConditions,TimeLimitDescription) {
+            property = QEGVAR(EndConditions,TimeLimitDescription);
+            description = "The TimeLimit is an additional end condition that activates after the time has been reached.";
+            control = "StructuredText2";
+        };
         class EGVAR(EndConditions,Timelimit_Enabled) {
             property = QEGVAR(EndConditions,Timelimit_Enabled);
             displayName = "Mission Time Limit";

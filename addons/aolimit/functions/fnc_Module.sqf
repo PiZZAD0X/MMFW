@@ -7,11 +7,11 @@ switch _mode do {
         if !is3DEN then {
             _input params ["_logic",["_isActivated",true,[true]]];
             if !(_isActivated) exitWith {};
-            private _selectedSides = [];
-            if (GETVAR(_logic,Blufor,true)) then {_selectedSides pushBackUnique west;};
-            if (GETVAR(_logic,Opfor,true)) then {_selectedSides pushBackUnique east;};
-            if (GETVAR(_logic,Indfor,true)) then {_selectedSides pushBackUnique independent;};
-            if (GETVAR(_logic,Civilian,true)) then {_selectedSides pushBackUnique civilian;};
+            private _selectedSides = GETMVAR(TeamsEnabled,[]);
+            if ("BLUFOR" in _selectedSides) then {_selectedSides pushBackUnique BLUFOR};
+            if ("OPFOR" in _selectedSides) then {_selectedSides pushBackUnique OPFOR};
+            if ("INDFOR" in _selectedSides) then {_selectedSides pushBackUnique INDEPENDENT};
+            if ("CIVILIAN" in _selectedSides) then {_selectedSides pushBackUnique CIVILIAN};
             if (_selectedSides isEqualTo []) exitwith {
                 LOG("No sides defined for AO limit!");
             };

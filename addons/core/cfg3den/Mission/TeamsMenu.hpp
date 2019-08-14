@@ -4,7 +4,7 @@ class GVAR(TeamsSettings) {
     class Attributes {
         class GVAR(TeamType_Blufor) {
             property = QGVAR(TeamType_Blufor);
-            displayName = "Type";
+            displayName = "Blufor Type";
             tooltip = "Set Team to either AI, Player Controlled, or Both";
             control = QGVAR(TeamType_Select);
             expression = SCENARIO_EXPRESSION;
@@ -20,7 +20,7 @@ class GVAR(TeamsSettings) {
         };
         class GVAR(TeamType_Opfor) {
             property = QGVAR(TeamType_Opfor);
-            displayName = "Type";
+            displayName = "Opfor Type";
             tooltip = "Set Team to either AI, Player Controlled, or Both";
             control = QGVAR(TeamType_Select);
             expression = SCENARIO_EXPRESSION;
@@ -36,7 +36,7 @@ class GVAR(TeamsSettings) {
         };
         class GVAR(TeamType_Indfor) {
             property = QGVAR(TeamType_Indfor);
-            displayName = "Type";
+            displayName = "Indfor Type";
             tooltip = "Set Team to either AI, Player Controlled, or Both";
             control = QGVAR(TeamType_Select);
             expression = SCENARIO_EXPRESSION;
@@ -52,7 +52,7 @@ class GVAR(TeamsSettings) {
         };
         class GVAR(TeamType_Civ) {
             property = QGVAR(TeamType_Civ);
-            displayName = "Type";
+            displayName = "Civilian Type";
             tooltip = "Set Team to either AI, Player Controlled, or Both";
             control = QGVAR(TeamType_Select);
             expression = SCENARIO_EXPRESSION;

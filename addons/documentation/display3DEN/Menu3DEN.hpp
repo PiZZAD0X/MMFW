@@ -1,17 +1,17 @@
-class EGVAR(ExportImport,Folder) {
+class GVAR(ExportImportFolder) {
     text = "Import/Export Framework Settings";
-    items[] = {QEGVAR(Export,Configure),QEGVAR(Import,Configure)};
+    items[] = {QGVAR(ExportConfigure),QGVAR(ImportConfigure)};
     picture = "\a3\modules_f\data\portraitModule_ca.paa";
 };
 
-class EGVAR(Export,Configure) {
+class GVAR(ExportConfigure) {
     text = "Export Mission Settings";
-    action = QUOTE(edit3DENMissionAttributes QQEGVAR(Export,Menu););
+    action = QUOTE(edit3DENMissionAttributes QQGVAR(ExportMenu););
     picture = "\a3\3DEN\Data\Displays\Display3DEN\EntityMenu\moveFlying_ca.paa";
 };
 
-class EGVAR(Import,Configure) {
+class GVAR(ImportConfigure) {
     text = "Import Mission Settings";
-    action = QUOTE(edit3DENMissionAttributes QQEGVAR(Import,Menu););
+    action = QUOTE(edit3DENMissionAttributes QQGVAR(ImportMenu););
     picture = "\a3\3DEN\Data\Displays\Display3DEN\EntityMenu\moveSurface_ca.paa";
 };

@@ -26,45 +26,13 @@ class CfgVehicles {
                 expression = MODULE_EXPRESSION;
                 defaultValue = "'HARD'";
             };
-            class GVAR(Blufor) {
-                displayName = "Blufor";
-                tooltip = "Restrict Blufor to this AO. Units that start outside of the AO will be not be restricted.";
-                property = QGVAR(Blufor);
-                control = "CheckBox";
+            class GVAR(TeamsEnabled) {
+                displayName = "Teams";
+                tooltip = "Teams restricted by the AO Limit.";
+                property = QGVAR(TeamsEnabled);
+                control = QGVAR(TeamsAttribute);
                 expression = MODULE_EXPRESSION;
-                defaultValue = "true";
-                typeName = "BOOL";
-                validate = "none";
-            };
-            class GVAR(Opfor) {
-                displayName = "Opfor";
-                tooltip = "Restrict Opfor to this AO. Units that start outside of the AO will be not be restricted.";
-                property = QGVAR(Opfor);
-                control = "CheckBox";
-                expression = MODULE_EXPRESSION;
-                defaultValue = "true";
-                typeName = "BOOL";
-                validate = "none";
-            };
-            class GVAR(Indfor) {
-                displayName = "Indfor";
-                tooltip = "Restrict Indfor to this AO. Units that start outside of the AO will be not be restricted.";
-                property = QGVAR(Indfor);
-                control = "CheckBox";
-                expression = MODULE_EXPRESSION;
-                defaultValue = "true";
-                typeName = "BOOL";
-                validate = "none";
-            };
-            class GVAR(Civilian) {
-                displayName = "Civilian";
-                tooltip = "Restrict Civilian to this AO. Units that start outside of the AO will be not be restricted.";
-                property = QGVAR(CIV);
-                control = "CheckBox";
-                expression = MODULE_EXPRESSION;
-                defaultValue = "true";
-                typeName = "BOOL";
-                validate = "none";
+                defaultValue = "['BLUFOR','OPFOR','INDFOR','CIVILIAN']";
             };
             class GVAR(EntryMode) {
                 displayName = "Entry Restriction";
@@ -98,7 +66,7 @@ class CfgVehicles {
                 validate = "number";
             };
             class GVAR(SoftTimeOutsideAir) {
-                displayName = "Max time outside of AO";
+                displayName = "Max air time outside of AO";
                 tooltip = "The amount of time in seconds an air based unit is allowed to stay outside the AO";
                 property = QGVAR(SoftTimeOutsideAir);
                 control = QEGVAR(Core,120To360Step1_Slider);
