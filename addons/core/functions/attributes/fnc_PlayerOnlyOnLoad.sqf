@@ -17,15 +17,11 @@ params ["_ctrl"];
     private _fade = [0.75,0] select _state;
     private _ctrlGroup = ctrlParentControlsGroup ctrlParentControlsGroup _ctrl;
     private _allControls = (allcontrols (ctrlparent _ctrl)) select {ctrlParentControlsGroup _x isEqualto _ctrlGroup};
-    private _categoryButton = controlNull;
     {
         private _name = ctrlClassName _x;
-        private _text = ctrlText _x;
         private _isCategory = _name isEqualTo "Minimize";
-        TRACE_2("",_name,_text);
         if (_isCategory && {!_state}) then {
             private _checked = cbChecked _x;
-            TRACE_2("",_name,_checked);
             if (_checked) then {
                 ctrlActivate _x;
             };
