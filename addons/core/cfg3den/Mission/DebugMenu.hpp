@@ -4,7 +4,7 @@ class EGVAR(Debug,Category) {
     class Attributes {
         class EGVAR(Debug,Debug_Enabled) {
             property = QEGVAR(Debug,Debug_Enabled);
-            displayName = "Debug Enabled";
+            displayName = "Enable Debug";
             tooltip = "Toggle debug mode.";
             control = "Checkbox";
             expression = SCENARIO_EXPRESSION;
@@ -12,16 +12,8 @@ class EGVAR(Debug,Category) {
         };
         class EGVAR(Debug,Detailed_Enabled) {
             property = QEGVAR(Debug,Detailed_Enabled);
-            displayName = "Detailed Debug Enabled";
+            displayName = "Detailed Debug";
             tooltip = "Toggle detailed debug mode.";
-            control = "Checkbox";
-            expression = SCENARIO_EXPRESSION;
-            defaultValue = "false";
-        };
-        class GVAR(ForceTerrain_Enabled) {
-            property = QGVAR(ForceTerrain_Enabled);
-            displayName = "Force TerrainGrid";
-            tooltip = "Force terrain grid to prevent far away objects from appearing as floating.";
             control = "Checkbox";
             expression = SCENARIO_EXPRESSION;
             defaultValue = "false";
