@@ -65,6 +65,8 @@ EXEC_CHECK(CLIENT);
             _x params ["_name", "_magClass", "_colour", "_ammoType"];
             private _paraFlareActionTemp = [("SelfActions_LaunchParaFlare_" + _name), ("Launch " + _name + " Flare"), "", {
                 (_this select 2) params ["_magClass", "_colour", "_ammoType"];
+                private _result = [player, _magClass] call CBA_fnc_removeMagazine;
+                if !(_result) exitwith {};
                 private _pos = player modelToWorld [0, 1, 0];
                 _pos = [_pos select 0, _pos select 1, (_pos select 2) + 1.5];
                 player playActionNow "HandGunOn";
