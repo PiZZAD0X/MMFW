@@ -2,6 +2,10 @@ class GVAR(Options) {
     displayName = "AI Driver Options";
     collapsed = 1;
     class Attributes {
+        class GVAR(DescriptionObject) {
+            description = "AI Drivers adds an action to spawn an AI driver that is controllable by the commander of the vehicle to minimize the players needed to crew the vehicle.";
+            control = "StructuredText2";
+        };
         class GVAR(VehEnabled) {
             displayName = "AI Driver";
             tooltip = "Enable AI driver for this vehicle";

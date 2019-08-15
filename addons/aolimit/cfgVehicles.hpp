@@ -17,6 +17,10 @@ class CfgVehicles {
         };
 
         class Attributes {
+            class GVAR(Description) {
+                description = "AO Limit modules prevent players from leaving the module area if their team is enabled.";
+                control = "StructuredText1";
+            };
             class GVAR(AOMode) {
                 displayName = "AO Mode";
                 tooltip = "Set the AO as a Soft AO that gives players time to return to the area before killing them, or a hard AO which forces the player inside the AO.";

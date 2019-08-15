@@ -3,7 +3,6 @@ class EGVAR(EndConditions,Timelimit_Settings) {
     collapsed = 0;
     class Attributes {
         class EGVAR(EndConditions,TimeLimitDescription) {
-            property = QEGVAR(EndConditions,TimeLimitDescription);
             description = "The TimeLimit is an additional end condition that activates after the time has been reached.";
             control = "StructuredText2";
         };

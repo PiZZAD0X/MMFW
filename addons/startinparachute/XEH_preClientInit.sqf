@@ -3,7 +3,7 @@ EXEC_CHECK(CLIENT);
 
 [QGVAR(PlayerEvent), {
     if !(GETMVAR(Enabled,false)) exitwith {};
-    [{(!isNull player)}, {
+    [{(!isNull ace_player)}, {
         [{
             private _parachuteType = ["NONE","NONSTEERABLE","STEERABLE"] select (GETPLVAR(Type,0));
             if (_parachuteType isEqualTo 0) exitwith {};

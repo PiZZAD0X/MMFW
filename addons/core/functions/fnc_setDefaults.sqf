@@ -48,6 +48,5 @@ private _sections = QUOTE(!(((str(configname _x)) find QN(PREFIX)) isEqualto -1)
     } foreach _children;
 } foreach _sections;
 
-//SETMVAR(Initialized,true);
-ESETPVAR(Core,Initialized,true);
+SETMVAR(Initialized,true);
 [QGVAR(SettingsLoaded), []] call CBA_fnc_localEvent;

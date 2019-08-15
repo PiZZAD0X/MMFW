@@ -13,26 +13,6 @@ LOG("Global Pre Init");
 SETMVAR(Initialized,false);
 [] call FUNC(setDefaults);
 
-private _missionFrameworkVersionCreatedStr = (GETMVALUE(Version_Created,""));
-if (_missionFrameworkVersionCreatedStr isEqualto "") then {
-    SETMVAR(Version_CreatedNum,102);
-    INFO("Mission Created with Framework Version: Legacy");
-} else {
-    private _missionFrameworkVersionCreated = parseNumber ((_missionFrameworkVersionCreatedStr splitString ".") joinString "");
-    SETMVAR(Version_CreatedNum,_missionFrameworkVersionCreated);
-    INFO_1("Mission Created with Framework Version:%1",_missionFrameworkVersionCreated);
-};
-
-private _missionFrameworkVersionStr = (GETMVALUE(Version_Updated,""));
-if (_missionFrameworkVersionStr isEqualto "") then {
-    SETMVAR(Version_UpdatedNumber,102);
-    INFO("Mission Updated with Framework Version: Legacy");
-} else {
-    private _missionFrameworkVersion = parseNumber ((_missionFrameworkVersionStr splitString ".") joinString "");
-    SETMVAR(Version_UpdatedNumber,_missionFrameworkVersion);
-    INFO_1("Mission Updated with Framework Version:%1",_missionFrameworkVersion);
-};
-
 [QGVAR(EntityAttributeLoad), {
     params ["_object", "_propertyName", "_value", ["_isGlobal",false,[false]]];
     _object setvariable [_propertyName,_value,_isGlobal];

@@ -2,7 +2,7 @@
 EXEC_CHECK(CLIENT);
 
 [QGVAR(ColourCheckInitEvent), {
-    [{!isNull player}, {
+    [{!isNull ace_player}, {
         private _teamColorAction = ["colorCheck_class", "Check Team Color", "", {
             private ["_str"];
             switch (assignedTeam player) do {
@@ -20,7 +20,7 @@ EXEC_CHECK(CLIENT);
 
 //IGNORE_PRIVATE_WARNING ["_player","_target"];
 [QGVAR(CheckMapInitEvent), {
-    [{!isNull player}, {
+    [{!isNull ace_player}, {
         private _shareMapAction = ["shareMap_class", "View Map", "", {
             params ["_target", "_player"];
             player linkItem "ItemMap";
@@ -41,7 +41,7 @@ EXEC_CHECK(CLIENT);
 
 //IGNORE_PRIVATE_WARNING ["_thisID","_thisType"];
 [QGVAR(CutGrassInitEvent), {
-    [{!isNull player}, {
+    [{!isNull ace_player}, {
         private _macheteAction = ["machete_class", "Cut Grass", "", {
             [player, "AnimDone", {
                 params ["_unit", "_anim"];
@@ -58,7 +58,7 @@ EXEC_CHECK(CLIENT);
 }] call CBA_fnc_addEventHandler;
 
 [QGVAR(ParaFlaresInitEvent), {
-    [{!isNull player}, {
+    [{!isNull ace_player}, {
         private _paraFlareBaseMenu = ["SelfActions_ParaBaseClass", "Paraflares", "", {}, {true}] call ace_interact_menu_fnc_createAction;
         [player, 1, ["ACE_SelfActions","ACE_Equipment"], _paraFlareBaseMenu] call ace_interact_menu_fnc_addActionToObject;
         {
@@ -105,7 +105,7 @@ EXEC_CHECK(CLIENT);
 
 [QEGVAR(Core,SettingsLoaded), {
     if !(GETMVAR(Enable,false)) exitwith {};
-    [{!isNull player},{
+    [{!isNull ace_player},{
         if (GETMVAR(CheckColour_Enabled,false)) then {
             [QGVAR(ColourCheckInitEvent), []] call CBA_fnc_localEvent;
         };

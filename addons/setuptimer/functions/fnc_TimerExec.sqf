@@ -3,7 +3,7 @@ EXEC_CHECK(CLIENT);
 
 [QEGVAR(Core,RegisterModuleEvent), ["Setup Timer", "Allows the mission maker to restrict players to an area for a set amount of time.", "Olsen, Sacher and PiZZADOX"]] call CBA_fnc_localEvent;
 
-[{(!isNull player)}, {
+[{(!isNull ace_player)}, {
     params ["_logic","_area","_selectedSide",["_waittime",30,[30]]];
     if (CBA_missionTime > _waittime) exitwith {};
     if (!((side player) isEqualto _selectedSide) || !((vehicle player) inArea _area)) exitwith {};

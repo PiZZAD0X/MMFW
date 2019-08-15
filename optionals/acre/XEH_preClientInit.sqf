@@ -95,7 +95,7 @@ EXEC_CHECK(CLIENT);
         LOG_1("Setting Netnames. Civ: %1",( _radioNetNamesCiv));
     };
 
-    [{(!isNull player) && {(!isNull acre_player)} && {([] call acre_api_fnc_isInitialized)}},{
+    [{(!isNull ace_player) && {(!isNull acre_player)} && {([] call acre_api_fnc_isInitialized)}},{
         private _side = side player;
         private _customSide = (GETPLVAR(CustomScramble,nil));
         GVAR(Volume_Value) = -1;
@@ -285,7 +285,7 @@ EXEC_CHECK(CLIENT);
 }] call CBA_fnc_addEventHandler;
 
 [QGVAR(AddRadio_Event),{
-    [{!isNull player},{
+    [{!isNull ace_player},{
         if (GETPLVAR(UnitSettings_Enable,false)) then {
             private ["_SRType","_LRType","_PKType"];
             switch (side player) do {

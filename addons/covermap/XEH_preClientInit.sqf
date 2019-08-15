@@ -4,7 +4,7 @@ EXEC_CHECK(CLIENT);
 
 [QGVAR(InitEvent), {
     [QEGVAR(Core,RegisterModuleEvent), ["Cover Map", "Covers map except specified area, allows switching between multiple AOs", "Blackhawk and PIZZADOX"]] call CBA_fnc_localEvent;
-    [{(!isNull player)}, {
+    [{(!isNull ace_player)}, {
         private _StartAO = GETPLVAR(UnitDefaultAO,"Side Default AO");
         if (_StartAO isEqualto "No Modules Found") exitwith {
             ERROR("No Modules found for CoverMap!");
@@ -62,7 +62,7 @@ EXEC_CHECK(CLIENT);
         },_StartAO] call CBA_fnc_waitUntilAndExecute;
     }] call CBA_fnc_waitUntilAndExecute;
 
-    [{((!isNull player) && {CBA_missionTime > 1})}, {
+    [{((!isNull ace_player) && {CBA_missionTime > 1})}, {
         if (GETMVAR(AllowSwitching,false)) then {
             private ["_AOArray"];
             private _playerActionArray = GETPLVAR(UnitAONameArray,[]);

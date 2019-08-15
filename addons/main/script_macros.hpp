@@ -51,7 +51,6 @@ MESSAGE call EFUNC(Debug,DebugMessage)
 #define FWDEBUG(basicmsg,detailedmsg) \
 [basicmsg,detailedmsg] call EFUNC(Debug,DebugMessageDetailed)
 
-#define MGETMVALUE(var1,var2) getMissionConfigValue [ARR_2(QUOTE(DOUBLES(PREFIX,var1)),var2)]
 #define GETMVALUE(var1,var2) getMissionConfigValue [ARR_2(QUOTE(TRIPLES(PREFIX,COMPONENT,var1)),var2)]
 #define EGETMVALUE(var1,var2,var3) getMissionConfigValue [ARR_2(QUOTE(TRIPLES(PREFIX,var1,var2)),var3)]
 

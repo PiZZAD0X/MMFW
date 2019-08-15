@@ -2,7 +2,7 @@
 EXEC_CHECK(CLIENT);
 
 [QEGVAR(Core,SettingsLoaded), {
-    [{!isNull player}, {
+    [{!isNull ace_player}, {
         private _briefing = [];
         switch (side player) do {
             case west: {

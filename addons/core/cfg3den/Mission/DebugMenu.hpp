@@ -3,7 +3,6 @@ class EGVAR(Debug,Category) {
     collapsed = 0;
     class Attributes {
         class EGVAR(Debug,Description) {
-            property = QEGVAR(Debug,Description);
             description = "These settings enable debug intercepts for components to display cba LOG and ERROR macros on the debug display";
             control = "StructuredText2";
         };

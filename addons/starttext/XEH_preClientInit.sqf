@@ -4,7 +4,7 @@ EXEC_CHECK(CLIENT);
 [QEGVAR(Core,SettingsLoaded), {
     if !(GETMVAR(Enabled,false)) exitWith {};
     [QEGVAR(Core,RegisterModuleEvent), ["Start Text", "Displays animated text on mission start.", "Sacher"]] call CBA_fnc_localEvent;
-    [{(!isNull player) && {(CBA_missionTime > 1)}}, {
+    [{(!isNull ace_player) && {(CBA_missionTime > 1)}}, {
         private _dateType = [["DATE"],["TIME"],["DATETIME"]] select (GETMVAR(TimeSelect,2));
         private _startTextArray = [];
         switch (side player) do { //Checks what team the player is on

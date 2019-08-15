@@ -4,7 +4,7 @@ EXEC_CHECK(CLIENT);
 [QGVAR(Event), {
     if !(GVAR(Enabled)) exitwith {};
     [QEGVAR(Core,RegisterModuleEvent), ["Anti ND", "Extra Safety for mission start", "Starfox64, PiZZADOX and Sacher"]] call CBA_fnc_localEvent;
-    [{(!isNull player)}, {
+    [{(!isNull ace_player)}, {
         private _FiredEh = player addEventHandler ["FiredMan", {
             params ["_unit", "_weapon", "_muzzle", "_mode", "_ammo", "_magazine", "_projectile", "_vehicle"];
             if (((EGETMVAR(Core,SpawnPos,(getpos player))) distance player) <= GVAR(Distance)) then {

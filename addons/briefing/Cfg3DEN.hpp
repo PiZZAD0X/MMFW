@@ -1,6 +1,8 @@
 class Cfg3DEN {
+    class EventHandlers {
+        #include "cfg3denEH.hpp"
+    };
     class Mission {
-        //Additional Core cfg3denMenu defines
         #include "cfg3den\cfg3denMenuCategories.hpp"
     };
 };

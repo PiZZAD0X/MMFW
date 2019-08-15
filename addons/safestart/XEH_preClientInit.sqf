@@ -4,8 +4,8 @@ EXEC_CHECK(CLIENT);
 [QGVAR(Event), {
     if !(GETMVAR(Enabled,false)) exitwith {};
     [QEGVAR(Core,RegisterModuleEvent), ["Safe Start", "Extra safety for mission start", "Olsen and PiZZADOX"]] call CBA_fnc_localEvent;
-    //[{(!isNull player) && {(EGETPLVAR(Gear,GearReady,false))}}, {
-    [{(!isNull player)}, {
+    //[{(!isNull ace_player) && {(EGETPLVAR(Gear,GearReady,false))}}, {
+    [{(!isNull ace_player)}, {
         if !((currentWeapon player) isEqualto "") then {
             [player, (currentWeapon player), (currentMuzzle player)] call ace_safemode_fnc_lockSafety;
         };

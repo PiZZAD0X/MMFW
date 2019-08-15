@@ -1,4 +1,4 @@
-class GVAR(3DEN_EH) {
+class GVAR(3den_EH) {
     onTerrainNew = QUOTE([] call FUNC(3denEH));
     onMissionLoad = QUOTE([] call FUNC(3denEH));
     onMissionNew = QUOTE([] call FUNC(3denEH));

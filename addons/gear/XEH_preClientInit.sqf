@@ -4,7 +4,7 @@
     if (!(GETMVALUE(ACEAR_System_Enabled,false)) && {!(GETMVALUE(Olsen_Enabled,false))}) exitwith {
         SETPLPVAR(GearReady,true);
     };
-    [{(!isNull player) && {!((GETPLVAR(UnitSystemType,"")) isEqualto "")} && {!((GETPLVAR(UnitGearType,"")) isEqualto "")}}, {
+    [{(!isNull ace_player) && {!((GETPLVAR(UnitSystemType,"")) isEqualto "")} && {!((GETPLVAR(UnitGearType,"")) isEqualto "")}}, {
         private ["_loadoutName"];
         private _systemType = (GETPLVAR(UnitSystemType,"NONE"));
         LOG_1("_systemType: %1",_systemType);
@@ -121,7 +121,7 @@
 }] call CBA_fnc_addEventHandler;
 
 [QEGVAR(Core,SettingsLoaded), {
-    [{!isNull player},{
+    [{!isNull ace_player},{
         [QGVAR(PlayerGearLoad), []] call CBA_fnc_localEvent;
     }] call CBA_fnc_waitUntilandExecute;
     [{GETPLVAR(GearReady,false)}, {
