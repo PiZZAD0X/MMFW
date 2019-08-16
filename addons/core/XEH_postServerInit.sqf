@@ -13,5 +13,4 @@ SETMPVAR(ServerInitialized,true);
     ESETMVAR(Respawn,TeamTicketsRemaining_Opfor,(EGETMVAR(Respawn,TeamTickets_Opfor,30)));
     ESETMVAR(Respawn,TeamTicketsRemaining_Indfor,(EGETMVAR(Respawn,TeamTickets_Indfor,30)));
     ESETMVAR(Respawn,TeamTicketsRemaining_Civ,(EGETMVAR(Respawn,TeamTickets_Civ,30)));
-    [] call FUNC(Init);
 }] call CBA_fnc_WaitUntilAndExecute;
