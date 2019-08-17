@@ -13,7 +13,7 @@ if (_HostageModules isEqualTo []) exitwith {
     ERROR("No Hostage Modules Found!");
     private _name = "No Modules Found";
     private _index = _ctrlCombo lbadd _name;
-    _ctrlCombo lbsetdata [_index,_name];
+    _ctrlCombo lbsetdata [_index,"No Area Selected"];
     _ctrlCombo lbSetCurSel _index;
 };
 
@@ -43,7 +43,7 @@ if (_HostageModules isEqualTo []) exitwith {
 private _name = "No Area Selected";
 private _index = _ctrlCombo lbadd _name;
 _ctrlCombo lbsetdata [_index,_name];
-if (_value isEqualto (_ctrlCombo lbData _index) || (_value isEqualto "No Modules Found")) then {
+if (_value isEqualto (_ctrlCombo lbData _index) || (_value isEqualto "No Area Selected")) then {
     _ctrlCombo lbSetCurSel _index;
 };
 

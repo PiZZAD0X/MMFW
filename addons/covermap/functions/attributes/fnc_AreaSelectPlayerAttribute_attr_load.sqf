@@ -13,7 +13,7 @@ if (_CoverMapModules isEqualTo []) exitwith {
     ERROR("No CoverMap Modules Found!");
     private _name = "No Modules Found";
     private _index = _ctrlCombo lbadd _name;
-    _ctrlCombo lbsetdata [_index,_name];
+    _ctrlCombo lbsetdata [_index,"Side Default AO"];
     _ctrlCombo lbSetCurSel _index;
 };
 
@@ -31,7 +31,7 @@ private _CoverMapModulesList = [];
 private _name = "Side Default AO";
 private _index = _ctrlCombo lbadd _name;
 _ctrlCombo lbsetdata [_index,_name];
-if (_value isEqualto (_ctrlCombo lbData _index) || (_value isEqualto "No Modules Found")) then {
+if (_value isEqualto (_ctrlCombo lbData _index) || (_value isEqualto "Side Default AO")) then {
     _ctrlCombo lbSetCurSel _index;
 };
 
