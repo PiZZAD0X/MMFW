@@ -82,19 +82,40 @@ if ((vehicle _instigator != vehicle _unit) && {!isNull _instigator}) then {
 };
 
 
-if (EGETMVAR(Respawn,InstantDeath,true)) then {
-    private _damage = EGETMVAR(Spectator,Killcam_LastHitDamage,0.5);
-    private _fadeInSpeed = (1.001 - _damage);
-    [{
-        params ["_fadeInSpeed"];
-        0 fadeSound 0;
-        (QGVAR(KilledLayer)) cutText ["<t color='#FF0000' size='2.0'>YOU ARE DEAD</t>", "BLACK", _fadeInSpeed, true, true];
-        [QGVAR(DeathHearing), 0, true] call ace_common_fnc_setHearingCapability;
-    }, [_fadeInSpeed]] call CBA_fnc_execNextFrame;
-} else {
-    [{
-        playSound "Simulation_Fatal";
-        0 fadeSound 0;
-        [] call BIS_fnc_VRFadeOut;
-    }] call CBA_fnc_execNextFrame;
+private _deathScreenType = (EGETMVAR(Respawn,DeathScreenType,"FADE"));
+switch (_deathScreenType) do {
+    case "FADE": {
+        private _damage = EGETMVAR(Spectator,Killcam_LastHitDamage,0.5);
+        private _fadeInSpeed = (1.001 - _damage);
+        [{
+            params ["_fadeInSpeed"];
+            0 fadeSound 0;
+            (QGVAR(KilledLayer)) cutText ["<t color='#FF0000' size='2.0'>YOU ARE DEAD</t>", "BLACK", _fadeInSpeed, true, true];
+            [QGVAR(DeathHearing), 0, true] call ace_common_fnc_setHearingCapability;
+        }, [_fadeInSpeed]] call CBA_fnc_execNextFrame;
+    };
+    case "INSTANT": {
+        [{
+            0 fadeSound 0;
+            (QGVAR(KilledLayer)) cutText ["<t color='#FF0000' size='2.0'>YOU ARE DEAD</t>", "BLACK", 0, true, true];
+            [QGVAR(DeathHearing), 0, true] call ace_common_fnc_setHearingCapability;
+        }] call CBA_fnc_execNextFrame;
+    };
+    case "VR": {
+        [{
+            playSound "Simulation_Fatal";
+            0 fadeSound 0;
+            [] call BIS_fnc_VRFadeOut;
+        }] call CBA_fnc_execNextFrame;
+    };
+    default {
+        private _damage = EGETMVAR(Spectator,Killcam_LastHitDamage,0.5);
+        private _fadeInSpeed = (1.001 - _damage);
+        [{
+            params ["_fadeInSpeed"];
+            0 fadeSound 0;
+            (QGVAR(KilledLayer)) cutText ["<t color='#FF0000' size='2.0'>YOU ARE DEAD</t>", "BLACK", _fadeInSpeed, true, true];
+            [QGVAR(DeathHearing), 0, true] call ace_common_fnc_setHearingCapability;
+        }, [_fadeInSpeed]] call CBA_fnc_execNextFrame;
+    };
 };

@@ -120,13 +120,17 @@
     }] call CBA_fnc_waitUntilandExecute;
 }] call CBA_fnc_addEventHandler;
 
+[QEGVAR(Respawn,EndHookEvent), {
+    [QGVAR(PlayerGearLoad), []] call CBA_fnc_localEvent;
+}] call CBA_fnc_addEventHandler;
+
 [QEGVAR(Core,SettingsLoaded), {
     [{!isNull ace_player},{
         [QGVAR(PlayerGearLoad), []] call CBA_fnc_localEvent;
     }] call CBA_fnc_waitUntilandExecute;
-    [{GETPLVAR(GearReady,false)}, {
-        if (isClass(configFile >> "CfgPatches" >> "UO_BriefingKit")) then {
-            [] call UO_loadoutIndex;
-        };
-    }] call CBA_fnc_waitUntilandExecute;
+    //[{GETPLVAR(GearReady,false)}, {
+    //    if (isClass(configFile >> "CfgPatches" >> "UO_BriefingKit")) then {
+    //        [] call UO_loadoutIndex;
+    //    };
+    //}] call CBA_fnc_waitUntilandExecute;
 }] call CBA_fnc_addEventHandler;

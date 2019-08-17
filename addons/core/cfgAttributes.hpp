@@ -6,6 +6,7 @@
 #include "cfgAttributes\Respawn\RespawnTypeAttribute.hpp"
 #include "cfgAttributes\Respawn\RespawnWaveGearSystemAttribute.hpp"
 #include "cfgAttributes\Respawn\RespawnSideAttribute.hpp"
+#include "cfgAttributes\Respawn\DeathScreenTypeAttribute.hpp"
 #include "cfgAttributes\EndConditions\EndConditionModeAttribute.hpp"
 #include "cfgAttributes\EndConditions\EndConditionsCaptureZoneTeamAttribute.hpp"
 #include "cfgAttributes\EndConditions\ExtractionTeamAttribute.hpp"

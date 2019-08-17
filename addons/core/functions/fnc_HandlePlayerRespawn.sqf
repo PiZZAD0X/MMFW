@@ -45,7 +45,7 @@ switch (side player) do {
 // Reports Event & Function execution, confirm removed from queues.
 
 
-if ((_respawnType isEqualto "INDTICK") || (_respawnType isEqualto "TEAMTICK") || (_respawnType isEqualto "UNLIMITED")) then {
+if (_respawnType in ["INDTICK","TEAMTICK","UNLIMITED"]) then {
     [{
         params ["_templateSettings","_teamRespawnMarker","_newSideSetting"];
 
@@ -53,14 +53,28 @@ if ((_respawnType isEqualto "INDTICK") || (_respawnType isEqualto "TEAMTICK") ||
         [QGVAR(PlayerInitEvent), []] call CBA_fnc_localEvent;
 
         // Remove Killed Displays
-        if (GETMVAR(InstantDeath,true)) then {
-            (QGVAR(KilledLayer)) cutText ["","BLACK IN", 5];
-            [QGVAR(DeathHearing), 0, false] call ace_common_fnc_setHearingCapability;
-            0 fadeSound 1;
-        } else {
-            0 fadeSound 1;
-            playSound ("Transition" + str (1 + floor random 3));
-            [] call BIS_fnc_VRFadeIn;
+        private _deathScreenType = (EGETMVAR(Respawn,DeathScreenType,"FADE"));
+        switch (_deathScreenType) do {
+            case "FADE": {
+                (QGVAR(KilledLayer)) cutText ["","BLACK IN", 5];
+                [QGVAR(DeathHearing), 0, false] call ace_common_fnc_setHearingCapability;
+                0 fadeSound 1;
+            };
+            case "INSTANT": {
+                (QGVAR(KilledLayer)) cutText ["","BLACK IN", 5];
+                [QGVAR(DeathHearing), 0, false] call ace_common_fnc_setHearingCapability;
+                0 fadeSound 1;
+            };
+            case "VR": {
+                0 fadeSound 1;
+                playSound ("Transition" + str (1 + floor random 3));
+                [] call BIS_fnc_VRFadeIn;
+            };
+            default {
+                (QGVAR(KilledLayer)) cutText ["","BLACK IN", 5];
+                [QGVAR(DeathHearing), 0, false] call ace_common_fnc_setHearingCapability;
+                0 fadeSound 1;
+            };
         };
 
         // Handle Group Join

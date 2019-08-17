@@ -13,15 +13,11 @@ player allowdamage true;
 [player, false] remoteExec ["setCaptive", 2];
 [player, true] remoteExec ["allowdamage", 2];
 player call EFUNC(Gear,RemoveAllGear);
-[false] call acre_api_fnc_setSpectator;
 if (!isNil QGVAR(keyHandle46)) then {
     (findDisplay 46) displayRemoveEventHandler ["keyDown",GVAR(keyHandle46)];
 };
 
 ["Terminate"] call BIS_fnc_EGSpectator;
-
-//Handle specifics (group join, location setpos, gear, module settings, etc)
-//[player] join grpNull;
 
 private _marker = "";
 switch (side player) do {
@@ -33,4 +29,5 @@ switch (side player) do {
 };
 
 player setPos (getMarkerPos _marker);
-[QEGVAR(Gear,PlayerGearLoad), []] call CBA_fnc_localEvent;
+
+[QEGVAR(Spectator,EndHookEvent), []] call CBA_fnc_localEvent;

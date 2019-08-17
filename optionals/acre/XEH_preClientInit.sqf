@@ -434,6 +434,25 @@ EXEC_CHECK(CLIENT);
     }] call CBA_fnc_waitUntilAndExecute;
 }] call CBA_fnc_addEventHandler;
 
+[QEGVAR(Respawn,StartHookEvent), {
+    if (GETMVAR(enable_babel,false)) then {
+        private _missionLanguages = [];
+        {
+            {
+                if (!(_x in _missionLanguages)) then {
+                    _missionLanguages pushback _x;
+                };
+            } foreach _x;
+        } forEach GETMVAR(languages_babel,[]);
+        _missionLanguages call acre_api_fnc_babelSetSpokenLanguages;
+    };
+    [true] call acre_api_fnc_setSpectator;
+}] call CBA_fnc_addEventHandler;
+
+[QEGVAR(Respawn,EndHookEvent), {
+    [false] call acre_api_fnc_setSpectator;
+}] call CBA_fnc_addEventHandler;
+
 [QEGVAR(Core,SettingsLoaded), {
     [QGVAR(Init_Event), []] call CBA_fnc_localEvent;
 }] call CBA_fnc_addEventHandler;

@@ -2,12 +2,12 @@ class EGVAR(Respawn,Category) {
     displayName = "General Respawn Settings";
     collapsed = 0;
     class Attributes {
-        class EGVAR(Respawn,InstantDeath) {
-            property = QEGVAR(Respawn,InstantDeath);
-            displayName = "Instant Death Screen";
-            tooltip = "This setting enables the 'YOU ARE DEAD' screen that shows immediately following a player's death. Disable to enable VR fadeout effect.";
-            control = "CheckBox";
-            defaultValue = "true";
+        class EGVAR(Respawn,DeathScreenType) {
+            property = QEGVAR(Respawn,DeathScreenType);
+            displayName = "Death Screen";
+            tooltip = "Set the type of death screen";
+            control = QEGVAR(Respawn,DeathScreenTypeAttribute);
+            defaultValue = "'FADE'";
             expression = SCENARIO_EXPRESSION;
         };
         class EGVAR(Respawn,KillCam) {

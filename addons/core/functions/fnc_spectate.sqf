@@ -8,9 +8,11 @@ player setCaptive true;
 player allowdamage false;
 [player, true] remoteExec ["setCaptive", 2];
 [player, false] remoteExec ["allowdamage", 2];
-player call EFUNC(Gear,RemoveAllGear);
+player call FUNC(RemoveAllGear);
 player setPos [0, 0, 0];
 [player] joinSilent grpNull;
+
+[QEGVAR(Spectator,InitialHookEvent), []] call CBA_fnc_localEvent;
 
 if (GETPLVAR(Spectating,false)) exitwith {};
 
@@ -85,64 +87,102 @@ SETMVAR(show_Entities_and_locations_lists,true);
 // Define where the spectator camera starts. (add a marker with the name inside the "")
 SETMVAR(spectator_marker,"");
 
-if (GETMVAR(RespawnSetting_InstantDeath,true)) then {
-    [{
-        params ["_teamSpectateList","_AISetting","_freeCamSetting","_thirdPersonSetting","_killCamSetting"];
-        (QGVAR(KilledLayer)) cutText ["","BLACK IN", 5];
-        [QGVAR(DeathHearing), 0, false] call ace_common_fnc_setHearingCapability;
-        0 fadeSound 1;
-        ["Initialize",[
-            player,
-            _teamSpectateList,
-            _AISetting,
-            _freeCamSetting,
-            _thirdPersonSetting,
-            GVAR(show_Focus_Info_widget),
-            GVAR(show_camera_buttons_widget),
-            GVAR(show_controls_helper_widget),
-            GVAR(show_header_widget),
-            GVAR(show_Entities_and_locations_lists)]
-        ] call BIS_fnc_EGSpectator;
-        player addWeapon "itemMap";
-        [true] call acre_api_fnc_setSpectator;
-        [QGVAR(SetSpectatorInfoEvent), [_killCamSetting]] call CBA_fnc_localEvent;
-    }, [_teamSpectateList,_AISetting,_freeCamSetting,_thirdPersonSetting,_killCamSetting], _delay] call CBA_fnc_WaitAndExecute;
-} else {
-    [{
-        params ["_teamSpectateList","_AISetting","_freeCamSetting","_thirdPersonSetting","_killCamSetting"];
-        0 fadeSound 1;
-        playSound ("Transition" + str (1 + floor random 3));
-        ["Initialize",[
-            player,
-            _teamSpectateList,
-            _AISetting,
-            _freeCamSetting,
-            _thirdPersonSetting,
-            GVAR(show_Focus_Info_widget),
-            GVAR(show_camera_buttons_widget),
-            GVAR(show_controls_helper_widget),
-            GVAR(show_header_widget),
-            GVAR(show_Entities_and_locations_lists)]
-        ] call BIS_fnc_EGSpectator;
-        [] call BIS_fnc_VRFadeIn;
-        player addWeapon "itemMap";
-        [true] call acre_api_fnc_setSpectator;
-        [QGVAR(SetSpectatorInfoEvent), [_killCamSetting]] call CBA_fnc_localEvent;
-    }, [_teamSpectateList,_AISetting,_freeCamSetting,_thirdPersonSetting,_killCamSetting], _delay] call CBA_fnc_WaitAndExecute;
+private _deathScreenType = (EGETMVAR(Respawn,DeathScreenType,"FADE"));
+switch (_deathScreenType) do {
+    case "FADE": {
+        [{
+            params ["_teamSpectateList","_AISetting","_freeCamSetting","_thirdPersonSetting","_killCamSetting"];
+            (QGVAR(KilledLayer)) cutText ["","BLACK IN", 5];
+            [QGVAR(DeathHearing), 0, false] call ace_common_fnc_setHearingCapability;
+            0 fadeSound 1;
+            ["Initialize",[
+                player,
+                _teamSpectateList,
+                _AISetting,
+                _freeCamSetting,
+                _thirdPersonSetting,
+                GVAR(show_Focus_Info_widget),
+                GVAR(show_camera_buttons_widget),
+                GVAR(show_controls_helper_widget),
+                GVAR(show_header_widget),
+                GVAR(show_Entities_and_locations_lists)]
+            ] call BIS_fnc_EGSpectator;
+            player addWeapon "itemMap";
+            [QGVAR(SetSpectatorInfoEvent), [_killCamSetting]] call CBA_fnc_localEvent;
+        }, [_teamSpectateList,_AISetting,_freeCamSetting,_thirdPersonSetting,_killCamSetting], _delay] call CBA_fnc_WaitAndExecute;
+    };
+    case "INSTANT": {
+        [{
+            params ["_teamSpectateList","_AISetting","_freeCamSetting","_thirdPersonSetting","_killCamSetting"];
+            (QGVAR(KilledLayer)) cutText ["","BLACK IN", 5];
+            [QGVAR(DeathHearing), 0, false] call ace_common_fnc_setHearingCapability;
+            0 fadeSound 1;
+            ["Initialize",[
+                player,
+                _teamSpectateList,
+                _AISetting,
+                _freeCamSetting,
+                _thirdPersonSetting,
+                GVAR(show_Focus_Info_widget),
+                GVAR(show_camera_buttons_widget),
+                GVAR(show_controls_helper_widget),
+                GVAR(show_header_widget),
+                GVAR(show_Entities_and_locations_lists)]
+            ] call BIS_fnc_EGSpectator;
+            player addWeapon "itemMap";
+            [QGVAR(SetSpectatorInfoEvent), [_killCamSetting]] call CBA_fnc_localEvent;
+        }, [_teamSpectateList,_AISetting,_freeCamSetting,_thirdPersonSetting,_killCamSetting], _delay] call CBA_fnc_WaitAndExecute;
+    };
+    case "VR": {
+        [{
+            params ["_teamSpectateList","_AISetting","_freeCamSetting","_thirdPersonSetting","_killCamSetting"];
+            0 fadeSound 1;
+            playSound ("Transition" + str (1 + floor random 3));
+            ["Initialize",[
+                player,
+                _teamSpectateList,
+                _AISetting,
+                _freeCamSetting,
+                _thirdPersonSetting,
+                GVAR(show_Focus_Info_widget),
+                GVAR(show_camera_buttons_widget),
+                GVAR(show_controls_helper_widget),
+                GVAR(show_header_widget),
+                GVAR(show_Entities_and_locations_lists)]
+            ] call BIS_fnc_EGSpectator;
+            [] call BIS_fnc_VRFadeIn;
+            player addWeapon "itemMap";
+            [QGVAR(SetSpectatorInfoEvent), [_killCamSetting]] call CBA_fnc_localEvent;
+        }, [_teamSpectateList,_AISetting,_freeCamSetting,_thirdPersonSetting,_killCamSetting], _delay] call CBA_fnc_WaitAndExecute;
+    };
+    default {
+        [{
+            params ["_teamSpectateList","_AISetting","_freeCamSetting","_thirdPersonSetting","_killCamSetting"];
+            (QGVAR(KilledLayer)) cutText ["","BLACK IN", 5];
+            [QGVAR(DeathHearing), 0, false] call ace_common_fnc_setHearingCapability;
+            0 fadeSound 1;
+            ["Initialize",[
+                player,
+                _teamSpectateList,
+                _AISetting,
+                _freeCamSetting,
+                _thirdPersonSetting,
+                GVAR(show_Focus_Info_widget),
+                GVAR(show_camera_buttons_widget),
+                GVAR(show_controls_helper_widget),
+                GVAR(show_header_widget),
+                GVAR(show_Entities_and_locations_lists)]
+            ] call BIS_fnc_EGSpectator;
+            player addWeapon "itemMap";
+            [QGVAR(SetSpectatorInfoEvent), [_killCamSetting]] call CBA_fnc_localEvent;
+        }, [_teamSpectateList,_AISetting,_freeCamSetting,_thirdPersonSetting,_killCamSetting], _delay] call CBA_fnc_WaitAndExecute;
+    };
 };
 
+[QEGVAR(Spectator,StartHookEvent), []] call CBA_fnc_localEvent;
+
 //If babel is enabled, allowed spectator to hear all languages present in mission.
-if (EGETMVAR(ACRE,enable_babel,false)) then {
-    private _missionLanguages = [];
-    {
-        {
-            if (!(_x in _missionLanguages)) then {
-                _missionLanguages pushback _x;
-            };
-        } foreach _x;
-    } forEach EGETMVAR(Acre,languages_babel,[]);
-    _missionLanguages call acre_api_fnc_babelSetSpokenLanguages;
-};
+
 
 [QGVAR(SetSpectatorInfoEvent), {
     params ["_killCamSetting"];
@@ -151,7 +191,7 @@ if (EGETMVAR(ACRE,enable_babel,false)) then {
     private _dir = 0;
 
     //our function is called from Respawned EH, so select 1 is player's body
-    private _body = EGETPLVAR(Core,Body,objnull);
+    private _body = GETPLVAR(Body,objnull);
     if ((getMarkerType (GVAR(spectator_marker))) == "") then {
         if (!isNull _body) then {
             //set camera pos on player body
@@ -239,15 +279,9 @@ if (EGETMVAR(ACRE,enable_babel,false)) then {
                         "KillCamLayer" cutFadeout 2;
                     };
                 };
-            }];//draw EH
-        };//killcam (not) active
-    };//checking camera
-
-    //private _text = format ["<t size='0.5' color='#ffffff'>%1
-    //Close spectator HUD by pressing <t color='#FFA500'>CTRL+H</t>.<br/>
-    //Press <t color='#FFA500'>SHIFT</t>, <t color='#FFA500'>ALT</t> or <t color='#FFA500'>SHIFT+ALT</t> to modify camera speed. Open map by pressing <t color='#FFA500'>M</t> and click anywhere to move camera to that postion.<br/>
-    //Spectator controls can be customized in game <t color='#FFA500'>options->controls->'Camera'</t> tab.</t>", _killcam_msg];
-
+            }];
+        };
+    };
 
     SETPLPVAR(Spectating,true);
 
@@ -256,12 +290,12 @@ if (EGETMVAR(ACRE,enable_babel,false)) then {
             params ["","_idPFH"];
             player setOxygenRemaining 1;
             if !(["IsSpectating",[]] call BIS_fnc_EGSpectator) exitwith {
-                (SETPLPVAR(Spectating,false));
-                [QGVAR(EndEvent), []] call CBA_fnc_localEvent;
+                SETPLPVAR(Spectating,false);
+                [QEGVAR(Spectator,EndSpectateEvent), []] call CBA_fnc_localEvent;
                 [_idPFH] call CBA_fnc_removePerFrameHandler;
             };
             if !(GETPLVAR(Spectating,false)) exitwith {
-                [QGVAR(Spectator_EndEvent), []] call CBA_fnc_localEvent;
+                [QEGVAR(Spectator,EndSpectateEvent), []] call CBA_fnc_localEvent;
                 [_idPFH] call CBA_fnc_removePerFrameHandler;
             };
         }, 5, []] call CBA_fnc_addPerFrameHandler;
