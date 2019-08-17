@@ -13,4 +13,5 @@
 #include "CfgAttributes\3DEN\AIOnlyCategoryAttributes.hpp"
 #include "CfgAttributes\3DEN\PlayerOnlyCategoryAttributes.hpp"
 #include "CfgAttributes\3DEN\SliderAttribute.hpp"
+#include "CfgAttributes\3DEN\CheckboxStateReversed.hpp"
 #include "CfgAttributes\Spectate\SpectateTeamsAttribute.hpp"

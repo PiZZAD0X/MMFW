@@ -54,6 +54,9 @@ PREP(3denEH);
 
 PREPATTR(AIOnlyOnLoad);
 PREPATTR(PlayerOnlyOnLoad);
+PREPATTR(CheckboxStateReversed_AttrSave);
+PREPATTR(CheckboxStateReversed_AttrLoad);
+PREPATTR(CheckboxStateReversed_onCheckedChanged);
 PREPATTR(RespawnCombo_AttrLoad);
 PREPATTR(RespawnCombo_AttrSave);
 PREPATTR(RespawnCombo_onLBSelChanged);
