@@ -3,6 +3,6 @@
 #define ENDTAB ]]]
 
 #define DISPLAYBRIEFING() \
-{\
-    player createDiaryRecord _x;\
-} foreach _briefing;
+for "_i" from 0 to (count _briefing) step 1 do {\
+    player createDiaryRecord (_briefing select ((count _briefing) - _i));\
+};

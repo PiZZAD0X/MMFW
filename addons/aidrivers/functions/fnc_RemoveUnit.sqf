@@ -4,6 +4,7 @@ EXEC_CHECK(ALL);
 params ["_target"];
 
 private _driver = GETVAR(_target,driver,objnull);
+[false] call FUNC(ToggleDriverCam);
 
 if (!isNull _driver) then {
     deleteVehicle _driver;
@@ -11,5 +12,4 @@ if (!isNull _driver) then {
 
 SETPVAR(_target,driver,objnull);
 GVAR(Vehicle) = objNull;
-[false] call FUNC(ToggleDriverCam);
 hint "Driver Removed";
