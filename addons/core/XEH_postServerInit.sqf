@@ -14,3 +14,9 @@ SETMPVAR(ServerInitialized,true);
     ESETMVAR(Respawn,TeamTicketsRemaining_Indfor,(EGETMVAR(Respawn,TeamTickets_Indfor,30)));
     ESETMVAR(Respawn,TeamTicketsRemaining_Civ,(EGETMVAR(Respawn,TeamTickets_Civ,30)));
 }] call CBA_fnc_WaitUntilAndExecute;
+
+private _ServerPostInit = GETMVALUE(ServerPostInit,"");
+LOG_1("_ServerPostInit:%1",_ServerPostInit);
+if !(_ServerPostInit isEqualTo "") then {
+    call compile _ServerPostInit;
+};

@@ -5,8 +5,8 @@ LOG("Client Pre Init");
 
 [QGVAR(RecievePlayerVars), {
     params ["_playerUnit","_varArray"];
-    LOG_1("Var Recieve _playerUnit: %1",_playerUnit);
-    LOG_1("Var Recieve _varArray: %1",_varArray);
+    //LOG_1("Var Recieve _playerUnit: %1",_playerUnit);
+    //LOG_1("Var Recieve _varArray: %1",_varArray);
     if !(local _playerUnit) exitwith {};
     {
         _x params ["_propertyName","_value"];

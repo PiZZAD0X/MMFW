@@ -17,6 +17,14 @@ class Cfg3DEN {
             };
         };
 
+        class GVAR(InitSettings) {
+            displayName = "Init Settings";
+            class AttributeCategories {
+                //add Main mission settings here
+                #include "cfg3den\Inits\InitMenu.hpp"
+            };
+        };
+
         //Additional Core cfg3denMenu defines
         #include "cfg3den\cfg3denMenuCategories.hpp"
 
@@ -89,6 +97,7 @@ class display3DEN {
                     text = "Mission Framework";
                     items[] = {
                         QGVAR(SettingsMenu),
+                        QGVAR(InitSettingsMenu),
                         QEGVAR(Module,SettingsMenu),
                         QEGVAR(Respawn,Folder),
                         QEGVAR(EndConditions,Folder)

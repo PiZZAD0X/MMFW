@@ -20,7 +20,7 @@ class EGVAR(Respawn,Combo_Blufor): Combo {
 };
 
 class EGVAR(Respawn,Templates_Blufor): Title {
-    attributeLoad = QUOTE([ARR_3(_this,_value,QQEGVAR(Respawn,Value_Blufor),)] call FUNC(respawntemplates_attr_load));
+    attributeLoad = QUOTE([ARR_3(_this,_value,QQEGVAR(Respawn,Value_Blufor))] call FUNC(respawntemplates_attr_load));
     attributeSave = QUOTE(_this call FUNC(respawntemplates_attr_save));
     h = "8 * 5 * (pixelH * pixelGrid * 0.50)";
     class Controls: Controls {
@@ -55,7 +55,7 @@ class EGVAR(Respawn,Combo_Opfor): EGVAR(Respawn,Combo_Blufor) {
 };
 
 class EGVAR(Respawn,Templates_Opfor): EGVAR(Respawn,Templates_Blufor) {
-    attributeLoad = QUOTE([ARR_3(_this,_value,QQEGVAR(Respawn,Value_Opfor),)] call FUNC(respawntemplates_attr_load));
+    attributeLoad = QUOTE([ARR_3(_this,_value,QQEGVAR(Respawn,Value_Opfor))] call FUNC(respawntemplates_attr_load));
     attributeSave = QUOTE(_this call FUNC(respawntemplates_attr_save));
     class Controls: Controls {
         class Title: Title {};
@@ -80,7 +80,7 @@ class EGVAR(Respawn,Combo_Indfor): EGVAR(Respawn,Combo_Blufor) {
 };
 
 class EGVAR(Respawn,Templates_Indfor): EGVAR(Respawn,Templates_Blufor) {
-    attributeLoad = QUOTE([ARR_3(_this,_value,QQEGVAR(Respawn,Value_Indfor),)] call FUNC(respawntemplates_attr_load));
+    attributeLoad = QUOTE([ARR_3(_this,_value,QQEGVAR(Respawn,Value_Indfor))] call FUNC(respawntemplates_attr_load));
     attributeSave = QUOTE(_this call FUNC(respawntemplates_attr_save));
     class Controls: Controls {
         class Title: Title {};
@@ -105,7 +105,7 @@ class EGVAR(Respawn,Combo_Civ): EGVAR(Respawn,Combo_Blufor) {
 };
 
 class EGVAR(Respawn,Templates_Civ): EGVAR(Respawn,Templates_Blufor) {
-    attributeLoad = QUOTE([ARR_3(_this,_value,QQEGVAR(Respawn,Value_Civ),)] call FUNC(respawntemplates_attr_load));
+    attributeLoad = QUOTE([ARR_3(_this,_value,QQEGVAR(Respawn,Value_Civ))] call FUNC(respawntemplates_attr_load));
     attributeSave = QUOTE(_this call FUNC(respawntemplates_attr_save));
     class Controls: Controls {
         class Title: Title {};

@@ -3,6 +3,12 @@ EXEC_CHECK(SERVER);
 
 LOG("Server Pre Init");
 
+private _ServerPreInit = GETMVALUE(ServerPreInit,"");
+LOG_1("_ServerPreInit:%1",_ServerPreInit);
+if !(_ServerPreInit isEqualTo "") then {
+    call compile _ServerPreInit;
+};
+
 [QGVAR(TeamsInitEvent), {
     GVAR(Teams) = [];
     {

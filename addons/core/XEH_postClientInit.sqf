@@ -23,7 +23,27 @@ if (hasInterface) then {
         //Global client init excluding JiPs - init here should be replicated after JiP ability determined
         [QGVAR(PlayerInitEvent), []] call CBA_fnc_localEvent;
         [QGVAR(PlayerInitEHEvent), []] call CBA_fnc_localEvent;
+        private _PlayerPostInit = switch (side player) do {
+            case WEST: {
+                GETMVALUE(BluforPostInit,"");
+            };
+            case EAST: {
+                GETMVALUE(OpforPostInit,"");
+            };
+            case INDEPENDENT: {
+                GETMVALUE(IndforPostInit,"");
+            };
+            case CIVILIAN: {
+                GETMVALUE(CivilianPostInit,"");
+            };
+            default {""};
+        };
+        LOG_1("_PlayerPostInit:%1",_PlayerPostInit);
+        if !(_PlayerPostInit isEqualTo "") then {
+            call compile _PlayerPostInit;
+        };
     }] call CBA_fnc_WaitUntilAndExecute;
+
 } else {
     LOG("HC Post Init");
     if (EGETMVAR(AI,ViewDistance_Enforce,false)) then {

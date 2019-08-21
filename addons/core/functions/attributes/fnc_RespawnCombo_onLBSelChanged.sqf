@@ -14,7 +14,8 @@ missionNamespace setvariable [_valueVar,_respawnType];
     private _configstr = missionNamespace getvariable [_configVar,""];
     private _configH = configHierarchy _configstr;
     private _configHParent = _configH select ((count _configH) - 2);
-    private _cfgAttributes = [_configHParent,0] call BIS_fnc_returnChildren;private _ctrlGroup = ctrlParentControlsGroup ctrlParentControlsGroup _ctrlCombo;
+    private _cfgAttributes = [_configHParent,0] call BIS_fnc_returnChildren;
+    private _ctrlGroup = ctrlParentControlsGroup ctrlParentControlsGroup _ctrlCombo;
     private _allControls = (allcontrols (ctrlparent _ctrlCombo)) select {ctrlParentControlsGroup _x isEqualto _ctrlGroup};
     private _n = 0;
     {

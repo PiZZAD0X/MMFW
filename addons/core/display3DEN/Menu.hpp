@@ -9,3 +9,9 @@ class EGVAR(Module,SettingsMenu) {
     action = QUOTE(edit3DENMissionAttributes QQEGVAR(Module,Settings););
     picture = "\a3\3DEN\Data\Displays\Display3DEN\PanelRight\modeModules_ca.paa";
 };
+
+class GVAR(InitSettingsMenu) {
+    text = "Init Settings";
+    action = QUOTE(edit3DENMissionAttributes QQGVAR(InitSettings););
+    picture = "\a3\3DEN\Data\Cfg3DEN\History\changeAttributes_ca.paa";
+};

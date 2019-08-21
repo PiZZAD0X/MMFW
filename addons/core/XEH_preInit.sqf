@@ -45,4 +45,10 @@ if (!(hasInterface) || (isServer)) then {
     }] call CBA_fnc_addEventHandler;
 };
 
+private _GlobalPreInit = GETMVALUE(GlobalPreInit,"");
+LOG_1("_GlobalPreInit:%1",_GlobalPreInit);
+if !(_GlobalPreInit isEqualTo "") then {
+    call compile _GlobalPreInit;
+};
+
 ADDON = true;
