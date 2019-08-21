@@ -50,7 +50,7 @@ class GVAR(SideInitSettings) {
     class Attributes {
         class GVAR(BluforPostInit) {
             property = QGVAR(BluforPostInit);
-            displayName = "PostInit";
+            displayName = "Blufor Init";
             tooltip = "PostInit";
             control = "EditCodeMulti5";
             expression = SCENARIO_EXPRESSION;
@@ -58,7 +58,7 @@ class GVAR(SideInitSettings) {
         };
         class GVAR(OpforPostInit) {
             property = QGVAR(OpforPostInit);
-            displayName = "PostInit";
+            displayName = "Opfor Init";
             tooltip = "PostInit";
             control = "EditCodeMulti5";
             expression = SCENARIO_EXPRESSION;
@@ -66,7 +66,15 @@ class GVAR(SideInitSettings) {
         };
         class GVAR(IndforPostInit) {
             property = QGVAR(IndforPostInit);
-            displayName = "PostInit";
+            displayName = "Indfor Init";
+            tooltip = "PostInit";
+            control = "EditCodeMulti5";
+            expression = SCENARIO_EXPRESSION;
+            defaultValue = "''";
+        };
+        class GVAR(CivilianPostInit) {
+            property = QGVAR(CivilianPostInit);
+            displayName = "Civilian Init";
             tooltip = "PostInit";
             control = "EditCodeMulti5";
             expression = SCENARIO_EXPRESSION;
