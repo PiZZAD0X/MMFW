@@ -66,9 +66,9 @@ GVAR(DOUBLES(PFHhandle,_logic)) = [{
                 if !(_silent) then {
                     if (_automessages) then {
                         private _msg = format ["%1 is uncontested!",_zoneName];
-                        _msg remoteExec ["hint"];
+                        _msg remoteExec ["hintsilent"];
                     } else {
-                        _uncontestedmessage remoteExec ["hint"];
+                        _uncontestedmessage remoteExec ["hintsilent"];
                     };
                 };
                 MissionNamespace setvariable [_varName,false];
@@ -116,9 +116,9 @@ GVAR(DOUBLES(PFHhandle,_logic)) = [{
             if !(_silent) then {
                 if (_automessages) then {
                     private _msg = format ["%1 is contested!",_zoneName];
-                    _msg remoteExec ["hint"];
+                    _msg remoteExec ["hintsilent"];
                 } else {
-                    _contestedmessage remoteExec ["hint"];
+                    _contestedmessage remoteExec ["hintsilent"];
                 };
             };
         };
@@ -160,9 +160,9 @@ GVAR(DOUBLES(PFHhandle,_logic)) = [{
                                 if !(_silent) then {
                                     if (_automessages) then {
                                         private _msg = format ["%1 has captured %2!",EGVAR(Core,TeamName_Blufor),_zoneName];
-                                        _msg remoteExec ["hint"];
+                                        _msg remoteExec ["hintsilent"];
                                     } else {
-                                        (_bluformessageArray select 1) remoteExec ["hint"];
+                                        (_bluformessageArray select 1) remoteExec ["hintsilent"];
                                     };
                                 };
                                 MissionNamespace setvariable [_varName,true];
@@ -187,9 +187,9 @@ GVAR(DOUBLES(PFHhandle,_logic)) = [{
                         if !(_silent) then {
                             if (_automessages) then {
                                 private _msg = format ["%1 is capturing %2!",EGVAR(Core,TeamName_Blufor),_zoneName];
-                                _msg remoteExec ["hint"];
+                                _msg remoteExec ["hintsilent"];
                             } else {
-                                (_bluformessageArray select 0) remoteExec ["hint"];
+                                (_bluformessageArray select 0) remoteExec ["hintsilent"];
                             };
                         };
                     };
@@ -207,9 +207,9 @@ GVAR(DOUBLES(PFHhandle,_logic)) = [{
                                 if !(_silent) then {
                                     if (_automessages) then {
                                         private _msg = format ["%1 has captured %2!",EGVAR(Core,TeamName_Opfor),_zoneName];
-                                        _msg remoteExec ["hint"];
+                                        _msg remoteExec ["hintsilent"];
                                     } else {
-                                        (_opformessageArray select 1) remoteExec ["hint"];
+                                        (_opformessageArray select 1) remoteExec ["hintsilent"];
                                     };
                                 };
                                 MissionNamespace setvariable [_varName,true];
@@ -234,9 +234,9 @@ GVAR(DOUBLES(PFHhandle,_logic)) = [{
                         if !(_silent) then {
                             if (_automessages) then {
                                 private _msg = format ["%1 is capturing %2!",EGVAR(Core,TeamName_Opfor),_zoneName];
-                                _msg remoteExec ["hint"];
+                                _msg remoteExec ["hintsilent"];
                             } else {
-                                (_opformessageArray select 0) remoteExec ["hint"];
+                                (_opformessageArray select 0) remoteExec ["hintsilent"];
                             };
                         };
                     };
@@ -254,9 +254,9 @@ GVAR(DOUBLES(PFHhandle,_logic)) = [{
                                 if !(_silent) then {
                                     if (_automessages) then {
                                         private _msg = format ["%1 has captured %2!",EGVAR(Core,TeamName_Indfor),_zoneName];
-                                        _msg remoteExec ["hint"];
+                                        _msg remoteExec ["hintsilent"];
                                     } else {
-                                        (_indformessageArray select 1) remoteExec ["hint"];
+                                        (_indformessageArray select 1) remoteExec ["hintsilent"];
                                     };
                                 };
                                 MissionNamespace setvariable [_varName,true];
@@ -281,9 +281,9 @@ GVAR(DOUBLES(PFHhandle,_logic)) = [{
                         if !(_silent) then {
                             if (_automessages) then {
                                 private _msg = format ["%1 is capturing %2!",EGVAR(Core,TeamName_Indfor),_zoneName];
-                                _msg remoteExec ["hint"];
+                                _msg remoteExec ["hintsilent"];
                             } else {
-                                (_indformessageArray select 0) remoteExec ["hint"];
+                                (_indformessageArray select 0) remoteExec ["hintsilent"];
                             };
                         };
                     };
@@ -301,9 +301,9 @@ GVAR(DOUBLES(PFHhandle,_logic)) = [{
                                 if !(_silent) then {
                                     if (_automessages) then {
                                         private _msg = format ["%1 has captured %2!",EGVAR(Core,TeamName_Civ),_zoneName];
-                                        _msg remoteExec ["hint"];
+                                        _msg remoteExec ["hintsilent"];
                                     } else {
-                                        (_CIVmessageArray select 1) remoteExec ["hint"];
+                                        (_CIVmessageArray select 1) remoteExec ["hintsilent"];
                                     };
                                 };
                                 MissionNamespace setvariable [_varName,true];
@@ -327,9 +327,9 @@ GVAR(DOUBLES(PFHhandle,_logic)) = [{
                         if !(_silent) then {
                             if (_automessages) then {
                                 private _msg = format ["%1 is capturing %2!",EGVAR(Core,TeamName_Civ),_zoneName];
-                                _msg remoteExec ["hint"];
+                                _msg remoteExec ["hintsilent"];
                             } else {
-                                (_CIVmessageArray select 0) remoteExec ["hint"];
+                                (_CIVmessageArray select 0) remoteExec ["hintsilent"];
                             };
                         };
                     };
@@ -346,9 +346,9 @@ GVAR(DOUBLES(PFHhandle,_logic)) = [{
                         if !(_silent) then {
                             if (_automessages) then {
                                 private _msg = format ["%1 is uncontested!",_zoneName];
-                                _msg remoteExec ["hint"];
+                                _msg remoteExec ["hintsilent"];
                             } else {
-                                _uncontestedmessage remoteExec ["hint"];
+                                _uncontestedmessage remoteExec ["hintsilent"];
                             };
                         };
                     };
@@ -367,9 +367,9 @@ GVAR(DOUBLES(PFHhandle,_logic)) = [{
                 if !(_silent) then {
                     if (_automessages) then {
                         private _msg = format ["%1 is contested!",_zoneName];
-                        _msg remoteExec ["hint"];
+                        _msg remoteExec ["hintsilent"];
                     } else {
-                        _contestedmessage remoteExec ["hint"];
+                        _contestedmessage remoteExec ["hintsilent"];
                     };
                 };
                 MissionNamespace setvariable [_varName,false];
