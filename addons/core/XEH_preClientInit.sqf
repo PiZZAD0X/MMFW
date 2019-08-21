@@ -167,11 +167,11 @@ LOG("Client Pre Init");
     private _timeLeft = _timeLimit - (CBA_missionTime / 60);
     switch (_command) do {
         case "check": {
-            private _text = format ["TimeLimit: %1\n Time Remaining: %2",_timeLimit,_timeLeft];
+            private _text = format ["TimeLimit: %1 Time Remaining: %2",_timeLimit,_timeLeft];
             [_text, 1.5, ACE_Player, 10] call ace_common_fnc_displayTextStructured;
         };
         case "extend": {
-            private _text = format ["TimeLimit set to: %1\n Time Remaining: %2",_timeLimit,_timeLeft];
+            private _text = format ["TimeLimit set to: %1 Time Remaining: %2",_timeLimit,_timeLeft];
             [_text, 1.5, ACE_Player, 10] call ace_common_fnc_displayTextStructured;
         };
         default {};
