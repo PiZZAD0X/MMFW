@@ -10,7 +10,7 @@ _this spawn {
     private _logic = ((get3denselected "logic") select 0);
     private _logicType = typeOf _logic;
     private _AOType = _ctrlCombo lbData _cursel;
-    private _cfgAttributes = (configfile >> "CfgVehicles" >> _logicType >> "Attributes");
+    private _cfgAttributes = configProperties [configFile >> "CfgVehicles" >> _logicType >> "Attributes",QUOTE(!((configName _x) isEqualTo QQGVAR(Description)))];
     private _ctrlGroup = ctrlParentControlsGroup ctrlParentControlsGroup _ctrlCombo;
     private _allControls = (allcontrols (ctrlparent _ctrlCombo)) select {ctrlParentControlsGroup _x isEqualto _ctrlGroup};
     private _n = 0;

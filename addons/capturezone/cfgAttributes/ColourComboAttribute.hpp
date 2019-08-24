@@ -1,6 +1,6 @@
 class GVAR(ColourCombo): Combo {
-    attributeSave = QUOTE(_this call FUNC(ColourComboAttribute_AttrSave););
-    attributeLoad = QUOTE([ARR_2(_this,_config)] call FUNC(ColourComboAttribute_AttrLoad););
+    attributeLoad = QUOTE([ARR_3(_this,_value,_config)] call FUNC(ColourComboAttribute_AttrLoad));
+    attributeSave = QUOTE([ARR_2(_this,_config)] call FUNC(ColourComboAttribute_AttrSave));
     class Controls: Controls {
         class Title: Title {};
         class Value: Value {

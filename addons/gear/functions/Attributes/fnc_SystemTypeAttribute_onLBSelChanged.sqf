@@ -10,7 +10,7 @@ _this spawn {
     disableserialization;
     params ["_ctrlCombo","_cursel"];
     private _GearSystem = _ctrlCombo lbData _cursel;
-    private _cfgAttributes = (configfile >> "Cfg3DEN" >> "Object" >> "AttributeCategories" >> QGVAR(UnitCategory) >> "Attributes");
+    private _cfgAttributes = configProperties [configfile >> "Cfg3DEN" >> "Object" >> "AttributeCategories" >> QGVAR(UnitCategory) >> "Attributes",QUOTE(!((configName _x) isEqualTo QQGVAR(Description)))];
     private _ctrlGroup = ctrlParentControlsGroup ctrlParentControlsGroup _ctrlCombo;
     private _allControls = (allcontrols (ctrlparent _ctrlCombo)) select {ctrlParentControlsGroup _x isEqualto _ctrlGroup};
     private _n = 0;

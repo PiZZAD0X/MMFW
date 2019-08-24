@@ -7,7 +7,7 @@ switch _mode do {
         if !(is3DEN) then {
             _input params ["_logic",["_isActivated",true,[true]]];
             if !(_isActivated) exitWith {};
-            private _selectedSides = GETVAR(_logic,TeamsEnabled,["BLUFOR","OPFOR","INDFOR","CIVILIAN"]);
+            private _selectedSides = _logic getVariable [QGVAR(TeamsEnabled), ["BLUFOR","OPFOR","INDFOR","CIVILIAN"]];
             if ("BLUFOR" in _selectedSides) then {_selectedSides pushBackUnique BLUFOR};
             if ("OPFOR" in _selectedSides) then {_selectedSides pushBackUnique OPFOR};
             if ("INDFOR" in _selectedSides) then {_selectedSides pushBackUnique INDEPENDENT};
