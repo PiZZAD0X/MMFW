@@ -37,14 +37,14 @@ class CfgVehicles {
                 displayName = "Ratio Needed";
                 tooltip = "Ratio needed to capture the zone. Larger team / team in second place.";
                 property = QGVAR(RatioNeeded);
-                control = QEGVAR(Core,1To100Step5_Slider);
+                control = QEGVAR(Core,0To100Step5_Slider);
                 expression = MODULE_EXPRESSION;
                 defaultValue = "75";
                 validate = "NUMBER";
                 typeName = "number";
             };
             class GVAR(Cap_Blufor) {
-                displayName = "Blufor";
+                displayName = "Blufor Cap Mode";
                 tooltip = "Whether or not the team can capture the zone, and whether they are checked in the player count.";
                 property = QGVAR(Cap_Blufor);
                 control = QGVAR(TeamAttribute);
@@ -53,7 +53,7 @@ class CfgVehicles {
                 typeName = "number";
             };
             class GVAR(Time_Blufor) {
-                displayName = "Blufor Time";
+                displayName = "Time to Capture";
                 tooltip = "Time needed for Blufor to capture the zone in seconds. Set to 0 for instant capture";
                 property = QGVAR(Time_Blufor);
                 control = QEGVAR(Core,0To600Step1_Slider);
@@ -63,7 +63,7 @@ class CfgVehicles {
                 validate = "number";
             };
             class GVAR(MessageCapturing_Blufor) {
-                displayName = "Blufor Capturing Message";
+                displayName = "Capturing Message";
                 tooltip = "Message to display when Blufor is capturing the zone. Leave empty to disable this hint";
                 property = QGVAR(MessageCapturing_Blufor);
                 control = "Edit";
@@ -72,7 +72,7 @@ class CfgVehicles {
                 validate = "none";
             };
             class GVAR(MessageCaptured_Blufor) {
-                displayName = "Blufor Capturing Message";
+                displayName = "Capturing Message";
                 tooltip = "Message to display when Blufor captures the zone. Leave empty to disable this hint";
                 property = QGVAR(MessageCaptured_Blufor);
                 control = "Edit";
@@ -81,7 +81,7 @@ class CfgVehicles {
                 validate = "none";
             };
             class GVAR(Colour_Blufor) {
-                displayName = "Blufor Colour";
+                displayName = "Colour";
                 tooltip = "Blufor Colour";
                 property = QGVAR(Colour_Blufor);
                 control = QGVAR(ColourCombo);
@@ -90,7 +90,7 @@ class CfgVehicles {
                 validate = "none";
             };
             class GVAR(Cap_Opfor) {
-                displayName = "Opfor";
+                displayName = "Opfor Cap Mode";
                 tooltip = "Whether or not the team can capture the zone, and whether they are checked in the player count.";
                 property = QGVAR(Cap_Opfor);
                 control = QGVAR(TeamAttribute);
@@ -99,7 +99,7 @@ class CfgVehicles {
                 typeName = "number";
             };
             class GVAR(Time_Opfor) {
-                displayName = "Opfor Time";
+                displayName = "Time to Capture";
                 tooltip = "Time needed for Opfor to capture the zone in seconds. Set to 0 for instant capture";
                 property = QGVAR(Time_Opfor);
                 control = QEGVAR(Core,0To600Step1_Slider);
@@ -109,7 +109,7 @@ class CfgVehicles {
                 validate = "number";
             };
             class GVAR(MessageCapturing_Opfor) {
-                displayName = "Opfor Capturing Message";
+                displayName = "Capturing Message";
                 tooltip = "Message to display when Opfor is capturing the zone. Leave empty to disable this hint";
                 property = QGVAR(MessageCapturing_Opfor);
                 control = "Edit";
@@ -118,7 +118,7 @@ class CfgVehicles {
                 validate = "none";
             };
             class GVAR(MessageCaptured_Opfor) {
-                displayName = "Opfor Captured Message";
+                displayName = "Captured Message";
                 tooltip = "Message to display when Opfor captures the zone. Leave empty to disable this hint";
                 property = QGVAR(MessageCaptured_Opfor);
                 control = "Edit";
@@ -127,7 +127,7 @@ class CfgVehicles {
                 validate = "none";
             };
             class GVAR(Colour_Opfor) {
-                displayName = "Opfor Colour";
+                displayName = "Colour";
                 tooltip = "Opfor Colour";
                 property = QGVAR(Colour_Opfor);
                 control = QGVAR(ColourCombo);
@@ -136,7 +136,7 @@ class CfgVehicles {
                 validate = "none";
             };
             class GVAR(Cap_Indfor) {
-                displayName = "Independent";
+                displayName = "Indfor Cap Mode";
                 tooltip = "Whether or not the team can capture the zone, and whether they are checked in the player count.";
                 property = QGVAR(Cap_Indfor);
                 control = QGVAR(TeamAttribute);
@@ -145,8 +145,8 @@ class CfgVehicles {
                 typeName = "number";
             };
             class GVAR(Time_Indfor) {
-                displayName = "Independent Time";
-                tooltip = "Time needed for Independent to capture the zone in seconds. Set to 0 for instant capture";
+                displayName = "Time to Capture";
+                tooltip = "Time needed for Indfor to capture the zone in seconds. Set to 0 for instant capture";
                 property = QGVAR(Time_Indfor);
                 control = QEGVAR(Core,0To600Step1_Slider);
                 expression = MODULE_EXPRESSION;
@@ -155,7 +155,7 @@ class CfgVehicles {
                 validate = "number";
             };
             class GVAR(MessageCapturing_Indfor) {
-                displayName = "Indfor Capturing Message";
+                displayName = "Capturing Message";
                 tooltip = "Message to display when Indfor is capturing the zone. Leave empty to disable this hint";
                 property = QGVAR(MessageCapturing_Indfor);
                 control = "Edit";
@@ -164,7 +164,7 @@ class CfgVehicles {
                 validate = "none";
             };
             class GVAR(MessageCaptured_Indfor) {
-                displayName = "Indfor Captured Message";
+                displayName = "Captured Message";
                 tooltip = "Message to display when Indfor captures the zone. Leave empty to disable this hint";
                 property = QGVAR(MessageCaptured_Indfor);
                 control = "Edit";
@@ -173,7 +173,7 @@ class CfgVehicles {
                 validate = "none";
             };
             class GVAR(Colour_Indfor) {
-                displayName = "Indfor Colour";
+                displayName = "Colour";
                 tooltip = "Indfor Colour";
                 property = QGVAR(Colour_Indfor);
                 control = QGVAR(ColourCombo);
@@ -182,7 +182,7 @@ class CfgVehicles {
                 validate = "none";
             };
             class GVAR(Cap_Civ) {
-                displayName = "Civilian";
+                displayName = "Civilian Cap Mode";
                 tooltip = "Whether or not the team can capture the zone, and whether they are checked in the player count.";
                 property = QGVAR(Cap_Civ);
                 control = QGVAR(TeamAttribute);
@@ -191,7 +191,7 @@ class CfgVehicles {
                 typeName = "number";
             };
             class GVAR(Time_Civ) {
-                displayName = "Civilian Time";
+                displayName = "Time to Capture";
                 tooltip = "Time needed for Civilian to capture the zone in seconds. Set to 0 for instant capture";
                 property = QGVAR(Time_Civ);
                 control = QEGVAR(Core,0To600Step1_Slider);
@@ -201,7 +201,7 @@ class CfgVehicles {
                 validate = "number";
             };
             class GVAR(MessageCapturing_Civ) {
-                displayName = "Civilian Capturing Message";
+                displayName = "Capturing Message";
                 tooltip = "Message to display when Civilian is capturing the zone. Leave empty to disable this hint";
                 property = QGVAR(MessageCapturing_Civ);
                 control = "Edit";
@@ -210,7 +210,7 @@ class CfgVehicles {
                 validate = "none";
             };
             class GVAR(MessageCaptured_Civ) {
-                displayName = "Civilian Captured Message";
+                displayName = "Captured Message";
                 tooltip = "Message to display when Civilian captures the zone. Leave empty to disable this hint";
                 property = QGVAR(MessageCaptured_Civ);
                 control = "Edit";
@@ -219,7 +219,7 @@ class CfgVehicles {
                 validate = "none";
             };
             class GVAR(Colour_Civ) {
-                displayName = "Civilian Colour";
+                displayName = "Colour";
                 tooltip = "Civilian Colour";
                 property = QGVAR(Colour_Civ);
                 control = QGVAR(ColourCombo);

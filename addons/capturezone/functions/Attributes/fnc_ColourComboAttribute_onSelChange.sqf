@@ -5,5 +5,7 @@ params ["_control","_cursel"];
 
 private _lbValue = _control lbData _cursel;
 private _config = _control getvariable [QGVAR(parentcontrolcfg),""];
-private _attProperty = getText (_config >> "property");
-missionNamespace setvariable [_attProperty,_lbValue];
+if !(_config isEqualTo "") then {
+    private _attProperty = getText (_config >> "property");
+    missionNamespace setvariable [_attProperty,_lbValue];
+};
