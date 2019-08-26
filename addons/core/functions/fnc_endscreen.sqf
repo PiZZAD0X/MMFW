@@ -43,12 +43,13 @@ private _textSide = 0;
     };
 } forEach _teams;
 private _endTitleText = _scenario;
-if !((EGETMVAR(EndConditions,Timelimit,0)) isEqualto 0) then {
-    private _time = ceil(CBA_missiontime / 60);
-    if (_time >= (EGETMVAR(EndConditions,Timelimit,60))) then {
-        _time = (EGETMVAR(EndConditions,Timelimit,60));
+private _timeLimit = EGETMVAR(EndConditions,Timelimit,60);
+if ((EGETMVAR(EndConditions,Timelimit_Enabled,true)) && {!(_timeLimit isEqualto 0)}) then {
+    private _time = ceil (CBA_missiontime / 60);
+    if (_time >= _timeLimit) then {
+        _time = _timeLimit;
     };
-    private _timeLimitText = format ["Mission duration: %1 out of %2 minutes", _time, (EGETMVAR(EndConditions,Timelimit,60))];
+    private _timeLimitText = format ["Mission duration: %1 out of %2 minutes", _time, _timeLimit];
     _endTitleText = format ["%1<br />%2", _scenario, _timeLimitText];
 };
 private _dia = uiNamespace getVariable QGVAR(EndScreenDisplay);

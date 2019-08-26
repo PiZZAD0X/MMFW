@@ -51,23 +51,23 @@ LOG("Client Pre Init");
     LOG_1("Client call waituntil player: %1",player);
     [QGVAR(RecievePlayerVarRequest), [player,clientOwner]] call CBA_fnc_serverEvent;
     SETMVAR(SpawnPos,(getpos player));
-    switch (side player) do {
-        case WEST: {SETMVAR(TeamTag,"BLUFOR");};
-        case EAST: {SETMVAR(TeamTag,"OPFOR");};
-        case INDEPENDENT: {SETMVAR(TeamTag,"Indfor");};
-        case CIVILIAN: {SETMVAR(TeamTag,"CIVILIAN");};
-        default {SETMVAR(TeamTag,"BLUFOR");};
+    GVAR(TeamTag) = switch (side player) do {
+        case WEST: {"BLUFOR"};
+        case EAST: {"OPFOR"};
+        case INDEPENDENT: {"INDFOR"};
+        case CIVILIAN: {"CIVILIAN"};
+        default {"BLUFOR"};
     };
 }] call CBA_fnc_WaitUntilAndExecute;
 
 [QGVAR(EndMissionPlayerEvent), {
-    params ["_scenario"];
-    [_scenario] call FUNC(EndScreen);
+    params ["_scenario","_timeLimit","_teams"];
+    [_scenario,_timeLimit,_teams] call FUNC(EndScreen);
 }] call CBA_fnc_addEventHandler;
 
 [QGVAR(EndmissionEvent), {
-    params ["_scenario"];
-    [QGVAR(EndMissionPlayerEvent), [_scenario]] call CBA_fnc_localEvent;
+    params ["_scenario","_timeLimit","_teams"];
+    [QGVAR(EndMissionPlayerEvent), [_scenario,_timeLimit,_teams]] call CBA_fnc_localEvent;
 }] call CBA_fnc_addEventHandler;
 
 [QEGVAR(Spectator,StartSpectateEvent), {

@@ -10,7 +10,7 @@ private _attProperty = getText (_config >> "property");
 missionNamespace setvariable [_attProperty,_value];
 lbClear _control;
 {
-	private _colourArray = getArray (_x >> "color");
+    private _colourArray = getArray (_x >> "color");
     if !(_colourArray isEqualto []) then {
         private _colourName = configName _x;
         private _colour = _colourArray call BIS_fnc_colorConfigToRGBA;

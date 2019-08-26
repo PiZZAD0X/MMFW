@@ -38,17 +38,17 @@ SETMVAR(Initialized,false);
     [_message] call FUNC(debugMessageDisplay);
 }] call CBA_fnc_addEventHandler;
 
+private _GlobalPreInit = GETMVALUE(GlobalPreInit,"");
+LOG_1("_GlobalPreInit:%1",_GlobalPreInit);
+if !(_GlobalPreInit isEqualTo "") then {
+    call compile _GlobalPreInit;
+};
+
 if (!(hasInterface) || (isServer)) then {
     [QGVAR(EndmissionEvent), {
         params ["_scenario"];
         [QEGVAR(EndMission,LocalObjectsEvent), []] call CBA_fnc_localEvent;
     }] call CBA_fnc_addEventHandler;
-};
-
-private _GlobalPreInit = GETMVALUE(GlobalPreInit,"");
-LOG_1("_GlobalPreInit:%1",_GlobalPreInit);
-if !(_GlobalPreInit isEqualTo "") then {
-    call compile _GlobalPreInit;
 };
 
 ADDON = true;

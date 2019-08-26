@@ -46,11 +46,12 @@ if (_object isKindOf "CAManBase") then {
             };
         };
     } else {
-        private ["_SystemTag","_loadoutvarname"];
         private _SystemTag = switch (_systemType) do {
             case "ACEAR": {"ACE_Arsenal"};
             case "OLSEN": {"Olsen"};
+            default {""};
         };
+        private _loadoutvarname = "";
         switch (side _object) do {
             case west: {
                 _loadoutvarname = format ["MMFW_Gear_%1_LoadoutType_Blufor_%2",_SystemTag,_gearType];
@@ -62,7 +63,7 @@ if (_object isKindOf "CAManBase") then {
                 _loadoutvarname = format ["MMFW_Gear_%1_LoadoutType_Indfor_%2",_SystemTag,_gearType];
             };
             case civilian: {
-                _loadoutvarname = format ["MMFW_Gear_%1_LoadoutType_Civ_%2",_SystemTag,_gearType];
+                _loadoutvarname = format ["MMFW_Gear_%1_LoadoutType_Civilian_%2",_SystemTag,_gearType];
             };
         };
         private _loadoutName = missionNamespace getvariable [_loadoutvarname,"NONE"];

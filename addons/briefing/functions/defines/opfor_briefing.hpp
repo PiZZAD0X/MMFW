@@ -216,7 +216,7 @@ if (GETMVAR(NATO_OPFOR,false)) then {
 
     private _signalPass = GETMVAR(NATO_CANDS_Signals_PASSWORDS_OPFOR,"");
     if !(_signalPass isEqualTo "") then {
-		_signalStr = _signalStr + "<font color='#5BD527' size='14.0'><h1>Passwords:</h1></font color><br/>" + _signalPass;
+        _signalStr = _signalStr + "<font color='#5BD527' size='14.0'><h1>Passwords:</h1></font color><br/>" + _signalPass;
     };
 
     if !(_signalStr isEqualTo "") then {

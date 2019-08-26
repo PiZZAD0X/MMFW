@@ -10,7 +10,7 @@ if !(local _vehicle) exitwith {};
 [QEGVAR(Core,SettingsLoaded), {
     _thisArgs params ["_vehicle"];
     private _allowNV = GETMVAR(NVEnabled,false);
-	private _allowFlip = GETMVAR(FlipEnabled,false);
+    private _allowFlip = GETMVAR(FlipEnabled,false);
     if (GETMVAR(AllVehs,false)) exitwith {
         [QGVAR(Enabled_Event),[_vehicle,_allowNV,_allowFlip]] call CBA_fnc_globalEventJIP;
         [QEGVAR(Core,RegisterModuleEvent), ["AI Drivers", "Module for adding AI Drivers to vehicles", "BlackHawk, PiZZADOX and Sacher"]] call CBA_fnc_globalEventJIP;
@@ -21,7 +21,7 @@ if !(local _vehicle) exitwith {};
     };
     if (GETVAR(_vehicle,VehEnabled,false)) then {
         private _allowNV = GETVAR(_vehicle,VehNVEnabled,false);
-    	private _allowFlip = GETVAR(_vehicle,VehFlipEnabled,false);
+        private _allowFlip = GETVAR(_vehicle,VehFlipEnabled,false);
         [QGVAR(Enabled_Event),[_vehicle,_allowNV,_allowFlip]] call CBA_fnc_globalEventJIP;
         [QEGVAR(Core,RegisterModuleEvent), ["AI Drivers", "Module for adding AI Drivers to vehicles", "BlackHawk, PiZZADOX and Sacher"]] call CBA_fnc_globalEventJIP;
     };

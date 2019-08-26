@@ -86,10 +86,10 @@ EXEC_CHECK(CLIENT);
                         }, [_flare,_colour,_pos]] call CBA_fnc_waitUntilAndExecute;
                     }, [_ammoType,_pos,_colour], 0.5] call CBA_fnc_waitAndExecute;
                 }, [_ammoType,_pos,_colour], 0.5] call CBA_fnc_waitAndExecute;
-        	}, {
-        		(vehicle player isEqualto player) && {((_this select 2 select 0) in magazines player)}
-        	}, {}, [_magClass,_colour,_ammoType]] call ace_interact_menu_fnc_createAction;
-        	[player, 1, ["ACE_SelfActions","ACE_Equipment","SelfActions_ParaBaseClass"], _paraFlareActionTemp] call ace_interact_menu_fnc_addActionToObject;
+            }, {
+                (vehicle player isEqualto player) && {((_this select 2 select 0) in magazines player)}
+            }, {}, [_magClass,_colour,_ammoType]] call ace_interact_menu_fnc_createAction;
+            [player, 1, ["ACE_SelfActions","ACE_Equipment","SelfActions_ParaBaseClass"], _paraFlareActionTemp] call ace_interact_menu_fnc_addActionToObject;
         } foreach [
             ["White","FlareWhite_F",[1,1,1],"F_20mm_White"],
             ["Green","FlareGreen_F",[0.25,0.5,0.25],"F_20mm_Green"],

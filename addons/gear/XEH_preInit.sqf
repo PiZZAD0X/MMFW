@@ -46,13 +46,15 @@ ADDON = false;
                         LOG_2("Executing gear of file: %1 for unit %2",_manualClass,_unit);
                         [_unit,_manualClass] call FUNC(OlsenGearScript);
                     };
+                    default {};
                 };
             } else {
-                private ["_SystemTag","_loadoutvarname"];
-                switch (_systemType) do {
-                    case "ACEAR": {_SystemTag = "ACE_Arsenal"};
-                    case "OLSEN": {_SystemTag = "Olsen"};
+                private _SystemTag = switch (_systemType) do {
+                    case "ACEAR": {"ACE_Arsenal"};
+                    case "OLSEN": {"Olsen"};
+                    default {""};
                 };
+                private _loadoutvarname = "";
                 switch (side _unit) do {
                     case west: {
                         _loadoutvarname = format ["MMFW_Gear_%1_LoadoutType_Blufor_%2",_SystemTag,_gearType];
@@ -64,8 +66,9 @@ ADDON = false;
                         _loadoutvarname = format ["MMFW_Gear_%1_LoadoutType_Indfor_%2",_SystemTag,_gearType];
                     };
                     case civilian: {
-                        _loadoutvarname = format ["MMFW_Gear_%1_LoadoutType_Civ_%2",_SystemTag,_gearType];
+                        _loadoutvarname = format ["MMFW_Gear_%1_LoadoutType_Civilian_%2",_SystemTag,_gearType];
                     };
+                    default {};
                 };
                 _loadoutName = missionNamespace getvariable [_loadoutvarname,"NONE"];
                 if (_loadoutName isEqualto "NONE") exitwith {
@@ -91,6 +94,7 @@ ADDON = false;
                         LOG_2("Executing gear of file: %1 for unit %2",_loadoutName,_unit);
                         [_unit,_loadoutName] call FUNC(OlsenGearScript);
                     };
+                    default {};
                 };
             };
         },_x] call CBA_fnc_waitUntilandExecute;
@@ -128,6 +132,7 @@ ADDON = false;
                     LOG_2("Executing gear of file: %1 for vehicle %2",_loadoutName,_vehicle);
                     [_vehicle,_loadoutName] call FUNC(OlsenGearScript);
                 };
+                default {};
             };
         },_x] call CBA_fnc_waitUntilandExecute;
     } forEach (vehicles select {local _x && (!isPlayer _x)});
@@ -184,13 +189,15 @@ ADDON = false;
                     [_unit,_manualClass] call FUNC(OlsenGearScript);
                     SETPVAR(_unit,GearReady,true);
                 };
+                default {};
             };
         } else {
-            private ["_SystemTag","_loadoutvarname"];
-            switch (_systemType) do {
-                case "ACEAR": {_SystemTag = "ACE_Arsenal"};
-                case "OLSEN": {_SystemTag = "Olsen"};
+            private _SystemTag = switch (_systemType) do {
+                case "ACEAR": {"ACE_Arsenal"};
+                case "OLSEN": {"Olsen"};
+                default {""};
             };
+            private _loadoutvarname = "";
             switch (side _unit) do {
                 case west: {
                     _loadoutvarname = format ["MMFW_Gear_%1_LoadoutType_Blufor_%2",_SystemTag,_gearType];
@@ -202,8 +209,9 @@ ADDON = false;
                     _loadoutvarname = format ["MMFW_Gear_%1_LoadoutType_Indfor_%2",_SystemTag,_gearType];
                 };
                 case civilian: {
-                    _loadoutvarname = format ["MMFW_Gear_%1_LoadoutType_Civ_%2",_SystemTag,_gearType];
+                    _loadoutvarname = format ["MMFW_Gear_%1_LoadoutType_Civilian_%2",_SystemTag,_gearType];
                 };
+                default {};
             };
             _loadoutName = missionNamespace getvariable [_loadoutvarname,"NONE"];
             if (_loadoutName isEqualto "NONE") exitwith {
@@ -233,6 +241,7 @@ ADDON = false;
                     [_unit,_loadoutName] call FUNC(OlsenGearScript);
                     SETPVAR(_unit,GearReady,true);
                 };
+                default {};
             };
         };
     },_unit] call CBA_fnc_waitUntilandExecute;
@@ -246,12 +255,13 @@ ADDON = false;
     if (_forcedClass isEqualto "NONE") exitwith {ERROR_1("Invalid forcedclass for unit:%1",_unit)};
     [{(!isNull (_this select 0))}, {
         params ["_unit","_systemType","_forcedClass","_forcedSide"];
-        private ["_loadoutName","_SystemTag","_loadoutvarname"];
-        (SETVAR(_unit,gearType,_forcedClass));
-        switch (_systemType) do {
-            case "ACEAR": {_SystemTag = "ACE_Arsenal"};
-            case "OLSEN": {_SystemTag = "Olsen"};
+        SETVAR(_unit,gearType,_forcedClass);
+        private _SystemTag = switch (_systemType) do {
+            case "ACEAR": {"ACE_Arsenal"};
+            case "OLSEN": {"Olsen"};
+            default {""};
         };
+        private _loadoutvarname = "";
         switch (_forcedSide) do {
             case west: {
                 _loadoutvarname = format ["MMFW_Gear_%1_LoadoutType_Blufor_%2",_SystemTag,_forcedClass];
@@ -263,10 +273,11 @@ ADDON = false;
                 _loadoutvarname = format ["MMFW_Gear_%1_LoadoutType_Indfor_%2",_SystemTag,_forcedClass];
             };
             case civilian: {
-                _loadoutvarname = format ["MMFW_Gear_%1_LoadoutType_Civ_%2",_SystemTag,_forcedClass];
+                _loadoutvarname = format ["MMFW_Gear_%1_LoadoutType_Civilian_%2",_SystemTag,_forcedClass];
             };
+            default {};
         };
-        _loadoutName = missionNamespace getvariable [_loadoutvarname,"NONE"];
+        private _loadoutName = missionNamespace getvariable [_loadoutvarname,"NONE"];
         if (_loadoutName isEqualto "NONE") exitwith {
             ERROR_2("No loadout found for unit: %1 and var %2",_unit,_loadoutvarname);
                 SETPVAR(_unit,GearReady,true);
@@ -294,6 +305,7 @@ ADDON = false;
                 [_unit,_loadoutName] call FUNC(OlsenGearScript);
                 SETPVAR(_unit,GearReady,true);
             };
+            default {};
         };
     },[_unit,_systemType,_forcedClass,_forcedSide]] call CBA_fnc_waitUntilandExecute;
 }] call CBA_fnc_addEventHandler;
@@ -314,6 +326,7 @@ ADDON = false;
                 LOG_2("Executing gear of file: %1 for vehicle %2",_loadoutName,_vehicle);
                 [_vehicle,_loadoutName] call FUNC(OlsenGearScript);
             };
+            default {};
         };
     },_vehicle] call CBA_fnc_waitUntilandExecute;
 }] call CBA_fnc_addEventHandler;
@@ -333,6 +346,7 @@ ADDON = false;
                 LOG_2("Executing gear of file: %1 for vehicle %2",_forcedClass,_vehicle);
                 [_vehicle,_forcedClass] call FUNC(OlsenGearScript);
             };
+            default {};
         };
     },[_vehicle,_systemType,_forcedClass]] call CBA_fnc_waitUntilandExecute;
 }] call CBA_fnc_addEventHandler;

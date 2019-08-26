@@ -6,12 +6,11 @@
     };
     [{(!isNull ace_player) && {!((GETPLVAR(UnitSystemType,"")) isEqualto "")} && {!((GETPLVAR(UnitGearType,"")) isEqualto "")}}, {
         private ["_loadoutName"];
-        private _systemType = (GETPLVAR(UnitSystemType,"NONE"));
+        private _systemType = GETPLVAR(UnitSystemType,"NONE");
         LOG_1("_systemType: %1",_systemType);
-        private _gearType = (GETPLVAR(UnitGearType,"NONE"));
+        private _gearType = GETPLVAR(UnitGearType,"NONE");
         LOG_1("_gearType: %1",_gearType);
         SETPLPVAR(GearClass,_gearType);
-        //player setvariable [QGVAR(GearClass),_gearType,true];
         if (_systemType isEqualto "NONE") exitwith {
             LOG_1("No gear system set for unit: %1",player);
             SETPLPVAR(GearReady,true);
@@ -29,7 +28,6 @@
                         SETPLPVAR(GearReady,true);
                     };
                     private _found = false;
-                    //private _defaultloadoutsArray = missionNamespace getvariable ['ace_arsenal_defaultLoadoutsList',[]];
                     private _defaultloadoutsArray = missionNamespace getvariable ['ace_arsenal_defaultLoadoutsList',[]];
                     if (_defaultloadoutsArray isEqualto []) exitwith {
                         LOG("ACE Arsenal DefaultLoadouts Empty!");
@@ -59,29 +57,16 @@
                     [player,_manualClass] call FUNC(OlsenGearScript);
                     SETPLPVAR(GearReady,true);
                 };
+                default {};
             };
         } else {
-            private ["_SystemTag","_loadoutvarname"];
-            switch (_systemType) do {
-                case "ACEAR": {_SystemTag = "ACE_Arsenal"};
-                case "OLSEN": {_SystemTag = "Olsen"};
+            private _SystemTag = switch (_systemType) do {
+                case "ACEAR": {"ACE_Arsenal"};
+                case "OLSEN": {"Olsen"};
+                default {""};
             };
-            private ["_loadoutvarname"];
-            switch (side player) do {
-                case west: {
-                    _loadoutvarname = format ["MMFW_Gear_%1_LoadoutType_Blufor_%2",_SystemTag,_gearType];
-                };
-                case east: {
-                    _loadoutvarname = format ["MMFW_Gear_%1_LoadoutType_Opfor_%2",_SystemTag,_gearType];
-                };
-                case resistance: {
-                    _loadoutvarname = format ["MMFW_Gear_%1_LoadoutType_Indfor_%2",_SystemTag,_gearType];
-                };
-                case civilian: {
-                    _loadoutvarname = format ["MMFW_Gear_%1_LoadoutType_Civ_%2",_SystemTag,_gearType];
-                };
-            };
-            //_loadoutName = missionNamespace getvariable [_loadoutvarname,"NONE"];
+            private _teamTag = GETMVAR(Core,TeamTag,"BLUFOR");
+            private _loadoutvarname = format ["MMFW_Gear_%1_LoadoutType_%3_%2",_SystemTag,_teamTag,_gearType];
             _loadoutName = missionNamespace getvariable [_loadoutvarname,"NONE"];
             if (_loadoutName isEqualto "NONE") exitwith {
                 ERROR_2("No loadout found for unit: %1 and var %2",player,_loadoutvarname);
@@ -115,6 +100,7 @@
                     [player,_loadoutName] call FUNC(OlsenGearScript);
                     SETPLPVAR(GearReady,true);
                 };
+                default {};
             };
         };
     }] call CBA_fnc_waitUntilandExecute;
