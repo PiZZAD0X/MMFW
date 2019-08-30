@@ -11,19 +11,19 @@ private ["_respawnType"];
 
 switch (side player) do {
     case west: {
-        private _respawnTypeNum = MGETMVAR(Respawn_Type_BLUFOR,0);
+        private _respawnTypeNum = EGETMVAR(Respawn,Type_BLUFOR,0);
         _respawnType = ["ONELIFE","UNLIMITED","INDTICK","TEAMTICK"] select _respawnTypeNum;
     };
     case east: {
-        private _respawnTypeNum = MGETMVAR(Respawn_Type_OPFOR,0);
+        private _respawnTypeNum = EGETMVAR(Respawn,Type_OPFOR,0);
         _respawnType = ["ONELIFE","UNLIMITED","INDTICK","TEAMTICK"] select _respawnTypeNum;
     };
     case independent: {
-        private _respawnTypeNum = MGETMVAR(Respawn_Type_Indfor,0);
+        private _respawnTypeNum = EGETMVAR(Respawn,Type_Indfor,0);
         _respawnType = ["ONELIFE","UNLIMITED","INDTICK","TEAMTICK"] select _respawnTypeNum;
     };
     case civilian: {
-        private _respawnTypeNum = MGETMVAR(Respawn_Type_Civ,0);
+        private _respawnTypeNum = EGETMVAR(Respawn,Type_Civ,0);
         _respawnType = ["ONELIFE","UNLIMITED","INDTICK","TEAMTICK"] select _respawnTypeNum;
     };
 };

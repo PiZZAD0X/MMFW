@@ -5,38 +5,38 @@ private ["_delay","_templateSettings","_teamRespawnMarker","_newSideSetting","_r
 
 switch (side player) do {
     case west: {
-        private _respawnTypeNum = GETMVAR(Type_BLUFOR,0);
+        private _respawnTypeNum = EGETMVAR(Respawn,Type_BLUFOR,0);
         _respawnType = ["ONELIFE","UNLIMITED","INDTICK","TEAMTICK"] select _respawnTypeNum;
-        _delay = GETMVAR(Delay_BLUFOR,5);
-        _templateSettings = GETMVAR(Templates_BLUFOR,[]);
-        private _newSideValue = GETMVAR(NewTeam_BLUFOR,0);
+        _delay = EGETMVAR(Respawn,Delay_BLUFOR,5);
+        _templateSettings = EGETMVAR(Respawn,Templates_BLUFOR,[]);
+        private _newSideValue = EGETMVAR(Respawn,NewTeam_BLUFOR,0);
         _newSideSetting = [blufor,opfor,independent,civilian] select _newSideValue;
         _teamRespawnMarker = QGVAR(RESPAWN_BLUFOR);
     };
     case east: {
-        private _respawnTypeNum = GETMVAR(Type_OPFOR,0);
+        private _respawnTypeNum = EGETMVAR(Respawn,Type_OPFOR,0);
         _respawnType = ["ONELIFE","UNLIMITED","INDTICK","TEAMTICK"] select _respawnTypeNum;
-        _delay = GETMVAR(Delay_OPFOR,5);
-        _templateSettings = GETMVAR(Templates_OPFOR,[]);
-        private _newSideValue = GETMVAR(NewTeam_OPFOR,1);
+        _delay = EGETMVAR(Respawn,Delay_OPFOR,5);
+        _templateSettings = EGETMVAR(Respawn,Templates_OPFOR,[]);
+        private _newSideValue = EGETMVAR(Respawn,NewTeam_OPFOR,1);
         _newSideSetting = [blufor,opfor,independent,civilian] select _newSideValue;
         _teamRespawnMarker = QGVAR(RESPAWN_OPFOR);
     };
     case independent: {
-        private _respawnTypeNum = GETMVAR(Type_Indfor,0);
+        private _respawnTypeNum = EGETMVAR(Respawn,Type_Indfor,0);
         _respawnType = ["ONELIFE","UNLIMITED","INDTICK","TEAMTICK"] select _respawnTypeNum;
-        _delay = GETMVAR(Delay_Indfor,5);
-        _templateSettings = GETMVAR(Templates_Indfor,[]);
-        private _newSideValue = GETMVAR(NewTeam_Indfor,2);
+        _delay = EGETMVAR(Respawn,Delay_Indfor,5);
+        _templateSettings = EGETMVAR(Respawn,Templates_Indfor,[]);
+        private _newSideValue = EGETMVAR(Respawn,NewTeam_Indfor,2);
         _newSideSetting = [blufor,opfor,independent,civilian] select _newSideValue;
         _teamRespawnMarker = QGVAR(RESPAWN_Indfor);
     };
     case civilian: {
-        private _respawnTypeNum = GETMVAR(Type_Civ,0);
+        private _respawnTypeNum = EGETMVAR(Respawn,Type_Civ,0);
         _respawnType = ["ONELIFE","UNLIMITED","INDTICK","TEAMTICK"] select _respawnTypeNum;
-        _delay = GETMVAR(Delay_Civ,5);
-        _templateSettings = GETMVAR(Templates_Civ,[]);
-        private _newSideValue = GETMVAR(NewTeam_Civ,3);
+        _delay = EGETMVAR(Respawn,Delay_Civ,5);
+        _templateSettings = EGETMVAR(Respawn,Templates_Civ,[]);
+        private _newSideValue = EGETMVAR(Respawn,NewTeam_Civ,3);
         _newSideSetting = [blufor,opfor,independent,civilian] select _newSideValue;
         _teamRespawnMarker = QGVAR(RESPAWN_Civ);
     };

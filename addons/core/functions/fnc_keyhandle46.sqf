@@ -3,11 +3,11 @@
 EXEC_CHECK(CLIENT);
 
 params ["_control", "_code", "_shift", "_control", "_alt"];
-if (_code isEqualto 35 && {!_shift} && {_control} && {!_alt} && {(GETMVAR(keyHandler_display_hidden,false))}) then {
+if (_code isEqualto 35 && {!_shift} && {_control} && {!_alt} && {(EGETMVAR(Spectator,keyHandler_display_hidden,false))}) then {
     ([] call BIS_fnc_displayMission) createDisplay "RscDisplayEGSpectator";
-    SETMVAR(keyHandler_display_hidden,false);
-    GVAR(keyHandleEG) = (findDisplay 60492) displayAddEventHandler ["keyDown", {[] call FUNC(keyHandleEG);}];
-    if (GETMVAR(Killcam_active,false)) then {
-        GVAR(killcam_keyHandle) = (findDisplay 60492) displayAddEventHandler ["keyDown", {[] call FUNC(KillCamToggleKeyH);}];
+    ESETMVAR(Spectator,keyHandler_display_hidden,false);
+    EGVAR(Spectator,keyHandleEG) = (findDisplay 60492) displayAddEventHandler ["keyDown", {[] call FUNC(keyHandleEG);}];
+    if (EGETMVAR(Spectator,Killcam_active,false)) then {
+        EGVAR(Spectator,killcam_keyHandle) = (findDisplay 60492) displayAddEventHandler ["keyDown", {[] call FUNC(KillCamToggleKeyH);}];
     };
 };
