@@ -19,7 +19,7 @@
 #include "script_component.hpp"
 EXEC_CHECK(SERVER);
 
-params [["_team", "", [""]],["_marker", "", [""]],["_ratio", 1, [0]]];
+params [["_team", "", [""]],["_marker", "", ["",[]]],["_ratio", 1, [0]]];
 
 private _side = [_team, 1] call FUNC(getTeamVariable);
 private _count = {
