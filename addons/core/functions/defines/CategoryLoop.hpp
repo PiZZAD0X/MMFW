@@ -205,14 +205,26 @@
 \
                 if (EGETMVAR(EndConditions,DOUBLES(ExtractionEnabled,LOOPNUM),false)) then {\
                     private _team = ([GVAR(TeamName_Blufor),GVAR(TeamName_Opfor),GVAR(TeamName_Indfor),GVAR(TeamName_Civ)] select EGETMVAR(EndConditions,DOUBLES(ExtractionTeam,LOOPNUM),0));\
-                    if (EGETMVAR(EndConditions,DOUBLES(ExtractionMarker,LOOPNUM),"") isEqualto "") exitwith {["","No marker entered for extract zone for Category 1!"] call FUNC(DebugMessageDetailed);};\
-                    if ((getMarkerColor EGETMVAR(EndConditions,DOUBLES(ExtractionMarker,LOOPNUM),"")) isEqualto "") exitwith {["","Invalid extract marker for Category 1!"] call FUNC(DebugMessageDetailed);};\
-                        if ([_team,GVAR(DOUBLES(ExtractionMarker,LOOPNUM)),GVAR(DOUBLES(ExtractionRatio,LOOPNUM))] call FUNC(hasExtracted)) then {\
-                            _ExtractionCheck = true;\
-                        } else {\
-                            _ExtractionCheck = false;\
+                    private _moduleName = EGETMVAR(EndConditions,DOUBLES(ExtractionMarker,LOOPNUM),"No Area Defined");\
+                    if (_moduleName isEqualTo "No Area Defined") exitwith {\
+                        ERROR_1("Extraction Module for Category %1 Not Defined",LOOPNUM);\
+                    };\
+                    private _moduleArea = [];\
+                    {\
+                        _x params ["_AreaName","_area","_logic"];\
+                        if (_moduleName isEqualTo _AreaName) exitwith {\
+                            _moduleArea = _area;\
                         };\
-                        LOG_1("Extraction Check: %1",_ExtractionCheck);\
+                    } foreach EGVAR(EndConditions,ExtractAreaArray);\
+                    if (_moduleArea isEqualto []) exitwith {\
+                        ERROR_2("Extraction Module %2 for Category %1 Not Found!",LOOPNUM,_moduleName);\
+                    };\
+                    if ([_team,_moduleArea,GVAR(DOUBLES(ExtractionRatio,LOOPNUM))] call FUNC(hasExtracted)) then {\
+                        _ExtractionCheck = true;\
+                    } else {\
+                        _ExtractionCheck = false;\
+                    };\
+                    LOG_2("Category %2 Extraction Check: %1",_ExtractionCheck,LOOPNUM);\
                 } else {\
                     _ExtractionCheck = true;\
                 };\

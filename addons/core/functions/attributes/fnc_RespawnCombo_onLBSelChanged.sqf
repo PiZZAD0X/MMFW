@@ -1,7 +1,7 @@
 #include "script_component.hpp"
 EDEN_CHECK;
 
-params ["_args","_configVar","_valueVar"];
+params ["_args","_valueVar","_configVar"];
 _args params ["_ctrlCombo","_cursel"];
 private _respawnType = _ctrlCombo lbValue _cursel;
 missionNamespace setvariable [_valueVar,_respawnType];
