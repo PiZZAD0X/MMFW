@@ -5,14 +5,14 @@ params ["_logic","_zoneName"];
 LOG_2("Activating CaptureZone logic: %1 name: %2 PFH",_logic,_zoneName);
 if (isNil QGVAR(ListArray)) then {GVAR(ListArray) = [];};
 GVAR(ListArray) pushBack _logic;
-private _varName = format ["%1_var",_logic];
-private _teamControllingvarName = format ["%1_teamControlling",_logic];
+private _varName = format ["%1_var",_zoneName];
+private _teamControllingvarName = format ["%1_teamControlling",_zoneName];
 LOG_2("Activating CaptureZone _varName: %1 _teamControllingvarName: %2 PFH",_varName,_teamControllingvarName);
 
 GVAR(DOUBLES(PFHhandle,_logic)) = [{
     //var redeclares
     params ["_argNested", "_idPFH"];
-    _argNested params ["_args","_lastCheckedTime",["_initialized",false,[false]],"_varName","_teamControllingvarName",["_oldOwner","UNCONTESTED",[""]],["_ownerControlCount",0,[0]],"_marker"];
+    _argNested params ["_args",["_initialized",false,[false]],"_varName","_teamControllingvarName",["_oldOwner","UNCONTESTED",[""]],["_ownerControlCount",0,[0]],"_marker"];
     _args params ["_logic","_zoneName","_area","_mode","_capArray","_timeArray","_messagesArray","_colours","_hidden","_silent","_automessages","_ratioNeeded"];
     _area params ["_loc","_radiusX","_radiusY","_direction","_isRectangle"];
     _colours params ["_bluforcolour","_opforcolour","_indforcolour","_civcolour","_uncontestedcolour","_contestedcolour"];
@@ -27,7 +27,7 @@ GVAR(DOUBLES(PFHhandle,_logic)) = [{
         _argNested set [6,0];
 
         if !(_hidden) then {
-            _markername = format ["%1_ZoneMarker",_logic];
+            _markername = format ["%1_ZoneMarker",_zoneName];
             _marker = createmarker [_markername,_loc];
             _argNested set [7,_marker];
             if (_isRectangle) then {
@@ -379,4 +379,4 @@ GVAR(DOUBLES(PFHhandle,_logic)) = [{
     };
 
 
-}, 1, [_this,(-99),false,_varName,_teamControllingvarName]] call CBA_fnc_addPerFrameHandler;
+}, 1, [_this,false,_varName,_teamControllingvarName]] call CBA_fnc_addPerFrameHandler;
