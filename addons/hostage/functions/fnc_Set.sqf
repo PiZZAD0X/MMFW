@@ -5,22 +5,28 @@ params ["_unit"];
 
 [QEGVAR(Core,RegisterModuleEvent), ["Hostage Control", "Allows the mission maker to easily add hostages to their missions.", "Starfox64, TrainDoctor and PiZZADOX"]] call CBA_fnc_globalEventJiP;
 
-private _marker = (GETVAR(_unit,RescueLocation,"No Area Selected"));
-if (_marker isEqualTo "No Area Selected") exitwith {
+private _moduleAreaName = (GETVAR(_unit,RescueLocation,"No Area Selected"));
+if (_moduleAreaName isEqualTo "No Area Selected") exitwith {
     ERROR_1("Hostage Rescue Area not defined: %1!",_unit);
 };
-LOG_2("%1 set to hostage with rescue area of %2",_unit,_marker);
-if (getMarkerColor _marker isEqualto "") exitwith {
-    ERROR_2("Hostage Rescue Area for unit %1 not found: %2!",_unit,_marker);
-};
-_marker setMarkerAlpha 0;
+LOG_2("%1 set to hostage with rescue area of %2",_unit,_moduleAreaName);
+private _moduleArea = [];
+{
+    _x params ["_AreaName","_area"];
+    if (_moduleAreaName isEqualTo _AreaName) exitwith {
+        _moduleArea = _area;
+    };
+} foreach GVAR(AreaArray);
 
+if (_moduleArea isEqualTo []) exitwith {
+    ERROR_2("Hostage: %1 Area: %2 not found in Area Arrays",_unit,_moduleAreaName);
+};
 
 SETPVAR(_unit,IsUntied,false);
 SETPVAR(_unit,IsRescued,false);
 
 [{(CBA_missionTime > 0)},{
-    params ["_unit","_marker"];
+    params ["_unit","_moduleArea"];
 
     [QGVAR(ACEActionsEvent), [_unit]] call CBA_fnc_globalEventJiP;
     _unit setBehaviour "CARELESS";
@@ -42,11 +48,11 @@ SETPVAR(_unit,IsRescued,false);
 
     [{
         params ["_argNested", "_idPFH"];
-        _argNested params ["_unit","_marker","_lastCheckedTime"];
+        _argNested params ["_unit","_moduleArea","_lastCheckedTime"];
         private _timeDifference = (CBA_missionTime - _lastCheckedTime);
         if (_timeDifference < 5) exitwith {};
         _argNested set [2,(CBA_missionTime)];
-        if ((animationState _unit != "acts_aidlpsitmstpssurwnondnon04") && {(_unit inArea _marker)}) exitwith {
+        if ((animationState _unit != "acts_aidlpsitmstpssurwnondnon04") && {(GETVAR(_unit,IsUntied,false))} && {(_unit inArea _moduleArea)}) exitwith {
             if ((vehicle _unit) isEqualto _unit) then {
                 [_unit] joinSilent grpNull;
                 _unit disableAI "MOVE";
@@ -59,5 +65,5 @@ SETPVAR(_unit,IsRescued,false);
         if (GETVAR(_unit,IsRescued,false)) exitWith {
             [_idPFH] call CBA_fnc_removePerFrameHandler;
         };
-    }, 5, [_unit,_marker,CBA_missionTime]] call CBA_fnc_addPerFrameHandler;
-}, [_unit,_marker]] call CBA_fnc_WaitUntilAndExecute;
+    }, 5, [_unit,_moduleArea,CBA_missionTime]] call CBA_fnc_addPerFrameHandler;
+}, [_unit,_moduleArea]] call CBA_fnc_WaitUntilAndExecute;
