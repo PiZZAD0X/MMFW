@@ -13,10 +13,12 @@ if (!(_this call FUNC(Validate))) exitWith {
     ERROR_1("CaptureZone %1 failed to Validate",_logic);
 };
 
-if (call (compile _cond)) exitwith {
+private _condCompiled = compile _cond;
+
+if (call _condCompiled) exitwith {
     _this call FUNC(Loop);
 };
 
 [{call (_this select 1)}, {
     (_this select 0) call FUNC(Loop);
-}, [_this, (compile _cond)]] call CBA_fnc_waitUntilAndExecute;
+}, [_this, _condCompiled]] call CBA_fnc_waitUntilAndExecute;

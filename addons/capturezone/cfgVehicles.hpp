@@ -1,3 +1,56 @@
+#define CAPZONETEAMATTR(TEAMNAME,TEAMCOLOUR) class GVAR(DOUBLES(TEAMNAME,Title)) {\
+    property = QGVAR(DOUBLES(TEAMNAME,Title));\
+    tooltip = "";\
+    displayName = QUOTE(TEAMNAME);\
+    control = "SubTitleIndent";\
+};\
+class GVAR(DOUBLES(Cap,TEAMNAME)) {\
+    property = QGVAR(DOUBLES(Cap,TEAMNAME));\
+    displayName = QUOTE(TEAMNAME Cap Mode);\
+    tooltip = "Whether or not the team can capture the zone, and whether they are checked in the player count.";\
+    control = QGVAR(TeamAttribute);\
+    expression = MODULE_EXPRESSION;\
+    defaultValue = "0";\
+    typeName = "number";\
+};\
+class GVAR(DOUBLES(Time,TEAMNAME)) {\
+    property = QGVAR(DOUBLES(Time,TEAMNAME));\
+    displayName = "Time to Capture";\
+    tooltip = "Time needed for this team to capture the zone in seconds. Set to 0 for instant capture";\
+    control = QEGVAR(Core,0To600Step1_Slider);\
+    expression = MODULE_EXPRESSION;\
+    defaultValue = "30";\
+    typeName = "NUMBER";\
+    validate = "number";\
+};\
+class GVAR(DOUBLES(MessageCapturing,TEAMNAME)) {\
+    property = QGVAR(DOUBLES(MessageCapturing,TEAMNAME));\
+    displayName = "Capturing Message";\
+    tooltip = "Message to display when this team is capturing the zone. Leave empty to disable this hint";\
+    control = "Edit";\
+    expression = MODULE_EXPRESSION;\
+    defaultValue = QUOTE(QN(TEAMNAME is capturing the zone!));\
+    validate = "none";\
+};\
+class GVAR(DOUBLES(MessageCaptured,TEAMNAME)) {\
+    displayName = "Capturing Message";\
+    tooltip = "Message to display when this team captures the zone. Leave empty to disable this hint";\
+    property = QGVAR(DOUBLES(MessageCaptured,TEAMNAME));\
+    control = "Edit";\
+    expression = MODULE_EXPRESSION;\
+    defaultValue = QUOTE(QN(TEAMNAME has captured the zone!));\
+    validate = "none";\
+};\
+class GVAR(DOUBLES(Colour,TEAMNAME)) {\
+    property = QGVAR(DOUBLES(Colour,TEAMNAME));\
+    displayName = "Colour";\
+    tooltip = QUOTE(TEAMNAME Colour);\
+    control = QGVAR(ColourCombo);\
+    expression = MODULE_EXPRESSION;\
+    defaultValue = QUOTE(QN(TEAMCOLOUR));\
+    validate = "none";\
+}
+
 class CfgVehicles {
     class EGVAR(Core,BaseModule);
     class GVAR(CaptureZoneModule): EGVAR(Core,BaseModule) {
@@ -43,190 +96,20 @@ class CfgVehicles {
                 validate = "NUMBER";
                 typeName = "number";
             };
-            class GVAR(Cap_Blufor) {
-                displayName = "Blufor Cap Mode";
-                tooltip = "Whether or not the team can capture the zone, and whether they are checked in the player count.";
-                property = QGVAR(Cap_Blufor);
-                control = QGVAR(TeamAttribute);
+            class GVAR(AICount) {
+                displayName = "Count AI";
+                tooltip = "Whether the CaptureZone counts AI units in the capture count or only players.";
+                property = QGVAR(AICount);
+                control = "CheckBox";
                 expression = MODULE_EXPRESSION;
-                defaultValue = "0";
-                typeName = "number";
+                defaultValue = "true";
             };
-            class GVAR(Time_Blufor) {
-                displayName = "Time to Capture";
-                tooltip = "Time needed for Blufor to capture the zone in seconds. Set to 0 for instant capture";
-                property = QGVAR(Time_Blufor);
-                control = QEGVAR(Core,0To600Step1_Slider);
-                expression = MODULE_EXPRESSION;
-                defaultValue = "30";
-                typeName = "NUMBER";
-                validate = "number";
-            };
-            class GVAR(MessageCapturing_Blufor) {
-                displayName = "Capturing Message";
-                tooltip = "Message to display when Blufor is capturing the zone. Leave empty to disable this hint";
-                property = QGVAR(MessageCapturing_Blufor);
-                control = "Edit";
-                expression = MODULE_EXPRESSION;
-                defaultValue = "'BLUFOR is capturing the zone!'";
-                validate = "none";
-            };
-            class GVAR(MessageCaptured_Blufor) {
-                displayName = "Capturing Message";
-                tooltip = "Message to display when Blufor captures the zone. Leave empty to disable this hint";
-                property = QGVAR(MessageCaptured_Blufor);
-                control = "Edit";
-                expression = MODULE_EXPRESSION;
-                defaultValue = "'BLUFOR has captured the zone!'";
-                validate = "none";
-            };
-            class GVAR(Colour_Blufor) {
-                displayName = "Colour";
-                tooltip = "Blufor Colour";
-                property = QGVAR(Colour_Blufor);
-                control = QGVAR(ColourCombo);
-                expression = MODULE_EXPRESSION;
-                defaultValue = "'colorBLUFOR'";
-                validate = "none";
-            };
-            class GVAR(Cap_Opfor) {
-                displayName = "Opfor Cap Mode";
-                tooltip = "Whether or not the team can capture the zone, and whether they are checked in the player count.";
-                property = QGVAR(Cap_Opfor);
-                control = QGVAR(TeamAttribute);
-                expression = MODULE_EXPRESSION;
-                defaultValue = "0";
-                typeName = "number";
-            };
-            class GVAR(Time_Opfor) {
-                displayName = "Time to Capture";
-                tooltip = "Time needed for Opfor to capture the zone in seconds. Set to 0 for instant capture";
-                property = QGVAR(Time_Opfor);
-                control = QEGVAR(Core,0To600Step1_Slider);
-                expression = MODULE_EXPRESSION;
-                defaultValue = "30";
-                typeName = "NUMBER";
-                validate = "number";
-            };
-            class GVAR(MessageCapturing_Opfor) {
-                displayName = "Capturing Message";
-                tooltip = "Message to display when Opfor is capturing the zone. Leave empty to disable this hint";
-                property = QGVAR(MessageCapturing_Opfor);
-                control = "Edit";
-                expression = MODULE_EXPRESSION;
-                defaultValue = "'Opfor is capturing the zone!'";
-                validate = "none";
-            };
-            class GVAR(MessageCaptured_Opfor) {
-                displayName = "Captured Message";
-                tooltip = "Message to display when Opfor captures the zone. Leave empty to disable this hint";
-                property = QGVAR(MessageCaptured_Opfor);
-                control = "Edit";
-                expression = MODULE_EXPRESSION;
-                defaultValue = "'Opfor has captured the zone!'";
-                validate = "none";
-            };
-            class GVAR(Colour_Opfor) {
-                displayName = "Colour";
-                tooltip = "Opfor Colour";
-                property = QGVAR(Colour_Opfor);
-                control = QGVAR(ColourCombo);
-                expression = MODULE_EXPRESSION;
-                defaultValue = "'colorOPFOR'";
-                validate = "none";
-            };
-            class GVAR(Cap_Indfor) {
-                displayName = "Indfor Cap Mode";
-                tooltip = "Whether or not the team can capture the zone, and whether they are checked in the player count.";
-                property = QGVAR(Cap_Indfor);
-                control = QGVAR(TeamAttribute);
-                expression = MODULE_EXPRESSION;
-                defaultValue = "0";
-                typeName = "number";
-            };
-            class GVAR(Time_Indfor) {
-                displayName = "Time to Capture";
-                tooltip = "Time needed for Indfor to capture the zone in seconds. Set to 0 for instant capture";
-                property = QGVAR(Time_Indfor);
-                control = QEGVAR(Core,0To600Step1_Slider);
-                expression = MODULE_EXPRESSION;
-                defaultValue = "30";
-                typeName = "NUMBER";
-                validate = "number";
-            };
-            class GVAR(MessageCapturing_Indfor) {
-                displayName = "Capturing Message";
-                tooltip = "Message to display when Indfor is capturing the zone. Leave empty to disable this hint";
-                property = QGVAR(MessageCapturing_Indfor);
-                control = "Edit";
-                expression = MODULE_EXPRESSION;
-                defaultValue = "'Indfor is capturing the zone!'";
-                validate = "none";
-            };
-            class GVAR(MessageCaptured_Indfor) {
-                displayName = "Captured Message";
-                tooltip = "Message to display when Indfor captures the zone. Leave empty to disable this hint";
-                property = QGVAR(MessageCaptured_Indfor);
-                control = "Edit";
-                expression = MODULE_EXPRESSION;
-                defaultValue = "'Indfor has captured the zone!'";
-                validate = "none";
-            };
-            class GVAR(Colour_Indfor) {
-                displayName = "Colour";
-                tooltip = "Indfor Colour";
-                property = QGVAR(Colour_Indfor);
-                control = QGVAR(ColourCombo);
-                expression = MODULE_EXPRESSION;
-                defaultValue = "'colorIndependent'";
-                validate = "none";
-            };
-            class GVAR(Cap_Civ) {
-                displayName = "Civilian Cap Mode";
-                tooltip = "Whether or not the team can capture the zone, and whether they are checked in the player count.";
-                property = QGVAR(Cap_Civ);
-                control = QGVAR(TeamAttribute);
-                expression = MODULE_EXPRESSION;
-                defaultValue = "0";
-                typeName = "number";
-            };
-            class GVAR(Time_Civ) {
-                displayName = "Time to Capture";
-                tooltip = "Time needed for Civilian to capture the zone in seconds. Set to 0 for instant capture";
-                property = QGVAR(Time_Civ);
-                control = QEGVAR(Core,0To600Step1_Slider);
-                expression = MODULE_EXPRESSION;
-                defaultValue = "30";
-                typeName = "NUMBER";
-                validate = "number";
-            };
-            class GVAR(MessageCapturing_Civ) {
-                displayName = "Capturing Message";
-                tooltip = "Message to display when Civilian is capturing the zone. Leave empty to disable this hint";
-                property = QGVAR(MessageCapturing_Civ);
-                control = "Edit";
-                expression = MODULE_EXPRESSION;
-                defaultValue = "'Civilian is capturing the zone!'";
-                validate = "none";
-            };
-            class GVAR(MessageCaptured_Civ) {
-                displayName = "Captured Message";
-                tooltip = "Message to display when Civilian captures the zone. Leave empty to disable this hint";
-                property = QGVAR(MessageCaptured_Civ);
-                control = "Edit";
-                expression = MODULE_EXPRESSION;
-                defaultValue = "'Civilian has captured the zone!'";
-                validate = "none";
-            };
-            class GVAR(Colour_Civ) {
-                displayName = "Colour";
-                tooltip = "Civilian Colour";
-                property = QGVAR(Colour_Civ);
-                control = QGVAR(ColourCombo);
-                expression = MODULE_EXPRESSION;
-                defaultValue = "'colorCivilian'";
-                validate = "none";
-            };
+
+            CAPZONETEAMATTR(Blufor,colorBLUFOR);
+            CAPZONETEAMATTR(Opfor,colorOPFOR);
+            CAPZONETEAMATTR(Indfor,colorIndependent);
+            CAPZONETEAMATTR(Civilian,colorCivilian);
+
             class GVAR(ContestedMessage) {
                 displayName = "Contested Message";
                 tooltip = "Message to display when the zone is contested. Leave empty to disable this hint";

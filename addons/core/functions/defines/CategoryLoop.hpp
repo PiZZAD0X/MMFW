@@ -4,54 +4,47 @@
     } else {\
         LOG_1("Valid message for End Condition Category %1, executing",LOOPNUM);\
 \
-        private _conditionsCountCategory = 0;\
-        if (EGETMVAR(EndConditions,CasualtyCount_Enabled_BLUFOR,false)) then {_conditionsCountCategory = _conditionsCountCategory + 1;};\
-        if (EGETMVAR(EndConditions,CasualtyCount_Enabled_OPFOR,false)) then {_conditionsCountCategory = _conditionsCountCategory + 1;};\
-        if (EGETMVAR(EndConditions,CasualtyCount_Enabled_Indfor,false)) then {_conditionsCountCategory = _conditionsCountCategory + 1;};\
-        if (EGETMVAR(EndConditions,CasualtyCount_Enabled_Civ,false)) then {_conditionsCountCategory = _conditionsCountCategory + 1;};\
+        private _conditionsCount = 0;\
+        if (EGETMVAR(EndConditions,DOUBLES(CasualtyCount_Enabled_BLUFOR,LOOPNUM),false)) then {_conditionsCount = _conditionsCount + 1;};\
+        if (EGETMVAR(EndConditions,DOUBLES(CasualtyCount_Enabled_OPFOR,LOOPNUM),false)) then {_conditionsCount = _conditionsCount + 1;};\
+        if (EGETMVAR(EndConditions,DOUBLES(CasualtyCount_Enabled_Indfor,LOOPNUM),false)) then {_conditionsCount = _conditionsCount + 1;};\
+        if (EGETMVAR(EndConditions,DOUBLES(CasualtyCount_Enabled_Civ,LOOPNUM),false)) then {_conditionsCount = _conditionsCount + 1;};\
 \
-        if (!(EGETMVAR(EndConditions,EntitiesAlive_Array,[]) isEqualto [])) then {_conditionsCountCategory = _conditionsCountCategory + 1;};\
-        if (!(EGETMVAR(EndConditions,EntitiesDead_Array,[]) isEqualto [])) then {_conditionsCountCategory = _conditionsCountCategory + 1;};\
-        if (!(EGETMVAR(EndConditions,EntitiesDamaged_Array,[]) isEqualto [])) then {_conditionsCountCategory = _conditionsCountCategory + 1;};\
-        if (!(EGETMVAR(EndConditions,HostageRescued_Array,[]) isEqualto [])) then {_conditionsCountCategory = _conditionsCountCategory + 1;};\
-        if (!(EGETMVAR(EndConditions,CustomVariables_Array,[]) isEqualto [])) then {_conditionsCountCategory = _conditionsCountCategory + 1;};\
-        if (!(EGETMVAR(EndConditions,CaptureZoneCaptured_Array,[]) isEqualto [])) then {_conditionsCountCategory = _conditionsCountCategory + 1;};\
+        if !(EGETMVAR(EndConditions,DOUBLES(EntitiesAlive_Array,LOOPNUM),[]) isEqualto []) then {_conditionsCount = _conditionsCount + 1;};\
+        if !(EGETMVAR(EndConditions,DOUBLES(EntitiesDead_Array,LOOPNUM),[]) isEqualto []) then {_conditionsCount = _conditionsCount + 1;};\
+        if !(EGETMVAR(EndConditions,DOUBLES(EntitiesDamaged_Array,LOOPNUM),[]) isEqualto []) then {_conditionsCount = _conditionsCount + 1;};\
+        if !(EGETMVAR(EndConditions,DOUBLES(HostageRescued_Array,LOOPNUM),[]) isEqualto []) then {_conditionsCount = _conditionsCount + 1;};\
+        if !(EGETMVAR(EndConditions,DOUBLES(CustomVariables_Array,LOOPNUM),[]) isEqualto []) then {_conditionsCount = _conditionsCount + 1;};\
+        if !(EGETMVAR(EndConditions,DOUBLES(CaptureZoneCaptured_Array,LOOPNUM),[]) isEqualto []) then {_conditionsCount = _conditionsCount + 1;};\
+        if ((EGETMVAR(EndConditions,DOUBLES(ExtractionEnabled,LOOPNUM),false)) && {(EGETMVAR(EndConditions,DOUBLES(ExtractionForced,LOOPNUM),false))}) then {_conditionsCount = _conditionsCount + 1;};\
 \
-        if ((_conditionsCountCategory) > 0  || ((EGETMVAR(EndConditions,DOUBLES(ExtractionEnabled,LOOPNUM),false)) && {(EGETMVAR(EndConditions,DOUBLES(ExtractionForced,LOOPNUM),false))})) then {\
-            LOG_2("Starting Category %2 Condition Count:%1",_conditionsCountCategory,LOOPNUM);\
+        if ((_conditionsCount) > 0) then {\
+            LOG_2("Starting Category %2 Condition Count:%1",_conditionsCount,LOOPNUM);\
             EGVAR(EndConditions,TRIPLES(Category,LOOPNUM,PFH)) = [{\
                 params ["_argNested", "_idPFH"];\
                 if (GETMVAR(MissionEnded,false)) exitwith {\
                     [_idPFH] call CBA_fnc_removePerFrameHandler;\
                 };\
                 private _ConditionCheckList = [];\
-\
                 private _CasConditionCheck_Blufor = false;\
-\
                 if (EGETMVAR(EndConditions,DOUBLES(CasualtyCount_Enabled_BLUFOR,LOOPNUM),false)) then {\
                     private _westCasualty = GVAR(TeamName_Blufor) call FUNC(CasualtyPercentage);\
                     if (_westCasualty >= EGETMVAR(EndConditions,DOUBLES(CasualtyCount_Percentage_BLUFOR,LOOPNUM),75)) then {_CasConditionCheck_Blufor = true;} else {_CasConditionCheck_Blufor = false;};\
                     _ConditionCheckList pushback ["BLUFOR Cas Check",_CasConditionCheck_Blufor];\
                 };\
-\
                 private _CasConditionCheck_Opfor = false;\
-\
                 if (EGETMVAR(EndConditions,DOUBLES(CasualtyCount_Enabled_OPFOR,LOOPNUM),false)) then {\
                     private _eastCasualty = GVAR(TeamName_Opfor) call FUNC(CasualtyPercentage);\
                     if (_eastCasualty >= EGETMVAR(EndConditions,DOUBLES(CasualtyCount_Percentage_OPFOR,LOOPNUM),75)) then {_CasConditionCheck_Opfor = true;} else {_CasConditionCheck_Opfor = false;};\
                     _ConditionCheckList pushback ["OPFOR Cas Check",_CasConditionCheck_Opfor];\
                 };\
-\
                 private _CasConditionCheck_Indfor = false;\
-\
                 if (EGETMVAR(EndConditions,DOUBLES(CasualtyCount_Enabled_Indfor,LOOPNUM),false)) then {\
                     private _resCasualty = GVAR(TeamName_Indfor) call FUNC(CasualtyPercentage);\
                     if (_resCasualty >= EGETMVAR(EndConditions,DOUBLES(CasualtyCount_Percentage_Indfor,LOOPNUM),75)) then {_CasConditionCheck_Indfor = true;} else {_CasConditionCheck_Indfor = false;};\
                     _ConditionCheckList pushback ["INDFOR Cas Check",_CasConditionCheck_Indfor];\
                 };\
-\
                 private _CasConditionCheck_Civ = false;\
-\
                 if (EGETMVAR(EndConditions,DOUBLES(CasualtyCount_Enabled_Civ,LOOPNUM),false)) then {\
                     private _civCasualty = GVAR(TeamName_Civ) call FUNC(CasualtyPercentage);\
                     if (_civCasualty >= EGETMVAR(EndConditions,DOUBLES(CasualtyCount_Percentage_Civ,LOOPNUM),75)) then {_CasConditionCheck_Civ = true;} else {_CasConditionCheck_Civ = false;};\
@@ -74,7 +67,6 @@
                     } forEach _aliveUnitArray;\
                     _ConditionCheckList pushback ["Alive Check",_alive];\
                 };\
-\
                 private _deadUnitArray = EGETMVAR(EndConditions,DOUBLES(EntitiesDead_Array,LOOPNUM),[]);\
                 if (!(_deadUnitArray isEqualto [])) then {\
                     LOG_2("Dead Array %2:%1",_deadUnitArray,LOOPNUM);\
@@ -93,7 +85,6 @@
                     } forEach _deadUnitArray;\
                     _ConditionCheckList pushback ["Dead Check",_dead];\
                 };\
-\
                 private _damagedUnitArray = EGETMVAR(EndConditions,DOUBLES(EntitiesDamaged_Array,LOOPNUM),[]);\
                 if (!(_damagedUnitArray isEqualto [])) then {\
                     LOG_2("Damaged Array %2:%1",_damagedUnitArray,LOOPNUM);\
@@ -110,7 +101,6 @@
                     } forEach _damagedUnitArray;\
                     _ConditionCheckList pushback ["Damaged Check",_damaged];\
                 };\
-\
                 private _hostageRescuedArray = EGETMVAR(EndConditions,DOUBLES(HostageRescued_Array,LOOPNUM),[]);\
                 if (!(_hostageRescuedArray isEqualto [])) then {\
                     LOG_2("Rescued Array %2:%1",_hostageRescuedArray,LOOPNUM);\
@@ -127,7 +117,6 @@
                     } forEach _hostageRescuedArray;\
                     _ConditionCheckList pushback ["Rescued Check",_rescued];\
                 };\
-\
                 private _customVariablesArray = EGETMVAR(EndConditions,DOUBLES(CustomVariables_Array,LOOPNUM),[]);\
                 if (!(_customVariablesArray isEqualto [])) then {\
                     LOG_2("Var Array %2:%1",_customVariablesArray,LOOPNUM);\
@@ -139,72 +128,42 @@
                         _ConditionCheckList pushback [_checklisttext,_custom];\
                     } forEach _customVariablesArray;\
                 };\
-\
                 private _captureZones_Array = EGETMVAR(EndConditions,DOUBLES(CaptureZoneCaptured_Array,LOOPNUM),[]);\
-                if (!(_captureZones_Array isEqualto [])) then {\
+                LOG_2("Category %1 _captureZones_Array: %2",LOOPNUM,_captureZones_Array);\
+                if !(_captureZones_Array isEqualto []) then {\
                     private _captureZones_TeamSetting = EGETMVAR(EndConditions,DOUBLES(CaptureZoneCaptured_Team,LOOPNUM),1);\
+                    private _CaptureZoneConditionCheck = false;\
                     {\
-                        private _CaptureZoneConditionCheck = false;\
-                        if !((call compile _x) in (EGETMVAR(EndConditions,DOUBLES(CaptureZone_ListArray,LOOPNUM),[]))) then {\
+                        if !(_x in (EGETMVAR(CaptureZone,ListArray,[]))) then {\
                             ERROR_1("CaptureZone %1 does not exist!",_x);\
                             ["CaptureZone " + _x + " does not exist!","CaptureZone " + _x + " does not exist!"] call FUNC(DebugMessageDetailed);\
                             _CaptureZoneConditionCheck = false;\
                         } else {\
                             private _varName = format ["%1_var",_x];\
                             private _teamControllingvarName = format ["%1_teamControlling",_x];\
-\
-                            switch (_captureZones_TeamSetting) do {\
-                                case 0: {\
-                                    if ((missionNamespace getVariable [_teamControllingvarName,false]) isEqualto "UNCONTESTED") then {\
-                                        _CaptureZoneConditionCheck = true;\
-                                    } else {\
-                                        _CaptureZoneConditionCheck = false;\
-                                    };\
-                                };\
-                                case 1: {\
-                                    if ((missionNamespace getVariable [_teamControllingvarName,false]) isEqualto "BLUFOR") then {\
-                                        _CaptureZoneConditionCheck = true;\
-                                    } else {\
-                                        _CaptureZoneConditionCheck = false;\
-                                    };\
-                                };\
-                                case 2: {\
-                                    if ((missionNamespace getVariable [_teamControllingvarName,false]) isEqualto "OPFOR") then {\
-                                        _CaptureZoneConditionCheck = true;\
-                                    } else {\
-                                        _CaptureZoneConditionCheck = false;\
-                                    };\
-                                };\
-                                case 3: {\
-                                    if ((missionNamespace getVariable [_teamControllingvarName,false]) isEqualto "INDFOR") then {\
-                                        _CaptureZoneConditionCheck = true;\
-                                    } else {\
-                                        _CaptureZoneConditionCheck = false;\
-                                    };\
-                                };\
-                                case 4: {\
-                                    if ((missionNamespace getVariable [_teamControllingvarName,false]) isEqualto "CIVILIAN") then {\
-                                        _CaptureZoneConditionCheck = true;\
-                                    } else {\
-                                        _CaptureZoneConditionCheck = false;\
-                                    };\
-                                };\
-                                default {_CaptureZoneConditionCheck = false;};\
+                            private _teamValue = (missionNamespace getVariable [_teamControllingvarName,false]);\
+                            _CaptureZoneConditionCheck = if (\
+                                ((_teamValue isEqualTo "UNCONTESTED") && {_captureZones_TeamSetting isEqualto 0})\
+                                || {((_teamValue isEqualTo "BLUFOR") && {_captureZones_TeamSetting isEqualto 1})}\
+                                || {((_teamValue isEqualTo "OPFOR") && {_captureZones_TeamSetting isEqualto 2})}\
+                                || {((_teamValue isEqualTo "INDFOR") && {_captureZones_TeamSetting isEqualto 3})}\
+                                || {((_teamValue isEqualTo "CIVILIAN") && {_captureZones_TeamSetting isEqualto 4})}\
+                            ) then {\
+                                true;\
+                            } else {\
+                                false;\
                             };\
-\
                             _CaptureZoneConditionCheck = _CaptureZoneConditionCheck && {(missionNamespace getVariable [_varName,false])};\
                             private _checklisttext = format ["CaptureZoneCheck Check: %1 _var: %2 _team: %3", _x,(missionNamespace getVariable [_varName,false]),(missionNamespace getVariable [_teamControllingvarName,false])];\
                             _ConditionCheckList pushback [_checklisttext,_CaptureZoneConditionCheck];\
                         };\
                     } foreach _captureZones_Array;\
                 };\
-\
                 LOG_2("Category %2 _ConditionCheckList:%1",_ConditionCheckList,LOOPNUM);\
-\
                 private _ExtractionCheck = false;\
-\
                 if (EGETMVAR(EndConditions,DOUBLES(ExtractionEnabled,LOOPNUM),false)) then {\
-                    private _team = ([GVAR(TeamName_Blufor),GVAR(TeamName_Opfor),GVAR(TeamName_Indfor),GVAR(TeamName_Civ)] select EGETMVAR(EndConditions,DOUBLES(ExtractionTeam,LOOPNUM),0));\
+                    LOG_1("Checking Extraction for Category %1",LOOPNUM);\
+                    private _team = ([GVAR(TeamName_Blufor),GVAR(TeamName_Opfor),GVAR(TeamName_Indfor),GVAR(TeamName_Civ)] select (EGETMVAR(EndConditions,DOUBLES(ExtractionTeam,LOOPNUM),0)));\
                     private _moduleName = EGETMVAR(EndConditions,DOUBLES(ExtractionMarker,LOOPNUM),"No Area Defined");\
                     if (_moduleName isEqualTo "No Area Defined") exitwith {\
                         ERROR_1("Extraction Module for Category %1 Not Defined",LOOPNUM);\
@@ -219,23 +178,18 @@
                     if (_moduleArea isEqualto []) exitwith {\
                         ERROR_2("Extraction Module %2 for Category %1 Not Found!",LOOPNUM,_moduleName);\
                     };\
-                    if ([_team,_moduleArea,GVAR(DOUBLES(ExtractionRatio,LOOPNUM))] call FUNC(hasExtracted)) then {\
-                        _ExtractionCheck = true;\
-                    } else {\
-                        _ExtractionCheck = false;\
-                    };\
+                    _ExtractionCheck = ([_team,_moduleArea,GVAR(DOUBLES(ExtractionRatio,LOOPNUM))] call FUNC(hasExtracted));\
                     LOG_2("Category %2 Extraction Check: %1",_ExtractionCheck,LOOPNUM);\
                 } else {\
                     _ExtractionCheck = true;\
                 };\
-\
                 if (_ExtractionCheck) then {\
                     if ((EGETMVAR(EndConditions,DOUBLES(ExtractionEnabled,LOOPNUM),false)) && {(EGETMVAR(EndConditions,DOUBLES(ExtractionForced,LOOPNUM),false))}) then {\
                         LOG_1("Category %1 Ending due to forced Extraction!",LOOPNUM);\
                         [EGETMVAR(EndConditions,DOUBLES(Message,LOOPNUM),"")] call FUNC(EndMission);\
                         [_idPFH] call CBA_fnc_removePerFrameHandler;\
                     } else {\
-                        if (GVAR(Mode_1) isEqualto 1) then {\
+                        if ((EGETMVAR(EndConditions,DOUBLES(Mode,LOOPNUM),1)) isEqualto 1) then {\
                             {\
                                 _x params ["_name","_value"];\
                                 if (_value) exitwith {\
@@ -259,7 +213,8 @@
                         };\
                     };\
                 };\
-            }, (EGETMVAR(EndConditions,ConditionSleep,30))] call CBA_fnc_addPerFrameHandler;\
+                ESETMVAR(EndConditions,TRIPLES(Category,LOOPNUM,CheckList),_ConditionCheckList);\
+            }, _frequency] call CBA_fnc_addPerFrameHandler;\
         } else {\
             ERROR_1("No Conditions for Category %1",LOOPNUM);\
         };\

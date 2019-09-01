@@ -20,12 +20,12 @@ switch (_mode) do {
             private _BluforCap = (GETVAR(_logic,Cap_Blufor,0));
             private _OpforCap = (GETVAR(_logic,Cap_Opfor,0));
             private _IndforCap = (GETVAR(_logic,Cap_Indfor,0));
-            private _CivCap = (GETVAR(_logic,Cap_Civ,0));
+            private _CivCap = (GETVAR(_logic,Cap_Civilian,0));
             private _capArray = [_BluforCap,_OpforCap,_IndforCap,_CivCap];
             private _BluforTime = (GETVAR(_logic,Time_Blufor,30));
             private _OpforTime = (GETVAR(_logic,Time_Opfor,30));
             private _IndforTime = (GETVAR(_logic,Time_Indfor,30));
-            private _CivTime = (GETVAR(_logic,Time_Civ,30));
+            private _CivTime = (GETVAR(_logic,Time_Civilian,30));
             private _timeArray = [_BluforTime,_OpforTime,_IndforTime,_CivTime];
             private _BluforMessageCapturing = GETVAR(_logic,MessageCapturing_Blufor,"BLUFOR is capturing the zone!");
             private _BluforMessageCaptured = GETVAR(_logic,MessageCaptured_Blufor,"BLUFOR has captured the zone!");
@@ -49,7 +49,7 @@ switch (_mode) do {
             if (_OpforColour isEqualTo 'NONE') then {_OpforColour = "colorOPFOR"};
             private _IndforColour = GETVAR(_logic,Colour_Indfor,"colorIndependent");
             if (_IndforColour isEqualTo 'NONE') then {_IndforColour = "colorIndependent"};
-            private _CivColour = GETVAR(_logic,Colour_Civ,"colorCivilian");
+            private _CivColour = GETVAR(_logic,Colour_Civilian,"colorCivilian");
             if (_CivColour isEqualTo 'NONE') then {_CivColour = "colorCivilian"};
             private _ContestedColour = GETVAR(_logic,Colour_Uncontested,"ColorYellow");
             if (_ContestedColour isEqualTo 'NONE') then {_ContestedColour = "ColorYellow"};
@@ -66,7 +66,8 @@ switch (_mode) do {
             private _silent = GETVAR(_logic,Silent,false);
             private _automessages = GETVAR(_logic,AutoMessages,false);
             private _cond = GETVAR(_logic,Condition,true);
-            [_logic,_zoneName,_area,_mode,_capArray,_timeArray,_messagesArray,_colours,_hidden,_silent,_automessages,_ratioNeeded,_cond] call FUNC(Init);
+            private _AICount = GETVAR(_logic,AICount,true);
+            [_logic,_zoneName,_area,_mode,_capArray,_timeArray,_messagesArray,_colours,_hidden,_silent,_automessages,_ratioNeeded,_cond,_AICount] call FUNC(Init);
         };
     };
     // When some attributes were changed (including position and rotation)

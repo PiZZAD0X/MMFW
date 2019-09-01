@@ -21,7 +21,7 @@ class EGVAR(EndConditions,CaptureZoneTeam): Toolbox {
             rows = 1;
             columns = 5;
             values[] = {0,1,2,3,4};
-            strings[] = {"Uncaptured","BLUFOR","OPFOR","Indfor","CIVILIAN"};
+            strings[] = {"Uncaptured","BLUFOR","OPFOR","INDFOR","CIV"};
             onToolboxSelChanged = "\
                 params ['_control','_value'];\
                 private _config = _control getvariable ['ParentCfg',''];\

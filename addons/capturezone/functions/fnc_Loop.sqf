@@ -4,7 +4,7 @@ EXEC_CHECK(SERVER);
 params ["_logic","_zoneName"];
 LOG_2("Activating CaptureZone logic: %1 name: %2 PFH",_logic,_zoneName);
 if (isNil QGVAR(ListArray)) then {GVAR(ListArray) = [];};
-GVAR(ListArray) pushBack _logic;
+GVAR(ListArray) pushBack _zoneName;
 private _varName = format ["%1_var",_zoneName];
 private _teamControllingvarName = format ["%1_teamControlling",_zoneName];
 LOG_2("Activating CaptureZone _varName: %1 _teamControllingvarName: %2 PFH",_varName,_teamControllingvarName);
@@ -13,7 +13,7 @@ GVAR(DOUBLES(PFHhandle,_logic)) = [{
     //var redeclares
     params ["_argNested", "_idPFH"];
     _argNested params ["_args",["_initialized",false,[false]],"_varName","_teamControllingvarName",["_oldOwner","UNCONTESTED",[""]],["_ownerControlCount",0,[0]],"_marker"];
-    _args params ["_logic","_zoneName","_area","_mode","_capArray","_timeArray","_messagesArray","_colours","_hidden","_silent","_automessages","_ratioNeeded"];
+    _args params ["_logic","_zoneName","_area","_mode","_capArray","_timeArray","_messagesArray","_colours","_hidden","_silent","_automessages","_ratioNeeded","","_AICount"];
     _area params ["_loc","_radiusX","_radiusY","_direction","_isRectangle"];
     _colours params ["_bluforcolour","_opforcolour","_indforcolour","_civcolour","_uncontestedcolour","_contestedcolour"];
     _messagesArray params ["_bluformessageArray","_opformessageArray","_indformessageArray","_CIVmessageArray","_contestedmessage","_uncontestedmessage"];
@@ -51,10 +51,27 @@ GVAR(DOUBLES(PFHhandle,_logic)) = [{
     private _indCount = 0;
     private _civCount = 0;
 
-    private _playersInArea = (([] call EFUNC(Core,AlivePlayers)) select {(_x inArea _area) && {(!captive _x)}});
+    private _playersInArea = if (_AICount) then {
+        allUnits select {
+            (_x inArea _area)
+            && {(!captive _x)}
+            && {(alive _x)}
+            && {!(_x getVariable [QEGVAR(Core,Dead), false])}
+            && {!(_x isKindOf "HeadlessClient_F")}
+        };
+    } else {
+        allUnits select {
+            (_x inArea _area)
+            && {(!captive _x)}
+            && {(alive _x)}
+            && {!(_x getVariable [QEGVAR(Core,Dead), false])}
+            && {!(_x isKindOf "HeadlessClient_F")}
+            && {isPlayer _x}
+        };
+    };
 
     if (_playersInArea isEqualTo []) exitwith {
-        if ((missionNamespace getvariable [_varName,false]) && {(_mode isEqualto "REPEATABLE")}) then {
+        if (!(missionNamespace getvariable [_varName,false]) || (_mode isEqualto "REPEATABLE")) then {
             _owner = "UNCONTESTED";
             if !(_owner isEqualto _oldOwner) then {
                 _argNested set [4,_owner];
@@ -144,7 +161,7 @@ GVAR(DOUBLES(PFHhandle,_logic)) = [{
         };
         if (_ratio > _ratioNeeded) then {
             //a team has enough ratio for control!
-            _owner = ["BLUFOR","OPFOR","Indfor","CIVILIAN"] select _maxindex;
+            _owner = ["BLUFOR","OPFOR","INDFOR","CIVILIAN"] select _maxindex;
 
             switch (_owner) do {
                 case "BLUFOR": {
@@ -241,7 +258,7 @@ GVAR(DOUBLES(PFHhandle,_logic)) = [{
                         };
                     };
                 };
-                case "Indfor": {
+                case "INDFOR": {
                     if (_owner isEqualto _oldOwner) then {
                         if (_indforCapMode isEqualTo 0) then {
                             _argNested set [5,(_ownerControlCount + 1)];
