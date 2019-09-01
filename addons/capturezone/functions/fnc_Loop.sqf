@@ -21,15 +21,15 @@ GVAR(DOUBLES(PFHhandle,_logic)) = [{
     private ["_owner","_markername"];
 
     if !(_initialized) then {
-        _argNested set [2,true];
+        _argNested set [1,true];
         _oldOwner = "UNCONTESTED";
         _owner = "UNCONTESTED";
-        _argNested set [6,0];
+        _argNested set [5,0];
 
         if !(_hidden) then {
             _markername = format ["%1_ZoneMarker",_zoneName];
             _marker = createmarker [_markername,_loc];
-            _argNested set [7,_marker];
+            _argNested set [6,_marker];
             if (_isRectangle) then {
                 _marker setMarkerShape "RECTANGLE";
             } else {
@@ -57,8 +57,8 @@ GVAR(DOUBLES(PFHhandle,_logic)) = [{
         if ((missionNamespace getvariable [_varName,false]) && {(_mode isEqualto "REPEATABLE")}) then {
             _owner = "UNCONTESTED";
             if !(_owner isEqualto _oldOwner) then {
-                _argNested set [5,_owner];
-                _argNested set [6,0];
+                _argNested set [4,_owner];
+                _argNested set [5,0];
                 if !(_hidden) then {
                     _marker setMarkerColor _uncontestedcolour;
                     _marker setMarkerAlpha 0.25;
@@ -106,9 +106,9 @@ GVAR(DOUBLES(PFHhandle,_logic)) = [{
     if (({(selectMax [_bluCount, _opCount, _indCount, _civCount] isEqualTo _x) && !(_x isEqualto 0)} count [_bluCount, _opCount, _indCount, _civCount]) > 1) then {
         //it's a tie between 2 or more teams
         _owner = "CONTESTED";
-        _argNested set [6,0];
+        _argNested set [5,0];
         if !(_owner isEqualto _oldOwner) then {
-            _argNested set [5,_owner];
+            _argNested set [4,_owner];
             if !(_hidden) then {
                 _marker setMarkerColor _contestedcolour;
                 _marker setMarkerAlpha 0.25;
@@ -150,8 +150,8 @@ GVAR(DOUBLES(PFHhandle,_logic)) = [{
                 case "BLUFOR": {
                     if (_owner isEqualto _oldOwner) then {
                         if (_bluforCapMode isEqualTo 0) then {
-                            _argNested set [6,(_ownerControlCount + 1)];
-                            if ((_argNested select 6) > (_timeArray select 0)) then {
+                            _argNested set [5,(_ownerControlCount + 1)];
+                            if ((_argNested select 5) > (_timeArray select 0)) then {
                                 //message is blufor has captured
                                 if !(_hidden) then {
                                     _marker setMarkerColor _bluforcolour;
@@ -177,8 +177,8 @@ GVAR(DOUBLES(PFHhandle,_logic)) = [{
                             };
                         };
                     } else {
-                        _argNested set [5,_owner];
-                        _argNested set [6,0];
+                        _argNested set [4,_owner];
+                        _argNested set [5,0];
                         //message if blufor is capturing
                         if !(_hidden) then {
                             _marker setMarkerColor _bluforcolour;
@@ -197,8 +197,8 @@ GVAR(DOUBLES(PFHhandle,_logic)) = [{
                 case "OPFOR": {
                     if (_owner isEqualto _oldOwner) then {
                         if (_opforCapMode isEqualTo 0) then {
-                            _argNested set [6,(_ownerControlCount + 1)];
-                            if ((_argNested select 6) > (_timeArray select 1)) then {
+                            _argNested set [5,(_ownerControlCount + 1)];
+                            if ((_argNested select 5) > (_timeArray select 1)) then {
                                 //message is blufor has captured
                                 if !(_hidden) then {
                                     _marker setMarkerColor _opforcolour;
@@ -225,8 +225,8 @@ GVAR(DOUBLES(PFHhandle,_logic)) = [{
                         };
                     } else {
                         //message if blufor is capturing
-                        _argNested set [5,_owner];
-                        _argNested set [6,0];
+                        _argNested set [4,_owner];
+                        _argNested set [5,0];
                         if !(_hidden) then {
                             _marker setMarkerColor _opforcolour;
                             _marker setMarkerAlpha 0.25;
@@ -244,8 +244,8 @@ GVAR(DOUBLES(PFHhandle,_logic)) = [{
                 case "Indfor": {
                     if (_owner isEqualto _oldOwner) then {
                         if (_indforCapMode isEqualTo 0) then {
-                            _argNested set [6,(_ownerControlCount + 1)];
-                            if ((_argNested select 6) > (_timeArray select 2)) then {
+                            _argNested set [5,(_ownerControlCount + 1)];
+                            if ((_argNested select 5) > (_timeArray select 2)) then {
                                 //message is blufor has captured
                                 if !(_hidden) then {
                                     _marker setMarkerColor _indforcolour;
@@ -272,8 +272,8 @@ GVAR(DOUBLES(PFHhandle,_logic)) = [{
                         };
                     } else {
                         //message if blufor is capturing
-                        _argNested set [5,_owner];
-                        _argNested set [6,0];
+                        _argNested set [4,_owner];
+                        _argNested set [5,0];
                         if !(_hidden) then {
                             _marker setMarkerColor _indforcolour;
                             _marker setMarkerAlpha 0.25;
@@ -291,8 +291,8 @@ GVAR(DOUBLES(PFHhandle,_logic)) = [{
                 case "CIVILIAN": {
                     if (_owner isEqualto _oldOwner) then {
                         if (_civCapMode isEqualTo 0) then {
-                            _argNested set [6,(_ownerControlCount + 1)];
-                            if ((_argNested select 6) > (_timeArray select 3)) then {
+                            _argNested set [5,(_ownerControlCount + 1)];
+                            if ((_argNested select 5) > (_timeArray select 3)) then {
                                 //message is blufor has captured
                                 if !(_hidden) then {
                                     _marker setMarkerColor _CIVcolour;
@@ -318,8 +318,8 @@ GVAR(DOUBLES(PFHhandle,_logic)) = [{
                             };
                         };
                     } else {
-                        _argNested set [5,_owner];
-                        _argNested set [6,0];
+                        _argNested set [4,_owner];
+                        _argNested set [5,0];
                         if !(_hidden) then {
                             _marker setMarkerColor _CIVcolour;
                             _marker setMarkerAlpha 0.25;
@@ -337,8 +337,8 @@ GVAR(DOUBLES(PFHhandle,_logic)) = [{
                 default {
                     _owner = "UNCONTESTED";
                     if !(_owner isEqualto _oldOwner) then {
-                        _argNested set [5,_owner];
-                        _argNested set [6,0];
+                        _argNested set [4,_owner];
+                        _argNested set [5,0];
                         if !(_hidden) then {
                             _marker setMarkerColor _uncontestedcolour;
                             _marker setMarkerAlpha 0.25;
@@ -358,8 +358,8 @@ GVAR(DOUBLES(PFHhandle,_logic)) = [{
             //not enough of a ratio to gain control!
             _owner = "CONTESTED";
             if !(_owner isEqualto _oldOwner) then {
-                _argNested set [6,0];
-                _argNested set [5,_owner];
+                _argNested set [4,_owner];
+                _argNested set [5,0];
                 if !(_hidden) then {
                     _marker setMarkerColor _contestedcolour;
                     _marker setMarkerAlpha 0.25;
