@@ -24,7 +24,7 @@ class CfgMods {
     class PREFIX {
         dir = "@MMFW";
         name = "Mission Maker Framework";
-        picture = "A3\Ui_f\data\Logos\arma3_expansion_alpha_ca";
+        picture = QPATHTOF(resources\MMFWLogo);
         hidePicture = "true";
         hideName = "true";
         actionName = "Website";
