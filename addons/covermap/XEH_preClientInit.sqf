@@ -2,6 +2,8 @@
 EXEC_CHECK(CLIENT);
 //IGNORE_PRIVATE_WARNING ["_x"];
 
+#include "functions\defines\TeamMacro.hpp"
+
 [QGVAR(InitEvent), {
     [QEGVAR(Core,RegisterModuleEvent), ["Cover Map", "Covers map except specified area, allows switching between multiple AOs", "Blackhawk and PIZZADOX"]] call CBA_fnc_localEvent;
     [{(!isNull ace_player)}, {
@@ -12,40 +14,16 @@ EXEC_CHECK(CLIENT);
         if (_StartAO isEqualto "Side Default AO") then {
             switch (side player) do {
                 case west: {
-                    _StartAO = (GETMVAR(DefaultAO_BLUFOR,"No Area Selected"));
-                    if (_StartAO isEqualto "") exitwith {
-                        ERROR("No Default BLUFOR Area defined for CoverMap!");
-                    };
-                    if (((GVAR(AOArray)) findif {_StartAO == (_x select 0)}) isEqualto -1) exitwith {
-                        ERROR_1("Default CoverMap BLUFOR area: %1 does not exist!",_StartAO);
-                    };
+                    COVERMAPTEAMMACRO(BLUFOR);
                 };
                 case east: {
-                    _StartAO = (GETMVAR(DefaultAO_OPFOR,"No Area Selected"));
-                    if (_StartAO isEqualto "No Area Selected") exitwith {
-                        ERROR("No Default OPFOR Area defined for CoverMap!");
-                    };
-                    if ((GVAR(AOArray) findif {_StartAO == (_x select 0)}) isEqualto -1) exitwith {
-                        ERROR_1("Default CoverMap OPFOR area: %1 does not exist!",_StartAO);
-                    };
+                    COVERMAPTEAMMACRO(OPFOR);
                 };
                 case independent: {
-                    _StartAO = (GETMVAR(DefaultAO_Indfor,"No Area Selected"));
-                    if (_StartAO isEqualto "No Area Selected") exitwith {
-                        ERROR("No Default Indfor Area defined for CoverMap!");
-                    };
-                    if ((GVAR(AOArray) findif {_StartAO == (_x select 0)}) isEqualto -1) exitwith {
-                        ERROR_1("Default CoverMap Indfor area: %1 does not exist!",_StartAO);
-                    };
+                    COVERMAPTEAMMACRO(Indfor);
                 };
                 case civilian: {
-                    _StartAO = (GETMVAR(DefaultAO_Civ,"No Area Selected"));
-                    if (_StartAO isEqualto "No Area Selected") exitwith {
-                        ERROR("No Default Civilian Area defined for CoverMap!");
-                    };
-                    if ((GVAR(AOArray) findif {_StartAO == (_x select 0)}) isEqualto -1) exitwith {
-                        ERROR_1("Default CoverMap Civilian area: %1 does not exist!",_StartAO);
-                    };
+                    COVERMAPTEAMMACRO(Civilian);
                 };
                 default {};
             };
@@ -69,16 +47,16 @@ EXEC_CHECK(CLIENT);
             if (_playerActionArray isEqualto []) then {
                 _AOArray = switch (side player) do {
                     case west: {
-                        (GETMVAR(DefaultAOList_BLUFOR,[]));
+                        GETMVAR(DefaultAOList_BLUFOR,[]);
                     };
                     case east: {
-                        (GETMVAR(DefaultAOList_OPFOR,[]));
+                        GETMVAR(DefaultAOList_OPFOR,[]);
                     };
                     case independent: {
-                        (GETMVAR(DefaultAOList_Indfor,[]));
+                        GETMVAR(DefaultAOList_Indfor,[]);
                     };
                     case civilian: {
-                        (GETMVAR(DefaultAOList_Civ,[]));
+                        GETMVAR(DefaultAOList_Civ,[]);
                     };
                     default {[]};
                 };

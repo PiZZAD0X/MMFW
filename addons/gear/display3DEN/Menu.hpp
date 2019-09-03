@@ -10,39 +10,27 @@ class GVAR(LoadOnAll) {
     picture = "\a3\modules_f\data\portraitModule_ca.paa";
 };
 
-class GVAR(Configure_Blufor) {
-    text = "Configure Blufor Gear";
-    action = QUOTE(edit3DENMissionAttributes QQGVAR(Menu_Blufor));
-    picture = "\a3\3DEN\Data\Displays\Display3DEN\PanelRight\side_west_ca.paa";
-};
 
-class GVAR(Configure_Opfor) {
-    text = "Configure Opfor Gear";
-    action = QUOTE(edit3DENMissionAttributes QQGVAR(Menu_Opfor));
-    picture = "\a3\3DEN\Data\Displays\Display3DEN\PanelRight\side_east_ca.paa";
-};
+#define GEARTEAMMENUMAIN(TEAMNAME,ICONNAME) class GVAR(DOUBLES(Configure,TEAMNAME)) {\
+    text = QUOTE(Configure TEAMNAME Gear);\
+    action = QUOTE(edit3DENMissionAttributes QQGVAR(DOUBLES(Menu,TEAMNAME)));\
+    picture = QUOTE(\a3\3DEN\Data\Displays\Display3DEN\PanelRight\ICONNAME.paa);\
+}
 
-class GVAR(Configure_Indfor) {
-    text = "Configure Indfor Gear";
-    action = QUOTE(edit3DENMissionAttributes QQGVAR(Menu_Indfor));
-    picture = "\a3\3DEN\Data\Displays\Display3DEN\PanelRight\side_guer_ca.paa";
-};
-
-class GVAR(Configure_Civ) {
-    text = "Configure Civilian Gear";
-    action = QUOTE(edit3DENMissionAttributes QQGVAR(Menu_Civ));
-    picture = "\a3\3DEN\Data\Displays\Display3DEN\PanelRight\side_civ_ca.paa";
-};
+GEARTEAMMENUMAIN(Blufor,side_west_ca);
+GEARTEAMMENUMAIN(Opfor,side_east_ca);
+GEARTEAMMENUMAIN(Indfor,side_guer_ca);
+GEARTEAMMENUMAIN(Civilian,side_civ_ca);
 
 class GVAR(Folder) {
     text = "Configure Gear";
     items[] = {
         QGVAR(Settings),
         QGVAR(LoadOnAll),
-        QGVAR(Configure_Blufor),
-        QGVAR(Configure_Opfor),
-        QGVAR(Configure_Indfor),
-        QGVAR(Configure_Civ)
+        QGVAR(DOUBLES(Configure,Blufor)),
+        QGVAR(DOUBLES(Configure,Opfor)),
+        QGVAR(DOUBLES(Configure,Indfor)),
+        QGVAR(DOUBLES(Configure,Civilian))
     };
     picture = "\a3\3DEN\Data\Displays\Display3DEN\EntityMenu\arsenal_ca.paa";
 };

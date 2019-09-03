@@ -27,8 +27,8 @@ switch (side player) do {
         _distance = EGETMVAR(Respawn,Distance_Indfor,200);
     };
     case civilian: {
-        _type = EGETMVAR(Respawn,Type_Civ,0);
-        _distance = EGETMVAR(Respawn,Distance_Civ,200);
+        _type = EGETMVAR(Respawn,Type_Civilian,0);
+        _distance = EGETMVAR(Respawn,Distance_Civilian,200);
     };
 };
 LOG_1("Adding Jip Actions: Type=%1",_type);

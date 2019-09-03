@@ -23,8 +23,8 @@ switch (side player) do {
         _templateSettings = EGETMVAR(Respawn,Templates_Indfor,[]);
     };
     case civilian: {
-        _delay = EGETMVAR(Respawn,Delay_Civ,5);
-        _templateSettings = EGETMVAR(Respawn,Templates_Civ,[]);
+        _delay = EGETMVAR(Respawn,Delay_Civilian,5);
+        _templateSettings = EGETMVAR(Respawn,Templates_Civilian,[]);
     };
 };
 

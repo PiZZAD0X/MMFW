@@ -1,3 +1,24 @@
+#define STARTTEXTTEAMATTR(TEAMNAMEVAR) class GVAR(DOUBLES(TitleQuote,TEAMNAMEVAR)) {\
+    displayName = QUOTE(TEAMNAMEVAR Title Quote);\
+    tooltip = QUOTE(Title Quote of the TEAMNAMEVAR Start Text. Empty for none);\
+    control = "Edit";\
+    property = QGVAR(DOUBLES(TitleQuote,TEAMNAMEVAR));\
+    defaultValue = "''";\
+    typeName = "STRING";\
+    expression = SCENARIO_EXPRESSION;\
+    validate = "none";\
+};\
+class GVAR(DOUBLES(Text,TEAMNAMEVAR)) {\
+    displayName = QUOTE(TEAMNAMEVAR Text);\
+    tooltip = QUOTE(Text of the TEAMNAMEVAR Start Text. Empty for none);\
+    control = "Edit";\
+    property = QGVAR(DOUBLES(Text,TEAMNAMEVAR));\
+    defaultValue = "''";\
+    typeName = "STRING";\
+    expression = SCENARIO_EXPRESSION;\
+    validate = "none";\
+}
+
 class GVAR(Category) {
     displayName = "Start Text Settings";
     collapsed = 1;
@@ -26,85 +47,9 @@ class GVAR(Category) {
             };
             defaultValue = "2";
         };
-        class GVAR(TitleQuote_Blufor) {
-            displayName = "Blufor Title Quote";
-            tooltip = "Title Quote of the Blufor Start Text. Empty for none";
-            control = "Edit";
-            property = QGVAR(TitleQuote_Blufor);
-            defaultValue = "''";
-            typeName = "STRING";
-            expression = SCENARIO_EXPRESSION;
-            validate = "none";
-        };
-        class GVAR(Text_Blufor) {
-            displayName = "Blufor Text";
-            tooltip = "Text of the Blufor Start Text. Empty for none";
-            control = "Edit";
-            property = QGVAR(Text_Blufor);
-            defaultValue = "''";
-            typeName = "STRING";
-            expression = SCENARIO_EXPRESSION;
-            validate = "none";
-        };
-        class GVAR(TitleQuote_Opfor) {
-            displayName = "Opfor Title Quote";
-            tooltip = "Title Quote of the Opfor Start Text. Empty for none";
-            control = "Edit";
-            property = QGVAR(TitleQuote_Opfor);
-            defaultValue = "''";
-            typeName = "STRING";
-            expression = SCENARIO_EXPRESSION;
-            validate = "none";
-        };
-        class GVAR(Text_Opfor) {
-            displayName = "Opfor Text";
-            tooltip = "Text of the Opfor Start Text. Empty for none";
-            control = "Edit";
-            property = QGVAR(Text_Opfor);
-            defaultValue = "''";
-            typeName = "STRING";
-            expression = SCENARIO_EXPRESSION;
-            validate = "none";
-        };
-        class GVAR(TitleQuote_Indfor) {
-            displayName = "Independent Title Quote";
-            tooltip = "Title Quote of the Independent Start Text. Empty for none";
-            control = "Edit";
-            property = QGVAR(TitleQuote_Indfor);
-            defaultValue = "''";
-            typeName = "STRING";
-            expression = SCENARIO_EXPRESSION;
-            validate = "none";
-        };
-        class GVAR(Text_Indfor) {
-            displayName = "Independent Text";
-            tooltip = "Text of the Independent Start Text. Empty for none";
-            control = "Edit";
-            property = QGVAR(Text_Indfor);
-            defaultValue = "''";
-            typeName = "STRING";
-            expression = SCENARIO_EXPRESSION;
-            validate = "none";
-        };
-        class GVAR(TitleQuote_Civ) {
-            displayName = "Civilian Title Quote";
-            tooltip = "Title Quote of the Civilian Start Text. Empty for none";
-            control = "Edit";
-            property = QGVAR(TitleQuote_Civ);
-            defaultValue = "''";
-            typeName = "STRING";
-            expression = SCENARIO_EXPRESSION;
-            validate = "none";
-        };
-        class GVAR(Text_Civ) {
-            displayName = "Civilian Text";
-            tooltip = "Text of the Civilian Start Text. Empty for none";
-            control = "Edit";
-            property = QGVAR(Text_Civ);
-            defaultValue = "''";
-            typeName = "STRING";
-            expression = SCENARIO_EXPRESSION;
-            validate = "none";
-        };
+        STARTTEXTTEAMATTR(Blufor);
+        STARTTEXTTEAMATTR(Opfor);
+        STARTTEXTTEAMATTR(Indfor);
+        STARTTEXTTEAMATTR(Civilian);
     };
 };

@@ -46,7 +46,7 @@
                 };\
                 private _CasConditionCheck_Civ = false;\
                 if (EGETMVAR(EndConditions,DOUBLES(CasualtyCount_Enabled_Civ,LOOPNUM),false)) then {\
-                    private _civCasualty = GVAR(TeamName_Civ) call FUNC(CasualtyPercentage);\
+                    private _civCasualty = GVAR(TeamName_Civilian) call FUNC(CasualtyPercentage);\
                     if (_civCasualty >= EGETMVAR(EndConditions,DOUBLES(CasualtyCount_Percentage_Civ,LOOPNUM),75)) then {_CasConditionCheck_Civ = true;} else {_CasConditionCheck_Civ = false;};\
                     _ConditionCheckList pushback ["CIVILIAN Cas Check",_CasConditionCheck_Civ];\
                 };\
@@ -163,7 +163,7 @@
                 private _ExtractionCheck = false;\
                 if (EGETMVAR(EndConditions,DOUBLES(ExtractionEnabled,LOOPNUM),false)) then {\
                     LOG_1("Checking Extraction for Category %1",LOOPNUM);\
-                    private _team = ([GVAR(TeamName_Blufor),GVAR(TeamName_Opfor),GVAR(TeamName_Indfor),GVAR(TeamName_Civ)] select (EGETMVAR(EndConditions,DOUBLES(ExtractionTeam,LOOPNUM),0)));\
+                    private _team = ([GVAR(TeamName_Blufor),GVAR(TeamName_Opfor),GVAR(TeamName_Indfor),GVAR(TeamName_Civilian)] select (EGETMVAR(EndConditions,DOUBLES(ExtractionTeam,LOOPNUM),0)));\
                     private _moduleName = EGETMVAR(EndConditions,DOUBLES(ExtractionMarker,LOOPNUM),"No Area Defined");\
                     if (_moduleName isEqualTo "No Area Defined") exitwith {\
                         ERROR_1("Extraction Module for Category %1 Not Defined",LOOPNUM);\

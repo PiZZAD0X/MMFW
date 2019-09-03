@@ -59,17 +59,17 @@ switch (side player) do {
         _thirdPersonSetting = EGETMVAR(Spectator,3rdPerson_INDFOR,true);
     };
     case civilian: {
-        _delay = EGETMVAR(Respawn,Delay_Civ,5);
-        private _teamSpectateVarValue = EGETMVAR(Spectator,EnabledTeams_Civ,[]);
+        _delay = EGETMVAR(Respawn,Delay_Civilian,5);
+        private _teamSpectateVarValue = EGETMVAR(Spectator,EnabledTeams_Civilian,[]);
         _teamSpectateList = [];
         if ("BLUFOR" in _teamSpectateVarValue) then {_teamSpectateList pushBackUnique BLUFOR};
         if ("OPFOR" in _teamSpectateVarValue) then {_teamSpectateList pushBackUnique OPFOR};
         if ("INDFOR" in _teamSpectateVarValue) then {_teamSpectateList pushBackUnique INDEPENDENT};
         if ("CIVILIAN" in _teamSpectateVarValue) then {_teamSpectateList pushBackUnique CIVILIAN};
-        _killCamSetting = EGETMVAR(Spectator,KillCam_Civ,true);
-        _AISetting = EGETMVAR(Spectator,AIEnabled_Civ,true);
-        _freeCamSetting = EGETMVAR(Spectator,FreeCam_Civ,true);
-        _thirdPersonSetting = EGETMVAR(Spectator,3rdPerson_Civ,true);
+        _killCamSetting = EGETMVAR(Spectator,KillCam_Civilian,true);
+        _AISetting = EGETMVAR(Spectator,AIEnabled_Civilian,true);
+        _freeCamSetting = EGETMVAR(Spectator,FreeCam_Civilian,true);
+        _thirdPersonSetting = EGETMVAR(Spectator,3rdPerson_Civilian,true);
     };
 };
 

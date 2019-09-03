@@ -1,30 +1,150 @@
-class EGVAR(Respawn,Settings_BLUFOR) {
-    displayName = "BLUFOR Respawn Settings";
+#define RESPAWNMENUTEAM(TEAMNAMEVAR) class EGVAR(Respawn,DOUBLES(Settings,TEAMNAMEVAR)) {
+    displayName = QUOTE(TEAMNAMEVAR Respawn Settings);
     class AttributeCategories {
-        #include "Respawn\BluforRespawn.hpp"
-    };
-};
+        class EGVAR(Respawn,DOUBLES(TeamSettings,TEAMNAMEVAR)) {\
+            displayName = QUOTE(TEAMNAMEVAR Respawn Settings);\
+            collapsed = 0;\
+            class Attributes {\
+                class EGVAR(Respawn,DOUBLES(Type,TEAMNAMEVAR)) {\
+                    displayName = "Respawn System";\
+                    tooltip = QUOTE(Type of respawn system for TEAMNAMEVAR. Place down a GameLogic object with name GVAR(DOUBLES(RESPAWN,TEAMNAMEVAR)) to define respawn location.);\
+                    control = QEGVAR(Respawn,DOUBLES(Combo,TEAMNAMEVAR));\
+                    defaultValue = "0";\
+                    property = QEGVAR(Respawn,DOUBLES(Type,TEAMNAMEVAR));\
+                    expression = SCENARIO_EXPRESSION;\
+                };\
+                class EGVAR(Respawn,DOUBLES(Templates,TEAMNAMEVAR)) {\
+                    property = QEGVAR(Respawn,DOUBLES(Templates,TEAMNAMEVAR));\
+                    displayName = "Respawn System Settings";\
+                    tooltip = "";\
+                    control = QEGVAR(Respawn,DOUBLES(Templates,TEAMNAMEVAR));\
+                    expression = SCENARIO_EXPRESSION;\
+                    defaultValue = "['']";\
+                };\
+                class EGVAR(Respawn,DOUBLES(NewTeam,TEAMNAMEVAR)) {\
+                    property = QEGVAR(Respawn,DOUBLES(NewTeam,TEAMNAMEVAR));\
+                    displayName = "Respawn Side";\
+                    tooltip = QUOTE(Determines what side the originally TEAMNAMEVAR players will spawn on. Enabling this setting requires respawned players to join a new group.);\
+                    respawnTypes[] = {1,2,3};\
+                    control = QEGVAR(Respawn,Side_Combo);\
+                    expression = SCENARIO_EXPRESSION;\
+                    defaultValue = "3";\
+                };\
+                class EGVAR(Respawn,DOUBLES(Delay,TEAMNAMEVAR)) {\
+                    property = QEGVAR(Respawn,DOUBLES(Delay,TEAMNAMEVAR));\
+                    displayName = "Respawn Delay";\
+                    tooltip = "Delay in seconds between a player being killed and respawning. Must be more than 5 seconds.";\
+                    respawnTypes[] = {1,2,3,4,5};\
+                    control = QGVAR(5To20Step1_Slider);\
+                    expression = SCENARIO_EXPRESSION;\
+                    defaultValue = "5";\
+                    validate = "number";\
+                };\
+                class EGVAR(Respawn,DOUBLES(IndTickets,TEAMNAMEVAR)) {\
+                    property = QEGVAR(Respawn,DOUBLES(IndTickets,TEAMNAMEVAR));\
+                    displayName = "Individual Respawn Tickets";\
+                    tooltip = "Number of individual respawns.";\
+                    respawnTypes[] = {2};\
+                    control = QGVAR(1To10Step1_Slider);\
+                    expression = SCENARIO_EXPRESSION;\
+                    defaultValue = "2";\
+                    validate = "number";\
+                };\
+                class EGVAR(Respawn,DOUBLES(TeamTickets,TEAMNAMEVAR)) {\
+                    property = QEGVAR(Respawn,DOUBLES(TeamTickets,TEAMNAMEVAR));\
+                    displayName = "Team Respawn Tickets";\
+                    tooltip = "Number of team respawns.";\
+                    respawnTypes[] = {3};\
+                    control = QGVAR(10To100Step1_Slider);\
+                    expression = SCENARIO_EXPRESSION;\
+                    defaultValue = "30";\
+                    validate = "number";\
+                };\
+            };\
+        };\
+        \
+        class EGVAR(Spectator,TEAMNAMEVAR) {\
+            displayName = QUOTE(TEAMNAMEVAR Spectate Settings);\
+            collapsed = 0;\
+            class Attributes {\
+                class EGVAR(Spectator,DOUBLES(EnabledTeams,TEAMNAMEVAR)) {\
+                    property = QEGVAR(Spectate,DOUBLES(EnabledTeams,TEAMNAMEVAR));\
+                    displayName = "Spectate Teams";\
+                    tooltip = "Teams that this team can spectate.";\
+                    control = QEGVAR(Spectator,Teams_Attribute);\
+                    defaultValue = "['BLUFOR','OPFOR','INDFOR','CIVILIAN']";\
+                    expression = SCENARIO_EXPRESSION;\
+                };\
+                class EGVAR(Spectator,DOUBLES(KillCam,TEAMNAMEVAR)) {\
+                    property = QEGVAR(Spectate,DOUBLES(KillCam,TEAMNAMEVAR));\
+                    displayName = "Killcam";\
+                    tooltip = "This setting enables the specator killcam functionality.";\
+                    control = "CheckBox";\
+                    expression = SCENARIO_EXPRESSION;\
+                    defaultValue = "true";\
+                };\
+                class EGVAR(Spectator,DOUBLES(AIEnabled,TEAMNAMEVAR)) {\
+                    property = QEGVAR(Spectate,DOUBLES(AIEnabled,TEAMNAMEVAR));\
+                    displayName = "Spectate AI";\
+                    tooltip = "Enable Spectating AI Entities.";\
+                    control = "CheckBox";\
+                    expression = SCENARIO_EXPRESSION;\
+                    defaultValue = "true";\
+                };\
+                class EGVAR(Spectator,DOUBLES(FreeCam,TEAMNAMEVAR)) {\
+                    property = QEGVAR(Spectate,DOUBLES(FreeCam,TEAMNAMEVAR));\
+                    displayName = "Spectator Freecam";\
+                    tooltip = "Enable Freecam Ability in Spectator.";\
+                    control = "CheckBox";\
+                    expression = SCENARIO_EXPRESSION;\
+                    defaultValue = "true";\
+                };\
+                class EGVAR(Spectator,DOUBLES(3rdPerson,TEAMNAMEVAR)) {\
+                    property = QEGVAR(Spectate,DOUBLES(3rdPerson,TEAMNAMEVAR));\
+                    displayName = "Spectator Third Person";\
+                    tooltip = "Enable Third Person Ability in Spectator.";\
+                    control = "CheckBox";\
+                    expression = SCENARIO_EXPRESSION;\
+                    defaultValue = "true";\
+                };\
+            };\
+        };\
+        class EGVAR(TeamJIPSettings,TEAMNAMEVAR) {\
+            displayName = QUOTE(TEAMNAMEVAR JiP Settings);\
+            collapsed = 0;\
+            class Attributes {\
+                class EGVAR(JIP,DOUBLES(Type,TEAMNAMEVAR)) {\
+                    property = QEGVAR(JIP,DOUBLES(Type,TEAMNAMEVAR));\
+                    displayName = "JiP Type";\
+                    tooltip = "TELEPORT: Player can teleport to his squad. TRANSPORT: Player can send a hint to all group leaders requesting transport. DENY: Player is killed and put in spectator.";\
+                    control = QEGVAR(JIP,TypeAtt);\
+                    expression = SCENARIO_EXPRESSION;\
+                    validate = "number";\
+                    defaultValue = "0";\
+                };\
+                class EGVAR(JIP,DOUBLES(Distance,TEAMNAMEVAR)) {\
+                    property = QEGVAR(JIP,DOUBLES(Distance,TEAMNAMEVAR));\
+                    displayName = "JiP Distance";\
+                    tooltip = "If distance to group members upon spawn is greater than this you will be granted the defined JiP action";\
+                    control = QGVAR(50To200Step50_Slider);\
+                    expression = SCENARIO_EXPRESSION;\
+                    validate = "number";\
+                    defaultValue = "200";\
+                };\
+                class EGVAR(JIP,DOUBLES(SpawnDistance,TEAMNAMEVAR)) {\
+                    property = QEGVAR(JIP,DOUBLES(SpawnDistance,TEAMNAMEVAR));\
+                    displayName = "Spawn Radius";\
+                    tooltip = "Exiting this radius will remove the JiP actions from the player.";\
+                    control = QGVAR(50To200Step50_Slider);\
+                    expression = SCENARIO_EXPRESSION;\
+                    validate = "number";\
+                    defaultValue = "50";\
+                };\
+            };\
+        };\
+    };\
+}
 
-class EGVAR(Respawn,Settings_OPFOR) {
-    displayName = "OPFOR Respawn Settings";
-    class AttributeCategories {
-        #include "Respawn\OpforRespawn.hpp"
-    };
-};
-
-class EGVAR(Respawn,Settings_Indfor) {
-    displayName = "Indfor Respawn Settings";
-    class AttributeCategories {
-        #include "Respawn\IndforRespawn.hpp"
-    };
-};
-
-class EGVAR(Respawn,Settings_Civ) {
-    displayName = "Civilian Respawn Settings";
-    class AttributeCategories {
-        #include "Respawn\CivilianRespawn.hpp"
-    };
-};
 
 class EGVAR(Respawn,Settings_Main) {
     displayName = "General Respawn Settings";
@@ -32,6 +152,11 @@ class EGVAR(Respawn,Settings_Main) {
         #include "Respawn\MainRespawn.hpp"
     };
 };
+
+RESPAWNMENUTEAM(BLUFOR);
+RESPAWNMENUTEAM(OPFOR);
+RESPAWNMENUTEAM(INDFOR);
+RESPAWNMENUTEAM(CIVILIAN);
 
 class EGVAR(EndConditions,SettingsMenu) {
     displayName = "End Condition Settings";

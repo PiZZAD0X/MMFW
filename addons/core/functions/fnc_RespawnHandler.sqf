@@ -23,7 +23,7 @@ switch (side player) do {
         _respawnType = ["ONELIFE","UNLIMITED","INDTICK","TEAMTICK"] select _respawnTypeNum;
     };
     case civilian: {
-        private _respawnTypeNum = EGETMVAR(Respawn,Type_Civ,0);
+        private _respawnTypeNum = EGETMVAR(Respawn,Type_Civilian,0);
         _respawnType = ["ONELIFE","UNLIMITED","INDTICK","TEAMTICK"] select _respawnTypeNum;
     };
 };

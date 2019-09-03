@@ -1,6 +1,8 @@
 #include "script_component.hpp"
 EXEC_CHECK(SERVER);
 
+#include "defines\TeamLoop.hpp"
+
 params ["_logic","_zoneName"];
 LOG_2("Activating CaptureZone logic: %1 name: %2 PFH",_logic,_zoneName);
 if (isNil QGVAR(ListArray)) then {GVAR(ListArray) = [];};
@@ -18,6 +20,7 @@ GVAR(DOUBLES(PFHhandle,_logic)) = [{
     _colours params ["_bluforcolour","_opforcolour","_indforcolour","_civcolour","_uncontestedcolour","_contestedcolour"];
     _messagesArray params ["_bluformessageArray","_opformessageArray","_indformessageArray","_CIVmessageArray","_contestedmessage","_uncontestedmessage"];
     _capArray params ["_bluforCapMode","_opforCapMode","_indforCapMode","_civCapMode"];
+    _timeArray params ["_bluforTime","_opforTime","_indforTime","_civTime"];
     private ["_owner","_markername"];
 
     if !(_initialized) then {
@@ -120,6 +123,8 @@ GVAR(DOUBLES(PFHhandle,_logic)) = [{
         };
     } foreach _playersInArea;
 
+    LOG_5("CaptureZone:%1 _bluCount:%2 _opCount:%3 _indCount:%4 _civCount:%5",_zoneName,_bluCount,_opCount,_indCount,_civCount);
+
     if (({(selectMax [_bluCount, _opCount, _indCount, _civCount] isEqualTo _x) && !(_x isEqualto 0)} count [_bluCount, _opCount, _indCount, _civCount]) > 1) then {
         //it's a tie between 2 or more teams
         _owner = "CONTESTED";
@@ -159,198 +164,15 @@ GVAR(DOUBLES(PFHhandle,_logic)) = [{
             _ratio = 10;
             _2ndplace = 0;
         };
-        if (_ratio > _ratioNeeded) then {
+        if (_ratio >= _ratioNeeded) then {
             //a team has enough ratio for control!
             _owner = ["BLUFOR","OPFOR","INDFOR","CIVILIAN"] select _maxindex;
 
             switch (_owner) do {
-                case "BLUFOR": {
-                    if (_owner isEqualto _oldOwner) then {
-                        if (_bluforCapMode isEqualTo 0) then {
-                            _argNested set [5,(_ownerControlCount + 1)];
-                            if ((_argNested select 5) > (_timeArray select 0)) then {
-                                //message is blufor has captured
-                                if !(_hidden) then {
-                                    _marker setMarkerColor _bluforcolour;
-                                    _marker setMarkerAlpha 0.5;
-                                };
-                                if !(_silent) then {
-                                    if (_automessages) then {
-                                        private _msg = format ["%1 has captured %2!",EGVAR(Core,TeamName_Blufor),_zoneName];
-                                        _msg remoteExec ["hintsilent"];
-                                    } else {
-                                        (_bluformessageArray select 1) remoteExec ["hintsilent"];
-                                    };
-                                };
-                                MissionNamespace setvariable [_varName,true];
-                                MissionNamespace setvariable [_teamControllingvarName,"BLUFOR"];
-                                if (_mode isEqualto "ONCE") exitWith {
-                                    if !(_hidden) then {
-                                        _marker setMarkerAlpha 0.5;
-                                        _marker setMarkerBrush "Border";
-                                    };
-                                    [_idPFH] call CBA_fnc_removePerFrameHandler;
-                                };
-                            };
-                        };
-                    } else {
-                        _argNested set [4,_owner];
-                        _argNested set [5,0];
-                        //message if blufor is capturing
-                        if !(_hidden) then {
-                            _marker setMarkerColor _bluforcolour;
-                            _marker setMarkerAlpha 0.25;
-                        };
-                        if !(_silent) then {
-                            if (_automessages) then {
-                                private _msg = format ["%1 is capturing %2!",EGVAR(Core,TeamName_Blufor),_zoneName];
-                                _msg remoteExec ["hintsilent"];
-                            } else {
-                                (_bluformessageArray select 0) remoteExec ["hintsilent"];
-                            };
-                        };
-                    };
-                };
-                case "OPFOR": {
-                    if (_owner isEqualto _oldOwner) then {
-                        if (_opforCapMode isEqualTo 0) then {
-                            _argNested set [5,(_ownerControlCount + 1)];
-                            if ((_argNested select 5) > (_timeArray select 1)) then {
-                                //message is blufor has captured
-                                if !(_hidden) then {
-                                    _marker setMarkerColor _opforcolour;
-                                    _marker setMarkerAlpha 0.5;
-                                };
-                                if !(_silent) then {
-                                    if (_automessages) then {
-                                        private _msg = format ["%1 has captured %2!",EGVAR(Core,TeamName_Opfor),_zoneName];
-                                        _msg remoteExec ["hintsilent"];
-                                    } else {
-                                        (_opformessageArray select 1) remoteExec ["hintsilent"];
-                                    };
-                                };
-                                MissionNamespace setvariable [_varName,true];
-                                MissionNamespace setvariable [_teamControllingvarName,"OPFOR"];
-                                if (_mode isEqualto "ONCE") exitWith {
-                                    if !(_hidden) then {
-                                        _marker setMarkerAlpha 0.5;
-                                        _marker setMarkerBrush "Border";
-                                    };
-                                    [_idPFH] call CBA_fnc_removePerFrameHandler;
-                                };
-                            };
-                        };
-                    } else {
-                        //message if blufor is capturing
-                        _argNested set [4,_owner];
-                        _argNested set [5,0];
-                        if !(_hidden) then {
-                            _marker setMarkerColor _opforcolour;
-                            _marker setMarkerAlpha 0.25;
-                        };
-                        if !(_silent) then {
-                            if (_automessages) then {
-                                private _msg = format ["%1 is capturing %2!",EGVAR(Core,TeamName_Opfor),_zoneName];
-                                _msg remoteExec ["hintsilent"];
-                            } else {
-                                (_opformessageArray select 0) remoteExec ["hintsilent"];
-                            };
-                        };
-                    };
-                };
-                case "INDFOR": {
-                    if (_owner isEqualto _oldOwner) then {
-                        if (_indforCapMode isEqualTo 0) then {
-                            _argNested set [5,(_ownerControlCount + 1)];
-                            if ((_argNested select 5) > (_timeArray select 2)) then {
-                                //message is blufor has captured
-                                if !(_hidden) then {
-                                    _marker setMarkerColor _indforcolour;
-                                    _marker setMarkerAlpha 0.5;
-                                };
-                                if !(_silent) then {
-                                    if (_automessages) then {
-                                        private _msg = format ["%1 has captured %2!",EGVAR(Core,TeamName_Indfor),_zoneName];
-                                        _msg remoteExec ["hintsilent"];
-                                    } else {
-                                        (_indformessageArray select 1) remoteExec ["hintsilent"];
-                                    };
-                                };
-                                MissionNamespace setvariable [_varName,true];
-                                MissionNamespace setvariable [_teamControllingvarName,"Indfor"];
-                                if (_mode isEqualto "ONCE") exitWith {
-                                    if !(_hidden) then {
-                                        _marker setMarkerAlpha 0.5;
-                                        _marker setMarkerBrush "Border";
-                                    };
-                                    [_idPFH] call CBA_fnc_removePerFrameHandler;
-                                };
-                            };
-                        };
-                    } else {
-                        //message if blufor is capturing
-                        _argNested set [4,_owner];
-                        _argNested set [5,0];
-                        if !(_hidden) then {
-                            _marker setMarkerColor _indforcolour;
-                            _marker setMarkerAlpha 0.25;
-                        };
-                        if !(_silent) then {
-                            if (_automessages) then {
-                                private _msg = format ["%1 is capturing %2!",EGVAR(Core,TeamName_Indfor),_zoneName];
-                                _msg remoteExec ["hintsilent"];
-                            } else {
-                                (_indformessageArray select 0) remoteExec ["hintsilent"];
-                            };
-                        };
-                    };
-                };
-                case "CIVILIAN": {
-                    if (_owner isEqualto _oldOwner) then {
-                        if (_civCapMode isEqualTo 0) then {
-                            _argNested set [5,(_ownerControlCount + 1)];
-                            if ((_argNested select 5) > (_timeArray select 3)) then {
-                                //message is blufor has captured
-                                if !(_hidden) then {
-                                    _marker setMarkerColor _CIVcolour;
-                                    _marker setMarkerAlpha 0.5;
-                                };
-                                if !(_silent) then {
-                                    if (_automessages) then {
-                                        private _msg = format ["%1 has captured %2!",EGVAR(Core,TeamName_Civ),_zoneName];
-                                        _msg remoteExec ["hintsilent"];
-                                    } else {
-                                        (_CIVmessageArray select 1) remoteExec ["hintsilent"];
-                                    };
-                                };
-                                MissionNamespace setvariable [_varName,true];
-                                MissionNamespace setvariable [_teamControllingvarName,"CIVILIAN"];
-                                if (_mode isEqualto "ONCE") exitWith {
-                                    if !(_hidden) then {
-                                        _marker setMarkerAlpha 0.5;
-                                        _marker setMarkerBrush "Border";
-                                    };
-                                    [_idPFH] call CBA_fnc_removePerFrameHandler;
-                                };
-                            };
-                        };
-                    } else {
-                        _argNested set [4,_owner];
-                        _argNested set [5,0];
-                        if !(_hidden) then {
-                            _marker setMarkerColor _CIVcolour;
-                            _marker setMarkerAlpha 0.25;
-                        };
-                        if !(_silent) then {
-                            if (_automessages) then {
-                                private _msg = format ["%1 is capturing %2!",EGVAR(Core,TeamName_Civ),_zoneName];
-                                _msg remoteExec ["hintsilent"];
-                            } else {
-                                (_CIVmessageArray select 0) remoteExec ["hintsilent"];
-                            };
-                        };
-                    };
-                };
+                CAPTUREZONETEAMLOOP(BLUFOR,_bluforCapMode,_bluforcolour,_bluforTime,_bluformessageArray);
+                CAPTUREZONETEAMLOOP(BLUFOR,_opforCapMode,_opforcolour,_opforTime,_opformessageArray);
+                CAPTUREZONETEAMLOOP(BLUFOR,_indforCapMode,_indforcolour,_indforTime,_indformessageArray);
+                CAPTUREZONETEAMLOOP(BLUFOR,_civCapMode,_civcolour,_civTime,_civmessageArray);
                 default {
                     _owner = "UNCONTESTED";
                     if !(_owner isEqualto _oldOwner) then {

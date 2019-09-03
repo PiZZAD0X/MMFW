@@ -32,13 +32,13 @@ switch (side player) do {
         _teamRespawnMarker = QGVAR(RESPAWN_Indfor);
     };
     case civilian: {
-        private _respawnTypeNum = EGETMVAR(Respawn,Type_Civ,0);
+        private _respawnTypeNum = EGETMVAR(Respawn,Type_Civilian,0);
         _respawnType = ["ONELIFE","UNLIMITED","INDTICK","TEAMTICK"] select _respawnTypeNum;
-        _delay = EGETMVAR(Respawn,Delay_Civ,5);
-        _templateSettings = EGETMVAR(Respawn,Templates_Civ,[]);
-        private _newSideValue = EGETMVAR(Respawn,NewTeam_Civ,3);
+        _delay = EGETMVAR(Respawn,Delay_Civilian,5);
+        _templateSettings = EGETMVAR(Respawn,Templates_Civilian,[]);
+        private _newSideValue = EGETMVAR(Respawn,NewTeam_Civilian,3);
         _newSideSetting = [blufor,opfor,independent,civilian] select _newSideValue;
-        _teamRespawnMarker = QGVAR(RESPAWN_Civ);
+        _teamRespawnMarker = QGVAR(RESPAWN_Civilian);
     };
 };
 

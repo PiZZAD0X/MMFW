@@ -26,14 +26,12 @@ private _count = {
     (_x inArea _marker)
 } count ([_side] call FUNC(alivePlayers));
 
-private ["_respawnTypeNum","_result"];
-
-_result = false;
+private _result = false;
 _ratio = _ratio/100;
 
 switch (_side) do {
     case west: {
-        _respawnTypeNum = EGETMVAR(EndConditions,hasDeparted_BLUFOR,false);
+        private _respawnTypeNum = EGETMVAR(EndConditions,hasDeparted_BLUFOR,false);
         if (_count >= _ratio * ([_team, 4] call FUNC(getTeamVariable))) then {
             if (_respawnTypeNum) then {
                 _result = true;
@@ -43,7 +41,7 @@ switch (_side) do {
         };
     };
     case east: {
-        _respawnTypeNum = EGETMVAR(EndConditions,hasDeparted_OPFOR,false);
+        private _respawnTypeNum = EGETMVAR(EndConditions,hasDeparted_OPFOR,false);
         if (_count >= _ratio * ([_team, 4] call FUNC(getTeamVariable))) then {
             if (_respawnTypeNum) then {
                 _result = true;
@@ -53,7 +51,7 @@ switch (_side) do {
         };
     };
     case independent: {
-        _respawnTypeNum = EGETMVAR(EndConditions,hasDeparted_Indfor,false);
+        private _respawnTypeNum = EGETMVAR(EndConditions,hasDeparted_Indfor,false);
         if (_count >= _ratio * ([_team, 4] call FUNC(getTeamVariable))) then {
             if (_respawnTypeNum) then {
                 _result = true;
@@ -63,13 +61,13 @@ switch (_side) do {
         };
     };
     case civilian: {
-        _respawnTypeNum = EGETMVAR(EndConditions,hasDeparted_Civ,false);
+        private _respawnTypeNum = EGETMVAR(EndConditions,hasDeparted_Civilian,false);
         if (_count >= _ratio * ([_team, 4] call FUNC(getTeamVariable))) then {
             if (_respawnTypeNum) then {
                 _result = true;
             };
         } else {
-            ESETMPVAR(EndConditions,hasDeparted_Civ,true);
+            ESETMPVAR(EndConditions,hasDeparted_Civilian,true);
         };
     };
     default {_result = false;};

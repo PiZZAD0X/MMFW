@@ -1,70 +1,27 @@
+#define TEAMSMENUTEAM(TEAMNAMEVAR) class GVAR(DOUBLES(TeamType,TEAMNAMEVAR)) {\
+    property = QGVAR(DOUBLES(TeamType,TEAMNAMEVAR));\
+    displayName = QUOTE(TEAMNAMEVAR Type);\
+    tooltip = "Set Team to either AI, Player Controlled, or Both";\
+    control = QGVAR(TeamType_Select);\
+    expression = SCENARIO_EXPRESSION;\
+    defaultValue = "0";\
+};\
+class GVAR(DOUBLES(TeamName,TEAMNAMEVAR)) {\
+    property = QGVAR(DOUBLES(TeamName,TEAMNAMEVAR));\
+    displayName = "Name";\
+    tooltip = "Set Team name";\
+    control = "EditShort";\
+    expression = SCENARIO_EXPRESSION;\
+    defaultValue = QUOTE(QN(TEAMNAMEVAR Team));\
+}
+
 class GVAR(TeamsSettings) {
     displayName = "Team Settings";
     collapsed = 0;
     class Attributes {
-        class GVAR(TeamType_Blufor) {
-            property = QGVAR(TeamType_Blufor);
-            displayName = "Blufor Type";
-            tooltip = "Set Team to either AI, Player Controlled, or Both";
-            control = QGVAR(TeamType_Select);
-            expression = SCENARIO_EXPRESSION;
-            defaultValue = "0";
-        };
-        class GVAR(TeamName_Blufor) {
-            property = QGVAR(TeamName_Blufor);
-            displayName = "Name";
-            tooltip = "Set Team name";
-            control = "EditShort";
-            expression = SCENARIO_EXPRESSION;
-            defaultValue = "'BLUFOR Team'";
-        };
-        class GVAR(TeamType_Opfor) {
-            property = QGVAR(TeamType_Opfor);
-            displayName = "Opfor Type";
-            tooltip = "Set Team to either AI, Player Controlled, or Both";
-            control = QGVAR(TeamType_Select);
-            expression = SCENARIO_EXPRESSION;
-            defaultValue = "0";
-        };
-        class GVAR(TeamName_Opfor) {
-            property = QGVAR(TeamName_Opfor);
-            displayName = "Name";
-            tooltip = "Set Team name";
-            control = "EditShort";
-            expression = SCENARIO_EXPRESSION;
-            defaultValue = "'OPFOR Team'";
-        };
-        class GVAR(TeamType_Indfor) {
-            property = QGVAR(TeamType_Indfor);
-            displayName = "Indfor Type";
-            tooltip = "Set Team to either AI, Player Controlled, or Both";
-            control = QGVAR(TeamType_Select);
-            expression = SCENARIO_EXPRESSION;
-            defaultValue = "0";
-        };
-        class GVAR(TeamName_Indfor) {
-            property = QGVAR(TeamName_Indfor);
-            displayName = "Name";
-            tooltip = "Set Team name";
-            control = "EditShort";
-            expression = SCENARIO_EXPRESSION;
-            defaultValue = "'INDFOR Team'";
-        };
-        class GVAR(TeamType_Civ) {
-            property = QGVAR(TeamType_Civ);
-            displayName = "Civilian Type";
-            tooltip = "Set Team to either AI, Player Controlled, or Both";
-            control = QGVAR(TeamType_Select);
-            expression = SCENARIO_EXPRESSION;
-            defaultValue = "0";
-        };
-        class GVAR(TeamName_Civ) {
-            property = QGVAR(TeamName_Civ);
-            displayName = "Name";
-            tooltip = "Set Team name";
-            control = "EditShort";
-            expression = SCENARIO_EXPRESSION;
-            defaultValue = "'CIVILIAN Team'";
-        };
+        TEAMSMENUTEAM(BLUFOR);
+        TEAMSMENUTEAM(OPFOR);
+        TEAMSMENUTEAM(INDFOR);
+        TEAMSMENUTEAM(CIVILIAN);
     };
 };

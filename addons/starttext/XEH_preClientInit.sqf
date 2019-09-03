@@ -1,36 +1,26 @@
 #include "script_component.hpp"
 EXEC_CHECK(CLIENT);
 
+#include "functions\defines\TeamMacro.hpp"
+
 [QEGVAR(Core,SettingsLoaded), {
     if !(GETMVAR(Enabled,false)) exitWith {};
     [QEGVAR(Core,RegisterModuleEvent), ["Start Text", "Displays animated text on mission start.", "Sacher"]] call CBA_fnc_localEvent;
     [{(!isNull ace_player) && {(CBA_missionTime > 1)}}, {
         private _dateType = [["DATE"],["TIME"],["DATETIME"]] select (GETMVAR(TimeSelect,2));
         private _startTextArray = [];
-        switch (side player) do { //Checks what team the player is on
+        switch (side ace_player) do { //Checks what team the player is on
             case west: {
-                private _TitleQuoteVar = GETMVAR(TitleQuote_Blufor,"");
-                private _textVar = GETMVAR(Text_Blufor,"");
-                if !(_TitleQuoteVar isEqualto "" ) then {_startTextArray pushBack ["TitleQUOTE", _TitleQuoteVar];};
-                if !(_textVar isEqualto "" ) then {_startTextArray pushBack ["TEXT", _textVar];};
+                STARTTEXTTEAMMACRO(Blufor);
             };
             case east: {
-                private _TitleQuoteVar = GETMVAR(TitleQuote_Opfor,"");
-                private _textVar = GETMVAR(Text_Opfor,"");
-                if !(_TitleQuoteVar isEqualto "" ) then {_startTextArray pushBack ["TitleQUOTE", _TitleQuoteVar];};
-                if !(_textVar isEqualto "" ) then {_startTextArray pushBack ["TEXT", _textVar];};
+                STARTTEXTTEAMMACRO(Opfor);
             };
             case independent: {
-                private _TitleQuoteVar = GETMVAR(TitleQuote_Indfor,"");
-                private _textVar = GETMVAR(Text_Indfor,"");
-                if !(_TitleQuoteVar isEqualto "" ) then {_startTextArray pushBack ["TitleQUOTE", _TitleQuoteVar];};
-                if !(_textVar isEqualto "" ) then {_startTextArray pushBack ["TEXT", _textVar];};
+                STARTTEXTTEAMMACRO(Indfor);
             };
             case civilian: {
-                private _TitleQuoteVar = GETMVAR(TitleQuote_Civ,"");
-                private _textVar = GETMVAR(Text_Civ,"");
-                if !(_TitleQuoteVar isEqualto "" ) then {_startTextArray pushBack ["TitleQUOTE", _TitleQuoteVar];};
-                if !(_textVar isEqualto "" ) then {_startTextArray pushBack ["TEXT", _textVar];};
+                STARTTEXTTEAMMACRO(Civilian);
             };
         };
         _startTextArray pushBack _dateType;

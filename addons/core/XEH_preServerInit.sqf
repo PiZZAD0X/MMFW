@@ -17,7 +17,7 @@ if !(_ServerPreInit isEqualTo "") then {
         [_side,_namevar,_teamType] call FUNC(AddTeam);
         _side call FUNC(CreateRespawnMarker);
         createCenter _side;
-    } foreach [[west,GVAR(TeamName_Blufor),GVAR(TeamType_Blufor)],[east,GVAR(TeamName_Opfor),GVAR(TeamType_Opfor)],[independent,GVAR(TeamName_Indfor),GVAR(TeamType_Indfor)],[civilian,GVAR(TeamName_Civ),GVAR(TeamType_Civ)]];
+    } foreach [[west,GVAR(TeamName_Blufor),GVAR(TeamType_Blufor)],[east,GVAR(TeamName_Opfor),GVAR(TeamType_Opfor)],[independent,GVAR(TeamName_Indfor),GVAR(TeamType_Indfor)],[civilian,GVAR(TeamName_Civilian),GVAR(TeamType_Civilian)]];
 }] call CBA_fnc_addEventHandler;
 
 [QGVAR(PlayerSpawned), {
