@@ -1,6 +1,6 @@
-#define RESPAWNMENUTEAM(TEAMNAMEVAR) class EGVAR(Respawn,DOUBLES(Settings,TEAMNAMEVAR)) {
-    displayName = QUOTE(TEAMNAMEVAR Respawn Settings);
-    class AttributeCategories {
+#define RESPAWNMENUTEAM(TEAMNAMEVAR) class EGVAR(Respawn,DOUBLES(Settings,TEAMNAMEVAR)) {\
+    displayName = QUOTE(TEAMNAMEVAR Respawn Settings);\
+    class AttributeCategories {\
         class EGVAR(Respawn,DOUBLES(TeamSettings,TEAMNAMEVAR)) {\
             displayName = QUOTE(TEAMNAMEVAR Respawn Settings);\
             collapsed = 0;\
@@ -153,10 +153,10 @@ class EGVAR(Respawn,Settings_Main) {
     };
 };
 
-RESPAWNMENUTEAM(BLUFOR);
-RESPAWNMENUTEAM(OPFOR);
-RESPAWNMENUTEAM(INDFOR);
-RESPAWNMENUTEAM(CIVILIAN);
+RESPAWNMENUTEAM(Blufor);
+RESPAWNMENUTEAM(Opfor);
+RESPAWNMENUTEAM(Indfor);
+RESPAWNMENUTEAM(Civilian);
 
 class EGVAR(EndConditions,SettingsMenu) {
     displayName = "End Condition Settings";

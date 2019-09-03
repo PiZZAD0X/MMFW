@@ -1,4 +1,4 @@
-#define COVERMAPTEAMATTR(TEAMNAMEVAR) class GVAR(DOUBLES(DefaultAO,TEAMNAMEVAR)) {
+#define COVERMAPTEAMATTR(TEAMNAMEVAR) class GVAR(DOUBLES(DefaultAO,TEAMNAMEVAR)) {\
     property = QGVAR(DOUBLES(DefaultAO,TEAMNAMEVAR));\
     displayName = QUOTE(TEAMNAMEVAR Starting AO);\
     tooltip = QUOTE(Set the TEAMNAMEVAR Map area to corresponding CoverMap AO name.);\
