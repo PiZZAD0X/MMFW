@@ -1,7 +1,7 @@
 class GVAR(EH) {
-    onTerrainNew = QUOTE([] call FUNC(GearHandleEH));
-    onMissionLoad = QUOTE([] call FUNC(GearHandleEH));
-    onMissionNew = QUOTE([] call FUNC(GearHandleEH));
-    onMissionSave = QUOTE([] call FUNC(GearHandleEH));
-    onMissionPreviewEnd = QUOTE([] call FUNC(GearHandleEH));
+    onTerrainNew = QUOTE([] call FUNC(setAllEntityGear_EH));
+    onMissionLoad = QUOTE([] call FUNC(setAllEntityGear_EH));
+    onMissionNew = QUOTE([] call FUNC(setAllEntityGear_EH));
+    onMissionSave = QUOTE([] call FUNC(setAllEntityGear_EH));
+    onMissionPreviewEnd = QUOTE([] call FUNC(setAllEntityGear_EH));
 };

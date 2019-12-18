@@ -20,7 +20,7 @@ ADDON = false;
             if (_gearType isEqualto "MANUAL") then {
                 switch (_systemType) do {
                     case "ACEAR": {
-                        private _manualClass = GETVAR(_unit,ManualUnitClass,"");
+                        private _manualClass = GETVAR(_unit,UnitGearManualType,"");
                         if (_manualClass isEqualto "") exitwith {
                             ERROR_1("Unit %1 is set to manual loadout but has none!, exiting gearscript.",_unit);
                         };
@@ -39,7 +39,7 @@ ADDON = false;
                         };
                     };
                     case "OLSEN": {
-                        private _manualClass = GETVAR(_unit,ManualUnitClassOlsen,"");
+                        private _manualClass = GETVAR(_unit,UnitGearManualTypeOlsen,"");
                         if (_manualClass isEqualto "") exitwith {
                             ERROR_1("Unit %1 is set to manual loadout but has none!, exiting gearscript.",_unit);
                         };

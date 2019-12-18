@@ -2,6 +2,8 @@
 EXEC_CHECK(ALL);
 EDEN_CHECK;
 
+if !(GETMVAR(GearHandle,false)) exitwith {};
+
 {
     private _object = _x;
     if !(GETVAR(_object,UnitSystemType,"NONE") isEqualto "NONE") then {

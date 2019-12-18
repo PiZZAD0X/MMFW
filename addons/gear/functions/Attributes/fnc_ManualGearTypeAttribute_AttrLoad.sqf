@@ -8,4 +8,4 @@ if !(typename _value isEqualTo typename "") then {
 };
 private _unit = ((get3denselected "object") select 0);
 (_ctrl controlsGroupCtrl 100) ctrlSetText _value;
-SETVAR(_unit,ManualUnitClass,_value);
+SETVAR(_unit,UnitGearManualType,_value);

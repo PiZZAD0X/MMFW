@@ -4,7 +4,7 @@ class GVAR(AttributeManualGearEditShort): EditShort {
     class Controls: Controls {
         class Title: Title {};
         class Value: Value {
-            onKillFocus = QUOTE(_this call FUNC(ManualGearTypeAttribute_onKillFocus));
+            onLBSelChanged = QUOTE(_this call FUNC(ManualGearTypeAttribute_onSelChange));
         };
     };
 };

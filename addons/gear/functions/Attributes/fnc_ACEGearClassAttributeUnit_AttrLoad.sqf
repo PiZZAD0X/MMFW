@@ -5,7 +5,7 @@ params ["_ctrl", "_value"];
 
 private _unit = ((get3denselected "object") select 0);
 private _control = (_ctrl controlsGroupCtrl 100);
-SETVAR(_unit,ManualUnitClass,_value);
+SETVAR(_unit,UnitGearType,_value);
 lbClear _control;
 private _indexNone = _control lbadd "None";
 _control lbsetdata [_indexNone,"NONE"];

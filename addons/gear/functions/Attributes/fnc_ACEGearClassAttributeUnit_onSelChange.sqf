@@ -6,4 +6,4 @@ params ["_control","_cursel"];
 
 private _unit = ((get3denselected "object") select 0);
 private _lbValue = _control lbData _cursel;
-SETVAR(_unit,ManualUnitClass,_lbValue);
+SETVAR(_unit,UnitGearType,_lbValue);

@@ -12,6 +12,7 @@ class Cfg3DEN {
     };
     class Mission {
         #include "cfg3den\cfg3denMenuCategories.hpp"
+        #include "cfg3den\AceArsenalOverwrite.hpp"
     };
 };
 

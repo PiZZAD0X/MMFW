@@ -6,5 +6,5 @@ params ["_ctrl"];
 
 private _control = (_ctrl controlsGroupCtrl 100);
 private _value = (_control lbData lbCurSel _control);
-SETVAR(_unit,ManualUnitClass,_value);
+SETVAR(_unit,UnitGearType,_value);
 _value

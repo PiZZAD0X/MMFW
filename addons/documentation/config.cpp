@@ -16,6 +16,7 @@ class CfgPatches {
             "MMFW_capturezone",
             "MMFW_covermap",
             "MMFW_hostage",
+            "MMFW_gear",
             "MMFW_markercontrol",
             "MMFW_objectsettings",
             "MMFW_safestart",

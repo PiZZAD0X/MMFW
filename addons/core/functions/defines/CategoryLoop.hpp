@@ -8,7 +8,7 @@
         if (EGETMVAR(EndConditions,DOUBLES(CasualtyCount_Enabled_BLUFOR,LOOPNUM),false)) then {_conditionsCount = _conditionsCount + 1;};\
         if (EGETMVAR(EndConditions,DOUBLES(CasualtyCount_Enabled_OPFOR,LOOPNUM),false)) then {_conditionsCount = _conditionsCount + 1;};\
         if (EGETMVAR(EndConditions,DOUBLES(CasualtyCount_Enabled_Indfor,LOOPNUM),false)) then {_conditionsCount = _conditionsCount + 1;};\
-        if (EGETMVAR(EndConditions,DOUBLES(CasualtyCount_Enabled_Civ,LOOPNUM),false)) then {_conditionsCount = _conditionsCount + 1;};\
+        if (EGETMVAR(EndConditions,DOUBLES(CasualtyCount_Enabled_Civilian,LOOPNUM),false)) then {_conditionsCount = _conditionsCount + 1;};\
 \
         if !(EGETMVAR(EndConditions,DOUBLES(EntitiesAlive_Array,LOOPNUM),[]) isEqualto []) then {_conditionsCount = _conditionsCount + 1;};\
         if !(EGETMVAR(EndConditions,DOUBLES(EntitiesDead_Array,LOOPNUM),[]) isEqualto []) then {_conditionsCount = _conditionsCount + 1;};\
@@ -45,9 +45,9 @@
                     _ConditionCheckList pushback ["INDFOR Cas Check",_CasConditionCheck_Indfor];\
                 };\
                 private _CasConditionCheck_Civ = false;\
-                if (EGETMVAR(EndConditions,DOUBLES(CasualtyCount_Enabled_Civ,LOOPNUM),false)) then {\
+                if (EGETMVAR(EndConditions,DOUBLES(CasualtyCount_Enabled_Civilian,LOOPNUM),false)) then {\
                     private _civCasualty = GVAR(TeamName_Civilian) call FUNC(CasualtyPercentage);\
-                    if (_civCasualty >= EGETMVAR(EndConditions,DOUBLES(CasualtyCount_Percentage_Civ,LOOPNUM),75)) then {_CasConditionCheck_Civ = true;} else {_CasConditionCheck_Civ = false;};\
+                    if (_civCasualty >= EGETMVAR(EndConditions,DOUBLES(CasualtyCount_Percentage_Civilian,LOOPNUM),75)) then {_CasConditionCheck_Civ = true;} else {_CasConditionCheck_Civ = false;};\
                     _ConditionCheckList pushback ["CIVILIAN Cas Check",_CasConditionCheck_Civ];\
                 };\
 \

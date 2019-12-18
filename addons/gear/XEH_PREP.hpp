@@ -11,6 +11,7 @@ PREPE(Olsen,removeAllVehicleGear);
 
 PREP(GearTypeLoad3DEN);
 PREP(setAllEntityGear);
+PREP(setAllEntityGear_EH);
 PREP(GearHandleEH);
 PREP(GearLoadPreset);
 
@@ -30,7 +31,7 @@ PREPATTR(GearPresetAttribute_AttrSave);
 PREPATTR(GearPresetAttribute_onMouseClick);
 PREPATTR(ManualGearTypeAttribute_AttrLoad);
 PREPATTR(ManualGearTypeAttribute_AttrSave);
-PREPATTR(ManualGearTypeAttribute_onKillFocus);
+PREPATTR(ManualGearTypeAttribute_onSelChange);
 PREPATTR(SystemTypeAttribute_AttrLoad);
 PREPATTR(SystemTypeAttribute_AttrSave);
 PREPATTR(SystemTypeVehicleAttribute_AttrLoad);

@@ -7,9 +7,11 @@ params ["_object","",""];
 LOG_1("_object: %1",_object);
 
 if (_object isKindOf "CAManBase") then {
-    private _systemType = GETVAR(_object,UnitSystemType,"NONE");
+    //private _systemType = GETVAR(_object,UnitSystemType,"NONE");
+    private _systemType = (_object get3DENAttribute QGVAR(UnitSystemType)) select 0;
     LOG_1("_systemType: %1",_systemType);
-    private _gearType = GETVAR(_object,UnitGearType,"NONE");
+    //private _gearType = GETVAR(_object,UnitGearType,"NONE");
+    private _gearType = (_object get3DENAttribute QGVAR(UnitGearType)) select 0;
     LOG_1("_gearType: %1",_gearType);
     if (_systemType isEqualto "NONE") exitwith {};
     if (_gearType isEqualto "NONE") exitwith {
@@ -18,7 +20,8 @@ if (_object isKindOf "CAManBase") then {
     if (_gearType isEqualto "MANUAL") then {
         switch (_systemType) do {
             case "ACEAR": {
-                private _manualClass = GETVAR(_object,ManualUnitClass,"");
+                //private _manualClass = GETVAR(_object,UnitGearManualType,"");
+                private _manualClass = (_object get3DENAttribute QGVAR(UnitGearManualType)) select 0;
                 if (_manualClass isEqualto "") exitwith {
                     ERROR_1("Unit %1 is set to manual loadout but has none!, exiting gearscript.",_object);
                 };
@@ -37,7 +40,7 @@ if (_object isKindOf "CAManBase") then {
                 };
             };
             case "OLSEN": {
-                private _manualClass = GETVAR(_object,ManualUnitClassOlsen,"");
+                private _manualClass = GETVAR(_object,UnitGearManualTypeOlsen,"");
                 if (_manualClass isEqualto "") exitwith {
                     ERROR_1("Unit %1 is set to manual loadout but has none!, exiting gearscript.",_object);
                 };
