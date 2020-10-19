@@ -13,7 +13,7 @@ class GVAR(Options) {
             control = "CheckBox";
             expression = ENTITY_EXPRESSION;
             condition = "objectVehicle";
-            defaultValue = "false";
+            defaultValue = "(false)";
         };
         class GVAR(VehNVEnabled) {
             property = QGVAR(VehNVEnabled);
@@ -22,7 +22,7 @@ class GVAR(Options) {
             control = "CheckBox";
             condition = "objectVehicle";
             expression = ENTITY_EXPRESSION;
-            defaultValue = "false";
+            defaultValue = "(false)";
         };
         class GVAR(VehFlipEnabled) {
             property = QGVAR(VehFlipEnabled);
@@ -31,7 +31,7 @@ class GVAR(Options) {
             control = "CheckBox";
             condition = "objectVehicle";
             expression = ENTITY_EXPRESSION;
-            defaultValue = "true";
+            defaultValue = "(true)";
         };
     };
 };

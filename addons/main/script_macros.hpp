@@ -126,6 +126,7 @@ if ((_argUpper isEqualto "ALL") && {(!(EGVAR(Core,Enabled)))}) exitWith {};\
 if !(EGVAR(Core,Enabled)) exitWith {}
 
 #define EDEN_CHECK if !(is3DEN) exitwith {}
+#define LOCAL_CHECK(ARG) if !(local ARG) exitwith {}
 
 #define VERSIONNUMBER (MGETMVAR(Version_UpdatedNumber,102))
 #define VERSION_CHECK(var1) if (var1 < VERSIONNUMBER) exitwith {}

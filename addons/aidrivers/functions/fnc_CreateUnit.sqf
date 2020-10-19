@@ -3,8 +3,8 @@ EXEC_CHECK(ALL);
 
 params ["_target", "_caller"];
 
-if (!isNull driver _target) exitWith {};
-private _turret = (assignedVehicleRole _caller) select 1;
+if !(driver _target isEqualTo objNull) exitWith {};
+private _turret = assignedVehicleRole _caller select 1;
 _caller moveInDriver _target;
 _caller moveInTurret [_target, _turret];
 
@@ -37,12 +37,12 @@ doStop _unit;
 
 GVAR(LastTimeIn) = CBA_missionTime;
 
-[{(vehicle (_this select 0)) != (_this select 0)}, { //waiting for spawned unit to get into vehicle
+[{!((vehicle (_this select 0)) isEqualTo (_this select 0))}, { //waiting for spawned unit to get into vehicle
     private _pfhHandle = [{
         params ["_args","_pfhID"];
         _args params ["_unit", "_target", "_caller"];
 
-        if (vehicle _caller != _target) then {
+        if !(vehicle _caller isEqualTo _target) then {
             [false] call FUNC(toggleDriverCam);
             _unit disableAI "Path";
             doStop _unit;
@@ -51,12 +51,12 @@ GVAR(LastTimeIn) = CBA_missionTime;
             GVAR(LastTimeIn) = CBA_missionTime;
         };
         if ((CBA_missionTime > 30 + (GETMVAR(LastTimeIn,CBA_missionTime)))
-            || !alive _target
-            || !alive _caller
-            || !alive _unit
-            || (vehicle _unit != _target)
-            || (driver _target != _unit)
-            || ((GETVAR(_target,driver,objNull)) isEqualTo objNull)
+            || {!alive _target}
+            || {!alive _caller}
+            || {!alive _unit}
+            || {!(vehicle _unit isEqualTo _target)}
+            || {!(driver _target isEqualTo _unit)}
+            || {((GETVAR(_target,driver,objNull)) isEqualTo objNull)}
         ) exitwith {
             [_target, _caller] call FUNC(removeUnit);
             [_pfhID] call CBA_fnc_removePerFrameHandler;
@@ -66,4 +66,4 @@ GVAR(LastTimeIn) = CBA_missionTime;
 }, [_unit, _target, _caller]] call CBA_fnc_WaitUntilAndExecute;
 
 GVAR(Vehicle) = _target;
-hint "Driver Added";
+hintSilent "Driver Added";

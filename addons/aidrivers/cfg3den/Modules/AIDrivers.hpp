@@ -20,7 +20,7 @@ class GVAR(Settings) {
             tooltip = "Give AI Driver actions to all vehicles at mission start";
             control = "CheckBox";
             expression = SCENARIO_EXPRESSION;
-            defaultValue = "false";
+            defaultValue = "(false)";
         };
         class GVAR(NVEnabled) {
             property = QGVAR(NVEnabled);
@@ -28,7 +28,7 @@ class GVAR(Settings) {
             tooltip = "Whether the player can use NVGs in AI Driver view";
             control = "CheckBox";
             expression = SCENARIO_EXPRESSION;
-            defaultValue = "false";
+            defaultValue = "(false)";
         };
         class GVAR(FlipEnabled) {
             property = QGVAR(FlipEnabled);
@@ -36,7 +36,7 @@ class GVAR(Settings) {
             tooltip = "Whether the player can flip the vehicle via ACE action";
             control = "CheckBox";
             expression = SCENARIO_EXPRESSION;
-            defaultValue = "true";
+            defaultValue = "(true)";
         };
     };
 };

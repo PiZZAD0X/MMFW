@@ -15,22 +15,22 @@ class Extended_PreInit_EventHandlers {
 class Extended_InitPost_EventHandlers {
     class LandVehicle {
         class ADDON {
-            init = QUOTE(_this call FUNC(initPost));
+            init = QUOTE(call FUNC(initPost));
         };
     };
     class Helicopter {
         class ADDON {
-            init = QUOTE(_this call FUNC(initPost));
+            init = QUOTE(call FUNC(initPost));
         };
     };
     class Plane {
         class ADDON {
-            init = QUOTE(_this call FUNC(initPost));
+            init = QUOTE(call FUNC(initPost));
         };
     };
     class Ship_F {
         class ADDON {
-            init = QUOTE(_this call FUNC(initPost));
+            init = QUOTE(call FUNC(initPost));
         };
     };
 };

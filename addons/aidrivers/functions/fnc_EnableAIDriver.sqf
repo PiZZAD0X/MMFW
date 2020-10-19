@@ -3,7 +3,11 @@ EXEC_CHECK(ALL);
 
 //IGNORE_PRIVATE_WARNING ["_target","_player"];
 
-params ["_veh","_enableNV","_enableFlip"];
+params [
+    "_veh",
+    ["_enableNV", true, [true]],
+    ["_enableFlip", true, [true]]
+];
 
 if (isNil QGVAR(Vehicle)) then {
     GVAR(Vehicle) = objNull;
@@ -15,13 +19,13 @@ if (GETVAR(_veh,hasActions,false)) exitwith {};
 private _addAction = ["ai_driver","Add AI driver","",{
     [_target, _player] call FUNC(CreateUnit);
 },{
-    (vehicle _player == _target) && {isNull (GETVAR(_target,driver,objnull))} && {((assignedVehicleRole _player) select 0) == "Turret"} && {GVAR(Vehicle) in [objNull, vehicle _player]}
+    (vehicle _player isEqualTo _target) && {((GETVAR(_target,driver,objnull)) isEqualTo objNull)} && {((assignedVehicleRole _player) select 0) == "Turret"} && {GVAR(Vehicle) in [objNull, vehicle _player]}
 }] call ace_interact_menu_fnc_createAction;
 
 private _removeAction = ["ai_driver","Remove AI driver","",{
     [_target] call FUNC(RemoveUnit);
 },{
-    (vehicle _player == _target) && {!isNull (GETVAR(_target,driver,objnull))} && {((assignedVehicleRole _player) select 0) == "Turret"} && {GVAR(Vehicle) in [objNull, vehicle _player]}
+    (vehicle _player isEqualTo _target) && {!((GETVAR(_target,driver,objnull)) isEqualTo objNull)} && {((assignedVehicleRole _player) select 0) == "Turret"} && {GVAR(Vehicle) in [objNull, vehicle _player]}
 }] call ace_interact_menu_fnc_createAction;
 
 //unflip action
@@ -30,21 +34,21 @@ private _unflipAction = ["ai_driver_unflip","Unflip vehicle","",{
     (getposATL _target) params ["_xPos","_yPos","_zPos"];
     _target setPosATL [_xPos, _yPos, _zPos + 2];
 },{
-    (vehicle _player == _target) && {!isNull (GETVAR(_target,driver,objnull))} && {((assignedVehicleRole _player) select 0) == "Turret"} && {(vectorUp _target) select 2 < 0}
+    (vehicle _player isEqualTo _target) && {!((GETVAR(_target,driver,objnull)) isEqualTo objNull)} && {((assignedVehicleRole _player) select 0) == "Turret"} && {(vectorUp _target) select 2 < 0}
 }] call ace_interact_menu_fnc_createAction;
 
 //engine off action
 private _engineOffAction = ["ai_driver_engineoff","Turn off engine","",{
     [_target, false] remoteExec ["engineOn", _target];
 },{
-    (vehicle _player == _target) && {!isNull (GETVAR(_target,driver,objnull))} && {((assignedVehicleRole _player) select 0) == "Turret"} && {isEngineOn _target}
+    (vehicle _player isEqualTo _target) && {!((GETVAR(_target,driver,objnull)) isEqualTo objNull)} && {((assignedVehicleRole _player) select 0) == "Turret"} && {isEngineOn _target}
 }] call ace_interact_menu_fnc_createAction;
 
 //PIP action
 private _pipAction = ["ai_driver_pip","Enable/Disable driver's view","",{
     (isNil QGVAR(DriverCam) || {isNull GVAR(DriverCam)}) call  FUNC(ToggleDriverCam);
 },{
-    (vehicle _player == _target) && {((assignedVehicleRole _player) select 0) == "Turret"} && {!isNull (GETVAR(_target,driver,objnull))}
+    (vehicle _player isEqualTo _target) && {((assignedVehicleRole _player) select 0) == "Turret"} && {!isNull (GETVAR(_target,driver,objnull))}
 }] call ace_interact_menu_fnc_createAction;
 
 //toggle NV for PIP
