@@ -92,9 +92,10 @@ if (_respawnType in ["INDTICK","TEAMTICK","UNLIMITED"]) then {
 
         // Handle Teleport Locations
         if !(isNull (missionNamespace getVariable [_teamRespawnMarker, objNull])) then {
-            [player,(getpos(missionNamespace getVariable _teamRespawnMarker)),10] call CBA_fnc_setPos;
+            ACE_player setPosATL (getposATL (missionNamespace getVariable [_teamRespawnMarker, [0,0,0]]));
+            //[ACE_player, (getposATL(missionNamespace getVariable _teamRespawnMarker)), 10] call CBA_fnc_setPos;
         } else {
-            [player,(GVAR(SpawnPos)),30] call CBA_fnc_setPos;
+            [ACE_player, GVAR(SpawnPos), 30] call CBA_fnc_setPos;
         };
 
         // Handle Module and Gear Settings
