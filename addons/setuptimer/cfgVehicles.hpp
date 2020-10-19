@@ -12,7 +12,7 @@ class CfgVehicles {
         is3DEN = 1;
         canSetArea = 1;
         canSetAreaHeight = 0;
-        canSetAreaShape = 0;
+        canSetAreaShape = 1;
         icon = QPATHTOF(resources\setuptimermodule_ca.paa);
 
         class AttributeValues {
@@ -54,6 +54,7 @@ class CfgVehicles {
     };
 
     class GVAR(SetupTimerModule_R): GVAR(SetupTimerModule) {
+        scope = 0;
         displayName = "Setup Timer Module (Rectangle)"; // Name displayed in the menu
         class AttributeValues {
             IsRectangle = 1;

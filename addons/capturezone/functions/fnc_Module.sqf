@@ -9,12 +9,10 @@ switch (_mode) do {
             _input params ["_logic",["_isActivated",true,[true]]];
             if !(_isActivated) exitWith {};
             private _zoneName = GETVAR(_logic,ZoneName,"");
-            private _loc = getPosATL _logic;
-            private _size = _logic getVariable ["objectArea", [100, 100]];
-            _size params ["_radiusX","_radiusY"];
-            private _direction = getdir _logic;
-            private _isRectangle = if ((typeof _logic) isEqualTo QGVAR(CaptureZoneModule_R)) then {true} else {false};
-            private _area = [_loc,_radiusX,_radiusY,_direction,_isRectangle];
+            private _position = getPosATL _logic;
+            private _size = _logic getVariable ["objectArea", [100, 100, 0, false]];
+            _size params ["_radiusX", "_radiusY", "_direction", "_isRectangle"];
+            private _area = [_position, _radiusX, _radiusY, _direction, _isRectangle];
             private _mode = ["ONCE","HOLD","REPEATABLE"] select (GETVAR(_logic,Mode,1));
             private _ratioNeeded = ((GETVAR(_logic,RatioNeeded,75)) / 100);
             private _BluforCap = (GETVAR(_logic,Cap_Blufor,0));

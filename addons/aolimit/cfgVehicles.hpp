@@ -9,6 +9,7 @@ class CfgVehicles {
         isDisposable = 0;
         is3DEN = 1;
         canSetArea = 1;
+        canSetAreaShape = 1;
         icon = QPATHTOF(resources\aolimitmodule_ca.paa);
 
         class AttributeValues {
@@ -84,6 +85,7 @@ class CfgVehicles {
     };
 
     class GVAR(AOLimitModule_R) : GVAR(AOLimitModule) {
+        scope = 0;
         displayName = "AO Limit Module (Rectangle)"; // Name displayed in the menu
         class AttributeValues {
             size3[] = {100,100,-1};

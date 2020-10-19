@@ -9,7 +9,7 @@ class CfgVehicles {
         isDisposable = 0;
         is3DEN = 1;
         canSetArea = 1;
-
+        canSetAreaShape = 1;
         class AttributeValues {
             size3[] = {100, 100, -1};
             IsRectangle = 0;
@@ -30,6 +30,7 @@ class CfgVehicles {
         };
     };
     class GVAR(Module_R): GVAR(Module) {
+        scope = 0;
         displayName = "Hostage Rescue Area (Rectangle)";
         class AttributeValues {
             size3[] = {100, 100, -1};

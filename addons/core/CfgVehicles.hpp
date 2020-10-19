@@ -35,7 +35,7 @@ class CfgVehicles {
         isDisposable = 0;
         is3DEN = 1;
         canSetArea = 1;
-
+        canSetAreaShape = 1;
         class AttributeValues {
             size3[] = {100, 100, -1};
             IsRectangle = 0;
@@ -57,6 +57,7 @@ class CfgVehicles {
     };
 
     class EGVAR(EndConditions,ExtractModule_R): EGVAR(EndConditions,ExtractModule) {
+        scope = 0;
         displayName = "Extraction Area (Rectangle)";
         class AttributeValues {
             IsRectangle = 1;

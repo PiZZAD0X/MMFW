@@ -54,7 +54,7 @@ class GVAR(DOUBLES(Colour,TEAMNAME)) {\
 class CfgVehicles {
     class EGVAR(Core,BaseModule);
     class GVAR(CaptureZoneModule): EGVAR(Core,BaseModule) {
-        displayName = "Capture Zone (Circle)"; // Name displayed in the menu
+        displayName = "Capture Zone"; // Name displayed in the menu
         // Name of function triggered once conditions are met
         function = QFUNC(Module);
         // Execution priority, modules with lower number are executed first. 0 is used when the attribute is undefined
@@ -67,7 +67,7 @@ class CfgVehicles {
         curatorInfoType = "RscDisplayAttributeModuleNuke";
         canSetArea = 1;
         canSetAreaHeight = 0;
-        canSetAreaShape = 0;
+        canSetAreaShape = 1;
         icon = QPATHTOF(resources\capzonemodule_ca.paa);
 
         class AttributeValues {
@@ -200,6 +200,7 @@ class CfgVehicles {
     };
 
     class GVAR(CaptureZoneModule_R) : GVAR(CaptureZoneModule) {
+        scope = 0;
         displayName = "Capture Zone (Rectangle)";
         class AttributeValues {
             IsRectangle = 1;

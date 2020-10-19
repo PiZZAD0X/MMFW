@@ -9,7 +9,6 @@ PREP(casualtyPercentage);
 PREP(chatCommands);
 PREP(checkDuplicates);
 PREP(countTeam);
-PREP(createRespawnMarker);
 PREP(debugMessage);
 PREP(debugMessageDetailed);
 PREP(debugMessageDisplay);

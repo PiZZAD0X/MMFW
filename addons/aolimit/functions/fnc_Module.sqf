@@ -20,12 +20,10 @@ switch _mode do {
             private _AOMode = GETVAR(_logic,AOMode,"HARD");
             private _softAOtime = GETVAR(_logic,SoftTimeOutside,30);
             private _softAOtimeAir = GETVAR(_logic,SoftTimeOutsideAir,120);
-            private _loc = getPosATL _logic;
-            private _size = _logic getVariable ["objectArea", [100, 100]];
-            _size params ["_radiusX","_radiusY"];
-            private _direction = getdir _logic;
-            private _isRectangle = if ((typeof _logic) isEqualTo QGVAR(AOLimitModule_R)) then {true} else {false};
-            private _area = [_loc,_radiusX,_radiusY,_direction,_isRectangle];
+            private _position = getPosATL _logic;
+            private _size = _logic getVariable ["objectArea", [100, 100, 0, false]];
+            _size params ["_radiusX", "_radiusY", "_direction", "_isRectangle"];
+            private _area = [_position, _radiusX, _radiusY, _direction, _isRectangle];
             //TRACE_5("",_logic,_AOMode,_selectedSides,_entryMode);
 
             [_logic,_area,_selectedSides,_entryMode,_airsetting,_AOMode,_softAOtime,_softAOtimeAir] call FUNC(Init);
