@@ -28,7 +28,7 @@ class GVAR(RespawnModule): GVAR(BaseModule) {
             property = QGVAR(Side);
             control = QEGVAR(Respawn,Side_Combo);
             expression = MODULE_EXPRESSION;
-            defaultValue = "'BLUFOR'";
+            defaultValue = "0";
         };
         class GVAR(Cond) {
             displayName = "Custom Condition";

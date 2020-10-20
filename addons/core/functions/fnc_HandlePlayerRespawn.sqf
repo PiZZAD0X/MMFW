@@ -69,7 +69,12 @@ if (_location isEqualTo objNull) then {
 } else {
     private _area = GETVAR(_location,Area,[]);
     private _zPos = getPosATL _location select 2;
-    private _pos = [_area] call CBA_fnc_randPosArea;
+    _area params ["_pos", "_radiusX", "_radiusY"];
+    private _pos = if (_radiusX isEqualTo 0 && {_radiusY isEqualTo 0}) then {
+        _pos
+    } else {
+        [_area] call CBA_fnc_randPosArea
+    };
     if (GETVAR(_location,HandleHeight,false)) then {
         _pos params ["_xPos", "_yPos"];
         ACE_player setPosATL [_xPos, _yPos, _zPos];

@@ -9,6 +9,8 @@ switch (_mode) do {
         if !(_isActivated) exitWith {};
         EDEN_CHECK;
         private _handleHeight = GETVAR(_logic,HandleHeight,false);
+        private _side = ["BLUFOR","OPFOR","INDFOR","CIVILIAN"] select (GETVAR(_logic,Side,0));
+        SETPVAR(_logic,Side,_side);
         private _cond = compile GETVAR(_logic,Cond,"true");
         SETPVAR(_logic,Cond,_cond);
         private _position = getPosATL _logic;
