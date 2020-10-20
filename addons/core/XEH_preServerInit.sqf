@@ -15,6 +15,7 @@ if !(_ServerPreInit isEqualTo "") then {
         _x params ["_side","_namevar","_teamTypeNum"];
         private _teamType = ["player","ai","both"] select _teamTypeNum;
         [_side,_namevar,_teamType] call FUNC(AddTeam);
+        _side call FUNC(CreateRespawnMarker);
     } foreach [
         [west,GVAR(TeamName_Blufor),GVAR(TeamType_Blufor)],
         [east,GVAR(TeamName_Opfor),GVAR(TeamType_Opfor)],
@@ -51,7 +52,8 @@ if !(_ServerPreInit isEqualTo "") then {
 
 [QGVAR(RespawnedEvent), {
     LOG_1("started Respawned_Event with %1",_this);
-    _this call FUNC(EventRespawned);
+    params ["_unit", "_corpse"];
+    [_unit] call FUNC(EventRespawned);
 }] call CBA_fnc_addEventHandler;
 
 [QGVAR(KilledEvent), {
@@ -94,112 +96,42 @@ if !(_ServerPreInit isEqualTo "") then {
     };
 }] call CBA_fnc_addEventHandler;
 
-[QGVAR(TrackAllUnitsEvent), {
-    {
-        if (!(GETVAR(_x,DontTrack,false))) then {
-            _x call FUNC(TrackUnit);
-        };
-    } foreach allUnits;
-}] call CBA_fnc_addEventHandler;
-
 [QGVAR(RecievePlayerVarRequest), {
-    params ["_object","_clientID"];
-    LOG_1("Var Request _object: %1",_object);
-    LOG_1("Var Request _clientID: %1",_clientID);
+    params ["_object"];
     private _allVars = (allVariables _object) select {!(((toLower(str _x)) find (toLower(QUOTE(PREFIX)))) isEqualto -1)};
-    private _varArray = [];
-    {
+    private _varArray = _allVars apply {
         private _varstring = _x;
         private _value = _object getVariable _varstring;
-        _varArray pushback [_varstring,_value];
-    } foreach _allVars;
-    LOG_1("Var Request Array: %1",_varArray);
+        [_varstring,_value]
+    };
     [QGVAR(RecievePlayerVars), [_object,_varArray], _object] call CBA_fnc_targetEvent;
 }] call CBA_fnc_addEventHandler;
 
-[QGVAR(PlayerRespawnRequestTicketEvent), {
-    params ["_unit","_ticketType"];
-    LOG_2("RequestTicketEvent",_unit,_ticketType);
-    switch (_ticketType) do {
-        case "IND": {
-            //Individual Tickets
-            if ((GETVAR(_unit,IndTicketsRemaining,"")) isEqualTo "") then {
-                switch (side _unit) do {
-                    case west: {
-                        SETVAR(_unit,IndTicketsRemaining,EGETMVAR(Respawn,IndTickets_Blufor,2));
-                    };
-                    case east: {
-                        SETVAR(_unit,IndTicketsRemaining,EGETMVAR(Respawn,IndTickets_Opfor,2));
-                    };
-                    case independent: {
-                        SETVAR(_unit,IndTicketsRemaining,EGETMVAR(Respawn,IndTickets_Indfor,2));
-                    };
-                    case civilian: {
-                        SETVAR(_unit,IndTicketsRemaining,EGETMVAR(Respawn,IndTickets_Civ,2));
-                    };
-                };
-            };
-            private _indTicketsRemaining = (GETVAR(_unit,IndTicketsRemaining,0));
-            LOG_1("_indTicketsRemaining: %1",_indTicketsRemaining);
-            if (_indTicketsRemaining > 0) then {
-                DEC(_indTicketsRemaining);
-                SETVAR(_unit,IndTicketsRemaining,_indTicketsRemaining);
-                [QGVAR(PlayerRespawnRecieveTicketEvent), [_unit,true,"IND",_indTicketsRemaining], [_unit]] call CBA_fnc_targetEvent;
-            } else {
-                [QGVAR(PlayerRespawnRecieveTicketEvent), [_unit,false,"IND",_indTicketsRemaining], [_unit]] call CBA_fnc_targetEvent;
-            };
-        };
-        case "TEAM": {
-            //Team Tickets
-            switch (side _unit) do {
-                case west: {
-                    private _ticketsRemaining = EGETMVAR(Respawn,TeamTicketsRemaining_Blufor,30);
-                    if (_ticketsRemaining > 0) then {
-                        DEC(_ticketsRemaining);
-                        ESETMVAR(Respawn,TeamTicketsRemaining_Blufor,_ticketsRemaining);
-                        [QGVAR(PlayerRespawnRecieveTicketEvent), [_unit,true,"TEAM",_ticketsRemaining], [_unit]] call CBA_fnc_targetEvent;
-                    } else {
-                        [QGVAR(PlayerRespawnRecieveTicketEvent), [_unit,false,"TEAM",_ticketsRemaining], [_unit]] call CBA_fnc_targetEvent;
-                    };
-                };
-                case east: {
-                    private _ticketsRemaining = EGETMVAR(Respawn,TeamTicketsRemaining_Opfor,30);
-                    if (_ticketsRemaining > 0) then {
-                        DEC(_ticketsRemaining);
-                        ESETMVAR(Respawn,TeamTicketsRemaining_Opfor,_ticketsRemaining);
-                        [QGVAR(PlayerRespawnRecieveTicketEvent), [_unit,true,"TEAM",_ticketsRemaining], [_unit]] call CBA_fnc_targetEvent;
-                    } else {
-                        [QGVAR(PlayerRespawnRecieveTicketEvent), [_unit,false,"TEAM",_ticketsRemaining], [_unit]] call CBA_fnc_targetEvent;
-                    };
-                };
-                case independent: {
-                    private _ticketsRemaining = EGETMVAR(Respawn,TeamTicketsRemaining_Indfor,30);
-                    if (_ticketsRemaining > 0) then {
-                        DEC(_ticketsRemaining);
-                        ESETMVAR(Respawn,TeamTicketsRemaining_Indfor,_ticketsRemaining);
-                        [QGVAR(PlayerRespawnRecieveTicketEvent), [_unit,true,"TEAM",_ticketsRemaining], [_unit]] call CBA_fnc_targetEvent;
-                    } else {
-                        [QGVAR(PlayerRespawnRecieveTicketEvent), [_unit,false,"TEAM",_ticketsRemaining], [_unit]] call CBA_fnc_targetEvent;
-                    };
-                };
-                case civilian: {
-                    private _ticketsRemaining = EGETMVAR(Respawn,TeamTicketsRemaining_Civ,30);
-                    if (_ticketsRemaining > 0) then {
-                        DEC(_ticketsRemaining);
-                        ESETMVAR(Respawn,TeamTicketsRemaining_Civ,_ticketsRemaining);
-                        [QGVAR(PlayerRespawnRecieveTicketEvent), [_unit,true,"TEAM",_ticketsRemaining], [_unit]] call CBA_fnc_targetEvent;
-                    } else {
-                        [QGVAR(PlayerRespawnRecieveTicketEvent), [_unit,false,"TEAM",_ticketsRemaining], [_unit]] call CBA_fnc_targetEvent;
-                    };
-                };
-                default {};
-            };
-        };
-    };
+[QEGVAR(Respawn,AddToQueueEvent), {
+    params ["_unit", "_newSide", "_queueVar", "_message"];
+    private _queue = missionNamespace getVariable [_queueVar, []];
+    _queue pushBackUnique [_unit, _newSide, _message];
+    missionNamespace setVariable [_queueVar, _queue];
 }] call CBA_fnc_addEventHandler;
 
-[QGVAR(PlayerRespawnAddToQueueEvent), {
-    params ["_unit","_side","_timeadded","_gearclass","_originalGroup","_isLeader"];
+[QEGVAR(Respawn,RequestTeamTicketEvent), {
+    params ["_unit", "_newSide", "_teamRespawnMarker", "_queueVar"];
+    LOG_2("RequestTicketEvent",_unit);
+    //Team Tickets
+    private _ticketVar = switch (side _unit) do {
+        case west: {QEGVAR(Respawn,TeamTicketsRemaining_Blufor)};
+        case east: {QEGVAR(Respawn,TeamTicketsRemaining_Opfor)};
+        case independent: {QEGVAR(Respawn,TeamTicketsRemaining_Indfor)};
+        case civilian: {QEGVAR(Respawn,TeamTicketsRemaining_Civ)};
+    };
+    private _ticketsRemaining = missionNamespace getVariable [_ticketVar, 30];
+    if (_ticketsRemaining > 0) then {
+        DEC(_ticketsRemaining);
+        missionNamespace setVariable [_ticketVar, _ticketsRemaining];
+        [QEGVAR(Respawn,RecieveTeamTicketEvent), [_unit, true, _ticketsRemaining, _newSide, _teamRespawnMarker, _queueVar], _unit] call CBA_fnc_targetEvent;
+    } else {
+        [QEGVAR(Respawn,RecieveTeamTicketEvent), [_unit, false, _ticketsRemaining, _newSide, _teamRespawnMarker, _queueVar], _unit] call CBA_fnc_targetEvent;
+    };
 }] call CBA_fnc_addEventHandler;
 
 [QGVAR(TeamsInitEvent), []] call CBA_fnc_localEvent;

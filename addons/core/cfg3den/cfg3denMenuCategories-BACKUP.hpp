@@ -21,6 +21,15 @@
                     expression = SCENARIO_EXPRESSION;\
                     defaultValue = "['']";\
                 };\
+                class EGVAR(Respawn,DOUBLES(NewTeam,TEAMNAMEVAR)) {\
+                    property = QEGVAR(Respawn,DOUBLES(NewTeam,TEAMNAMEVAR));\
+                    displayName = "Respawn Side";\
+                    tooltip = QUOTE(Determines what side the originally TEAMNAMEVAR players will spawn on. Enabling this setting requires respawned players to join a new group.);\
+                    respawnTypes[] = {1,2,3};\
+                    control = QEGVAR(Respawn,Side_Combo);\
+                    expression = SCENARIO_EXPRESSION;\
+                    defaultValue = "3";\
+                };\
                 class EGVAR(Respawn,DOUBLES(Delay,TEAMNAMEVAR)) {\
                     property = QEGVAR(Respawn,DOUBLES(Delay,TEAMNAMEVAR));\
                     displayName = "Respawn Delay";\

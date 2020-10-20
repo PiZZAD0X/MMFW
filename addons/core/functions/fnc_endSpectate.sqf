@@ -19,15 +19,4 @@ if (!isNil QGVAR(keyHandle46)) then {
 
 ["Terminate"] call BIS_fnc_EGSpectator;
 
-private _marker = "";
-switch (side player) do {
-    case WEST: {_marker = "respawn_west";};
-    case EAST: {_marker = "respawn_east";};
-    case INDEPENDENT: {_marker = "respawn_guerrila";};
-    case CIVILIAN: {_marker = "respawn_Civilian";};
-    default {};
-};
-
-player setPos (getMarkerPos _marker);
-
 [QEGVAR(Spectator,EndHookEvent), []] call CBA_fnc_localEvent;

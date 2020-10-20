@@ -42,6 +42,15 @@ if (hasInterface) then {
         if !(_PlayerPostInit isEqualTo "") then {
             call compile _PlayerPostInit;
         };
+
+        private _indTickets = switch (side player) do {
+            case west: {(EGETMVAR(Respawn,IndTickets_Blufor,2))};
+            case east: {(EGETMVAR(Respawn,IndTickets_Opfor,2))};
+            case independent: {(EGETMVAR(Respawn,IndTickets_Indfor,2))};
+            case civilian: {(EGETMVAR(Respawn,IndTickets_Civ,2))};
+        };
+        SETMVAR(IndTicketsRemaining,_indTickets);
+
     }] call CBA_fnc_WaitUntilAndExecute;
 
 } else {

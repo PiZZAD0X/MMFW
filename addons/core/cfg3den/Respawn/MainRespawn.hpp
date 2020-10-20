@@ -16,7 +16,23 @@ class EGVAR(Respawn,Category) {
             tooltip = "This setting enables the specator killcam functionality.";
             control = "CheckBox";
             expression = SCENARIO_EXPRESSION;
-            defaultValue = "true";
+            defaultValue = "(true)";
+        };
+        class EGVAR(Respawn,SpawnPosRespawn) {
+            property = QEGVAR(Respawn,KillCam);
+            displayName = "SpawnPos Respawn";
+            tooltip = "Enabled respawning on the original spawn position if no eligible respawn modules found.";
+            control = "CheckBox";
+            expression = SCENARIO_EXPRESSION;
+            defaultValue = "(false)";
+        };
+        class EGVAR(Respawn,AreaRespawn) {
+            property = QEGVAR(Respawn,AreaRespawn);
+            displayName = "Respawn Radius";
+            tooltip = "";
+            control = QGVAR(0To20Step1_Slider);
+            expression = SCENARIO_EXPRESSION;
+            defaultValue = "5";
         };
     };
 };

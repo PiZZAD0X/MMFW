@@ -20,4 +20,5 @@ if !(_ServerPostInit isEqualTo "") then {
 
 SETMPVAR(MissionEnded,false);
 [] call FUNC(EndConditionsInit);
+[] call FUNC(RespawnQueueInit);
 SETMPVAR(ServerInitialized,true);

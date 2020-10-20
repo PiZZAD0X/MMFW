@@ -17,15 +17,18 @@
 #include "script_component.hpp"
 EXEC_CHECK(SERVER);
 
-params [["_unit", objNull, [objNull]],["_killer", objNull, [objNull]]];
+params [
+    ["_unit", objNull, [objNull]],
+    ["_killer", objNull, [objNull]]
+];
 
 if (GETVAR(_unit,Tracked,false)) then {
-    {
+    GVAR(Teams) apply {
         _x params ["", "_side", "_Type", "", "_current"];
         if (!(GETVAR(_unit,HasDied,false)) && {!(GETVAR(_unit,Dead,false))} && {(GETVAR(_unit,Side,sideUnknown) isEqualto _side)} && {((_Type isEqualto "player" && {isPlayer _unit}) || (_Type isEqualto "ai" && !(isPlayer _unit)) || (_Type isEqualto "both"))}) exitWith {
             SETPVAR(_unit,HasDied,true);
             SETPVAR(_unit,Dead,true);
             _x set [4, (_current - 1)];
         };
-    } forEach GVAR(Teams);
+    };
 };

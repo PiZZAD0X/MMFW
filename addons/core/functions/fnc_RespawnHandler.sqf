@@ -1,49 +1,86 @@
-
 #include "script_component.hpp"
 EXEC_CHECK(CLIENT);
 
 params ["_unit", "_corpse"];
-
 SETPLPVAR(Body,_corpse);
 
-//handle respawn delays, Rsc, gear & module settings, location, etc
-private ["_respawnType"];
-
-switch (side player) do {
+private _respawnType = switch (side _unit) do {
     case west: {
-        private _respawnTypeNum = EGETMVAR(Respawn,Type_BLUFOR,0);
-        _respawnType = ["ONELIFE","UNLIMITED","INDTICK","TEAMTICK"] select _respawnTypeNum;
+        ["ONELIFE","UNLIMITED","INDTICK","TEAMTICK"] select EGETMVAR(Respawn,Type_BLUFOR,0)
     };
     case east: {
-        private _respawnTypeNum = EGETMVAR(Respawn,Type_OPFOR,0);
-        _respawnType = ["ONELIFE","UNLIMITED","INDTICK","TEAMTICK"] select _respawnTypeNum;
+        ["ONELIFE","UNLIMITED","INDTICK","TEAMTICK"] select EGETMVAR(Respawn,Type_OPFOR,0)
     };
     case independent: {
-        private _respawnTypeNum = EGETMVAR(Respawn,Type_Indfor,0);
-        _respawnType = ["ONELIFE","UNLIMITED","INDTICK","TEAMTICK"] select _respawnTypeNum;
+        ["ONELIFE","UNLIMITED","INDTICK","TEAMTICK"] select EGETMVAR(Respawn,Type_Indfor,0)
     };
     case civilian: {
-        private _respawnTypeNum = EGETMVAR(Respawn,Type_Civilian,0);
-        _respawnType = ["ONELIFE","UNLIMITED","INDTICK","TEAMTICK"] select _respawnTypeNum;
+        ["ONELIFE","UNLIMITED","INDTICK","TEAMTICK"] select EGETMVAR(Respawn,Type_Civilian,0)
     };
 };
 
-LOG_1("_respawnType: %1",_respawnType);
+TRACE_1("",_respawnType);
 
-switch (_respawnType) do {
-    case "ONELIFE": {
-        [QEGVAR(Spectator,StartSpectateEvent), []] call CBA_fnc_localEvent;
+if (_respawnType in ["UNLIMITED", "INDTICK", "TEAMTICK"]) then {
+    private _newSide = switch (side _unit) do {
+        case west: {[blufor,opfor,independent,civilian] select EGETMVAR(Respawn,NewTeam_BLUFOR,0)};
+        case east: {[blufor,opfor,independent,civilian] select EGETMVAR(Respawn,NewTeam_OPFOR,0)};
+        case independent: {[blufor,opfor,independent,civilian] select EGETMVAR(Respawn,NewTeam_INDFOR,0)};
+        case civilian: {[blufor,opfor,independent,civilian] select EGETMVAR(Respawn,NewTeam_CIV,0)};
     };
-    case "UNLIMITED": {
-        [QGVAR(PlayerRespawnEvent), []] call CBA_fnc_localEvent;
+    private _teamVar = [_newSide] call FUNC(getTeamVar);
+    private _queueVar = switch _newSide do {
+        case west: {QEGVAR(Respawn,Queue_Blufor)};
+        case east: {QEGVAR(Respawn,Queue_Opfor)};
+        case independent: {QEGVAR(Respawn,Queue_Indfor)};
+        case civilian: {QEGVAR(Respawn,Queue_Civ)};
     };
-    case "INDTICK": {
-        [QGVAR(PlayerRespawnRequestTicketEvent), [player,"IND"]] call CBA_fnc_serverEvent;
+    private _eligibleRespawnLocations = [_teamVar] call FUNC(getRespawnLocations);
+    private _teamRespawnMarker = if (_eligibleRespawnLocations isEqualTo []) then {
+        objNull
+    } else {
+        selectRandom _eligibleRespawnLocations
     };
-    case "TEAMTICK": {
-        [QGVAR(PlayerRespawnRequestTicketEvent), [player,"TEAM"]] call CBA_fnc_serverEvent;
+    switch (_respawnType) do {
+        case "INDTICK": {
+            //Individual Tickets
+            private _indTicketsRemaining = GETMVAR(IndTicketsRemaining,0);
+            LOG_1("_indTicketsRemaining: %1",_indTicketsRemaining);
+            if (_indTicketsRemaining > 0) then {
+                DEC(_indTicketsRemaining);
+                SETMVAR(IndTicketsRemaining,_indTicketsRemaining);
+                private _message = if (_indTicketsRemaining isEqualTo 0) then {
+                    "You have no respawn tickets remaining."
+                } else {
+                    private _pluralForm = ["tickets","ticket"] select (_indTicketsRemaining isEqualTo 1);
+                    (format ["You have %1 respawn %2 remaining.",_indTicketsRemaining,_pluralForm])
+                };
+                if (_teamRespawnMarker isEqualTo objNull && {!(EGETMVAR(Respawn,SpawnPosRespawn,false))}) then {
+                    [QEGVAR(Spectator,StartSpectateEvent), [], _unit] call CBA_fnc_localEvent;
+                    "There are no eligible respawn points! Respawn points can be activated during the mission." call BIS_fnc_titleText;
+                    [QEGVAR(Respawn,AddToQueueEvent), [_unit, _newSide, _queueVar, _message]] call CBA_fnc_serverEvent;
+                } else {
+                    [QGVAR(PlayerRespawnEvent), [_message, _newSide, _teamRespawnMarker]] call CBA_fnc_localEvent;
+                };
+            } else {
+                [QEGVAR(Spectator,StartSpectateEvent), []] call CBA_fnc_localEvent;
+                "You had no respawn tickets remaining <br/> Enabling spectator." call BIS_fnc_titleText;
+            };
+        };
+        case "TEAMTICK": {
+            //Team Tickets
+            [QEGVAR(Respawn,RequestTeamTicketEvent), [_unit, _newSide, _teamRespawnMarker, _queueVar]] call CBA_fnc_serverEvent;
+        };
+        case "UNLIMITED": {
+            if (_teamRespawnMarker isEqualTo objNull && {!(EGETMVAR(Respawn,SpawnPosRespawn,false))}) then {
+                [QEGVAR(Spectator,StartSpectateEvent), [], _unit] call CBA_fnc_localEvent;
+                "There are no eligible respawn points! Respawn points can be activated during the mission." call BIS_fnc_titleText;
+                [QEGVAR(Respawn,AddToQueueEvent), [_unit, _newSide, _queueVar, _respawnType]] call CBA_fnc_serverEvent;
+            } else {
+                [QGVAR(PlayerRespawnEvent), ["", _newSide, _teamRespawnMarker]] call CBA_fnc_localEvent;
+            };
+        };
     };
-    default {
-        [QEGVAR(Spectator,StartSpectateEvent), []] call CBA_fnc_localEvent;
-    };
+} else {
+    [QEGVAR(Spectator,StartSpectateEvent), []] call CBA_fnc_localEvent;
 };

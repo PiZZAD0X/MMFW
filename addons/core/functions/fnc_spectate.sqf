@@ -287,6 +287,7 @@ switch (_deathScreenType) do {
     };
 
     SETPLPVAR(Spectating,true);
+    SETMVAR(Spectating,true);
 
     [{(GETPLVAR(Spectating,false))},{
         GVAR(Spectate_PFH) = [{
