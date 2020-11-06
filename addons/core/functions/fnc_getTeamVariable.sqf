@@ -13,22 +13,16 @@
  * Public: No
  */
 
-
 #include "script_component.hpp"
-EXEC_CHECK(ALL);
 
-params [["_team", "", [""]],["_index", 0, [0]]];
-private _return = 0;
-private _found = false;
-{
-    if ((_x select 0) isEqualto _team) exitWith {
-        _return = (_x select _index);
-        _found = true;
-    };
-} forEach GVAR(Teams);
-
-if !(_found) then {
+params [
+    ["_team", "", [""]],
+    ["_index", 0, [0]]
+];
+private _findIndex = GVAR(Teams) findIf {_x select 0 == _team};
+if (_findIndex isEqualto -1) exitWith {
     ERROR_1("Critical:<br></br>Team ""%1"" does not exist.", _team)
 };
+private _return = GVAR(Teams) select _findIndex select _index;
 
 _return

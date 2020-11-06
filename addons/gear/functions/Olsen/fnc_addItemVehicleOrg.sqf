@@ -21,7 +21,7 @@ EXEC_CHECK(ALL);
 
 params ["_vehicle", "_loadoutType", "_item", ["_amount",1,[1]]];
 
-private _Type = (_item call BIS_fnc_itemType) select 1;
+private _type = (_item call BIS_fnc_itemType) select 1;
 
 if !([_item] call FUNC(checkClassname)) exitWith {};
 
@@ -31,7 +31,7 @@ if (count _this > 3) then {
 
 for "_x" from 1 to _amount do {
     if (_vehicle canAdd _item) then {
-        if (_Type == "backpack") then {
+        if (_type == "backpack") then {
             _vehicle addBackpackCargoGlobal [_item, 1];
         } else {
 

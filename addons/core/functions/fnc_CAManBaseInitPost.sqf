@@ -2,8 +2,6 @@
 EXEC_CHECK(ALL);
 
 params ["_unit"];
-if !(local _unit) exitWith {};
-
-LOG("Spawned_Event called");
+LOCAL_CHECK(_unit);
 
 [QGVAR(SpawnedEvent), _this] call CBA_fnc_serverEvent;

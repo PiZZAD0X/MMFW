@@ -12,19 +12,22 @@
  * amount of units in area <number>
  *
  * Public: Yes
- */
-
+*/
 
 #include "script_component.hpp"
-EXEC_CHECK(ALL);
 
-params [["_side", sideUnknown, [sideUnknown]],["_radius", 0, [0]],["_logic", objNull, [objNull]],["_noUntracked", false]];
-private _count = 0;
+params [
+    ["_side", sideUnknown, [sideUnknown]],
+    ["_radius", 0, [0]],
+    ["_logic", objNull, [objNull]],
+    ["_noUntracked", false]
+];
 
-{
-    if ((side _x isEqualto _side) && {(!(GETVAR(_x,DontTrack,false)) || !_noUntracked)} && {((_x distance _logic) < _radius)} && {(_x call FUNC(Alive))}) then {
-        _count = _count + 1;
-    };
-} forEach allUnits;
+private _count = {
+    (side _x isEqualto _side)
+    && {!_noUntracked && {!(GETVAR(_x,DontTrack,false))}}
+    && {_x call FUNC(isAlive)}
+    && {(_x distance _logic) < _radius}
+} count allUnits;
 
 _count

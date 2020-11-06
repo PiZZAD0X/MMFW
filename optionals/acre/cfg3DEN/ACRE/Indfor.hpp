@@ -2,24 +2,24 @@ class GVAR(RadioTypes_CAT_Indfor) {
     displayName = "Radio Configuration";
     collapsed = 0;
     class Attributes {
-        class GVAR(SR_Type_Indfor) {
-            property = QGVAR(SR_Type_Indfor);
+        class GVAR(SR_type_Indfor) {
+            property = QGVAR(SR_type_Indfor);
             displayName = "Short Range Radio Type";
             tooltip = "Sets the short range radio type for the side";
             control = QGVAR(SR_SELECT);
             expression = SCENARIO_EXPRESSION;
             defaultValue = "0";
         };
-        class GVAR(LR_Type_Indfor) {
-            property = QGVAR(LR_Type_Indfor);
+        class GVAR(LR_type_Indfor) {
+            property = QGVAR(LR_type_Indfor);
             displayName = "Long Range Radio Type";
             tooltip = "Sets the long range radio type for the side";
             control = QGVAR(LR_SELECT);
             expression = SCENARIO_EXPRESSION;
             defaultValue = "0";
         };
-        class GVAR(PK_Type_Indfor) {
-            property = QGVAR(PK_Type_Indfor);
+        class GVAR(PK_type_Indfor) {
+            property = QGVAR(PK_type_Indfor);
             displayName = "Long Range Pack Radio Type";
             tooltip = "Sets the long range pack radio type for the side";
             control = QGVAR(PK_SELECT);

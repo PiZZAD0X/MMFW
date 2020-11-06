@@ -9,14 +9,14 @@ switch (_mode) do {
             private _HostageModules = (all3DENEntities select 3) select {_x isKindOf QGVAR(Module)};
             private _HostageModulesList = [];
             private _compareList = (_HostageModules - [_logic]);
-            LOG_2("_logic: %1 _compareList: %2",_logic,_compareList);
+            TRACE_2("",_logic,_compareList);
             {
                 private _AreaName = (_x get3DENAttribute QGVAR(AreaName)) select 0;
                 if !(_AreaName in _HostageModulesList) then {
                     _HostageModulesList append [_AreaName];
                 };
             } foreach _compareList;
-            LOG_2("_logic: %1 _HostageModulesList: %2",_logic,_HostageModulesList);
+            TRACE_2("",_logic,_HostageModulesList);
             private _AreaName = (_logic get3DENAttribute QGVAR(AreaName)) select 0;
             if (_AreaName in _HostageModulesList) exitwith {
                 ERROR_1("Duplicate AreaName for Hostage Area %1",_AreaName);
@@ -26,10 +26,10 @@ switch (_mode) do {
                     if (_result) then {
                         for "_i" from 1 to (count _HostageModulesList) step 1 do {
                             private _newName = format ["Area_%1",_i];
-                            LOG_3("logic %1 newName %2 currentList %3",_logic,_newName,_HostageModulesList);
+                            TRACE_3("",_logic,_newName,_HostageModulesList);
                             if !(_newName in _HostageModulesList) exitwith {
                                 _logic set3DENAttribute [QGVAR(AreaName), _newName];
-                                LOG_2("Renamed %1 to %2",_logic,_newName);
+                                TRACE_2("",_logic,_newName);
                             };
                         };
                     };
@@ -45,8 +45,8 @@ switch (_mode) do {
             if (isNil QGVAR(AreaArray)) then {
                 GVAR(AreaArray) = [_sendArray];
             } else {
-                private _index = [GVAR(AreaArray),_AreaName,0] call EFUNC(Core,searchNestedArray);
-                private _inArray = if (_index isEqualTo -1) then {false} else {true};
+                private _index = GVAR(AreaArray) findIf {_x select 0 isEqualTo _AreaName};
+                private _inArray = !(_index isEqualTo -1);
                 if (_inArray) then {
                     GVAR(AreaArray) set [_index,_sendArray];
                 } else {
@@ -61,14 +61,14 @@ switch (_mode) do {
         private _HostageModules = (all3DENEntities select 3) select {_x isKindOf QGVAR(Module)};
         private _HostageModulesList = [];
         private _compareList = (_HostageModules - [_logic]);
-        LOG_2("_logic: %1 _compareList: %2",_logic,_compareList);
+        TRACE_2("",_logic,_compareList);
         {
             private _AreaName = (_x get3DENAttribute QGVAR(AreaName)) select 0;
             if !(_AreaName in _HostageModulesList) then {
                 _HostageModulesList append [_AreaName];
             };
         } foreach _compareList;
-        LOG_2("_logic: %1 _HostageModulesList: %2",_logic,_HostageModulesList);
+        TRACE_2("",_logic,_HostageModulesList);
         private _AreaName = (_logic get3DENAttribute QGVAR(AreaName)) select 0;
         if (_AreaName in _HostageModulesList) exitwith {
             ERROR_1("Duplicate AreaName for Hostage Area %1",_AreaName);
@@ -78,10 +78,10 @@ switch (_mode) do {
                 if (_result) then {
                     for "_i" from 1 to (count _HostageModulesList) step 1 do {
                         private _newName = format ["Area_%1",_i];
-                        LOG_3("logic %1 newName %2 currentList %3",_logic,_newName,_HostageModulesList);
+                        TRACE_3("",_logic,_newName,_HostageModulesList);
                         if !(_newName in _HostageModulesList) exitwith {
                             _logic set3DENAttribute [QGVAR(AreaName), _newName];
-                            LOG_2("Renamed %1 to %2",_logic,_newName);
+                            TRACE_2("",_logic,_newName);
                         };
                     };
                 };

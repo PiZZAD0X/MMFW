@@ -4,15 +4,14 @@ EXEC_CHECK(ALL);
 EDEN_CHECK;
 
 params ["_object","",""];
-LOG_1("_object: %1",_object);
+TRACE_1("",_object);
 
 if (_object isKindOf "CAManBase") then {
     //private _systemType = GETVAR(_object,UnitSystemType,"NONE");
     private _systemType = (_object get3DENAttribute QGVAR(UnitSystemType)) select 0;
-    LOG_1("_systemType: %1",_systemType);
     //private _gearType = GETVAR(_object,UnitGearType,"NONE");
     private _gearType = (_object get3DENAttribute QGVAR(UnitGearType)) select 0;
-    LOG_1("_gearType: %1",_gearType);
+    TRACE_2("",_systemType,_gearType);
     if (_systemType isEqualto "NONE") exitwith {};
     if (_gearType isEqualto "NONE") exitwith {
         ERROR_1("No loadout found for unit: %1",_object);
@@ -44,7 +43,7 @@ if (_object isKindOf "CAManBase") then {
                 if (_manualClass isEqualto "") exitwith {
                     ERROR_1("Unit %1 is set to manual loadout but has none!, exiting gearscript.",_object);
                 };
-                LOG_2("Executing gear class: %1 for unit %2",_manualClass,_object);
+                TRACE_2("Executing gear class",_manualClass,_object);
                 [_object,_manualClass] call FUNC(OlsenGearScript);
             };
         };
@@ -71,7 +70,7 @@ if (_object isKindOf "CAManBase") then {
         };
         private _loadoutName = missionNamespace getvariable [_loadoutvarname,"NONE"];
         if (_loadoutName isEqualto "NONE") exitwith {
-            ERROR_2("No loadout found for unit: %1 and var %2",_object,_loadoutvarname);
+            TRACE_2("No loadout found",_object,_loadoutvarname);
         };
         switch (_systemType) do {
             case "ACEAR": {
@@ -105,7 +104,7 @@ if (_object isKindOf "CAManBase") then {
             if (_loadoutName isEqualto "") exitwith {
                 ERROR_1("Vehicle %1 is set to manual loadout but has none!, exiting gearscript.",_object);
             };
-            LOG_2("Executing gear of file: %1 for vehicle %2",_loadoutName,_object);
+            LOG_2("Executing gear of file class: %1 for vehicle %2",_loadoutName,_object);
             [_object,_loadoutName] call FUNC(OlsenGearScript);
         };
     };

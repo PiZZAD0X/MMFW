@@ -13,9 +13,24 @@ class Extended_PreInit_EventHandlers {
 };
 
 class Extended_InitPost_EventHandlers {
-    class CAManBase {
+    class LandVehicle {
         class ADDON {
-            init = QUOTE(_this call FUNC(AutoTrackInit));
+            init = QUOTE(call FUNC(AutoTrackInit));
+        };
+    };
+    class Helicopter {
+        class ADDON {
+            init = QUOTE(call FUNC(AutoTrackInit));
+        };
+    };
+    class Plane {
+        class ADDON {
+            init = QUOTE(call FUNC(AutoTrackInit));
+        };
+    };
+    class Ship_F {
+        class ADDON {
+            init = QUOTE(call FUNC(AutoTrackInit));
         };
     };
 };

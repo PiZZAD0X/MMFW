@@ -1,5 +1,4 @@
 #include "script_component.hpp"
-EXEC_CHECK(CLIENT);
 
 [QEGVAR(Core,RegisterModuleEvent), ["AO Limit", "Allows the mission maker to set AO limits to specific sides.", "Olsen, Sacher and PiZZADOX"]] call CBA_fnc_localEvent;
 //[_logic,_area,_selectedSides,_entryMode,_airsetting,_AOMode,_softAOtime,_softAOtimeAir] passed array
@@ -21,14 +20,14 @@ EXEC_CHECK(CLIENT);
         _arrayname = QGVAR(Array_1);
         _run = true;
     } else {
-        {
+        GVAR(Arrays) apply {
             private _AOLimitArray = _x;
             if (({_logic inArea _x} count _AOLimitArray) > 0) exitwith {
                 _AOLimitArray pushBackUnique _area;
                 _run = false;
                 breakOut "AOLimitMainSpawn";
             };
-        } foreach GVAR(Arrays);
+        };
         private _count = (count GVAR(Arrays));
         _arrayname = format ["##PREFIX##_AOLimit_Array_%1",_count];
         missionNamespace setvariable [_arrayname,[_area]];
@@ -67,7 +66,7 @@ EXEC_CHECK(CLIENT);
         };
     };
 
-    LOG_3("unit starting _outSide: %1 _startedInside: %2 _enteredZone: %3",_outSide,_startedInside,_enteredZone);
+    TRACE_3("unit starting",_outSide,_startedInside,_enteredZone);
     LOG("Starting AO Limit");
 
     if (_run) then {
@@ -76,9 +75,7 @@ EXEC_CHECK(CLIENT);
             _argNested params ["_unit","_args","_startedInside","_outSide","_enteredZone","_arrayname","_softAOMode","_recheckDead","_pos"];
             _args params ["","_area","","_entryMode","_airsetting","","_softAOtime","_softAOtimeAir"];
 
-            LOG_1("_argNested: %1",_argNested);
-            LOG_1("_area: %1",_area);
-            LOG_1("(vehicle _unit): %1",(vehicle _unit));
+            TRACE_3("",_argNested,_area,(vehicle _unit));
             private _air = ((vehicle _unit) isKindOf "Air");
             if ((_airsetting) && {_air}) exitwith {};
 
@@ -149,7 +146,6 @@ EXEC_CHECK(CLIENT);
             };
 
             SETMVAR(Display,_outSide);
-            LOG_1("_outSide: %1",_outSide);
 
             if ((count (missionNamespace getvariable _arrayname)) == 1) then {
                 if ((!(_startedInside) && {!_softAOMode} && {(_entryMode)} && {!((vehicle _unit) inArea _area)}) || {(_recheckDead && !_softAOMode)}) then {
@@ -167,7 +163,7 @@ EXEC_CHECK(CLIENT);
                 };
             };
 
-            if (!((vehicle _unit) call EFUNC(Core,alive)) && {!(_recheckDead)}) then {
+            if (!((vehicle _unit) call EFUNC(Core,isAlive)) && {!(_recheckDead)}) then {
                 _recheckDead = true;
                 _argNested set [7,_recheckDead];
                 _enteredZone = false;

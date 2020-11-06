@@ -16,20 +16,16 @@
 
 
 #include "script_component.hpp"
-EXEC_CHECK(ALL);
 
 params [
     ["_team", "", [""]],
     ["_index", 0, [0]],
     "_value"
 ];
-
-private _return = false;
-{
-    if ((_x select 0) == _team) exitWith {
-        _x set [_index, _value];
-        _return = true;
-    };
-} forEach GVAR(Teams);
-
-_return
+private _findIndex = GVAR(Teams) findIf {_x select 0 == _team};
+if (_findIndex isEqualto -1) exitWith {
+    ERROR_1("Critical:<br></br>Team ""%1"" does not exist.", _team);
+    false
+};
+(GVAR(Teams) select _findIndex) set [_index, _value];
+true

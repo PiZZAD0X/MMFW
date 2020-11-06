@@ -6,7 +6,7 @@ EDEN_CHECK;
 LOG("GearLoadPreset started");
 
 params ["_preset",["_teamTag","BLUFOR",[""]],"_ctrlButton"];
-LOG_2("_preset: %1 _teamTag: %2",_preset,_teamTag);
+TRACE_2("",_preset,_teamTag);
 
 if (_preset isEqualto "NONE") exitwith {
     private _classArray = getArray(configFile >> QGVAR(Types) >> "typesArray");
@@ -52,7 +52,7 @@ private _foundCfg = "";
     if (_displayName isEqualto _preset) exitwith {
         _found = true;
         _foundCfg = _cfg;
-        LOG_2("found match for %1 config: %2",_preset,_cfg);
+        TRACE_2("found match",_preset,_cfg);
     };
 } foreach _cfgEntries;
 if (!(_found) || (_foundCfg isEqualto "")) exitwith {
@@ -60,7 +60,7 @@ if (!(_found) || (_foundCfg isEqualto "")) exitwith {
 };
 private _displayName = getText(_foundCfg >> "displayName");
 private _configName = configName _foundCfg;
-LOG_3("_foundCfg: %1 _preset: %2 _configName: %3"_foundCfg,_preset,_configName);
+TRACE_3(""_foundCfg,_preset,_configName);
 private _isArray = isArray (_foundCfg >> "addonsRequired");
 if (_isArray) then {
     private _loaded = true;

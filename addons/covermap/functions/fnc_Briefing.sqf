@@ -1,26 +1,16 @@
 #include "script_component.hpp"
-EXEC_CHECK(CLIENT);
+if !(hasInterface) exitwith {};
 //Covers Map outside marker and centers map on marker center in game map
 
 //params ["_area",["_centered",true],["_zoomlevel",0.4],"_name",["_AOName",1]];
 params ["_AONameCalled"];
-private ["_areaCalled","_zoomlevelCalled","_found","_index","_logicCalled"];
 
-private _found = false;
-{
-    _x params ["_AOName","_area","_AOZoom","_logic"];
-    if (_AONameCalled == _AOName) then {
-        _areaCalled = _area;
-        _logicCalled = _logic;
-        _zoomlevelCalled = _AOZoom;
-        _index = _forEachIndex;
-        _found = true;
-    };
-} foreach GVAR(AOArray);
-
-if !(_found) exitwith {
+private _index = GVAR(AOArray) findIf {_x select 0 == _AONameCalled};
+if (_index isEqualTo -1) exitwith {
     ERROR_1("Live CoverMap area: %1 not found in array!",_AONameCalled);
 };
+GVAR(AOArray) select _index params ["_AOName", "_area", "_AOZoom", "_logic"];
+
 
 if (isNil QGVAR(MarkerArray)) then {
     GVAR(MarkerArray) = [];
@@ -29,9 +19,9 @@ if (isNil QGVAR(MarkerArray)) then {
     GVAR(MarkerArray) = [];
 };
 //for self interact options and logging
-GVAR(currentAO) = _AONameCalled;
+GVAR(currentAO) = _AOName;
 
-_areaCalled params ["_pos","_radiusX","_radiusY","_dir"];
+_area params ["_pos","_radiusX","_radiusY","_dir"];
 
 _pos params ["_posx","_posy"];
 private _radiusXo = _radiusX;
@@ -123,14 +113,6 @@ _marker4 setMarkerShapeLocal "rectangle";
 _marker4 setMarkerBrushLocal "border";
 _marker4 setMarkerColorLocal "colorBlack";
 
-//private _id = switch (true) do {
-//    case (!isMultiplayer): { 37 };
-//    case (isServer): { 52 };
-//    case (!isServer): { 53 };
-//};
-
-//LOG_3("Briefing Map Vars: %1 %2 %3",_zoomlevelCalled,_pos,_id);
-
 [{
     !(isNull ((uiNamespace getVariable "RscDiary") displayCtrl 51))
 },{
@@ -143,4 +125,4 @@ _marker4 setMarkerColorLocal "colorBlack";
     _p params ["_x","_y"];
     _control ctrlMapAnimAdd [0, _zoomlevel, [_x,_y]];
     ctrlMapAnimCommit _control;
-},[_zoomlevelCalled,_pos]] call CBA_fnc_waitUntilAndExecute;
+},[_AOZoom,_pos]] call CBA_fnc_waitUntilAndExecute;

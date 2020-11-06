@@ -1,5 +1,4 @@
 #include "script_component.hpp"
-EXEC_CHECK(SERVER);
 
 private ["_ShotCount_textBLU","_ShotCount_textOPF","_ShotCount_textIND","_ShotCount_textCIV"];
 

@@ -1,5 +1,4 @@
 #include "script_component.hpp"
-EXEC_CHECK(ALL);
 
 params ["_unit"];
 
@@ -10,17 +9,12 @@ if (_moduleAreaName isEqualTo "No Area Selected") exitwith {
     ERROR_1("Hostage Rescue Area not defined: %1!",_unit);
 };
 LOG_2("%1 set to hostage with rescue area of %2",_unit,_moduleAreaName);
-private _moduleArea = [];
-{
-    _x params ["_AreaName","_area"];
-    if (_moduleAreaName isEqualTo _AreaName) exitwith {
-        _moduleArea = _area;
-    };
-} foreach GVAR(AreaArray);
 
-if (_moduleArea isEqualTo []) exitwith {
+private _index = GVAR(AreaArray) findIf {_x select 0 isEqualTo _moduleAreaName};
+if (_index isEqualTo -1) exitwith {
     ERROR_2("Hostage: %1 Area: %2 not found in Area Arrays",_unit,_moduleAreaName);
 };
+private _moduleArea = GVAR(AreaArray) select _index select 1;
 
 SETPVAR(_unit,IsUntied,false);
 SETPVAR(_unit,IsRescued,false);

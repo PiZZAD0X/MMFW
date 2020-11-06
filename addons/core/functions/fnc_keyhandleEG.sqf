@@ -1,6 +1,5 @@
 
 #include "script_component.hpp"
-EXEC_CHECK(CLIENT);
 
 params ["_control", "_code", "_shift", "_control", "_alt"];
 private _acre = ["ACRE2", "HeadSet"] call CBA_fnc_getKeybind;

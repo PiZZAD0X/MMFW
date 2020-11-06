@@ -13,9 +13,7 @@
  * Public: No
  */
 
-
 #include "script_component.hpp"
-EXEC_CHECK(SERVER);
 
 params [
     ["_unit", objNull, [objNull]],
@@ -24,8 +22,8 @@ params [
 
 if (GETVAR(_unit,Tracked,false)) then {
     GVAR(Teams) apply {
-        _x params ["", "_side", "_Type", "", "_current"];
-        if (!(GETVAR(_unit,HasDied,false)) && {!(GETVAR(_unit,Dead,false))} && {(GETVAR(_unit,Side,sideUnknown) isEqualto _side)} && {((_Type isEqualto "player" && {isPlayer _unit}) || (_Type isEqualto "ai" && !(isPlayer _unit)) || (_Type isEqualto "both"))}) exitWith {
+        _x params ["", "_side", "_type", "", "_current"];
+        if (!(GETVAR(_unit,HasDied,false)) && {!(GETVAR(_unit,Dead,false))} && {(GETVAR(_unit,Side,sideUnknown) isEqualto _side)} && {((_type isEqualto "player" && {isPlayer _unit}) || (_type isEqualto "ai" && !(isPlayer _unit)) || (_type isEqualto "both"))}) exitWith {
             SETPVAR(_unit,HasDied,true);
             SETPVAR(_unit,Dead,true);
             _x set [4, (_current - 1)];

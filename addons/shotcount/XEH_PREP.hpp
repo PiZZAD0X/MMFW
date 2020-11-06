@@ -1,4 +1,4 @@
 PREP(addEH);
 PREP(endCount);
-PREP(getDisplayName);
+PREP(firedManEH);
 PREP(shotCount);

@@ -8,7 +8,6 @@
  */
 
 #include "script_component.hpp"
-//#include "\x\cba\addons\Main\script_macros_common.hpp"
 
 //LOG("setDefaultsCalled");
 

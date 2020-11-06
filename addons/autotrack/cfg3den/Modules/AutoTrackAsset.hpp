@@ -47,5 +47,14 @@ class GVAR(Category) {
             defaultValue = "true";
             typeName = "BOOL";
         };
+        class GVAR(TrackEmpty) {
+            property = QGVAR(TrackEmpty);
+            displayName = "Empty";
+            tooltip = "Enables Auto Track for empty vehicles";
+            control = "Checkbox";
+            expression = SCENARIO_EXPRESSION;
+            defaultValue = "true";
+            typeName = "BOOL";
+        };
     };
 };

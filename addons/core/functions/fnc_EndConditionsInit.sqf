@@ -8,7 +8,6 @@
  */
 
 #include "script_component.hpp"
-EXEC_CHECK(SERVER);
 
 LOG("EndConditions Init");
 
@@ -35,7 +34,7 @@ if (isNil QGVAR(MissionEnded)) then {
                         [_idPFH] call CBA_fnc_removePerFrameHandler;
                     };
                     if ((CBA_missionTime / 60) > (EGETMVAR(EndConditions,Timelimit,60))) exitWith {
-                        _message call FUNC(EndMission);
+                        (EGETMVAR(EndConditions,Timelimit_Message,"Time Limit Reached!")) call FUNC(EndMission);
                         [_idPFH] call CBA_fnc_removePerFrameHandler;
                     };
                 }, 60, [(EGETMVAR(EndConditions,Timelimit_Message,"Time Limit Reached!"))]] call CBA_fnc_addPerFrameHandler;

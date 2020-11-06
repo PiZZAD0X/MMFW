@@ -1,13 +1,11 @@
 #include "script_component.hpp"
-EXEC_CHECK(CLIENT);
+if !(hasInterface) exitwith {};
 
-LOG_1("AOLimit _this: %1",_this);
 params ["_display"];
-LOG_1("AOLimit _display: %1",_display);
 
 [{!(displayNull isEqualto _this)}, {
     params ["_display"];
-    LOG_1("AOLimit waituntil _display: %1",_display);
+    TRACE_1("AOLimit waituntil",_display);
     private _endTime = (CBA_missionTime + (GETMVAR(TimeLeft,30)));
     private _nextBeep = _endTime - 10;
 
@@ -18,8 +16,7 @@ LOG_1("AOLimit _display: %1",_display);
     GVAR(SoftPFHhandle) = [{
         params ["_argNested", "_idPFH"];
         _argNested params ["_endTime","_nextBeep","_display",["_colorSet",["IGUI","TEXT_RGB"]]];
-        LOG_1("_display: %1",_display);
-        LOG_1("_argNested: %1",_argNested);
+        TRACE_2("", _display, _argNested);
 
         private _ctrlTime = _display displayCtrl 1003;
         private _shouldDisplay = GETMVAR(Display,false);

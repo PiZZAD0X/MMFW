@@ -25,7 +25,11 @@ EXEC_CHECK(CLIENT);
         SETPLVAR(ND_Active,true);
         //player setvariable [QEGVAR(AntiND,),];
         //player setvariable [QEGVAR(AntiND,ND_Active),true];
-        [{(CBA_missionTime > GVAR(Time))},{player removeEventHandler ["FiredMan", _this]; SETPLVAR(ND_EHid,"DISABLED"); SETPLVAR(ND_Active,false);},_FiredEh] call CBA_fnc_waitUntilAndExecute;
+        [{(CBA_missionTime > GVAR(Time))}, {
+            player removeEventHandler ["FiredMan", _this];
+            SETPLVAR(ND_EHid,"DISABLED");
+            SETPLVAR(ND_Active,false);
+        }, _FiredEh] call CBA_fnc_waitUntilAndExecute;
     }] call CBA_fnc_waitUntilAndExecute;
 }] call CBA_fnc_addEventHandler;
 

@@ -14,7 +14,9 @@ switch _mode do {
             _size params ["_radiusX", "_radiusY", "_direction", "_isRectangle"];
             private _area = [_position, _radiusX, _radiusY, _direction, _isRectangle];
 
-            [_logic,_area,_selectedSide,_time] call FUNC(TimerExec);
+            if (hasInterface) then {
+                [_logic,_area,_selectedSide,_time] call FUNC(TimerExec);
+            };
         };
     };
     case "attributesChanged3DEN": {};

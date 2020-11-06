@@ -33,17 +33,23 @@ if !(_ServerPreInit isEqualTo "") then {
 }] call CBA_fnc_addEventHandler;
 
 [QEGVAR(EndConditions,TimelimitServer), {
-    params ["_command","_client",["_arg",0,[0]]];
+    params ["_command","_client",["_arg", 0, [0, ""]]];
     switch (_command) do {
         case "check": {
             private _timeLimit = (GETMVAR(Timelimit,60));
-            [QEGVAR(EndConditions,TimelimitClient), ["check",_timeLimit], _client] call CBA_fnc_targetEvent;
+            [QEGVAR(EndConditions,TimelimitClient), ["check", _timeLimit], _client] call CBA_fnc_targetEvent;
         };
         case "extend": {
             if (_arg > 0) then {
-                private _newTimeLimit = ((GETMVAR(Timelimit,60)) + _arg);
-                SETMVAR(Timelimit,_newTimeLimit);
-                [QEGVAR(EndConditions,TimelimitClient), ["extend",_newTimeLimit], _client] call CBA_fnc_targetEvent;
+                private _newTimeLimit = ((EGETMVAR(EndConditions,Timelimit,60)) + _arg);
+                ESETMVAR(EndConditions,Timelimit,_newTimeLimit);
+                [QEGVAR(EndConditions,TimelimitClient), ["extend", _newTimeLimit], _client] call CBA_fnc_targetEvent;
+            };
+        };
+        case "message": {
+            if (_arg isEqualType "") then {
+                ESETMVAR(EndConditions,Timelimit_Message,_arg);
+                [QEGVAR(EndConditions,TimelimitClient), ["message", _arg], _client] call CBA_fnc_targetEvent;
             };
         };
         default {};
@@ -83,9 +89,9 @@ if !(_ServerPreInit isEqualTo "") then {
     params ["_unit"];
     if (GETVAR(_unit,Tracked,false)) then {
         {
-            _x params ["", "_side", "_Type", "_total", "_current"];
-            if (((GETVAR(_unit,Side,sideUnknown)) isEqualto _side) && {((_Type == "player" && isPlayer _unit) || (_Type == "ai" && !(isPlayer _unit)) || (_Type == "both"))}) exitWith {
-                if (_unit call FUNC(Alive)) then {
+            _x params ["", "_side", "_type", "_total", "_current"];
+            if (((GETVAR(_unit,Side,sideUnknown)) isEqualto _side) && {((_type == "player" && isPlayer _unit) || (_type == "ai" && !(isPlayer _unit)) || (_type == "both"))}) exitWith {
+                if (_unit call FUNC(isAlive)) then {
                     _x set [3, _total - 1];
                     _x set [4, _current - 1];
                 };

@@ -14,14 +14,14 @@
 
 
 #include "script_component.hpp"
-EXEC_CHECK(ALL);
 
 params ["_team"];
-private _count = 0;
+
 private _start = [_team, 3] call FUNC(GetTeamVariable);
 private _current = [_team, 4] call FUNC(GetTeamVariable);
-if (_start isEqualto 0) then {
+private _count = if (_start isEqualto 0) then {
     ERROR_1("Casualty count:<br></br>Warning no units on team ""%1"".", _team);
+    0
 } else {
     _count = (_start - _current) / (_start * 0.01);
 };

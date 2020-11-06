@@ -3,7 +3,7 @@ EXEC_CHECK(CLIENT);
 
 params ["_startTextArray"];
 
-private ["_month","_hour","_min"];
+private ["_month", "_hour", "_min"];
 
 switch (date select 1) do {
     case 1: {_month = "January"};

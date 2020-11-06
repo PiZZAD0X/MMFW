@@ -8,7 +8,7 @@
  */
 
 #include "script_component.hpp"
-EXEC_CHECK(SERVER);
+if !(isServer) exitWith {};
 
 LOG("RespawnQueue Init");
 
@@ -17,8 +17,13 @@ EGVAR(Respawn,Queue_Opfor) = [];
 EGVAR(Respawn,Queue_Indfor) = [];
 EGVAR(Respawn,Queue_Civ) = [];
 
+EGVAR(Respawn,RespawnLocations_BLUFOR) = [];
+EGVAR(Respawn,RespawnLocations_Opfor) = [];
+EGVAR(Respawn,RespawnLocations_Indfor) = [];
+EGVAR(Respawn,RespawnLocations_Civ) = [];
+
 [{
-    params ["_argNested", "_idPFH"];
+    params ["", "_idPFH"];
     if (GETMVAR(MissionEnded,false)) exitwith {
         [_idPFH] call CBA_fnc_removePerFrameHandler;
     };
@@ -35,7 +40,7 @@ EGVAR(Respawn,Queue_Civ) = [];
 }, 5, []] call CBA_fnc_addPerFrameHandler;
 
 [{
-    params ["_argNested", "_idPFH"];
+    params ["", "_idPFH"];
     if (GETMVAR(MissionEnded,false)) exitwith {
         [_idPFH] call CBA_fnc_removePerFrameHandler;
     };

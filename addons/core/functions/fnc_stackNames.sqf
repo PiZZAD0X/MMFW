@@ -12,9 +12,7 @@
  * Public: No
  */
 
-
 #include "script_component.hpp"
-EXEC_CHECK(ALL);
 
 //DO NOT USE PARAMS AS IT IS NOT WORKING FOR ARRAY WITH 1 ELEMENT
 private _foundArray = [];

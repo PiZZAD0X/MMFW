@@ -12,10 +12,10 @@ EXEC_CHECK(CLIENT);
             switch (_parachuteType) do {
                 case "NONE": {};
                 case "NONSTEERABLE": {
-                    [player,_altitude,_randomAltitude,false] call FUNC(DoParachute);
+                    [player,_altitude,_randomAltitude,false] call FUNC(doParachute);
                 };
                 case "STEERABLE": {
-                    [player,_altitude,_randomAltitude,true] call FUNC(DoParachute);
+                    [player,_altitude,_randomAltitude,true] call FUNC(doParachute);
                 };
             };
         }] call CBA_fnc_ExecNextFrame;
@@ -23,5 +23,8 @@ EXEC_CHECK(CLIENT);
 }] call CBA_fnc_addEventHandler;
 
 [QEGVAR(Core,SettingsLoaded), {
+    if (GETMVAR(Enabled,false)) then {
+        [QEGVAR(Core,RegisterModuleEvent), ["Start in Parachute", "Starts players in parachutes", "Briland and Sacher"]] call CBA_fnc_globalEventJiP;
+    };
     [QGVAR(PlayerEvent), []] call CBA_fnc_localEvent;
 }] call CBA_fnc_addEventHandler;

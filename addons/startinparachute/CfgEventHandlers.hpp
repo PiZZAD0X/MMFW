@@ -15,7 +15,7 @@ class Extended_PreInit_EventHandlers {
 class Extended_InitPost_Eventhandlers {
     class CAManBase {
         class ADDON {
-            init = QUOTE(_this call FUNC(InitPost));
+            init = QUOTE(call FUNC(initPost));
         };
     };
 };

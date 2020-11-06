@@ -7,9 +7,8 @@
  *        Olsen & Starfox64 & PiZZADOX
  */
 
-
 #include "script_component.hpp"
-EXEC_CHECK(CLIENT);
+if !(hasInterface) exitWith {};
 
 private ["_type","_distance"];
 

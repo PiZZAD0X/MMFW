@@ -1,6 +1,5 @@
 
 #include "script_component.hpp"
-EXEC_CHECK(CLIENT);
 
 //37 is DIK code for K
 if ((_this select 1) isEqualto 37) then {

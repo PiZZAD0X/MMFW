@@ -13,6 +13,14 @@ class Extended_PreInit_EventHandlers {
     };
 };
 
+class Extended_FiredMan_EventHandlers {
+	class CAManBase {
+        class ADDON {
+            init = QUOTE(call FUNC(firedManEH));
+        };
+	};
+};
+
 class Extended_InitPost_EventHandlers {
     class CAManBase {
         class ADDON {

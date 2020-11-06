@@ -1,5 +1,5 @@
 /*
- * Author: Olsen
+ * Author: Olsen && PiZZADOX
  *
  * Adds new team.
  *
@@ -16,12 +16,16 @@
 
 
 #include "script_component.hpp"
-EXEC_CHECK(SERVER);
+if !(isServer) exitWith {};
 
-params [["_side", sideUnknown, [sideUnknown]],["_name", "Unknown", [""]],["_Type", "both", [""]]];
+params [
+    ["_side", sideUnknown, [sideUnknown]],
+    ["_name", "Unknown", [""]],
+    ["_type", "both", [""]]
+];
 
-if (isMultiplayer) then {
-    GVAR(Teams) set [count (GVAR(Teams)), [_name, _side, _Type,  0, 0, [], []]];
-} else {
-    GVAR(Teams) set [count (GVAR(Teams)), [_name, _side, "both",  0, 0, [], []]];
+if !(isMultiplayer) then {
+    _type = "both";
 };
+
+GVAR(Teams) pushBack [_name, _side, _type,  0, 0, [], []];

@@ -13,9 +13,7 @@
  * Public: Yes
  */
 
-
 #include "script_component.hpp"
-EXEC_CHECK(ALL);
 
 [{
     if (CBA_missionTime > 0 && {getTerrainGrid != 2}) then {

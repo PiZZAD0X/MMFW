@@ -9,20 +9,18 @@
 
 
 #include "script_component.hpp"
-EXEC_CHECK(ALL);
 EDEN_CHECK;
 
 params ["_logic"];
 
-LOG_2("_logic:%1 class:%2",_logic,typeof _logic);
-{
-    LOG_2("_logic:%1 class:%2",_x,typeof _x);
-    if (!(_logic isEqualto _x)) then {
-        if (x isEqualType _logic) exitwith {
-            LOG_2("MATCH DUPLICATE! _object class:%1 _logic class:%2",typeof _x,typeof _logic);
-            private _printname = getText (configFile >> "cfgVehicles" >> typeof _logic >> "displayName");
-            ERROR_1("You can only have one %1 module. Duplicate module deleted.",_printname);
-            delete3DENEntities [_logic];
-        };
-    };
-} foreach (all3DENentities select 3);
+TRACE_2("", _logic, typeof _logic);
+private _index = (all3DENentities select 3) findIf {
+    !(_x isEqualto _logic)
+    && {_x isEqualType _logic}
+};
+if !(_index isEqualto -1) then {
+    TRACE_2("MATCH DUPLICATE!", typeof _logic, _logic);
+    private _printname = getText (configFile >> "cfgVehicles" >> typeof _logic >> "displayName");
+    ERROR_1("You can only have one %1 module. Duplicate module deleted.", _printname);
+    delete3DENEntities [_logic];
+};

@@ -152,15 +152,20 @@ LOG("Client Pre Init");
 }] call CBA_fnc_addEventHandler;
 
 [QEGVAR(EndConditions,TimelimitClient), {
-    params ["_command",["_timeLimit",0,[0]]];
-    private _timeLeft = _timeLimit - (CBA_missionTime / 60);
+    params ["_command", ["_arg", 0, [0, ""]]];
     switch (_command) do {
         case "check": {
-            private _text = format ["TimeLimit: %1 Time Remaining: %2",_timeLimit,_timeLeft];
+            private _timeLeft = _arg - (CBA_missionTime / 60);
+            private _text = format ["TimeLimit: %1 Time Remaining: %2", _arg, _timeLeft];
             [_text, 1.5, ACE_Player, 10] call ace_common_fnc_displayTextStructured;
         };
         case "extend": {
-            private _text = format ["TimeLimit set to: %1 Time Remaining: %2",_timeLimit,_timeLeft];
+            private _timeLeft = _arg - (CBA_missionTime / 60);
+            private _text = format ["TimeLimit set to: %1 Time Remaining: %2", _arg, _timeLeft];
+            [_text, 1.5, ACE_Player, 10] call ace_common_fnc_displayTextStructured;
+        };
+        case "message": {
+            private _text = format ["TimeLimit message set to: %1", _arg];
             [_text, 1.5, ACE_Player, 10] call ace_common_fnc_displayTextStructured;
         };
         default {};

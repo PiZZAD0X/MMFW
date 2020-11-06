@@ -1,5 +1,4 @@
 #include "script_component.hpp"
-EXEC_CHECK(CLIENT);
 
 [QEGVAR(Core,RegisterModuleEvent), ["Setup Timer", "Allows the mission maker to restrict players to an area for a set amount of time.", "Olsen, Sacher and PiZZADOX"]] call CBA_fnc_localEvent;
 

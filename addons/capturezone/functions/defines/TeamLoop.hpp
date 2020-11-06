@@ -15,8 +15,8 @@
                         (MESSAGEVAR select 1) remoteExec ["hintsilent"];\
                     };\
                 };\
-                MissionNamespace setvariable [_varName,true];\
-                MissionNamespace setvariable [_teamControllingvarName,#TEAMNAMEVAR];\
+                missionNamespace setvariable [_varName,true];\
+                missionNamespace setvariable [_teamControllingvarName,#TEAMNAMEVAR];\
                 if (_mode isEqualto "ONCE") exitWith {\
                     if !(_hidden) then {\
                         _marker setMarkerAlpha 0.5;\

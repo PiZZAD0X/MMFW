@@ -12,9 +12,7 @@
  * Public: No
  */
 
-
 #include "script_component.hpp"
-EXEC_CHECK(SERVER);
 
 params ["_new","_corpse"];
 SETVAR(_new,Body,_corpse);

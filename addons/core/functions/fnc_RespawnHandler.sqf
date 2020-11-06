@@ -39,7 +39,11 @@ if (_respawnType in ["UNLIMITED", "INDTICK", "TEAMTICK"]) then {
     private _teamRespawnMarker = if (_eligibleRespawnLocations isEqualTo []) then {
         objNull
     } else {
-        selectRandom _eligibleRespawnLocations
+        if (EGETMVAR(Respawn,RandomRespawnLocations,false)) then {
+            selectRandom _eligibleRespawnLocations
+        } else {
+            _eligibleRespawnLocations select (count _eligibleRespawnLocations - 1)
+        };
     };
     switch (_respawnType) do {
         case "INDTICK": {

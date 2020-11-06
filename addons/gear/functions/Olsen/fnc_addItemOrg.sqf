@@ -21,14 +21,14 @@
 EXEC_CHECK(ALL);
 
 params ["_unit", "_loadoutType", "_item",  ["_amount",1,[1]], ["_position", "NONE", [""]]];
-private ["_success", "_parents", "_Type"];
+private ["_success", "_parents", "_type"];
 
 if !([_item, _unit] call FUNC(checkClassname)) exitWith {};
 
 for "_x" from 1 to _amount do {
     _success = false;
     _parents = [configFile >> "CFGweapons" >> _item, true] call BIS_fnc_returnParents;
-    _Type = (_item call BIS_fnc_itemType) select 1;
+    _type = (_item call BIS_fnc_itemType) select 1;
 
     if (toLower(_position) == "none") then {
         if (!_success && "Rifle" in _parents) then {
@@ -49,63 +49,63 @@ for "_x" from 1 to _amount do {
                 _success = true;
             };
         };
-        if (!_success && _Type in ["Map", "GPS", "Compass", "Watch", "NVGoggles"]) then {
-            if ([_unit, _Type] call FUNC(CanLinkItem)) then {
+        if (!_success && _type in ["Map", "GPS", "Compass", "Watch", "NVGoggles"]) then {
+            if ([_unit, _type] call FUNC(CanLinkItem)) then {
                 _unit linkItem _item;
                 _success = true;
             };
         };
-        if (!_success && _Type == "uniform") then {
+        if (!_success && _type == "uniform") then {
             if (uniform _unit == "") then {
                 _unit forceAddUniform _item;
                 _success = true;
             };
         };
-        if (!_success && _Type == "vest") then {
+        if (!_success && _type == "vest") then {
             if (vest _unit == "") then {
                 _unit addVest _item;
                 _success = true;
             };
         };
-        if (!_success && _Type == "backpack") then {
+        if (!_success && _type == "backpack") then {
             if (backpack _unit == "") then {
                 _unit addBackpackGlobal _item;
                 _success = true;
             };
         };
-        if (!_success && _Type == "Headgear") then {
+        if (!_success && _type == "Headgear") then {
             if (headgear _unit == "") then {
                 _unit addHeadgear _item;
                 _success = true;
             };
         };
-        if (!_success && _Type == "Glasses") then {
+        if (!_success && _type == "Glasses") then {
             if (goggles _unit == "") then {
                 _unit addGoggles _item;
                 _success = true;
             };
         };
-        if (!_success && _Type == "Binocular") then {
+        if (!_success && _type == "Binocular") then {
             if (binocular _unit == "") then {
                 _unit addWeaponGlobal _item;
                 _success = true;
             };
         };
-        if (!_success && _Type in ["AccessoryMuzzle", "AccessoryPointer", "AccessorySights", "AccessoryBipod"]) then {
+        if (!_success && _type in ["AccessoryMuzzle", "AccessoryPointer", "AccessorySights", "AccessoryBipod"]) then {
             if ([primaryWeapon _unit, _item] call FUNC(CanAttachItem)) then {
-                if (!(_Type in primaryWeaponItems _unit)) then {
+                if (!(_type in primaryWeaponItems _unit)) then {
                     _unit addPrimaryWeaponItem _item;
                     _success = true;
                 };
             } else {
                 if ([handgunWeapon _unit, _item] call FUNC(CanAttachItem)) then {
-                    if (!(_Type in handgunItems _unit)) then {
+                    if (!(_type in handgunItems _unit)) then {
                         _unit addHandgunItem _item;
                         _success = true;
                     };
                 } else {
                     if ([secondaryWeapon _unit, _item] call FUNC(CanAttachItem)) then {
-                        if (!(_Type in secondaryWeaponItems _unit)) then {
+                        if (!(_type in secondaryWeaponItems _unit)) then {
                             _unit addSecondaryWeaponItem _item;
                             _success = true;
                         };
@@ -154,7 +154,7 @@ for "_x" from 1 to _amount do {
     };
 
     if (!_success) then {
-        if (_unit canAdd _item && _Type != "Backpack") then {
+        if (_unit canAdd _item && _type != "Backpack") then {
             _unit addItem _item;
             _success = true;
         } else {

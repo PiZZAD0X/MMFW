@@ -9,7 +9,7 @@
 
 
 #include "script_component.hpp"
-EXEC_CHECK(CLIENT);
+if !(hasInterface) exitWith {};
 
 params ["_target"];
 private _targets = [];

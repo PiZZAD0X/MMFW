@@ -21,7 +21,7 @@ private ["_assignedItems", "_result"];
 
 params [
     ["_unit", objNull, [objNull]],
-    ["_Type", "", [""]]
+    ["_type", "", [""]]
 ];
 
 _assignedItems = [];
@@ -30,6 +30,6 @@ _assignedItems = [];
     _assignedItems pushBack (([_x] call BIS_fnc_itemType) select 1);
 } forEach (assignedItems _unit);
 
-_result = _Type in _assignedItems;
+_result = _type in _assignedItems;
 
 !_result

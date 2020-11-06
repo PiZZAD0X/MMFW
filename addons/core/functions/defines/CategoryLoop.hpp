@@ -58,7 +58,7 @@
                     {\
                         private _unit = missionNamespace getVariable [_x,objNull];\
                         if ((_unit isEqualType "OBJECT") && {!(_unit isEqualto objNull)}) then {\
-                            _alive = _alive && (_unit call FUNC(alive));\
+                            _alive = _alive && (_unit call FUNC(isAlive));\
                         } else {\
                             _alive = false;\
                             ERROR_1("Unit %1 not found!",_x);\
@@ -78,7 +78,7 @@
                            ERROR_1("Unit %1 not found!",_x);\
                             ["Unit " + _x + " not found!","Unit " + _x + " not found!"] call FUNC(DebugMessageDetailed);\
                         } else {\
-                            private _unitDeadCheck = (!(_unit call FUNC(alive)));\
+                            private _unitDeadCheck = (!(_unit call FUNC(isAlive)));\
                             LOG_2("Unit %1 check: %2",_unit,_unitDeadCheck);\
                             _dead = _dead && _unitDeadCheck;\
                         };\
@@ -107,7 +107,7 @@
                     private _rescued = true;\
                     {\
                         private _unit = missionNamespace getVariable [_x,objNull];\
-                        if (!(_unit isEqualto objNull) && {(_unit call FUNC(alive))}) then {\
+                        if (!(_unit isEqualto objNull) && {(_unit call FUNC(isAlive))}) then {\
                             _rescued = _rescued && (EGETVAR(_unit,Hostage,IsRescued,false));\
                         } else {\
                             _rescued = false;\

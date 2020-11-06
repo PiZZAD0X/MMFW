@@ -2,34 +2,23 @@
 EXEC_CHECK(CLIENT);
 
 params ["_AONameCalled"];
-private ["_areaCalled","_zoomlevelCalled","_found","_index","_logicCalled"];
 
-private _found = false;
-{
-    _x params ["_AOName","_area","_AOZoom","_logic"];
-    if (_AONameCalled == _AOName) then {
-        _areaCalled = _area;
-        _logicCalled = _logic;
-        _zoomlevelCalled = _AOZoom;
-        _index = _forEachIndex;
-        _found = true;
-    };
-} foreach GVAR(AOArray);
-
-if !(_found) exitwith {
+private _index = GVAR(AOArray) findIf {_x select 0 == _AONameCalled};
+if (_index isEqualTo -1) exitwith {
     ERROR_1("Live CoverMap area: %1 not found in array!",_AONameCalled);
 };
+GVAR(AOArray) select _index params ["_AOName", "_area", "_AOZoom", "_logic"];
 
 if (isNil QGVAR(MarkerArray)) then {
     GVAR(MarkerArray) = [];
 } else {
-    {deletemarker _x;} foreach GVAR(MarkerArray);
+    GVAR(MarkerArray) apply {deletemarker _x};
     GVAR(MarkerArray) = [];
 };
 //for self interact options and logging
-GVAR(currentAO) = _AONameCalled;
+GVAR(currentAO) = _AOName;
 
-_areaCalled params ["_pos","_radiusX","_radiusY","_dir"];
+_area params ["_pos","_radiusX","_radiusY","_dir"];
 
 _pos params ["_posx","_posy"];
 private _radiusXo = _radiusX;
@@ -125,4 +114,4 @@ _marker4 setMarkerColorLocal "colorBlack";
     params ["_zoomlevel","_p"];
     MapAnimAdd [0, _zoomlevel, _p];
     MapAnimCommit;
-},[_zoomlevelCalled,_pos]] call CBA_fnc_waitUntilAndExecute;
+},[_AOZoom,_pos]] call CBA_fnc_waitUntilAndExecute;

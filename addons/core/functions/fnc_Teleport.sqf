@@ -9,25 +9,25 @@
 
 
 #include "script_component.hpp"
-EXEC_CHECK(CLIENT);
+if !(hasInterface) exitWith {};
 
 params ["_target"];
 
 private _target = (leader player);
-if (player isEqualto _target || !(_target call FUNC(Alive))) then {
+if (player isEqualto _target || !(_target call FUNC(isAlive))) then {
     private _rank = -1;
     {
-        if (rankId _x > _rank && {(_target call FUNC(Alive))}) then {
+        if (rankId _x > _rank && {(_target call FUNC(isAlive))}) then {
             _rank = rankId _x;
             _target = _x;
         };
     } forEach ((units (group player)) - [player]);
 };
-if (!((_target call FUNC(Alive)) && {((_target isEqualto vehicle _target) || ((vehicle _target) call FUNC(HasEmptyPositions)))})) then {
+if (!((_target call FUNC(isAlive)) && {((_target isEqualto vehicle _target) || ((vehicle _target) call FUNC(HasEmptyPositions)))})) then {
     private _rank = -1;
     private _count = 0;
     {
-        if (_x call FUNC(Alive)) then {
+        if (_x call FUNC(isAlive)) then {
             _count = _count + 1;
             if ((rankId _x > _rank) && {(!(_x isEqualto vehicle _x) || ((vehicle _x) call FUNC(HasEmptyPositions)))}) then {
                 _rank = rankId _x;

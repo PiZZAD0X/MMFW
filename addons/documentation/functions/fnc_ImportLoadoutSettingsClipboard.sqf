@@ -1,5 +1,4 @@
 #include "script_component.hpp"
-EXEC_CHECK(ALL);
 EDEN_CHECK;
 
 private _loadoutList = (missionNamespace getVariable ["ace_arsenal_defaultLoadoutsList", []]);

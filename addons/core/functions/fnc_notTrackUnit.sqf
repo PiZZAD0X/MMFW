@@ -13,8 +13,6 @@
  * Public: Yes
  */
 
-
 #include "script_component.hpp"
-EXEC_CHECK(ALL);
 
 [QGVAR(DontTrackEvent), []] call CBA_fnc_serverEvent;

@@ -1,6 +1,5 @@
 
 #include "script_component.hpp"
-EXEC_CHECK(CLIENT);
 
 params ["_control", "_code", "_shift", "_control", "_alt"];
 if (_code isEqualto 35 && {!_shift} && {_control} && {!_alt} && {(EGETMVAR(Spectator,keyHandler_display_hidden,false))}) then {

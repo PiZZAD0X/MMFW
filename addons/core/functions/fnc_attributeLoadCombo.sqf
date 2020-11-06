@@ -11,10 +11,9 @@
 */
 
 #include "script_component.hpp"
-EXEC_CHECK(ALL);
 EDEN_CHECK;
 
-params ["_ctrl","_config"];
+params ["_ctrl", "_config", "_value"];
 
 private _attCtrl = getText (_config >> 'control');
 private _staticItemsCfg = configFile >> 'Cfg3DEN' >> 'Attributes' >> _attCtrl >> 'Controls' >> 'Value' >> 'items';

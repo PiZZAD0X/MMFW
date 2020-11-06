@@ -68,7 +68,7 @@
 #define ST_DOWN 0x04
 #define ST_UP 0x08
 #define ST_VCENTER 0x0C
-#define ST_Type 0xF0
+#define ST_type 0xF0
 #define ST_SINGLE 0x00    //single line textbox
 #define ST_MULTI 0x10    //multi-line textbox (text will wrap, and newline character can be used). There is no scrollbar, but mouse wheel/arrows can scroll it. Control will be outlined with a line (color = text color).
 #define ST_Title_BAR 0x20

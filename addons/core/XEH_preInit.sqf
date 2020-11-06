@@ -51,4 +51,6 @@ if (!(hasInterface) || (isServer)) then {
     }] call CBA_fnc_addEventHandler;
 };
 
+GVAR(CachedDisplayNames) = [];
+
 ADDON = true;

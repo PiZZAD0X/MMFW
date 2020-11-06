@@ -18,6 +18,14 @@ class EGVAR(Respawn,Category) {
             expression = SCENARIO_EXPRESSION;
             defaultValue = "(true)";
         };
+        class EGVAR(Respawn,RandomRespawnLocations) {
+            property = QEGVAR(Respawn,RandomRespawnLocations);
+            displayName = "Random Locations";
+            tooltip = "Enables a random selection of eligible respawn locations.";
+            control = "CheckBox";
+            expression = SCENARIO_EXPRESSION;
+            defaultValue = "(false)";
+        }
         class EGVAR(Respawn,SpawnPosRespawn) {
             property = QEGVAR(Respawn,KillCam);
             displayName = "SpawnPos Respawn";

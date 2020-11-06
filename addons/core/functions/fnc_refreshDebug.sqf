@@ -12,14 +12,12 @@
  * Public: No
  */
 
-
- #include "script_component.hpp"
- EXEC_CHECK(ALL);
+#include "script_component.hpp"
 
 private _text = "<br></br><br></br>";
 
-{
+GVAR(DebugMessages) apply {
     _text = _text + _x + "<br></br>";
-} forEach GVAR(DebugMessages);
+};
 
 ((uiNamespace getVariable QGVAR(DisplayID)) displayCtrl 4001) ctrlSetStructuredText (parsetext _text);

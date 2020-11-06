@@ -12,9 +12,8 @@
 
 
 #include "script_component.hpp"
-EXEC_CHECK(ALL);
 EDEN_CHECK;
 
-params ["_ctrl","_config"];
+params ["_ctrl", "_config"];
 private _value = _ctrl lbData lbCurSel _ctrl;
 _value

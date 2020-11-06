@@ -4,12 +4,12 @@ EXEC_CHECK(SERVER);
 #include "defines\TeamLoop.hpp"
 
 params ["_logic","_zoneName"];
-LOG_2("Activating CaptureZone logic: %1 name: %2 PFH",_logic,_zoneName);
+TRACE_2("Activating CaptureZone",_logic,_zoneName);
 if (isNil QGVAR(ListArray)) then {GVAR(ListArray) = [];};
 GVAR(ListArray) pushBack _zoneName;
 private _varName = format ["%1_var",_zoneName];
 private _teamControllingvarName = format ["%1_teamControlling",_zoneName];
-LOG_2("Activating CaptureZone _varName: %1 _teamControllingvarName: %2 PFH",_varName,_teamControllingvarName);
+TRACE_2("Activating CaptureZone",_varName,_teamControllingvarName);
 
 GVAR(DOUBLES(PFHhandle,_logic)) = [{
     //var redeclares
@@ -45,8 +45,8 @@ GVAR(DOUBLES(PFHhandle,_logic)) = [{
             _marker setMarkerColor _uncontestedcolour;
         };
 
-        MissionNamespace setvariable [_varName,false];
-        MissionNamespace setvariable [_teamControllingvarName,"UNCONTESTED"];
+        missionNamespace setvariable [_varName,false];
+        missionNamespace setvariable [_teamControllingvarName,"UNCONTESTED"];
     };
 
     private _bluCount = 0;
@@ -54,27 +54,17 @@ GVAR(DOUBLES(PFHhandle,_logic)) = [{
     private _indCount = 0;
     private _civCount = 0;
 
-    private _playersInArea = if (_AICount) then {
-        allUnits select {
-            (_x inArea _area)
-            && {(!captive _x)}
-            && {(alive _x)}
-            && {!(_x getVariable [QEGVAR(Core,Dead), false])}
-            && {!(_x isKindOf "HeadlessClient_F")}
-        };
-    } else {
-        allUnits select {
-            (_x inArea _area)
-            && {(!captive _x)}
-            && {(alive _x)}
-            && {!(_x getVariable [QEGVAR(Core,Dead), false])}
-            && {!(_x isKindOf "HeadlessClient_F")}
-            && {isPlayer _x}
-        };
+    private _playersInArea = allUnits select {
+        (_x call EFUNC(Core,isAlive))
+        && {!captive _x}
+        && {_x inArea _area}
+        && {!(_x getVariable [QEGVAR(Core,Dead), false])}
+        && {!(_x isKindOf "HeadlessClient_F")}
+        && {_AICount || {isPlayer _x}}
     };
 
     if (_playersInArea isEqualTo []) exitwith {
-        if (!(missionNamespace getvariable [_varName,false]) || (_mode isEqualto "REPEATABLE")) then {
+        if (!(missionNamespace getvariable [_varName,false]) || {_mode isEqualto "REPEATABLE"}) then {
             _owner = "UNCONTESTED";
             if !(_owner isEqualto _oldOwner) then {
                 _argNested set [4,_owner];
@@ -91,8 +81,8 @@ GVAR(DOUBLES(PFHhandle,_logic)) = [{
                         _uncontestedmessage remoteExec ["hintsilent"];
                     };
                 };
-                MissionNamespace setvariable [_varName,false];
-                MissionNamespace setvariable [_teamControllingvarName,"UNCONTESTED"];
+                missionNamespace setvariable [_varName,false];
+                missionNamespace setvariable [_teamControllingvarName,"UNCONTESTED"];
             };
         };
     };
@@ -123,7 +113,7 @@ GVAR(DOUBLES(PFHhandle,_logic)) = [{
         };
     } foreach _playersInArea;
 
-    LOG_5("CaptureZone:%1 _bluCount:%2 _opCount:%3 _indCount:%4 _civCount:%5",_zoneName,_bluCount,_opCount,_indCount,_civCount);
+    TRACE_5("",_zoneName,_bluCount,_opCount,_indCount,_civCount);
 
     if (({(selectMax [_bluCount, _opCount, _indCount, _civCount] isEqualTo _x) && !(_x isEqualto 0)} count [_bluCount, _opCount, _indCount, _civCount]) > 1) then {
         //it's a tie between 2 or more teams
@@ -211,8 +201,8 @@ GVAR(DOUBLES(PFHhandle,_logic)) = [{
                         _contestedmessage remoteExec ["hintsilent"];
                     };
                 };
-                MissionNamespace setvariable [_varName,false];
-                MissionNamespace setvariable [_teamControllingvarName,"CONTESTED"];
+                missionNamespace setvariable [_varName,false];
+                missionNamespace setvariable [_teamControllingvarName,"CONTESTED"];
             };
         };
     };

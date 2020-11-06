@@ -1,6 +1,4 @@
 #include "script_component.hpp"
-EXEC_CHECK(ALL);
-
 //IGNORE_PRIVATE_WARNING ["_target","_player"];
 
 params [

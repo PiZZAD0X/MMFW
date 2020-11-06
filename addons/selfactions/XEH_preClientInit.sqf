@@ -47,7 +47,7 @@ EXEC_CHECK(CLIENT);
                 params ["_unit", "_anim"];
                 if (_anim isEqualTo "ainvpknlmstpslaywrfldnon_medic") then {
                     private _cutter = createVehicle ["ClutterCutter_small_EP1", [0,0,0], [], 0, "CAN_COLLIDE"];
-                    _cutter setpos (_unit getPos [1, getDir _unit]);
+                    _cutter setPos (_unit getPos [1, getDir _unit]);
                     _unit removeEventHandler [_thisType, _thisID];
                 };
             }, []] call CBA_fnc_addBISEventHandler;

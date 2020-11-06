@@ -7,7 +7,6 @@ switch (_mode) do {
         _input params ["_logic",["_isActivated",true,[true]]];
         LOG_1("Starting Module function for Extract %1",_logic);
         if !(_isActivated) exitWith {};
-        EDEN_CHECK;
         private _handleHeight = GETVAR(_logic,HandleHeight,false);
         private _side = ["BLUFOR","OPFOR","INDFOR","CIVILIAN"] select (GETVAR(_logic,Side,0));
         SETPVAR(_logic,Side,_side);

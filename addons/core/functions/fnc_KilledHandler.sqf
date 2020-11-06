@@ -7,27 +7,6 @@ params ["_unit", "_killer", "_instigator"];
 SETMVAR(OldGroup,(group player));
 SETPLPVAR(Dead,true);
 
-private ["_delay","_templateSettings"];
-
-switch (side player) do {
-    case west: {
-        _delay = EGETMVAR(Respawn,Delay_BLUFOR,5);
-        _templateSettings = EGETMVAR(Respawn,Templates_BLUFOR,[]);
-    };
-    case east: {
-        _delay = EGETMVAR(Respawn,Delay_OPFOR,5);
-        _templateSettings = EGETMVAR(Respawn,Templates_OPFOR,[]);
-    };
-    case independent: {
-        _delay = EGETMVAR(Respawn,Delay_Indfor,5);
-        _templateSettings = EGETMVAR(Respawn,Templates_Indfor,[]);
-    };
-    case civilian: {
-        _delay = EGETMVAR(Respawn,Delay_Civilian,5);
-        _templateSettings = EGETMVAR(Respawn,Templates_Civilian,[]);
-    };
-};
-
 [{
     params ["_unit"];
     [_unit] joinSilent grpNull;
