@@ -6,7 +6,7 @@ EXEC_CHECK(CLIENT);
     [{(!isNull ace_player)}, {
         [{
             private _parachuteType = ["NONE","NONSTEERABLE","STEERABLE"] select (GETPLVAR(Type,0));
-            if (_parachuteType isEqualTo 0) exitwith {};
+            if (_parachuteType isEqualTo "NONE") exitwith {};
             private _altitude = GETPLVAR(Altitude,300);
             private _randomAltitude = GETPLVAR(RandomAltitude,100);
             switch (_parachuteType) do {
