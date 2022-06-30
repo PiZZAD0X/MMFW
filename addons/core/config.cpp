@@ -9,7 +9,7 @@ class CfgPatches {
         requiredAddons[] = {"MMFW_main"};
         authors[] = {"Olsen","PiZZADOX","Sacher","TheMagnetar","TrainDoc","TinfoilHate"};
         author = "MMFW Team";
-        authorUrl = "https://github.com/unitedoperations";
+        authorUrl = "https://github.com/Global-Conflicts-ArmA";
         VERSION_CONFIG;
     };
 };
