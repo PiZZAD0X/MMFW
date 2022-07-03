@@ -13,7 +13,7 @@ class CfgPatches {
         };
         authors[] = {"Olsen","PiZZADOX","Sacher"};
         author = "MMFW Team";
-        authorUrl = "https://github.com/unitedoperations";
+        authorUrl = "https://github.com/Global-Conflicts-ArmA";
         VERSION_CONFIG;
     };
 };

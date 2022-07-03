@@ -25,7 +25,7 @@ class EGVAR(Respawn,Category) {
             control = "CheckBox";
             expression = SCENARIO_EXPRESSION;
             defaultValue = "(false)";
-        }
+        };
         class EGVAR(Respawn,SpawnPosRespawn) {
             property = QEGVAR(Respawn,KillCam);
             displayName = "SpawnPos Respawn";

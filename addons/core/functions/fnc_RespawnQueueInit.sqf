@@ -28,14 +28,14 @@ EGVAR(Respawn,RespawnLocations_Civ) = [];
         [_idPFH] call CBA_fnc_removePerFrameHandler;
     };
     [
-        ["BLUFOR", EGVAR(Respawn,RespawnLocations_BLUFOR)],
-        ["OPFOR", EGVAR(Respawn,RespawnLocations_Opfor)],
-        ["INDFOR", EGVAR(Respawn,RespawnLocations_Indfor)],
-        ["CIVILIAN", EGVAR(Respawn,RespawnLocations_Civ)]
+        ["BLUFOR", EGVAR(Respawn,RespawnLocations_BLUFOR), QEGVAR(Respawn,RespawnLocations_BLUFOR)],
+        ["OPFOR", EGVAR(Respawn,RespawnLocations_Opfor), QEGVAR(Respawn,RespawnLocations_Opfor)],
+        ["INDFOR", EGVAR(Respawn,RespawnLocations_Indfor), QEGVAR(Respawn,RespawnLocations_Indfor)],
+        ["CIVILIAN", EGVAR(Respawn,RespawnLocations_Civ), QEGVAR(Respawn,RespawnLocations_Civ)]
     ] apply {
-        _x params ["_teamVar", "_array"];
+        _x params ["_teamVar", "_array", "_qEGVar"];
         private _eligibleRespawnLocations = [_teamVar] call FUNC(getRespawnLocations);
-        missionNamespace setVariable [_array, _eligibleRespawnLocations];
+        missionNamespace setVariable [_qEGVar, _eligibleRespawnLocations];
     };
 }, 5, []] call CBA_fnc_addPerFrameHandler;
 
